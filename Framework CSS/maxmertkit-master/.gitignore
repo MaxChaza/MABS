@@ -1,0 +1,8 @@
+.sass-cache
+.DS_Store
+*/node_modules
+node_modules
+coffee
+.coffee
+.sublime-workspace
+_old

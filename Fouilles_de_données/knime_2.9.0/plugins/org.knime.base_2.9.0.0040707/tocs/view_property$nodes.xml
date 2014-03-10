@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+
+<toc label="Property" link_to="../org.knime.base/tocs/view_property.xml#view_property">
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.viz.property.color.ColorManager2NodeFactory.html" label="Color Manager"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.viz.property.size.SizeManager2NodeFactory.html" label="Size Manager"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.viz.property.shape.ShapeManagerNodeFactory.html" label="Shape Manager"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.viz.property.color.ColorAppenderNodeFactory.html" label="Color Appender"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.viz.property.size.SizeAppenderNodeFactory.html" label="Size Appender"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.viz.property.shape.ShapeAppenderNodeFactory.html" label="Shape Appender"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.viz.property.color.extract.ColorExtractNodeFactory.html" label="Extract Color"/>
+</toc>

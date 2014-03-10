@@ -1,0 +1,1440 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Maxmertkit</title>
+		<link rel="stylesheet" type="text/css" href="css/reset.css">
+		<link rel="stylesheet" type="text/css" href="css/maxmertkit.css">
+		<link rel="stylesheet" type="text/css" href="css/maxmertkit-components.css">
+		<link rel="stylesheet" type="text/css" href="css/maxmertkit-animation.css">
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<script type="text/javascript" src="js/libs/html5shiv.js"></script>
+		<script type="text/javascript" src="js/libs/jquery.js"></script>
+		<script type="text/javascript" src="js/libs/easing.js"></script>
+		<script type="text/javascript" src="js/libs/imagesLoaded.js"></script>
+		<script type="text/javascript" src="js/libs/modernizr.js"></script>
+
+		<script type="text/javascript" src="js/plugins/maxmertkit.js"></script>
+		<script type="text/javascript" src="js/plugins/maxmertkit.affix.js"></script>
+		<script type="text/javascript" src="js/plugins/maxmertkit.scrollspy.js"></script>
+		<script type="text/javascript" src="js/plugins/maxmertkit.popup.js"></script>
+		<script type="text/javascript" src="js/plugins/maxmertkit.tabs.js"></script>
+		<script type="text/javascript" src="js/plugins/maxmertkit.modal.js"></script>
+		<script type="text/javascript" src="js/plugins/maxmertkit.carousel.js"></script>
+		<script type="text/javascript" src="js/plugins/maxmertkit.button.js"></script>
+		<script type="text/javascript" src="js/plugins/maxmertkit.notify.js"></script>
+
+		<script type="text/javascript">
+			(function($){
+				$(document).ready(function(){
+					$('.js-tooltip').popup({
+						trigger: 'click',
+						animation: 'easeOutElastic',
+						animationDuration: 400,
+						template: '<div class="-tooltip"><i class="-arrow"></i><div class="js-content"></div></div>',
+						placement: 'top'
+					});
+					
+					$('.js-tooltip2').popup({
+						content: 'tooltip2', 
+						animation: 'rotateIn', 
+						animationDuration: 500,
+						onlyOne: true,
+
+						beforeOpen: function() {
+							$(this).addClass('_loading_ _active_');
+							
+							var d = $.Deferred();
+							setTimeout(function(){ d.resolve() },1000);
+							return d.promise();
+						},
+						open: function() {
+							$(this).addClass('_active_')
+						},
+						ifNotOpened: function() {
+							
+						},
+						ifOpenedOrNot: function() {
+							$(this).removeClass('_loading_')
+						},
+						beforeClose: function() {
+							$(this).addClass('_loading_');
+							var d = $.Deferred();
+							setTimeout(function(){ d.resolve() },1000);
+							return d.promise();
+						},
+						close: function() {
+							$(this).removeClass('_active_')
+						},
+						ifClosedOrNot: function() {
+							$(this).removeClass('_loading_');
+						}
+					});
+
+					$('.js-dropdown').popup({
+						template: '.dropdown-template',
+						trigger: 'click',
+						placement: 'bottom',
+						animation: 'growUp',
+						theme: 'primary',
+						onlyOne: true,
+						open: function() {
+							$(this).addClass('_active_')
+						},
+						close: function() {
+							$(this).removeClass('_active_')
+						}
+					});
+
+
+					$('.js-tabs').tabs({
+						itemsSelector: 'li',
+						animation: true
+					});
+
+					$('.js-modal').modal({
+						animation: 'dropIn',
+						theme: 'error',
+						beforeClose: function() {
+							if( $('.js-dropdown4').data('kit-popup').state === 'opened' )
+								$('.js-dropdown4').click();
+						}
+					});
+
+					$('.js-modal-show').on('click', function() {
+						$('.js-modal').data('kit-modal').open();
+					});
+
+					$('.js-affix').affix();
+
+					$('.js-scrollspy').scrollspy();
+
+					$('#js-carousel').carousel({theme: 'info'});
+
+					
+
+					$('[data-radio="radio1"]').button({
+						
+						action: function() {
+							console.log('action')
+							$(this).addClass('_active_')
+						},
+
+						unsetted: function() {
+							console.log('unsetted')
+							$(this).removeClass('_active_')
+						},
+
+						beforeAction: function() {
+							$(this).addClass('_loading_ _active_');
+							
+							var d = $.Deferred();
+							setTimeout(function(){ d.resolve() },1000);
+							return d.promise();
+						},
+						
+						ifNotAction: function() {
+							
+						},
+						clicked: function() {
+							$(this).removeClass('_loading_')
+						},
+						beforeUnset: function() {
+							$(this).addClass('_loading_');
+							var d = $.Deferred();
+							setTimeout(function(){ d.resolve() },1000);
+							return d.promise();
+						},
+						unsetted: function() {
+							$(this).removeClass('_active_')
+						},
+						ifUnsettedOrNot: function() {
+							$(this).removeClass('_loading_');
+						}
+						
+					
+					});
+
+					$('[data-checkbox], .js-button1').button({
+						
+						action: function() {
+
+							$(this).addClass('_active_');
+							$.notify(
+								"Example of how can button get data, change statuses, and how $.notify works"
+								, {
+									header: 'Approved',
+									theme: 'primary'
+								});
+
+						},
+
+						unsetted: function() {
+							$(this).removeClass('_active_')
+						},
+
+						beforeAction: function() {
+							$(this).addClass('_loading_ _active_');
+							
+							var d = $.Deferred();
+							setTimeout(function(){ d.resolve() },1000);
+							return d.promise();
+						},
+						
+						ifNotAction: function() {
+							
+						},
+						clicked: function() {
+							$(this).removeClass('_loading_')
+						},
+						beforeUnset: function() {
+							$(this).addClass('_loading_');
+							var d = $.Deferred();
+							setTimeout(function(){ d.resolve() },1000);
+							return d.promise();
+						},
+						unsetted: function() {
+							$(this).removeClass('_active_')
+						},
+						ifUnsettedOrNot: function() {
+							$(this).removeClass('_loading_');
+						}
+						
+					
+					});
+
+				});
+			})(jQuery);
+		</script>
+
+		<script type="javascript/template" class="dropdown-template">
+			<div class="-dropdown">
+				<i class="-arrow"></i>
+				<ul class="-menu -primary-">
+					<li><a><i class="-icon-thumbs-up"></i> I like it</a></li>
+					<li><a><i class="-icon-star"></i> Favourite</a></li>
+					<li><a><i class="-icon-thumbs-down"></i> I hate it</a></li>
+					<li class="-menu-sub"><a><i class="-icon"></i> Share</a>
+						<div class="-dropdown">
+							<ul class="-menu">
+								<li><a><i class="-icon"></i> Facebook</a></li>
+								<li class="-success-"><a><i class="-icon-ok-circle"></i> Twitter</a></li>
+								<li><a><i class="-icon"></i> My space</a></li>
+							</ul>
+						</div>
+					</li>
+					<li class="-menu-separator"></li>
+					<li class="-error-"><a><i class="-icon-remove"></i> Dont show me this</a></li>
+				</ul>
+			</div>
+		</script>
+	</head>
+	<body class="_responsive_">
+		<div class="-container">
+
+			<br><br>
+			For all examples and documentation go to <a href="http://maxmert.com">maxmert.com</a>
+			<br><br><br><br>
+			<h1 id="text">Text</h1>
+			<div class="-row">
+				<div class="-col4">
+					<h1>h1. Heading 1</h1> <h2>h2. Heading 2</h2> <h3>h3. Heading 3</h3> <h4>h4. Heading 4</h4> <h5>h5. Heading 5</h5> <h6>h6. Heading 6</h6>
+				</div>
+				<div class="-col4">
+					<h2>Text elements</h2>
+					<p>
+						<strong>Strong</strong><br>
+						<em>Italic</em><br>
+						This is <small>small text</small><br>
+						This is <abbr title="Abbr">Abbr</abbr>
+					</p>
+					<p>Paragraph text</p>
+					<h2>Code</h2>
+					<code>git clone git://github.com/twitter/bootstrap.git</code>
+
+				</div>
+				<div class="-col4">
+					<h2>Address and Blockquote</h2>
+					<address>
+						<strong>Twitter, Inc.</strong><br>
+						795 Folsom Ave, Suite 600<br>
+						San Francisco, CA 94107<br>
+						<abbr title="Phone">P:</abbr> (123) 456-7890
+					</address>
+					<address>
+						<strong>Full Name</strong><br>
+						<a href="mailto:#">first.last@gmail.com</a>
+					</address>
+					<blockquote>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+						<small class="meta">Someone famous in Source Title</small>
+					</blockquote>
+					<blockquote class="mx-pull-right">
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+						<small class="meta">Someone famous in Source Title</small>
+					</blockquote>
+				</div>
+			</div>
+			
+			<h1 id="lists">Lists</h1>
+			<div class="-row">
+				 <div class="-col4">
+					<h2>Marked lists</h2>
+					 <ul>
+						<li>List element 1</li>
+						<li>List element 2</li>
+						<li>List element 3
+							<ul class="_unstyled_">
+								<li>List element 1</li>
+								<li>List element 2
+									<ul>
+										<li>List element 1</li>
+										<li>List element 2</li>
+										<li>List element 3</li>
+										<li>List element 4</li>
+									</ul>
+								</li>
+								<li>List element 3</li>
+								<li>List element 4</li>
+							</ul>
+						</li>
+						<li>List element 4</li>
+					</ul>
+				</div>
+				<div class="-col4">
+					<h2>Numbered lists</h2>
+					<ol>
+						<li>Element</li>
+						<li>Element</li>
+						<li>Element
+							<ol>
+								<li>Element</li>
+								<li>Element</li>
+								<li>Element</li>
+								<li>Element</li>
+							</ol>
+						</li>
+						<li>Element</li>
+					</ol>
+				</div>
+				<div class="-col4">
+					<h2>Descriptions</h2>
+					<h3>Block descriptions</h3>
+					<dl>
+						<dt>Description lists</dt>
+						<dd>A description list is perfect for defining terms.</dd>
+						<dt>Euismod</dt>
+						<dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
+						<dd>Donec id elit non mi porta gravida at eget metus.</dd>
+						<dt>Malesuada porta lesuada porta</dt>
+						<dd>Etiam porta sem malesuada magna mollis euismod.</dd>
+					</dl>
+					<h3>Inline descriptions</h3>
+					<dl class="_horizontal_">
+						<dt>Description lists</dt>
+						<dd>A description list is perfect for defining terms.</dd>
+						<dt>Euismod</dt>
+						<dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
+						<dd>Donec id elit non mi porta gravida at eget metus.</dd>
+						<dt>Malesuada porta lesuada porta</dt>
+						<dd>Etiam porta sem malesuada magna mollis euismod.</dd>
+					</dl>
+				</div>
+			</div>
+
+			<article id="tables" class="-row">
+				<section class="-col6">
+					<h2>Striped and hovered</h2>
+					<table class="-table _striped_ _hovered_">
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>First name</th>
+								<th>Last name</th>
+								<th>User name</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>1</td>
+								<td>Maxim</td>
+								<td>Vetrenko</td>
+								<td>maxmert</td>
+							</tr>
+							<tr>
+								<td>2</td>
+								<td>Andrew</td>
+								<td>Yarmolov</td>
+								<td>andrew</td>
+							</tr>
+							<tr>
+								<td>1</td>
+								<td>Maxim</td>
+								<td>Vetrenko</td>
+								<td>maxmert</td>
+							</tr>
+							<tr>
+								<td>2</td>
+								<td>Andrew</td>
+								<td>Yarmolov</td>
+								<td>andrew</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+				<section class="-col6">
+					<h2>Vertical Hovered</h2>
+					<table class="-table _vertical_ _hovered_">
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>First name</th>
+								<th>Last name</th>
+								<th>User name</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>1</td>
+								<td>Maxim</td>
+								<td>Vetrenko</td>
+								<td>maxmert</td>
+							</tr>
+							<tr>
+								<td>2</td>
+								<td>Andrew</td>
+								<td>Yarmolov</td>
+								<td>andrew</td>
+							</tr>
+							<tr>
+								<td>1</td>
+								<td>Maxim</td>
+								<td>Vetrenko</td>
+								<td>maxmert</td>
+							</tr>
+							<tr>
+								<td>2</td>
+								<td>Andrew</td>
+								<td>Yarmolov</td>
+								<td>andrew</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+				<div class="-col12">
+					<h2>Vertical</h2>
+					<table class="-table _vertical_">
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>First name</th>
+								<th>Last name</th>
+								<th>User name</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>1</td>
+								<td>Maxim</td>
+								<td>Vetrenko</td>
+								<td>maxmert</td>
+							</tr>
+							<tr class="-error-">
+								<td>2</td>
+								<td>Andrew</td>
+								<td>Yarmolov</td>
+								<td>andrew</td>
+							</tr>
+							<tr>
+								<td>1</td>
+								<td>Maxim</td>
+								<td>Vetrenko</td>
+								<td>maxmert</td>
+							</tr>
+							<tr class="_loading_">
+								<td>2</td>
+								<td>Andrew</td>
+								<td class="-info-">Yarmolov</td>
+								<td>andrew</td>
+							</tr>
+							<tr>
+								<td>1</td>
+								<td>Maxim</td>
+								<td>Vetrenko</td>
+								<td>maxmert</td>
+							</tr>
+							<tr class="_loading_ -disabled-">
+								<td>2</td>
+								<td>Andrew</td>
+								<td>Yarmolov</td>
+								<td>andrew</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</article>
+
+			<h1 id="forms">Forms</h1>
+			<article class="-row">
+				<article class="-col12">
+					<form class="-form">
+						<span class="-form-field _tiny">
+							<!-- <span class="-form-field-placeholder">Placeholder</span> -->
+							<input type="text">
+						</span>
+						<span class="-form-field -success- _small">
+							<!-- <span class="-form-field-placeholder">Placeholder</span> -->
+							<input type="text">
+						</span>
+						<span class="-form-field -error-">
+							<!-- <span class="-form-field-placeholder">Placeholder</span> -->
+							<input type="text">
+						</span>
+						<span class="-form-field -warning- _big">
+							<!-- <span class="-form-field-placeholder">Placeholder</span> -->
+							<input type="text">
+						</span>
+						<span class="-form-field -info- _huge">
+							<!-- <span class="-form-field-placeholder">Placeholder</span> -->
+							<input type="text">
+						</span>
+						<span class="-form-field -disabled- _huge">
+							<!-- <span class="-form-field-placeholder">Placeholder</span> -->
+							<input type="text" disabled="disabled">
+						</span>
+					</form>
+				</article>
+				<div class="-col12 -section">
+					<form class="-form">
+						<div class="-form-field-row">
+							
+							<span class="-form-field -info- -col3 _huge">
+								<input type="text" class="" value="_huge">
+							</span>
+							<span class="-form-field -info- -col3 _big">
+								<input type="text" class="" value="_big">
+							</span>
+							<span class="-form-field -info- -col3">
+								<input type="text" class="" value="no modificator">
+							</span>
+							<span class="-form-field -info- -col3 _small">
+								<input type="text" class="" value="_small">
+							</span>
+						</div>
+					</form>
+				</div>
+				<div class="-col12 -section">
+					<form class="-form">
+						<div class="-form-field-row">
+							<input type="text" class="-col3" value="-col3">
+							<input type="text" class="-col3" value="-col3">
+							<input type="text" class="-col3" value="-col3">
+							<input type="text" class="-col3" value="-col3">
+						</div>
+					</form>
+				</div>
+				<section class="-col12">
+					<form class="-form">
+						<div class="-form-field-row">
+							<input type="text" class="-col1" value="-col1">
+							<input type="text" class="-col1" value="-col1">
+							<input type="text" class="-col1" value="-col1">
+							<input type="text" class="-col1" value="-col1">
+							<input type="text" class="-col1" value="-col1">
+							<input type="text" class="-col1" value="-col1">
+							<input type="text" class="-col1" value="-col1">
+							<input type="text" class="-col1" value="-col1">
+							<input type="text" class="-col1" value="-col1">
+							<input type="text" class="-col1" value="-col1">
+							<input type="text" class="-col1" value="-col1">
+							<input type="text" class="-col1" value="-col1">
+						</div>
+					</form>
+				</section>
+				<article class="-col12">
+					<form class="-form">
+						<div class="-form-field-row">
+							<select class="-col3 _huge">
+								<option>-col3 _huge</option>
+								<option>Option 2</option>
+								<option>Option 3</option>
+							</select>
+							<select class="-col3 _big">
+								<option>-col3 _big</option>
+								<option>Option 2</option>
+								<option>Option 3</option>
+							</select>
+							<select class="-col3">
+								<option>-col3</option>
+								<option>Option 2</option>
+								<option>Option 3</option>
+							</select>
+							<select class="-col3 _small">
+								<option>-col3 _small</option>
+								<option>Option 2</option>
+								<option>Option 3</option>
+							</select>
+						</div>
+					</form>
+				</article>
+				<div class="-col6">
+					<form class="-form _vertical_">
+						<h3>Form vertical</h3>
+						<label>Login</label>
+						<span class="-form-field">
+							<input type="text">
+						</span>
+						<span class="-form-field-help">Help me with this field</span>
+
+						<label>Password</label>
+						<span class="-form-field">
+							<input type="text">
+						</span>
+
+						<label>Short bio</label>
+						<span class="-form-field">
+							<textarea></textarea>
+						</span>
+						
+						<label></label>
+						<a class="-btn">Save</a>&nbsp;&nbsp;&nbsp;<a class="-btn -error- -unstyled-">Cancel</a>
+
+					</form>
+				</div>
+				<div class="-col6">
+					<form class="-form _horizontal_">
+						<h3>Form horizontal</h3>
+						<div class="-form-row">
+							<label>Login</label>
+							<span class="-form-field -col3">
+								<input type="text" value="-col3">
+							</span>
+							<span class="-form-field-help">Help me with this field</span>
+						</div>
+
+						<div class="-form-row">
+							<label>Password</label>
+							<span class="-form-field -col1">
+								<input type="text" value="-col1">
+							</span>
+							<span class="-form-field -col2">
+								<input type="text" value="-col2">
+							</span>
+						</div>
+
+						<div class="-form-row">
+							<label>Country</label>
+							<span class="-form-field -col3">
+								<select>
+									<option>Russia</option>
+									<option>USA</option>
+									<option>Germany</option>
+								</select>
+								<i class="-caret"></i>
+							</span>
+						</div>
+
+						<div class="-form-row">
+							<div class="-form-group">
+								<label>
+									<input type="checkbox"> Remember me
+								</label>
+							</div>
+						</div>
+
+						<div class="-form-row">
+							<div class="-form-group">
+								<a href="" class="-btn">Enter</a> <a href="" class="-btn -error-">Reset</a>
+							</div>
+						</div>
+
+					</form>
+				</div>
+			</article>
+
+			<h1 id="buttons">Buttons</h1>
+			<article class="-row">
+				<section class="-col12">
+					<a class="-btn -disabled-">Disabled</a>
+					<a class="-btn _loading_">Normal loading</a>
+					<a class="-btn -dark-">Dark</a>
+					<a class="-btn -error-">Error</a>
+					<a class="-btn -warning-">Warning</a>
+					<a class="-btn -info- _loading_">Info loading</a>
+					<a class="-btn -success-">Success</a>
+					<a class="-btn -primary-">Primary</a>
+					<a class="-btn -error- -unstyled-">Error unstyled</a>
+				</section>
+				<section class="-col12">
+					<a class="-btn _tiny">Tiny button</a>
+					<a class="-btn _small">Small button</a>
+					<a class="-btn">Normal</a>
+					<a class="-btn _big">Big button</a>
+					<a class="-btn _huge">Huge</a>
+				</section>
+			</article>
+
+			<h1 id="groups">Groups</h1>
+			<article class="-row">
+				<section class="-col12">
+					<table class="-table -unstyled-">
+						<tbody>
+							<tr>
+								<td>
+									Groups with different elements
+								</td>
+								<td>
+									<div class="-group -form">
+										<input type="button" value="Go"><a class="-btn">Normal small</a><a class="-btn">Normal small</a><a class="-btn">Normal small</a><span class="-group-appendix">123</span><input type="text"><a class="-btn">Normal small</a>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Input groups
+								</td>
+								<td>
+									<div class="-group -form">
+										<span class="-group-appendix">123</span><input type="text">
+									</div>
+									<div class="-group -form">
+										<span class="-group-appendix"><i class="-icon-star"></i></span><input type="text">
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Groups with unclickable buttons
+								</td>
+								<td>
+									<div class="-group">
+										<a class="-btn _unclickable_"><i class="-icon-thumbs-up"></i></a><a class="-btn">I like it</a>
+									</div>
+									<div class="-group">
+										<a class="-btn -warning- _unclickable_"><i class="-icon-star"></i></a><a class="-btn">Favourite</a>
+									</div>
+									<div class="-group">
+										<a class="-btn _unclickable_ -dark-"><i class="-icon-repeat -icon-light-"></i></a><a class="-btn">Repeat</a>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Vertical group
+								</td>
+								<td>
+									<div class="-group _vertical_">
+										<a class="-btn"><i class="-icon-thumbs-up"></i></a><a class="-btn -disabled-"><i class="-icon-star"></i></a><a class="-btn"><i class="-icon-thumbs-down"></i></a>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Buttons with caret
+								</td>
+								<td>
+										<a class="-btn _tiny">Dropdown <i class="-caret"></i></a>
+										<a class="-btn _small">Dropdown <i class="-caret"></i></a>
+										<a class="-btn">Dropdown <i class="-caret"></i></a>
+										<a class="-btn _big">Dropdown <i class="-caret"></i></a>
+										<a class="-btn _huge">Dropdown <i class="-caret"></i></a>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Groups with caret
+								</td>
+								<td>
+									<div class="-group _tiny">
+										<a class="-btn">Dropdown</a><a class="-btn"><i class="-caret"></i></a>
+									</div>
+									<div class="-group _small">
+										<a class="-btn">Dropdown</a><a class="-btn"><i class="-caret"></i></a>
+									</div>
+									<div class="-group">
+										<a class="-btn">Dropdown</a><a class="-btn"><i class="-caret"></i></a>
+									</div>
+									<div class="-group _big">
+										<a class="-btn">Dropdown</a><a class="-btn"><i class="-caret"></i></a>
+									</div>
+									<div class="-group _huge">
+										<a class="-btn">Dropdown</a><a class="-btn"><i class="-caret _top_"></i></a>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+			</article>
+
+			<article id="tabs" class="-row">
+				<div class="-col6">
+					<h2>Tabs by global size</h2>
+					<ul class="-tabs _huge -section">
+						<li class="_active_">
+							<a>Active</a>
+						</li>
+						<li>
+							<a>Normal <i class="-caret"></i></a>
+						</li>
+						<li>
+							<a>Normal <i class="-icon-thumbs-up"></i></a>
+						</li>
+						<li class="_loading_">
+							<a>Not active, loading</a>
+						</li>
+					</ul>
+
+					<ul class="-tabs _big -section">
+						<li class="_active_">
+							<a>Active</a>
+						</li>
+						<li>
+							<a>Normal <i class="-caret"></i></a>
+						</li>
+						<li>
+							<a>Normal <i class="-icon-thumbs-up"></i></a>
+						</li>
+						<li class="_loading_">
+							<a>Not active, but loading</a>
+						</li>
+					</ul>
+
+					<ul class="-tabs -section">
+						<li class="_active_">
+							<a>Active</a>
+						</li>
+						<li>
+							<a>Normal <i class="-caret"></i></a>
+						</li>
+						<li>
+							<a>Normal <i class="-icon-thumbs-up"></i></a>
+						</li>
+						<li class="_loading_">
+							<a>Not active, but loading</a>
+						</li>
+						<li>
+							<a>Hello</a>
+						</li>
+					</ul>
+					
+					<ul class="-tabs _small -section">
+						<li class="_active_">
+							<a>Active</a>
+						</li>
+						<li>
+							<a>Normal <i class="-caret"></i></a>
+						</li>
+						<li>
+							<a>Normal <i class="-icon-thumbs-up"></i></a>
+						</li>
+						<li class="_loading_">
+							<a>Not active, but loading</a>
+						</li>
+						<li>
+							<a>Hello</a>
+						</li>
+					</ul>
+
+					<ul class="-tabs _tiny -section">
+						<li class="_active_">
+							<a>Active</a>
+						</li>
+						<li>
+							<a>Normal <i class="-caret"></i></a>
+						</li>
+						<li>
+							<a>Normal <i class="-icon-thumbs-up"></i></a>
+						</li>
+						<li class="_loading_">
+							<a>Not active, but loading</a>
+						</li>
+						<li>
+							<a>Hello</a>
+						</li>
+					</ul>
+				</div>
+				<div class="-col6">
+					<h2>Tabs with local modificators</h2>
+					<ul class="-tabs -section">
+						<li class="_active_ -primary-">
+							<a>Active</a>
+						</li>
+						<li class="-disabled-">
+							<a>Disabled</a>
+						</li>
+						<li class="_loading_ -warning-">
+							<a>Warning, not active, but loading</a>
+						</li>
+						<li class="_big">
+							<a>Big</a>
+						</li>
+					</ul>
+
+					<ul class="-tabs _bottom_ -section -disabled-">
+						<li class="_active_">
+							<a>Disabled tabs</a>
+						</li>
+						<li>
+							<a>Normal</a>
+						</li>
+						<li>
+							<a>Normal</a>
+						</li>
+						<li class="_loading_">
+							<a>Not active, but loading</a>
+						</li>
+						<li>
+							<a>Hello</a>
+						</li>
+					</ul>
+
+					<h2>Vertical</h2>
+					<ul class="-tabs _vertical_">
+						<li class="_active_">
+							<a>Active</a>
+						</li>
+						<li>
+							<a>Normal</a>
+						</li>
+						<li>
+							<a>Normal</a>
+						</li>
+						<li class="_loading_">
+							<a>Not active, but loading</a>
+						</li>
+						<li>
+							<a>Hello</a>
+						</li>
+					</ul>
+
+					<ul class="-tabs _vertical_ _right_">
+						<li class="_active_">
+							<a>Active</a>
+						</li>
+						<li>
+							<a>Normal</a>
+						</li>
+						<li>
+							<a>Normal</a>
+						</li>
+						<li class="_loading_">
+							<a>Not active, but loading</a>
+						</li>
+						<li>
+							<a>Hello</a>
+						</li>
+					</ul>
+
+				</div>
+			</article>
+
+			<article id="badges" class="-row">
+				<section class="-col6">
+					<h2>Badges</h2>
+					<div class="-section">
+						<span class="-badge">default</span>
+						<span class="-badge -primary-">primary</span>
+						<span class="-badge -error-">error</span>
+						<span class="-badge -success-">info</span>
+						<span class="-badge -info-">info</span>
+						<span class="-badge -warning-">warning</span>
+						<span class="-badge -disabled-">disabled</span>
+					</div>
+					<span class="-badge -primary-">badge <i class="-icon-thumbs-up -icon-light-"></i></span>
+					<span class="-badge _big -primary-">badge <i class="-icon-thumbs-up -icon-light-"></i></span>
+					<span class="-badge _huge -primary-">badge <i class="-icon-thumbs-up -icon-light-"></i></span>
+				</section>
+				<section class="-col6">
+					<h2>Labels</h2>
+					<div class="-section">
+						<span class="-label">default</span>
+						<span class="-label -primary-">primary</span>
+						<span class="-label -error-">error</span>
+						<span class="-label -success-">info</span>
+						<span class="-label -info-">info</span>
+						<span class="-label -warning-">warning</span>
+						<span class="-label -disabled-">disabled</span>
+					</div>
+					<span class="-label -primary-">label <i class="-icon-star -icon-light-"></i></span>
+					<span class="-label _big -primary-">label <i class="-icon-star -icon-light-"></i></span>
+					<span class="-label _huge -primary-">label <i class="-icon-star -icon-light-"></i></span>
+				</section>
+			</article>
+
+			<article id="dropdowns" class="-row">
+				<section class="-col12">
+					<div class="-section">
+						<h2>Dropdowns</h2>
+						<div class="-dropdown">
+							<div class="-dropdown-header">default dropdown</div>
+							<div class="-dropdown-content">Content of dropdown</div>
+						</div>
+						<div class="-dropdown -primary-">
+							<div class="-dropdown-header">Primary dropdown</div>
+							<div class="-dropdown-content">Content of dropdown</div>
+						</div>
+						<div class="-dropdown -error-">
+							<div class="-dropdown-header">Error dropdown</div>
+							<div class="-dropdown-content">Content of dropdown</div>
+						</div>
+						<div class="-dropdown -info-">
+							<div class="-dropdown-header">Info dropdown</div>
+							<div class="-dropdown-content">Content of dropdown</div>
+						</div>
+						<div class="-dropdown -warning-">
+							<div class="-dropdown-header">Info dropdown</div>
+							<div class="-dropdown-content">Content of dropdown</div>
+						</div>
+						<div class="-dropdown -success-">
+							<div class="-dropdown-header">Error dropdown</div>
+							<div class="-dropdown-content">Content of dropdown</div>
+						</div>
+					</div>
+
+					<div class="-section">
+						<h4>Dropdowns with arrows</h4>
+						<div class="-dropdown _top_ -dark-">
+							<i class="-arrow"></i>
+							<div class="-dropdown-content">Dark dropdown</div>
+						</div>
+						<div class="-dropdown -primary- _top_">
+							<i class="-arrow"></i>
+							<div class="-dropdown-content">Primary dropdown</div>
+						</div>
+						<div class="-dropdown -error- _top_">
+							<i class="-arrow"></i>
+							<div class="-dropdown-content">Error dropdown</div>
+						</div>
+						<div class="-dropdown -info- _top_">
+							<i class="-arrow"></i>
+							<div class="-dropdown-content">Info dropdown</div>
+						</div>
+						<div class="-dropdown -warning- _top_">
+							<i class="-arrow"></i>
+							<div class="-dropdown-content">Warning dropdown</div>
+						</div>
+						<div class="-dropdown -success- _top_">
+							<i class="-arrow"></i>
+							<div class="-dropdown-content">Success dropdown</div>
+						</div>
+					</div>
+
+					<h4>Set arrow position</h4>
+					<div class="-dropdown _right_ -primary-">
+						<div class="-arrow"></div>
+						<div class="-dropdown-header">Right position</div>
+						<div class="-dropdown-content"></div>
+					</div>
+					<div class="-dropdown _top_ -primary-">
+						<div class="-arrow"></div>
+						<div class="-dropdown-header">Top position</div>
+						<div class="-dropdown-content"></div>
+					</div>
+					<div class="-dropdown _bottom_ -primary-">
+						<div class="-arrow"></div>
+						<div class="-dropdown-header">Bottom position</div>
+						<div class="-dropdown-content"></div>
+					</div>
+					<div class="-dropdown _left_ -primary-">
+						<div class="-arrow"></div>
+						<div class="-dropdown-header">Left position</div>
+						<div class="-dropdown-content"></div>
+					</div>
+
+				</section>
+			</article>
+
+			<div class=".js-affix-container">
+
+			<article id="menus" class="-row">
+				<section class="-col6">
+					<div class="-section">
+						<h4>Menu in dropdown</h4>
+						<div class="-dropdown">
+							<ul class="-menu -primary-">
+								<li><a>Menu default</a></li>
+								<li class="-error-"><a>Error item</a></li>
+								<li><a>Default item</a></li>
+								<li class="-menu-sub"><a>Item with submenu</a>
+
+									<div class="-dropdown">
+										<ul class="-menu">
+											<li><a>Menu default</a></li>
+											<li class="-success-"><a>Success item</a></li>
+											<li><a>Default item</a></li>
+											<li class="-menu-sub _left_ _top_"><a>Item with submenu, _left_ and _top_ class</a>
+												<div class="-dropdown">
+													<ul class="-menu">
+														<li><a>Menu default</a></li>
+														<li class="-error- -disabled-"><a>Disabled error item</a></li>
+														<li><a>Default item</a></li>
+														<li><a>Default item</a></li>
+														<li><a>Default item</a></li>
+														<li><a><span class="-menu-help">âŒ˜âŒ¥2</span>Default item with help information</a></li>
+													</ul>
+												</div>
+
+											</li>
+											<li><a>Default item</a></li>
+											<li><a><span class="-menu-help">âŒ˜âŒ¥2</span>Default item with help information</a></li>
+										</ul>
+									</div>
+
+								</li>
+								<li class="_loading_"><a>Default loading item</a></li>
+								<li><a><span class="-menu-help">âŒ˜âŒ¥2</span>Default item with help information</a></li>
+							</ul>
+						</div>
+					</div>
+
+					<h4>Combine with dropdown classes</h4>
+					<div class="-dropdown -primary- _right_">
+						<i class="-arrow"></i>
+						<ul class="-menu -primary-">
+							<li><a><i class="-icon-thumbs-up"></i> I like it</a></li>
+							<li><a><i class="-icon-star"></i> Favourite</a></li>
+							<li><a><i class="-icon-thumbs-down"></i> I hate it</a></li>
+							<li class="-menu-sub"><a><i class="-icon"></i> Share</a>
+								<div class="-dropdown">
+									<ul class="-menu">
+										<li><a><i class="-icon"></i> Facebook</a></li>
+										<li class="-success-"><a><i class="-icon-ok-circle"></i> Twitter</a></li>
+										<li><a><i class="-icon"></i> My space</a></li>
+									</ul>
+								</div>
+							</li>
+							<li class="-menu-separator"></li>
+							<li class="-error-"><a><i class="-icon-remove"></i> Don't show me this</a></li>
+						</ul>
+					</div>
+					<div class="-dropdown -primary- _top_">
+						<i class="-arrow"></i>
+						<ul class="-menu -primary-">
+							<li><a><i class="-icon-thumbs-up"></i> I like it</a></li>
+							<li><a><i class="-icon-star"></i> Favourite</a></li>
+							<li><a><i class="-icon-thumbs-down"></i> I hate it</a></li>
+							<li class="-menu-sub"><a><i class="-icon"></i> Share</a>
+								<div class="-dropdown">
+									<ul class="-menu">
+										<li><a><i class="-icon"></i> Facebook</a></li>
+										<li class="-success-"><a><i class="-icon-ok-circle"></i> Twitter</a></li>
+										<li><a><i class="-icon"></i> My space</a></li>
+									</ul>
+								</div>
+							</li>
+							<li class="-menu-separator"></li>
+							<li class="-error-"><a><i class="-icon-remove"></i> Don't show me this</a></li>
+						</ul>
+					</div>
+
+				</section>
+				<section class="-col6">
+					<h4>Just menu</h4>
+					<ul class="-menu">
+						<li><a>Menu default</a></li>
+						<li class="-error-"><a>Error item</a></li>
+						<li><a>Default item</a></li>
+						<li><a>Default item width submenu</a>
+							<div class="-dropdown">
+								<ul class="-menu">
+									<li><a>Menu default</a></li>
+									<li class="-success-"><a>Success item</a></li>
+									<li><a>Default item</a></li>
+									<li class="-menu-sub"><a>Item with submenu</a>
+										<div class="-dropdown">
+											<ul class="-menu">
+												<li><a>Menu default</a></li>
+												<li class="-error- -disabled-"><a>Disabled error item</a></li>
+												<li><a>Default item</a></li>
+												<li><a>Default item</a></li>
+												<li><a>Default item</a></li>
+												<li><a><span class="-menu-help">âŒ˜âŒ¥2</span>Default item with help information</a></li>
+											</ul>
+										</div>
+
+									</li>
+									<li><a>Default item</a></li>
+									<li><a><span class="-menu-help">âŒ˜âŒ¥2</span>Default item with help information</a></li>
+								</ul>
+							</div>
+						</li>
+					</ul>
+				</section>
+			</article>
+			<span class="js-affix -label -primary-">This is affix plugin <i class="-icon-star -icon-light-"></i></span>
+
+</div>
+			<article id="tooltips" class="-row">
+				<section class="-col6">
+					<h2>Tooltips</h2>
+					<div class="-tooltip _top_"><i class="-arrow"></i>Default</div>
+					<div class="-tooltip _top_ -dark-"><i class="-arrow"></i>Dark</div>
+					<div class="-tooltip _top_ -primary-"><i class="-arrow"></i>Primary</div>
+					<div class="-tooltip _top_ -error-"><i class="-arrow"></i>Error</div>
+					<div class="-tooltip _top_ -success-"><i class="-arrow"></i>Success</div>
+					<div class="-tooltip _top_ -info-"><i class="-arrow"></i>Info</div>
+					<div class="-tooltip _top_ -warning-"><i class="-arrow"></i>Warning</div>
+					<div class="-tooltip _top_ -disabled-"><i class="-arrow"></i>Disabled</div>
+				</section>
+				<section class="-col6">
+					<h2>Tooltip size</h2>
+					<div class="-section">
+						<div class="-tooltip _top_"><i class="-arrow"></i>Normal</div>
+						<div class="-tooltip _top_ _big"><i class="-arrow"></i>Big tooltip</div>
+						<div class="-tooltip _top_ _huge"><i class="-arrow"></i>Huge tooltip</div>
+					</div>
+
+					<h4>Tooltip arrow postition</h4>
+					<div class="-tooltip _right_ -dark-"><i class="-arrow"></i>Normal</div>
+					<div class="-tooltip _top_ -dark-"><i class="-arrow"></i>Normal</div>
+					<div class="-tooltip _bottom_ -dark-"><i class="-arrow"></i>Normal</div>
+					<div class="-tooltip _left_ -dark-"><i class="-arrow"></i>Normal</div>
+				</section>
+			</article>
+		
+
+
+		<article id="progressbar" class="-row">
+			<section class="-col6">
+				<h2>Progressbars</h2>
+				<div class="-progress _tiny _loading_" style="width: 100%">
+					<div class="-progress-bar" style="width: 85%">
+						current file - 85%
+					</div>
+					<div class="-progress-bar-global -info-" style="width: 22%">
+						global – 12%
+					</div>
+				</div>
+<br><br>
+				<div class="-progress _tiny _loading_" style="width: 100%">
+					<div class="-progress-bar" style="width: 15%">
+						file 1 - 15%
+					</div>
+					<div class="-progress-bar -error-" style="width: 25%">
+						file 2 - 25%
+					</div>
+				</div>
+<br><br>
+				<div class="-progress _tiny _loading_" style="width: 100%">
+					<div class="-progress-bar" style="width: 55%">
+						file 1 - 55%
+					</div>
+					<div class="-progress-bar" style="width: 25%">
+						file 2 - 25%
+					</div>
+					<div class="-progress-bar-global -info-" style="width: 12%">
+						global - 12%
+					</div>
+				</div>
+<br><br>
+				<div class="-progress _tiny _loading_" style="width: 100%">
+					<div class="-progress-bar -success-" style="width: 55%">
+						file 1 - 55%
+					</div>
+					<div class="-progress-bar -error-" style="width: 25%">
+						file 2 - 25%
+					</div>
+					<div class="-progress-bar-global -info-" style="width: 12%">
+						global - 12%
+					</div>
+				</div>
+<br><br>
+				<div class="-progress _tiny" style="width: 100%">
+					<div class="-progress-bar -success-" style="width: 55%">
+						file 1 - 55%
+					</div>
+					<div class="-progress-bar -error-" style="width: 25%">
+						file 2 - 25%
+					</div>
+					<div class="-progress-bar-global -info-" style="width: 12%">
+						global - 12%
+					</div>
+				</div>
+
+			</section>
+
+			<section class="-col6">
+				<h4>Progressbars by size</h4>
+				<div class="-progress _tiny _loading_" style="width: 100%">
+					<div class="-progress-bar" style="width: 85%">
+						tiny
+					</div>
+				</div><br><br>
+				<div class="-progress _small _loading_" style="width: 100%">
+					<div class="-progress-bar" style="width: 85%">
+						small
+					</div>
+				</div><br><br>
+				<div class="-progress _loading_" style="width: 100%">
+					<div class="-progress-bar" style="width: 85%">
+						normall
+					</div>
+				</div><br><br>
+				<div class="-progress _big _loading_" style="width: 100%">
+					<div class="-progress-bar" style="width: 85%">
+						big
+					</div>
+				</div><br><br>
+				<div class="-progress _huge _loading_" style="width: 100%">
+					<div class="-progress-bar" style="width: 85%">
+						huge
+					</div>
+				</div><br><br>
+			</section>
+		</article>
+
+
+		<div id="javascript" class="-container">
+			<h1>Javascript</h1>
+			
+			<article class="-row">
+				<div class="-col6">
+					<h4>Tooltip</h4>
+					<span class="js-tooltip js-tooltip1 -btn" data-content="TOOLTIP1">Show tooltip</span>
+					<span class="js-tooltip js-tooltip2 -btn" data-content="TOOLTIP2">Show tooltip 2</span>
+				</div>
+				<div class="-col6">
+					<h4>Dropdown</h4>
+					<span class="js-dropdown js-dropdown1 -btn" data-content="Dropdown1" data-header="Header">Show dropdown</span>
+					<span class="js-dropdown js-dropdown2 -btn" data-content="Dropdown2" data-header="Header">Show dropdown 2</span>
+				</div>
+			</article>
+
+			<article class="-row">
+				<div class="-col6">
+					<h4>Tabs</h4>
+					<ul class="-tabs _huge -section js-tabs">
+						<li data-tabs-target="#tab-first" class="_active_">
+							<a>First tab</a>
+						</li>
+						<li data-tabs-data="README.md" data-tabs-target="#tab-second">
+							<a>Second tab <i class="-caret"></i></a>
+						</li>
+						<li data-tabs-target="#tab-third">
+							<a>Third tab <i class="-icon-thumbs-up"></i></a>
+						</li>
+						<li data-tabs-target="#tab-forth">
+							<a>Forth tab</a>
+						</li>
+					</ul>
+					<div id="tab-first">First tab content</div>
+					<div id="tab-second" style="display: none;">second tab content</div>
+					<div id="tab-third" style="display: none;">third tab content</div>
+					<div id="tab-forth" style="display: none;">forth tab content</div>
+				</div>
+				<div class="-col6">
+					<h4>Buttons</h4>
+					<a href="" class="-btn js-button1">Button 1</a>
+					
+					<div class="-group">
+						<a href="" class="-btn js-button2" data-checkbox="checkbox1">Button 1</a>
+						<a href="" class="-btn js-button3" data-checkbox="checkbox2">Button 2</a>
+						<a href="" class="-btn js-button4" data-checkbox="checkbox3">Button 3</a>
+					</div>
+
+					<div class="-group">
+						<a href="" class="-btn js-button5" data-radio="radio1">Button 5</a>
+						<a href="" class="-btn js-button6" data-radio="radio1">Button 2</a>
+						<a href="" class="-btn js-button7" data-radio="radio1">Button 3</a>
+					</div>
+				</div>
+			</article>
+
+			<article class="-row">
+				<div class="-col6">
+					<h4>Modals</h4>
+					<a class="-btn js-modal-show">Show modal</a>
+				</div>
+				<div class="-col6">
+
+				</div>
+			</article>
+
+			<h4 id="carousel">Carousel</h4>
+			<article class="-row">
+				<div class="-col12">
+					<section>
+						<div class="-carousel" id="js-carousel">
+							<div class="js-carousel-item -carousel-item">
+								<img src="img/carousel/1.jpg">
+								<div class="-carousel-caption">
+									<div class="-carousel-caption-title"><h3>Geisha</h3></div>
+									<div class="-carousel-caption-text">Japan, Kioto. <a href="http://www.flickr.com/photos/michaelchandler/">Momoyama's photo</a> &copy;</div>
+								</div>
+							</div><div class="js-carousel-item -carousel-item">
+								<img src="img/carousel/2.jpg">
+								<div class="-carousel-caption">
+									<div class="-carousel-caption-title"><h3>Geisha</h3></div>
+									<div class="-carousel-caption-text">Japan, Kioto. <a href="http://www.flickr.com/photos/michaelchandler/">Momoyama's photo</a> &copy;</div>
+								</div>
+							</div><div class="js-carousel-item -carousel-item">
+								<img src="img/carousel/3.jpg">
+								<div class="-carousel-caption">
+									<div class="-carousel-caption-title"><h3>Geisha</h3></div>
+									<div class="-carousel-caption-text">Japan, Kioto. <a href="http://www.flickr.com/photos/michaelchandler/">Momoyama's photo</a> &copy;</div>
+								</div>
+							</div><div class="js-carousel-item -carousel-item">
+								<img src="img/carousel/4.jpg">
+								<div class="-carousel-caption">
+									<div class="-carousel-caption-title"><h3>Geisha</h3></div>
+									<div class="-carousel-caption-text">Japan, Kioto. <a href="http://www.flickr.com/photos/michaelchandler/">Momoyama's photo</a> &copy;</div>
+								</div>
+							</div><div class="js-carousel-item -carousel-item">
+								<img src="img/carousel/5.jpg">
+								<div class="-carousel-caption">
+									<div class="-carousel-caption-title"><h3>Geisha</h3></div>
+									<div class="-carousel-caption-text">Japan, Kioto. <a href="http://www.flickr.com/photos/michaelchandler/">Momoyama's photo</a> &copy;</div>
+								</div>
+							</div><div class="js-carousel-item -carousel-item">
+								<img src="img/carousel/6.jpg">
+								<div class="-carousel-caption">
+									<div class="-carousel-caption-title"><h3>Geisha</h3></div>
+									<div class="-carousel-caption-text">Japan, Kioto. <a href="http://www.flickr.com/photos/michaelchandler/">Momoyama's photo</a> &copy;</div>
+								</div>
+							</div><div class="js-carousel-item -carousel-item">
+								<img src="img/carousel/7.jpg">
+								<div class="-carousel-caption">
+									<div class="-carousel-caption-title"><h3>Geisha</h3></div>
+									<div class="-carousel-caption-text">Japan, Kioto. <a href="http://www.flickr.com/photos/michaelchandler/">Momoyama's photo</a> &copy;</div>
+								</div>
+							</div><div class="js-carousel-item -carousel-item">
+								<img src="img/carousel/8.jpg">
+								<div class="-carousel-caption">
+									<div class="-carousel-caption-title"><h3>Geisha</h3></div>
+									<div class="-carousel-caption-text">Japan, Kioto. <a href="http://www.flickr.com/photos/michaelchandler/">Momoyama's photo</a> &copy;</div>
+								</div>
+							</div>
+
+							<a class="js-carousel-control -carousel-arrow-left" href="#js-carousel" data-slide="prev"><i class="-icon-chevron-left -icon-light-"></i></a>
+							<a class="js-carousel-control -carousel-arrow-right" href="#js-carousel" data-slide="next"><i class="-icon-chevron-right -icon-light-"></i></a>
+						</div>
+						<div class="-carousel-nav" id="js-carousel-nav"></div>
+					</section>
+
+				</div>
+			</article>
+		</div>
+
+		<!--ul class="-menu -primary- _vertical_ js-affix js-scrollspy _right_" style="right: 0; width: 200px">
+			<li data-target="#text"><a href="#text">Text</a></li>
+			<li data-target="#lists"><a href="#lists">Lists</a></li>
+			<li data-target="#tables"><a href="#tables">Tables</a></li>
+			<li data-target="#forms"><a href="#forms">Forms</a></li>
+			<li data-target="#buttons"><a href="#buttons">Buttons</a></li>
+			<li data-target="#groups"><a href="#groups">Groups</a></li>
+			<li data-target="#tabs"><a href="#tabs">Tabs</a></li>
+			<li data-target="#badges"><a href="#badges">Badges</a></li>
+			<li data-target="#dropdowns"><a href="#dropdowns">Dropdowns</a></li>
+			<li data-target="#menus"><a href="#menus">Menus</a></li>
+			<li data-target="#tooltips"><a href="#tooltips">Tooltips</a></li>
+			<li data-target="#progressbar"><a href="#progressbar">Progressbars</a></li>
+			<li data-target="#javascript"><a href="#javascript">Javascript</a></li>
+			<li data-target="#carousel"><a href="#carousel">Carousel</a></li>
+		</ul-->
+
+		<div class="-modal js-modal">
+			<div class="-modal-header">Header <i class="-closer">&times;</i></div>
+			<div class="-modal-content"><span class="js-dropdown js-dropdown4 -btn" data-content="Dropdown4" data-header="Header">Show dropdown</span></div>
+		</div>
+	</body>
+</html>

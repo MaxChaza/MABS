@@ -1,0 +1,15 @@
+25/10/2013 14:12:33
+FICHIER TRAITE :  Z:\20207899\TP_Geno_Genet\TP2_drift_selection_genetic_diversity\primate_popdata_16_microsat.txt
+16 Locus
+1000 Permutations
+Données de Fis après permutation des allèles à l'intérieur de chaque population
+
+Résultats sur la totalité des locus :
+-------------------------------------
+
+         Population 	    Réel	     % val. >    % val. <    % val. =
+                   1	 0.10107	    0.0000	  100.0000    0.0000
+                   2	 0.05486	    0.3000	   99.6000    0.1000
+                   3	 0.09451	    0.0000	  100.0000    0.0000
+                   4	 0.10406	    0.0000	  100.0000    0.0000
+                   5	 0.06841	    0.0000	  100.0000    0.0000

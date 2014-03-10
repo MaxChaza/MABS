@@ -1,0 +1,27 @@
+#Fri Dec 06 12:28:20 CET 2013
+repositories/http\:__www.knime.org_commercial_server_3.8/count=2
+repositories/http\:__www.knime.org_commercial_teamspace_3.4/uri=http\://www.knime.org/commercial/teamspace/3.4/
+repositories/http\:__tech.knime.org_update_community-contributions_2.9/count=2
+repositories/http\:__tech.knime.org_update_community-contributions_trusted_2.9/enabled=true
+repositories/http\:__tech.knime.org_update_community-contributions_2.9/uri=http\://tech.knime.org/update/community-contributions/2.9/
+repositories/http\:__www.knime.org_commercial_server_3.8/enabled=false
+repositories/http\:__tech.knime.org_update_community-contributions_trusted_2.9/count=2
+repositories/http\:__www.knime.org_update_2.9/uri=http\://www.knime.org/update/2.9/
+repositories/http\:__www.knime.org_commercial_server_3.8/uri=http\://www.knime.org/commercial/server/3.8/
+repositories/http\:__tech.knime.org_update_community-contributions_trusted_2.9/isSystem=false
+repositories/http\:__www.knime.org_commercial_teamspace_3.4/count=2
+repositories/http\:__www.knime.org_update_2.9/count=1
+repositories/http\:__www.knime.org_commercial_teamspace_3.4/enabled=false
+repositories/http\:__tech.knime.org_update_community-contributions_trusted_2.9/nickname=Trusted Community Contributions
+repositories/http\:__www.knime.org_update_2.9/isSystem=false
+repositories/http\:__www.knime.org_commercial_teamspace_3.4/isSystem=false
+repositories/http\:__www.knime.org_update_2.9/nickname=KNIME Desktop Update Site
+eclipse.preferences.version=1
+repositories/http\:__www.knime.org_commercial_teamspace_3.4/nickname=KNIME Teamspace Update Site
+repositories/http\:__tech.knime.org_update_community-contributions_2.9/enabled=false
+repositories/http\:__www.knime.org_update_2.9/enabled=true
+repositories/http\:__tech.knime.org_update_community-contributions_2.9/isSystem=false
+repositories/http\:__www.knime.org_commercial_server_3.8/isSystem=false
+repositories/http\:__tech.knime.org_update_community-contributions_2.9/nickname=Stable Community Contributions
+repositories/http\:__tech.knime.org_update_community-contributions_trusted_2.9/uri=http\://tech.knime.org/update/community-contributions/trusted/2.9/
+repositories/http\:__www.knime.org_commercial_server_3.8/nickname=KNIME Server Update Site

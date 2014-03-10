@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+
+<toc label="Read" link_to="../org.knime.base/tocs/io_read.xml#io_read">
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.io.filereader.FileReaderNodeFactory.html" label="File Reader"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.io.arffreader.ARFFReaderNodeFactory.html" label="ARFF Reader"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.io.csvreader.CSVReaderNodeFactory.html" label="CSV Reader"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.io.linereader.LineReaderNodeFactory.html" label="Line Reader"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.io.table.read.ReadTableNodeFactory.html" label="Table Reader"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.io.pmml.read.PMMLReaderNodeFactory.html" label="PMML Reader"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.io.predictor.PredictorReaderNodeFactory.html" label="Model Reader"/>
+</toc>

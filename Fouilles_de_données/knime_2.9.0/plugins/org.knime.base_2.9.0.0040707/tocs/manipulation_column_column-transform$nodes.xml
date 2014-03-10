@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+
+<toc label="Transform" link_to="../org.knime.base/tocs/manipulation_column_column-transform.xml#manipulation_column_column-transform">
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.preproc.caseconvert.CaseConvertNodeFactory.html" label="Case Converter"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.preproc.colcompare.ColumnComparatorNodeFactory.html" label="Column Comparator"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.preproc.columnresorter.ColumnResorterNodeFactory.html" label="Column Resorter"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.preproc.columnlag.LagColumnNodeFactory.html" label="Lag Column"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.preproc.normalize.NormalizerDeNodeFactory.html" label="Denormalizer"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.preproc.missingval.MissingValueHandling3NodeFactory.html" label="Missing Value"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.preproc.normalize2.Normalize2NodeFactory.html" label="Normalizer"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.preproc.normalize.NormalizeApplyNodeFactory.html" label="Normalizer (Apply)"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.preproc.columnTrans.One2ManyColNodeFactory.html" label="One2Many"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.preproc.columnTrans.Many2OneColNodeFactory.html" label="Many2One"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.mine.smote.SmoteNodeFactory.html" label="SMOTE"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.preproc.setoperator.SetOperatorNodeFactory.html" label="Set Operator"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.preproc.matcher.SubsetMatcherNodeFactory.html" label="Subset Matcher"/>
+</toc>

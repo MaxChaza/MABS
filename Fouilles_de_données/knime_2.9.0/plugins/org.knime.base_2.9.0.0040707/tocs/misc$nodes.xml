@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+
+<toc label="Misc" link_to="../org.knime.base/tocs/misc.xml#misc">
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.util.createtempdir.CreateTempDirectoryNodeFactory.html" label="Create Temp Dir"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.util.extracttabledimension.ExtractTableDimensionNodeFactory.html" label="Extract Table Dimension"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.util.extracttablespec.ExtractTableSpecNodeFactory.html" label="Extract Table Spec"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.workflow.save.SaveWorkflowNodeFactory.html" label="Save Workflow"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.util.sendmail.SendMailNodeFactory.html" label="Send Email"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.preproc.urltofilepath.UrlToFilePathNodeFactory.html" label="URL to File Path"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.preproc.urltofilepathvariable.UrlToFilePathVariableNodeFactory.html" label="URL to File Path (Variable)"/>
+</toc>

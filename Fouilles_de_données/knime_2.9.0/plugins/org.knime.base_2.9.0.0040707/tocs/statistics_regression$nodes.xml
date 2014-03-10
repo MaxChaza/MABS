@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+
+<toc label="Regression" link_to="../org.knime.base/tocs/statistics_regression.xml#statistics_regression">
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.mine.regression.linear2.learner.LinReg2LearnerNodeFactory.html" label="Linear Regression Learner"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.mine.regression.polynomial.learner.PolyRegLearnerNodeFactory.html" label="Polynomial Regression Learner"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.mine.regression.logistic.learner.LogRegLearnerNodeFactory.html" label="Logistic Regression Learner"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.mine.regression.linear2.predict.GeneralRegressionPredictorNodeFactory.html" label="Regression Predictor"/>
+</toc>

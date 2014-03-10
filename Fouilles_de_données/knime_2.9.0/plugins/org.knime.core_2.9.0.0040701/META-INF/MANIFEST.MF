@@ -1,0 +1,120 @@
+Manifest-Version: 1.0
+Export-Package: log4j,org.knime.core,org.knime.core.data,org.knime.cor
+ e.data.blob,org.knime.core.data.collection,org.knime.core.data.contai
+ ner,org.knime.core.data.date,org.knime.core.data.def,org.knime.core.d
+ ata.filestore,org.knime.core.data.icon,org.knime.core.data.image,org.
+ knime.core.data.image.png,org.knime.core.data.model,org.knime.core.da
+ ta.property,org.knime.core.data.renderer,org.knime.core.data.sort,org
+ .knime.core.data.util,org.knime.core.data.util.memory,org.knime.core.
+ data.vector.bitvector,org.knime.core.data.vector.bytevector,org.knime
+ .core.data.xml,org.knime.core.data.xml.io,org.knime.core.data.xml.uti
+ l,org.knime.core.eclipseUtil,org.knime.core.internal,org.knime.core.n
+ ode,org.knime.core.node.config,org.knime.core.node.defaultnodesetting
+ s,org.knime.core.node.dialog,org.knime.core.node.exec,org.knime.core.
+ node.icon,org.knime.core.node.interactive,org.knime.core.node.interru
+ pt,org.knime.core.node.port,org.knime.core.node.port.database,org.kni
+ me.core.node.port.flowvariable,org.knime.core.node.port.image,org.kni
+ me.core.node.port.inactive,org.knime.core.node.port.pmml,org.knime.co
+ re.node.port.pmml.preproc,org.knime.core.node.port.pmml.schemata,org.
+ knime.core.node.port.viewproperty,org.knime.core.node.property.hilite
+ ,org.knime.core.node.streamable,org.knime.core.node.streamable.simple
+ ,org.knime.core.node.tableview,org.knime.core.node.util,org.knime.cor
+ e.node.util.filter,org.knime.core.node.util.filter.column,org.knime.c
+ ore.node.util.filter.variable,org.knime.core.node.web,org.knime.core.
+ node.wizard,org.knime.core.node.workflow,org.knime.core.node.workflow
+ .execresult,org.knime.core.node.workflow.virtual,org.knime.core.quick
+ form,org.knime.core.quickform.in,org.knime.core.quickform.out,org.kni
+ me.core.util,org.knime.core.util.pathresolve,org.knime.core.util.toke
+ nizer,org.knime.core.xml,org.knime.node.v28,org.knime.node2012,org.kn
+ ime.node2012.impl,schemaorg_apache_xmlbeans.javaname.org.knime.node20
+ 12,schemaorg_apache_xmlbeans.javaname.org.knime.node2012.ADocument,sc
+ hemaorg_apache_xmlbeans.javaname.org.knime.node2012.BrDocument,schema
+ org_apache_xmlbeans.javaname.org.knime.node2012.FullDescriptionDocume
+ nt,schemaorg_apache_xmlbeans.javaname.org.knime.node2012.InPortDocume
+ nt,schemaorg_apache_xmlbeans.javaname.org.knime.node2012.InPortDocume
+ nt.InPort,schemaorg_apache_xmlbeans.javaname.org.knime.node2012.Intro
+ Document,schemaorg_apache_xmlbeans.javaname.org.knime.node2012.KnimeN
+ odeDocument,schemaorg_apache_xmlbeans.javaname.org.knime.node2012.Kni
+ meNodeDocument.KnimeNode,schemaorg_apache_xmlbeans.javaname.org.knime
+ .node2012.OlDocument,schemaorg_apache_xmlbeans.javaname.org.knime.nod
+ e2012.OptionDocument,schemaorg_apache_xmlbeans.javaname.org.knime.nod
+ e2012.OptionDocument.Option,schemaorg_apache_xmlbeans.javaname.org.kn
+ ime.node2012.OutPortDocument,schemaorg_apache_xmlbeans.javaname.org.k
+ nime.node2012.PDocument,schemaorg_apache_xmlbeans.javaname.org.knime.
+ node2012.PortsDocument,schemaorg_apache_xmlbeans.javaname.org.knime.n
+ ode2012.TabDocument,schemaorg_apache_xmlbeans.javaname.org.knime.node
+ 2012.TableDocument,schemaorg_apache_xmlbeans.javaname.org.knime.node2
+ 012.TdDocument,schemaorg_apache_xmlbeans.javaname.org.knime.node2012.
+ ThDocument,schemaorg_apache_xmlbeans.javaname.org.knime.node2012.TrDo
+ cument,schemaorg_apache_xmlbeans.javaname.org.knime.node2012.UlDocume
+ nt,schemaorg_apache_xmlbeans.javaname.org.knime.node2012.ViewDocument
+ ,schemaorg_apache_xmlbeans.javaname.org.knime.node2012.ViewsDocument
+Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: knime-core.jar,lib/saxon-he-9.2.0.5.jar,lib/stax-1.2
+ .0.jar,lib/schemas.jar,lib/jcalendar-1.4.jar
+Bundle-Name: KNIME Core API
+Created-By: 1.6.0_27-b27 (Sun Microsystems Inc.)
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Require-Bundle: org.eclipse.osgi;bundle-version="[3.6.0,4.0.0)";visibi
+ lity:=reexport,org.eclipse.core.runtime;bundle-version="[3.6.0,4.0.0)
+ ";resolution:=optional;visibility:=reexport,org.apache.log4j;bundle-v
+ ersion="[1.2.15,1.3.0)",org.eclipse.core.resources;bundle-version="[3
+ .6.0,4.0.0)";resolution:=optional,org.knime.core.util;bundle-version=
+ "[4.4.0,5.0.0)";visibility:=reexport,org.eclipse.ecf.filetransfer;bun
+ dle-version="[4.0.0,6.0.0)";resolution:=optional,org.apache.xerces;bu
+ ndle-version="[2.9.0,3.0.0)",org.apache.xalan;bundle-version="[2.7.1,
+ 2.8.0)",org.knime.core.pmml;bundle-version="[2.5.0,3.0.0)";visibility
+ :=reexport,org.apache.commons.httpclient;bundle-version="[3.1.0,3.2.0
+ )",org.eclipse.swt;bundle-version="[3.7.2,3.8.0)",com.fasterxml.jacks
+ on;bundle-version="[2.2.2,3.0.0)"
+Ant-Version: Apache Ant 1.8.3
+Bundle-Vendor: KNIME GmbH, Konstanz, Germany
+Bundle-Version: 2.9.0.0040701
+Eclipse-BuddyPolicy: dependent
+Bundle-Activator: org.knime.core.internal.CorePlugin
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: org.knime.core;singleton:=true
+Eclipse-RegisterBuddy: org.apache.log4j
+
+Name: lib/schemas.jar
+SHA1-Digest: wImrgpd/9zGGrssIHE8/0Faz0gc=
+
+Name: LICENSE.txt
+SHA1-Digest: EBt/iHSoiomsFYWa4O2fpR6DhK4=
+
+Name: lib/saxon-he-9.2.0.5.jar
+SHA1-Digest: KPNdlMkITyVPN/5/2s0jVo4MG5A=
+
+Name: schema/JDBCDriver.exsd
+SHA1-Digest: S45fphFAAYH3v4AHnI08Iv949sQ=
+
+Name: lib/jcalendar-1.4.jar
+SHA1-Digest: GAz4KzewwTJOfeM70BFL59hmeM0=
+
+Name: META-INF/services/javax.xml.stream.XMLOutputFactory
+SHA1-Digest: XGsE2kcbvEhs8p2d3bOrYW7oRmA=
+
+Name: schema/NodeFactoryClassMapper.exsd
+SHA1-Digest: V0XcOgRmqUvxTAWuZSs0meUt+YY=
+
+Name: lib/stax-1.2.0.jar
+SHA1-Digest: xDSADeXku+GCKAW+X7HDLWg0+DA=
+
+Name: knime-core.jar
+SHA1-Digest: e/gQtGaP1kdyWPjlyiOHBMWnTPU=
+
+Name: plugin.xml
+SHA1-Digest: 0L1SuApKIaGrqSIBNBuZdgjk5Hk=
+
+Name: META-INF/services/javax.xml.stream.XMLEventFactory
+SHA1-Digest: SGSBJY5YFPrxVAhfuWXDiZEvuAM=
+
+Name: schema/org.knime.core.NodeExecutionJobManagerFactory.exsd
+SHA1-Digest: qK66sO5ZXA69NLCH7kr2mvcP0oQ=
+
+Name: META-INF/services/javax.xml.stream.XMLInputFactory
+SHA1-Digest: lipYCZG7EN5d9IvNKbORW23SQEY=
+
+Name: schema/DataValueRenderer.exsd
+SHA1-Digest: u6f0qrGaIyrsz9ApPLyaNP1uYgI=
+

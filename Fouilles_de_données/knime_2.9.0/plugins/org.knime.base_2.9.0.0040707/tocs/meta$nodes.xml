@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+
+<toc label="Meta" link_to="../org.knime.base/tocs/meta.xml#meta">
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/Meta_Feature_Elimination.html" label="Feature Elimination"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/Meta_Iterate_List_of_Files.html" label="Iterate List of Files"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/Meta_Loop_x-times.html" label="Loop x-times"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/Meta_Variables_Loop_(Data).html" label="Variables Loop (Data)"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/Meta_Variables_Loop_(Database).html" label="Variables Loop (Database)"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/Meta_X-Validation.html" label="X-Validation"/>
+</toc>

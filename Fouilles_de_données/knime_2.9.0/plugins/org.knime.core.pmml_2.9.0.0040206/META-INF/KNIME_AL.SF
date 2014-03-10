@@ -1,0 +1,11 @@
+Signature-Version: 1.0
+SHA1-Digest-Manifest-Main-Attributes: W6IFRWuBGA7h5whg0mkKAcVqdgA=
+Created-By: 1.6.0_27 (Sun Microsystems Inc.)
+SHA1-Digest-Manifest: AsVWqVtZh5huBRUZPWMwm3+9bgk=
+
+Name: lib/schemas.jar
+SHA1-Digest: CR27s5yd6zvk2CpPKo6eVH2lAQQ=
+
+Name: knime-pmml.jar
+SHA1-Digest: Pi28Up1ppqCw5OGny6RAkHkGWA8=
+

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+
+<toc label="Loop Support" link_to="../org.knime.base/tocs/flowcontrol__loopsupport.xml#flowcontrol__loopsupport">
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.flowcontrol.breakpoint.BreakpointNodeFactory.html" label="Breakpoint"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.meta.looper.LoopStartCountNodeFactory.html" label="Counting Loop Start"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.meta.looper.chunk.LoopStartChunkNodeFactory.html" label="Chunk Loop Start"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.meta.looper.columnlist.ColumnListLoopStartNodeFactory.html" label="Column List Loop Start"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.meta.looper.condition.LoopStartGenericNodeFactory.html" label="Generic Loop Start"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.flowvariable.variableloophead.LoopStartVariableNodeFactory.html" label="TableRow To Variable Loop Start"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.meta.looper.LoopEndNodeFactory.html" label="Loop End"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.meta.looper.condition.LoopEndConditionNodeFactory.html" label="Variable Condition Loop End"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.meta.looper.group.GroupLoopStartNodeFactory.html" label="Group Loop Start"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.meta.looper.LoopStartIntervalNodeFactory.html" label="Interval Loop Start"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.exp.node.meta.looper.LoopEnd2NodeFactory.html" label="Loop End (2 ports)"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.meta.looper.LoopEndJoinNodeFactory.html" label="Loop End (Column Append)"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.meta.looper.recursive.RecursiveLoopEndNodeFactory.html" label="Recursive Loop End"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.meta.looper.recursive.RecursiveLoopEnd2NodeFactory.html" label="Recursive Loop End (2 ports)"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.meta.looper.recursive.RecursiveLoopStartNodeFactory.html" label="Recursive Loop Start"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.meta.looper.recursive.RecursiveLoopStart2NodeFactory.html" label="Recursive Loop Start (2 ports)"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.meta.looper.variableloopend.VariableLoopEndNodeFactory.html" label="Variable Loop End"/>
+</toc>

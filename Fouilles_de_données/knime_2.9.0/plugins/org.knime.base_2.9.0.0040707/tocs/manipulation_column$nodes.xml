@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+
+<toc label="Column" link_to="../org.knime.base/tocs/manipulation_column.xml#manipulation_column">
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.preproc.filter.hilite.collector.InteractiveHiLiteCollectorNodeFactory.html" label="Interactive HiLite Collector"/>
+</toc>

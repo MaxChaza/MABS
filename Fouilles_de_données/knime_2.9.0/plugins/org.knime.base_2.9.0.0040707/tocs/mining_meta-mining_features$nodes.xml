@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+
+<toc label="Feature Selection" link_to="../org.knime.base/tocs/mining_meta-mining_features.xml#mining_meta-mining_features">
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.meta.feature.backwardelim.BWElimLoopStart1NodeFactory.html" label="Backward Feature Elimination Start (1:1)"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.meta.feature.backwardelim.BWElimLoopStart2NodeFactory.html" label="Backward Feature Elimination Start (2:2)"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.meta.feature.backwardelim.BWElimLoopEndNodeFactory.html" label="Backward Feature Elimination End"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.meta.feature.backwardelim.BWElimFilterNodeFactory.html" label="Backward Feature Elimination Filter"/>
+</toc>

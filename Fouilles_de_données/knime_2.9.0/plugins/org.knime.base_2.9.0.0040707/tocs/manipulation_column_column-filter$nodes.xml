@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+
+<toc label="Filter" link_to="../org.knime.base/tocs/manipulation_column_column-filter.xml#manipulation_column_column-filter">
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.preproc.filter.column.DataColumnSpecFilterNodeFactory.html" label="Column Filter"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.preproc.filter.columnref.ColumnFilterRefNodeFactory.html" label="Reference Column Filter"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.preproc.lowvarfilter2.LowVarFilter2NodeFactory.html" label="Low Variance Filter"/>
+</toc>

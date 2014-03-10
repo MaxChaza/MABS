@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Created-By: 1.6.0_27 (Sun Microsystems Inc.)
+
+Name: p2.inf
+SHA1-Digest: 2upK4tdKslcuHbIdUkNijxKGX2o=
+
+Name: icons/knime64.gif
+SHA1-Digest: N57ooIbijRHlgDhHMW2kEnbuIAE=
+
+Name: feature.xml
+SHA1-Digest: ih/HuucwiQKp/SpHdoZhtZUfO/Q=
+

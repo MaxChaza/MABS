@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+
+<toc label="PCA" link_to="../org.knime.base/tocs/mining_pca.xml#mining_pca">
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.mine.pca.PCANodeFactory.html" label="PCA"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.mine.pca.PCAComputeNodeFactory.html" label="PCA Compute"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.mine.pca.PCAApplyNodeFactory.html" label="PCA Apply"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.mine.pca.PCAReverseNodeFactory.html" label="PCA Inversion"/>
+</toc>

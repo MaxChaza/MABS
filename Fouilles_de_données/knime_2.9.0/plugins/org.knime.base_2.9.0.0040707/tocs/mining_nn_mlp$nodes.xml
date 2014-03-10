@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+
+<toc label="MLP" link_to="../org.knime.base/tocs/mining_nn_mlp.xml#mining_nn_mlp">
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.mine.neural.mlp2.MLPPredictorNodeFactory.html" label="MultiLayerPerceptron Predictor"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.mine.neural.rprop.RPropNodeFactory.html" label="RProp MLP Learner"/>
+</toc>

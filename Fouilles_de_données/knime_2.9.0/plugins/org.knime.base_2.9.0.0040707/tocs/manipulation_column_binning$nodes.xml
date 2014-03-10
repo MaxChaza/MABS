@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+
+<toc label="Binning" link_to="../org.knime.base/tocs/manipulation_column_binning.xml#manipulation_column_binning">
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.preproc.autobinner.AutoBinnerLearnNodeFactory.html" label="Auto-Binner"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.preproc.autobinner.apply.AutoBinnerApplyNodeFactory.html" label="Auto-Binner (Apply)"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.preproc.binner.BinnerNodeFactory.html" label="Numeric Binner"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.preproc.binnerdictionary.BinByDictionaryNodeFactory.html" label="Binner (Dictionary)"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.preproc.discretization.caim.modelcreator.CAIMDiscretizationNodeFactory.html" label="CAIM Binner"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.preproc.discretization.caim.modelapply.DiscretizationApplyNodeFactory.html" label="CAIM Applier"/>
+</toc>

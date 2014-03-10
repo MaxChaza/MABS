@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+
+<toc label="Write" link_to="../org.knime.base/tocs/io_write.xml#io_write">
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.io.csvwriter.CSVWriterNodeFactory.html" label="CSV Writer"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.io.arffwriter.ARFFWriterNodeFactory.html" label="ARFF Writer"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.io.table.write.WriteTableNodeFactory.html" label="Table Writer"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.io.pmml.write.PMMLWriterNodeFactory.html" label="PMML Writer"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.io.predictor.PredictorWriterNodeFactory.html" label="Model Writer"/>
+</toc>

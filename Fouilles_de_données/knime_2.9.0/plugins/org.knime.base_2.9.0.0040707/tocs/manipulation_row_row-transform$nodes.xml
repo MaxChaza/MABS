@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+
+<toc label="Transform" link_to="../org.knime.base/tocs/manipulation_row_row-transform.xml#manipulation_row_row-transform">
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.mine.subgroupminer.BitVectorGeneratorNodeFactory.html" label="Bitvector Generator"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.preproc.append.row.AppendedRowsNodeFactory.html" label="Concatenate"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.preproc.append.row.AppendedRowsWithOptionalInNodeFactory.html" label="Concatenate (Optional in)"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.preproc.groupby.GroupByNodeFactory.html" label="GroupBy"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.preproc.ungroup.UngroupNodeFactory.html" label="Ungroup"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.preproc.partition.PartitionNodeFactory.html" label="Partitioning"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.preproc.pivot.Pivot2NodeFactory.html" label="Pivoting"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.preproc.unpivot2.Unpivot2NodeFactory.html" label="Unpivoting"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.preproc.sample.SamplingNodeFactory.html" label="Row Sampling"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.preproc.bootstrap.BootstrapNodeFactory.html" label="Bootstrap Sampling"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.preproc.equalsizesampling.EqualSizeSamplingNodeFactory.html" label="Equal Size Sampling"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.preproc.shuffle.ShuffleNodeFactory.html" label="Shuffle"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.preproc.sorter.SorterNodeFactory.html" label="Sorter"/>
+</toc>

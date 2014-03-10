@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+
+<toc label="Filter" link_to="../org.knime.base/tocs/manipulation_row_row-filter.xml#manipulation_row_row-filter">
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.preproc.hilite.html" label="HiLite Filter"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.preproc.filter.nominal.NominalValueRowFilterNodeFactory.html" label="Nominal Value Row Filter"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.preproc.rowsplit.NumericRowSplitterNodeFactory.html" label="Numeric Row Splitter"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.preproc.filter.rowref.RowFilterRefNodeFactory.html" label="Reference Row Filter"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.preproc.filter.row.RowFilterNodeFactory.html" label="Row Filter"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.preproc.filter.row.RowFilter2PortNodeFactory.html" label="Row Splitter"/>
+</toc>

@@ -1,0 +1,207 @@
+Q1:
+SELECT nomemp, poste FROM emp 
+WHERE nodept=10 OR nodept=30
+ORDER BY poste
+
+Q2:
+SELECT noemp FROM emp 
+WHERE noemp NOT IN( SELECT supr FROM emp
+                   	WHERE supr IS NOT NULL)
+                    
+Q3:
+SELECT nomemp, sal, poste FROM emp 
+WHERE sal>ALL(
+				SELECT sal FROM `emp`  
+				WHERE nodept = 30		) 
+
+Q4:
+SELECT nomemp, poste FROM emp 
+WHERE nodept=20 AND poste NOT IN (
+    								SELECT poste FROM `emp`  
+									WHERE nodept = 30		) 
+									
+Q5:
+SELECT nomemp, poste FROM emp 
+WHERE nodept=20 AND (poste,supr)IN( SELECT poste, supr FROM emp 
+                                   WHERE nodept=30) 
+
+Q6:
+SELECT nomemp, sal, poste FROM emp 
+WHERE sal>ANY(
+				SELECT sal FROM `emp` e
+				INNER JOIN dept d ON e.nodept = d.nodept
+				WHERE nomdept = "ventes"		) 
+
+Q7:
+SELECT nomemp, sal, poste FROM emp 
+WHERE sal>=ALL(SELECT sal FROM `emp` e) 
+
+Q8:
+SELECT nomemp, sal, nodept FROM emp 
+WHERE supr IS NOT NULL
+
+Q9:
+SELECT nomemp, sal FROM emp 
+WHERE comm IS NOT NULL
+
+Q10:
+SELECT nomemp, 12*sal+NVL(comm,0) FROM emp 
+
+Q11:
+SELECT MAX(datemp)-MIN(datemb) AS diff_jour FROM emp
+
+
+CREATE TABLE IF NOT EXISTS Cycliste(
+noCycliste INT PRIMARY KEY NOT NULL,
+nom varchar(15) NOT NULL,
+prenom varchar(15) NOT NULL,
+age INT NOT NULL,
+equipe varchar(15)
+);
+
+CREATE TABLE IF NOT EXISTS Etape(
+noEtape INT PRIMARY KEY NOT NULL,
+villeDepart varchar(15) NOT NULL,
+villeArrivee varchar(15) NOT NULL,
+prime INT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS Classement(
+noCycliste INT PRIMARY KEY REFERENCES CYCLISTE(noCycliste) NOT NULL,
+noEtape INT PRIMARY KEY REFERENCES ETAPE(noEtape) NOT NULL,
+rangEtape INT NOT NULL,
+rangGeneral INT NOT NULL,
+);
+
+CREATE TABLE IF NOT EXISTS Dopage(
+noPrelevement INT PRIMARY KEY NOT NULL,
+noCycliste INT REFERENCES CYCLISTE(noCycliste) NOT NULL,
+noEtape INT REFERENCES ETAPE(noEtape) NOT NULL,
+resultat BOOL NOT NULL
+);
+
+INSERT INTO Cycliste VALUES(1, 'Delarue', 'Toto', 18, 'Cofidis');
+INSERT INTO Cycliste VALUES(2, 'Delak', 'Tom', 18, 'USPostale');
+INSERT INTO Cycliste VALUES(3, 'Derty', 'Toato', 15, 'FDJ');
+INSERT INTO Cycliste VALUES(4, 'Ser', 'Too', 18, 'Cofidis');
+INSERT INTO Cycliste VALUES(5, 'Darue', 'To', 18, 'USPostale');
+
+INSERT INTO Etape VALUES(1, 'Toulouse', 'Tarbes', 18);
+INSERT INTO Etape VALUES(2, 'Tarbes', 'Pau', 123);
+INSERT INTO Etape VALUES(3, 'Pau', 'Viennes', 134548);
+INSERT INTO Etape VALUES(4, 'Barcelone', 'Madrid', 1658);
+
+INSERT INTO Dopage VALUES(1, 1, 1, true);
+INSERT INTO Dopage VALUES(2, 2, 2, false);
+INSERT INTO Dopage VALUES(3, 3, 3, true);
+INSERT INTO Dopage VALUES(4, 4, 4, true);
+INSERT INTO Dopage VALUES(5, 1, 5, false);
+INSERT INTO Dopage VALUES(6, 2, 1, false);
+INSERT INTO Dopage VALUES(7, 3, 2, false);
+INSERT INTO Dopage VALUES(8, 4, 3, false);
+INSERT INTO Dopage VALUES(9, 1, 4, true);
+INSERT INTO Dopage VALUES(10, 2, 5, false);
+INSERT INTO Dopage VALUES(11, 3, 1, false);
+INSERT INTO Dopage VALUES(12, 4, 2, true);
+
+INSERT INTO Classement VALUES(1,1,1,1);
+INSERT INTO Classement VALUES(2,1,2,2);
+INSERT INTO Classement VALUES(3,1,3,3);
+INSERT INTO Classement VALUES(4,1,4,4);
+INSERT INTO Classement VALUES(5,1,5,5);
+
+INSERT INTO Classement VALUES(1,2,2,2);
+INSERT INTO Classement VALUES(2,2,1,1);
+INSERT INTO Classement VALUES(3,2,3,3);
+INSERT INTO Classement VALUES(4,2,4,4);
+INSERT INTO Classement VALUES(5,2,5,5);
+
+INSERT INTO Classement VALUES(1,3,1,1);
+INSERT INTO Classement VALUES(2,3,2,2);
+INSERT INTO Classement VALUES(3,3,3,3);
+INSERT INTO Classement VALUES(4,3,4,4);
+INSERT INTO Classement VALUES(5,3,5,5);
+
+INSERT INTO Classement VALUES(1,4,3,1);
+INSERT INTO Classement VALUES(2,4,2,2);
+INSERT INTO Classement VALUES(3,4,1,3);
+INSERT INTO Classement VALUES(4,4,5,4);
+INSERT INTO Classement VALUES(5,4,4,5);
+
+
+
+Q1:
+SELECT nom FROM Cycliste cy
+INNER JOIN Classement cl ON cy.noCycliste=cl.noCycliste
+WHERE noEtape=1 AND randEtape=1
+
+SELECT nom FROM Cycliste 
+WHERE noCycliste IN (
+SELECT noCycliste FROM Classement
+WHERE noEtape=1 AND randEtape=1)
+
+Q2:
+SELECT nom FROM Cycliste cy
+INNER JOIN Classement cl ON cy.noCycliste=cl.noCycliste
+WHERE randGeneral=1 AND noEtape >= ALL(
+	SELECT noEtape FROM Etape)
+
+Q3:
+SELECT equipe, SUM(prime) AS 'Gain Cofidis' FROM Etape e
+INNER JOIN Classement cl ON e.noEtape=cl.noEtape
+INNER JOIN Cycliste cy ON cy.noCycliste=cl.noCycliste
+WHERE equipe='Cofidis' AND rangEtape = 1
+GROUP BY equipe
+
+Q4:
+SELECT nom FROM Cycliste cy
+INNER JOIN Classement cl ON cy.noCycliste=cl.noCycliste
+INNER JOIN Etape e ON e.noEtape=cl.noEtape
+WHERE villeDepart IN ('Toulouse','Pau') AND rangEtape = 1
+
+SELECT nom FROM Cycliste cy
+INNER JOIN Classement cl ON cy.noCycliste=cl.noCycliste
+INNER JOIN Etape e ON e.noEtape=cl.noEtape
+WHERE (villeDepart='Toulouse' OR villeDepart='Pau') AND rangEtape = 1
+
+Q5:
+SELECT nom, SUM(prime) FROM Cycliste cy
+INNER JOIN Classement cl ON cy.noCycliste=cl.noCycliste
+INNER JOIN Etape e ON e.noEtape=cl.noEtape
+WHERE rangEtape=1
+HAVING SUM(prime)>= ALL(
+	SELECT SUM(prime) FROM Cycliste cy
+	INNER JOIN Classement cl ON cy.noCycliste=cl.noCycliste
+	INNER JOIN Etape e ON e.noEtape=cl.noEtape
+	WHERE rangEtape=1
+	GROUP BY nom)
+
+Q6:
+a:
+SELECT noEtape FROM Classement cl
+INNER JOIN Cycliste cy ON cy.noCycliste=cl.noCycliste
+WHERE equipe='USPostal' AND rangEtape=1
+
+b:
+SELECT noEtape FROM Classement 
+WHERE rangEtape=1 AND noCycliste IN (
+	SELECT noCycliste FROM Cycliste 
+	WHERE equipe='USPostal' )
+
+Q7:
+SELECT DISTINCT noCycliste FROM Dopage
+WHERE noEtape IN (2, 3)
+
+SELECT DISTINCT noCycliste FROM Dopage
+WHERE noEtape=2 OR noEtape=3
+
+Q8:
+SELECT nom FROM Cycliste cy
+WHERE noCycliste NOT IN (
+	SELECT noCycliste FROM Classement
+	WHERE rangEtape=1
+	GROUP BY noEtape)
+	
+Q9:
+DELETE FROM Cycliste
+WHERE noCycliste=1

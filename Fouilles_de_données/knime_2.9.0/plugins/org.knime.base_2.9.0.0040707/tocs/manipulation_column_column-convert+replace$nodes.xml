@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+
+<toc label="Convert &amp;amp; Replace" link_to="../org.knime.base/tocs/manipulation_column_column-convert+replace.xml#manipulation_column_column-convert+replace">
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.preproc.colconvert.categorytonumber.CategoryToNumberNodeFactory.html" label="Category To Number"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.preproc.colconvert.categorytonumber.CategoryToNumberApplyNodeFactory.html" label="Category To Number (Apply)"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.preproc.cellreplace.CellReplacerNodeFactory.html" label="Cell Replacer"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.preproc.rename.RenameNodeFactory.html" label="Column Rename"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.preproc.columnrenameregex.ColumnRenameRegexNodeFactory.html" label="Column Rename (Regex)"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.preproc.constantvalue.ConstantValueColumnNodeFactory.html" label="Constant Value Column"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.preproc.colconvert.numbertostring.NumberToStringNodeFactory.html" label="Number To String"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.preproc.colconvert.stringtonumber.StringToNumberNodeFactory.html" label="String To Number"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.preproc.double2int.DoubleToIntNodeFactory.html" label="Double To Int"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.preproc.rounddouble.RoundDoubleNodeFactory.html" label="Round Double"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.preproc.stringreplacer.dict.SearchReplaceDictNodeFactory.html" label="String Replace (Dictionary)"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.preproc.stringreplacer.StringReplacerNodeFactory.html" label="String Replacer"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.preproc.domain.DomainNodeFactory.html" label="Domain Calculator"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.preproc.domain.editnumeric.EditNumericDomainNodeFactory.html" label="Edit Numeric Domain"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.preproc.domain.editnominal.dic.EditNominalDomainDicNodeFactory.html" label="Edit Nominal Domain (Dictionary)"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.preproc.domain.editnominal.EditNominalDomainNodeFactory.html" label="Edit Nominal Domain"/>
+</toc>

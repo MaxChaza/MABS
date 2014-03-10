@@ -1,0 +1,108 @@
+Manifest-Version: 1.0
+Export-Package: org.knime.base.node.preproc.stringmanipulation.manipul
+ ator,org.knime.base.node.rules.engine.rsyntax;x-friends:="org.fife.rs
+ yntaxtextarea",org.knime.base.node.util
+Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: knime-jsnippets.jar,lib/snippet_inc/commons-lang3-3.
+ 0.1.jar,lib/prompt.jar
+Bundle-Name: KNIME Java Snippet Nodes (draft)
+Created-By: 1.6.0_27-b27 (Sun Microsystems Inc.)
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Require-Bundle: org.fife.rsyntaxtextarea;bundle-version="[2.0.4,2.1.0)
+ ",org.knime.base;bundle-version="[2.9.0,3.0.0)",org.eclipse.jdt.core;
+ bundle-version="[3.6.1,4.0.0)",org.eclipse.core.resources;bundle-vers
+ ion="[3.6.0,4.0.0)",org.knime.ext.sun;bundle-version="[2.5.3,3.0.0)";
+ visibility:=reexport,org.knime.core.pmml;bundle-version="[2.8.0,3.0.0
+ )",org.knime.core;bundle-version="[2.8.0,3.0.0)",org.eclipse.help;res
+ olution:=optional,org.eclipse.help.ui;resolution:=optional
+Ant-Version: Apache Ant 1.8.3
+Bundle-Vendor: KNIME GmbH, Konstanz, Germany
+Bundle-Version: 2.9.0.0040694
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: org.knime.jsnippets;singleton:=true
+
+Name: jsnippets/org.knime.base.node.jsnippet.JavaSnippetNodeFactory/Li
+ ne Total_1e40c7f7-673d-4023-8c7e-df116734837a.xml
+SHA1-Digest: OkOlyLAmA7VPGMrHQWqTnK0hOJU=
+
+Name: LICENSE.txt
+SHA1-Digest: EBt/iHSoiomsFYWa4O2fpR6DhK4=
+
+Name: html/nodes/org.knime.base.node.jsnippet.JavaEditVarNodeFactory.h
+ tml
+SHA1-Digest: HJu/BlIyWG+3u7cYgup3zdYzDBU=
+
+Name: knime-jsnippets.jar
+SHA1-Digest: UmA0paQdpSPAAM2RuXkm/3OXlyc=
+
+Name: html/nodes/org.knime.base.node.rules.engine.RuleEngineFilterNode
+ Factory.html
+SHA1-Digest: C1EkF28Ri3nlLjDGjWd+/05pgX4=
+
+Name: tocs/manipulation_pmml$nodes.xml
+SHA1-Digest: f6xE3K/mzM80XLJBBwr1imY4pmQ=
+
+Name: tocs/misc_java-snippet$nodes.xml
+SHA1-Digest: 4QXwHhj6b1a5VIiqXCIM0tUJAlg=
+
+Name: tocs/manipulation_row_row-filter$nodes.xml
+SHA1-Digest: 5XpHkw6ViA4gfDI4028Uvaa2y5U=
+
+Name: tocs/flowcontrol_variables$nodes.xml
+SHA1-Digest: 9cqfW1t1KkBX0FBHpDoxGTDmKpE=
+
+Name: html/nodes/org.knime.base.node.rules.engine.RuleEngineNodeFactor
+ y.html
+SHA1-Digest: dnYl+iqN3KET3r9+Q1AAAgGhKfo=
+
+Name: schema/templaterepository.exsd
+SHA1-Digest: m6Pe6UGrdTVhQbz8qn+hUmpSl8E=
+
+Name: icons/preview.png
+SHA1-Digest: iqA5x4LhwoPUiNCE+vBLHH9WsWI=
+
+Name: lib/snippet_inc/commons-lang3-3.0.1.jar
+SHA1-Digest: sQDRUqnjOQeXByZtrZWeSeMMoJw=
+
+Name: tocs/manipulation_column_column-transform$nodes.xml
+SHA1-Digest: vKwRdI6vnfqZDf1Y1WZgvdFriZE=
+
+Name: lib/snippet_inc/readme.txt
+SHA1-Digest: OKlQrCjjagaU4ouPjNjuipkglgY=
+
+Name: html/nodes/org.knime.base.node.preproc.stringmanipulation.String
+ ManipulationNodeFactory.html
+SHA1-Digest: 4KOrqKT2Cxn+amxoCGPPRrVZ3p0=
+
+Name: README.TXT
+SHA1-Digest: vOKWw+ND4KeGl9Uh/UOHYFWvqWQ=
+
+Name: html/nodes/org.knime.base.node.rules.engine.RuleEngineSplitterNo
+ deFactory.html
+SHA1-Digest: /GneHYSYJUNFO5pjYuLTAJEso6w=
+
+Name: tocs/manipulation_row_row-other$nodes.xml
+SHA1-Digest: xphPTd2vYBjNx3pBbOimKoI+RlU=
+
+Name: html/nodes/org.knime.base.node.rules.engine.RuleEngineVariableNo
+ deFactory.html
+SHA1-Digest: v+iHNjRLMgXrTIPdCmINd8Bytmk=
+
+Name: html/nodes/org.knime.base.node.jsnippet.JavaSnippetNodeFactory.h
+ tml
+SHA1-Digest: w0ZqWQ0yWgsbFXEi+wa8aax7k10=
+
+Name: html/nodes/org.knime.base.node.rules.engine.pmml.PMMLRuleSetPred
+ ictorNodeFactory.html
+SHA1-Digest: bMScn7Uu5C+xRTmfv4uQNOFxP8w=
+
+Name: plugin.xml
+SHA1-Digest: raHftpJmIBKdXSXNhTZBaHSgIfg=
+
+Name: html/nodes/org.knime.base.node.rules.engine.pmml.PMMLRuleEditorN
+ odeFactory.html
+SHA1-Digest: dYqCBPSZaDcwYgO7omo0hLBHD3E=
+
+Name: lib/prompt.jar
+SHA1-Digest: eLyT7hdcse03AEc/8mSLBH8Rg3A=
+

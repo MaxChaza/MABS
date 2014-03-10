@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+
+<toc label="Cross Validation" link_to="../org.knime.base/tocs/mining_meta-mining_crossvalidation.xml#mining_meta-mining_crossvalidation">
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.meta.xvalidation.XValidatePartitionerFactory.html" label="X-Partitioner"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.meta.xvalidation.AggregateOutputNodeFactory.html" label="X-Aggregator"/>
+</toc>

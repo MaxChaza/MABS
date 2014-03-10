@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+
+<toc label="Split &amp;amp; Combine" link_to="../org.knime.base/tocs/manipulation_column_column-split+combine.xml#manipulation_column_column-split+combine">
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.preproc.cellsplit.CellSplitterNodeFactory.html" label="Cell Splitter"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.preproc.cellsplitbypos.CellSplitterByPositionNodeFactory.html" label="Cell Splitter By Position"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.preproc.columnaggregator.ColumnAggregatorNodeFactory.html" label="Column Aggregator"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.preproc.colcombine.ColCombineNodeFactory.html" label="Column Combiner"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.preproc.columnmerge.ColumnMergerNodeFactory.html" label="Column Merger"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.collection.list.create2.CollectionCreate2NodeFactory.html" label="Create Collection Column"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.collection.list.split.CollectionSplitNodeFactory.html" label="Split Collection Column"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.preproc.joiner.Joiner2NodeFactory.html" label="Joiner"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.preproc.crossjoin.CrossJoinerNodeFactory.html" label="Cross Joiner"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.preproc.regexsplit.RegexSplitNodeFactory.html" label="Regex Split"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.preproc.split2.SplitNodeFactory2.html" label="Splitter"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.preproc.columnappend.ColumnAppenderNodeFactory.html" label="Column Appender"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.preproc.columntogrid.ColumnToGridNodeFactory.html" label="Column to Grid"/>
+</toc>

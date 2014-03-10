@@ -1,0 +1,38 @@
+Manifest-Version: 1.0
+Require-Bundle: org.knime.base;bundle-version="[2.5.0,3.0.0)",org.ecli
+ pse.core.resources;bundle-version="[3.6.0,4.0.0)"
+Bundle-Vendor: KNIME GmbH, Konstanz, Germany
+Ant-Version: Apache Ant 1.8.3
+Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: knime-stats.jar,lib/commons-math3-3.0.jar
+Bundle-Version: 2.9.0.0040102
+Bundle-Name: KNIME Statistic Nodes
+Bundle-ManifestVersion: 2
+Created-By: 1.6.0_27-b27 (Sun Microsystems Inc.)
+Bundle-SymbolicName: org.knime.stats;singleton:=true
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+
+Name: knime-stats.jar
+SHA1-Digest: AiGurpHycW7tFzFuT+ZnSZul1JU=
+
+Name: lib/commons-math3-3.0.jar
+SHA1-Digest: X40dcgMzqpp97hyUnqcNntfaYQY=
+
+Name: lib/ReadMe.txt
+SHA1-Digest: tIRDhPY7uh52b3E5xuIuYQU7OCE=
+
+Name: LICENSE.txt
+SHA1-Digest: EBt/iHSoiomsFYWa4O2fpR6DhK4=
+
+Name: README.TXT
+SHA1-Digest: vOKWw+ND4KeGl9Uh/UOHYFWvqWQ=
+
+Name: plugin.xml
+SHA1-Digest: +fALFLE5Vyt7LbnyPwtNiVR2p1Y=
+
+Name: icons/test_category.png
+SHA1-Digest: POJBNTlcUclafkRO7236FrEZuC4=
+
+Name: lib/LICENSE-2.0.txt
+SHA1-Digest: K4uBUimqimHkg/tLoFiLi2xJGJA=
+

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+
+<toc label="Decision Tree" link_to="../org.knime.base/tocs/mining_dtree.xml#mining_dtree">
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.mine.decisiontree2.learner2.DecisionTreeLearnerNodeFactory2.html" label="Decision Tree Learner"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.mine.decisiontree2.predictor2.DecTreePredictorNodeFactory.html" label="Decision Tree Predictor"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.mine.decisiontree2.image.DecTreeToImageNodeFactory.html" label="Decision Tree To Image"/>
+</toc>

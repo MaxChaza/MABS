@@ -1,0 +1,178 @@
+Manifest-Version: 1.0
+Export-Package: org.knime.product,org.knime.product.headless,org.knime
+ .product.rcp
+Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: knime-product.jar,lib/tagsoup-1.2.1.jar
+Bundle-Name: KNIME Konstanz Information Miner
+Bundle-Localization: plugin
+Created-By: 1.6.0_27-b27 (Sun Microsystems Inc.)
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Require-Bundle: org.apache.xerces;bundle-version="[2.9.0,2.10.0)",org.
+ apache.xalan;bundle-version="[2.7.1,2.8.0)",org.eclipse.ui;bundle-ver
+ sion="[3.6.1,4.0.0)",org.eclipse.core.runtime;bundle-version="[3.6.0,
+ 4.0.0)",org.eclipse.core.resources;bundle-version="[3.6.0,4.0.0)",org
+ .eclipse.ui.ide;bundle-version="[3.6.1,4.0.0)",org.knime.base;bundle-
+ version="[2.5.0,3.0.0)",org.knime.core;bundle-version="[2.5.0,3.0.0)"
+ ,org.knime.workbench;bundle-version="[2.5.0,3.0.0)",org.knime.workben
+ ch.core;bundle-version="[2.5.0,3.0.0)",org.knime.workbench.editor;bun
+ dle-version="[2.5.0,3.0.0)",org.knime.workbench.repository;bundle-ver
+ sion="[2.5.0,3.0.0)",org.knime.workbench.ui;bundle-version="[2.5.0,3.
+ 0.0)",org.knime.workbench.explorer.view;bundle-version="[5.0.0,7.0.0)
+ ",org.eclipse.swt;bundle-version="[3.6.1,4.0.0)",org.eclipse.jface;bu
+ ndle-version="[3.6.1,4.0.0)",org.eclipse.ui.workbench;bundle-version=
+ "[3.6.1,4.0.0)",org.eclipse.ui.intro;bundle-version="[3.4.0,4.0.0)",o
+ rg.eclipse.core.net;bundle-version="[1.2.100,2.0.0)",org.eclipse.ui.n
+ et;bundle-version="[1.2.100,2.0.0)",org.eclipse.ui.console;bundle-ver
+ sion="[3.5.0,4.0.0)",org.eclipse.ui.browser;bundle-version="[3.3.0,4.
+ 0.0)",com.knime.licenses;bundle-version="[4.0.0,5.0.0)";resolution:=o
+ ptional,org.eclipse.ui.forms;bundle-version="[3.5.2,4.0.0)",org.eclip
+ se.equinox.p2.core;bundle-version="[2.0.0,3.0.0)",org.eclipse.equinox
+ .p2.operations;bundle-version="[2.0.0,3.0.0)",org.eclipse.equinox.p2.
+ ui;bundle-version="[2.0.0,3.0.0)",org.eclipse.equinox.p2.engine;bundl
+ e-version="[2.0.0,3.0.0)",org.eclipse.core.filesystem;bundle-version=
+ "[1.3.100,2.0.0)"
+Ant-Version: Apache Ant 1.8.3
+Bundle-Vendor: KNIME GmbH, Konstanz, Germany
+Bundle-Version: 2.9.0.0040668
+Bundle-Activator: org.knime.product.ProductPlugin
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: org.knime.product;singleton:=true
+
+Name: icons/gif/knime32.gif
+SHA1-Digest: 27fNAgP3X76IF4n1fKMOVVfekXA=
+
+Name: lib/tagsoup-1.2.1.jar
+SHA1-Digest: VYRidIfphMA0ViZtP4gC64Wpzpc=
+
+Name: intro/intro.xhtml
+SHA1-Digest: 7qsLYbsNT6x4iwA1uPX0QIexl6g=
+
+Name: LICENSE.txt
+SHA1-Digest: EBt/iHSoiomsFYWa4O2fpR6DhK4=
+
+Name: icons/bmp/knime48x8.bmp
+SHA1-Digest: sv1DslZ/hg2FVvwZ1n3Zb3SJMq4=
+
+Name: icons/bmp/knime16.bmp
+SHA1-Digest: aEbR9if4ttpEpTQ/J2lHy5D26N8=
+
+Name: icons/gif/knime16.gif
+SHA1-Digest: Y6/ajMHP3fkHs1k4zOfxIcx+QMw=
+
+Name: knime-product.jar
+SHA1-Digest: No1BEzuRg9LIcl1FTOYUaY8orbk=
+
+Name: icons/gif/knime128.gif
+SHA1-Digest: cbDJAq4WxZ+RdH3q6YD6n+wnY7A=
+
+Name: icons/gif/knime48.gif
+SHA1-Digest: MFwoq7wy9t4dFzEgcl1jNFBxZBs=
+
+Name: icons/logo/splash_logo.png
+SHA1-Digest: tn3PKsc1J5SPe/phWg2+E8iSn+s=
+
+Name: intro/css/img/install_hover.png
+SHA1-Digest: y6p0bLb2SaHHEGw1CSj6msjfQh4=
+
+Name: intro/css/img/kn-footer-bg.gif
+SHA1-Digest: Y3rFLDWElo4Id0H/Mk6Y8Sj/xL0=
+
+Name: plugin_customization.ini
+SHA1-Digest: lk99444pP5UnCM8ljso5GfnzpHs=
+
+Name: intro/css/img/kn-logo.gif
+SHA1-Digest: U5ooJpxysLlP23h9T3uy7LbawWk=
+
+Name: icons/gif/about.gif
+SHA1-Digest: 8IQsNInmOfUDx97Tz+6uJB6J+Ow=
+
+Name: icons/bmp/knime48.bmp
+SHA1-Digest: HhmFUJWWtt/7ApdLSifULFFtGtI=
+
+Name: LICENSE.html
+SHA1-Digest: YqOMt1R5fr+qtqi+rcVwEiVk4tM=
+
+Name: intro/css/img/kn-block-content-bg.gif
+SHA1-Digest: tMTLtMsxFt8ElEAUeRieEAjoUS0=
+
+Name: intro/css/img/install.png
+SHA1-Digest: X/PNkuFWuQu+PalSd/XaYm/F+a0=
+
+Name: intro/css/img/kn-block-head-bg.gif
+SHA1-Digest: eqplfASKDXqRjdVediRCyrSpObc=
+
+Name: icons/bmp/knime16x8.bmp
+SHA1-Digest: wZ/Pk9d+UCeZhFZBIFxqbrykbDA=
+
+Name: icons/knime64.svg
+SHA1-Digest: kG5sWtzW4URgMFZW1mDjIbVQvA4=
+
+Name: intro/css/tipstricks.css
+SHA1-Digest: vWkLxg/VstwoapD//q3hJSHxP/g=
+
+Name: icons/gif/knime64.gif
+SHA1-Digest: pHLeQ3/2PfTMCw5bqaujYoTBw58=
+
+Name: icons/knime_light_bulb_icon.png
+SHA1-Digest: EUlJn1uiomrSFsPqXS6UUvIIcqI=
+
+Name: intro/css/img/kn-footer-top.gif
+SHA1-Digest: DwTqQ7L9Zj07zwvoh7fT9WgNGmQ=
+
+Name: intro/css/img/kn-body-bg.gif
+SHA1-Digest: am06Cru5F10n0IXgHPVBqFVJGtc=
+
+Name: icons/knime128.xpm
+SHA1-Digest: jVnzlr64w4ddLFousygEoxMTqF0=
+
+Name: icons/bmp/knime64.bmp
+SHA1-Digest: biVNbycNygK2iMNJwpfK+AsuwQ0=
+
+Name: icons/bmp/knime32.bmp
+SHA1-Digest: WupnNg+ZahhyzSSbAqwzmp3YCcs=
+
+Name: intro/introContent.xml
+SHA1-Digest: lLzcmDhGnmAPvRHeyUE+plNYqAU=
+
+Name: plugin.properties
+SHA1-Digest: V3amLnCu+3K3MiPEiw4dIkGsk+E=
+
+Name: gs.css
+SHA1-Digest: 2OZybJt6/tqt220iWbvU18OsPHE=
+
+Name: about.ini
+SHA1-Digest: BffmofVJGgOsObFiCDw1hukDhPA=
+
+Name: schema/splashExtension.exsd
+SHA1-Digest: kse7CsbOOw0czwf1TTja9NlyYLI=
+
+Name: intro/css/img/KNIME_logo_white.png
+SHA1-Digest: 2KT/AEUHshPHEaa4bZKjD5HHO1Y=
+
+Name: plugin.xml
+SHA1-Digest: XZLTCElqMm0MyzErwpkmARqOSb4=
+
+Name: intro/css/knime.css
+SHA1-Digest: K2uNZTwGGfNINqvrPRusAcx6z7Q=
+
+Name: intro/css/img/launch.png
+SHA1-Digest: EqrvNDPqGE8ij8HfjUk8/CPOA4U=
+
+Name: icons/bmp/knime128.bmp
+SHA1-Digest: G/bkbbqZGh9efzoO3hnPqminPmQ=
+
+Name: splash.bmp
+SHA1-Digest: Y8CotWRaLY9dJKGWFpOwRPfFtXo=
+
+Name: intro/css/img/launch_hover.png
+SHA1-Digest: 8EoD0r3A/ds29gZR8xm3a0/otpY=
+
+Name: icons/bmp/knime32x8.bmp
+SHA1-Digest: OGOPD3Xnc1XAB6Rlkw+Q2dGcLGY=
+
+Name: icons/knime.ico
+SHA1-Digest: GlpSegwGpBqwWTUqEWGO5KktRZg=
+
+Name: icons/knime.icns
+SHA1-Digest: FBOV+uMhshBV3xHmlHrUADOX9xw=
+

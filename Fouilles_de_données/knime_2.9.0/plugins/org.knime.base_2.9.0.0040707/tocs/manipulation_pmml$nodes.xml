@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+
+<toc label="PMML" link_to="../org.knime.base/tocs/manipulation_pmml.xml#manipulation_pmml">
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.preproc.pmml.columnfilter.DataColumnSpecFilterPMMLNodeFactory.html" label="Column Filter (PMML)"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.preproc.normalize.PMMLNormalizerDeNodeFactory.html" label="Denormalizer (PMML)"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.preproc.pmml.columnTrans.Many2OneColPMMLNodeFactory.html" label="Many2One (PMML)"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.preproc.normalize.NormalizePMMLNodeFactory.html" label="Normalizer (PMML)"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.preproc.normalize.PMMLNormalizerApplyNodeFactory.html" label="Normalizer Apply (PMML)"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.preproc.pmml.numbertostring.NumberToStringNodeFactory.html" label="Number To String (PMML)"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.preproc.pmml.binner.BinnerNodeFactory.html" label="Numeric Binner (PMML)"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.preproc.columnTrans.One2ManyColPMMLNodeFactory.html" label="One2Many (PMML)"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.preproc.pmml.stringtonumber.StringToNumberNodeFactory.html" label="String To Number (PMML)"/>
+</toc>

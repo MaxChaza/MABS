@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+
+<toc label="Parallel Execution" link_to="../org.knime.base/tocs/labs_parallelexec.xml#labs_parallelexec">
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.core.node.workflow.virtual.parallelchunkend.ParallelChunkEndNodeFactory.html" label="Parallel Chunk End"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.core.node.workflow.virtual.parallelchunkend.ParallelChunkEndMultiPortNodeFactory.html" label="Parallel Chunk End (multi port)"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.core.node.workflow.virtual.parallelchunkstart.ParallelChunkStartNodeFactory.html" label="Parallel Chunk Start"/>
+</toc>

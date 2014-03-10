@@ -1,0 +1,90 @@
+Signature-Version: 1.0
+SHA1-Digest-Manifest-Main-Attributes: Y1DPHK1CGFleOMdc2uWji5JEF1w=
+Created-By: 1.6.0_27 (Sun Microsystems Inc.)
+SHA1-Digest-Manifest: bGGZ1VcvjQzD7bJoPLS76PA8sHY=
+
+Name: jsnippets/org.knime.base.node.jsnippet.JavaSnippetNodeFactory/Li
+ ne Total_1e40c7f7-673d-4023-8c7e-df116734837a.xml
+SHA1-Digest: DFbycWRFi5+Uwx63o/8lCzyB1jQ=
+
+Name: LICENSE.txt
+SHA1-Digest: d3jcVAEYKU6/HXkEvcZKXp+IOL8=
+
+Name: knime-jsnippets.jar
+SHA1-Digest: ynfon3c5mhF7G0zj1DoHHIEgRc0=
+
+Name: html/nodes/org.knime.base.node.jsnippet.JavaEditVarNodeFactory.h
+ tml
+SHA1-Digest: 7c36EA5pnfMnEL+4eIpiwo03kik=
+
+Name: html/nodes/org.knime.base.node.rules.engine.RuleEngineFilterNode
+ Factory.html
+SHA1-Digest: nI7suIyI+mR3mxZzSy+PaDlc7Jw=
+
+Name: tocs/manipulation_pmml$nodes.xml
+SHA1-Digest: NYECwO/0pQ+kM1+BQqAMeVp5mq0=
+
+Name: tocs/misc_java-snippet$nodes.xml
+SHA1-Digest: KlRdrglCAhO006+/IvUotKqZAKA=
+
+Name: tocs/manipulation_row_row-filter$nodes.xml
+SHA1-Digest: o2tY9u5cEjtxR9QY7X99hE5uhnQ=
+
+Name: html/nodes/org.knime.base.node.rules.engine.RuleEngineNodeFactor
+ y.html
+SHA1-Digest: dJpEkPvftFAUEIy/LUZf2BOIakM=
+
+Name: tocs/flowcontrol_variables$nodes.xml
+SHA1-Digest: vr9ifgZ0QakwcKBLruDYLNgCuYc=
+
+Name: schema/templaterepository.exsd
+SHA1-Digest: wpBDra8ueL11H6ZT3Ng+6ltZSYQ=
+
+Name: lib/snippet_inc/commons-lang3-3.0.1.jar
+SHA1-Digest: wmqGZ63jIh1dYjOFHqUmZSgqEQw=
+
+Name: icons/preview.png
+SHA1-Digest: 53RkzhRB+qyEKXMYW+9n1n2KoCI=
+
+Name: tocs/manipulation_column_column-transform$nodes.xml
+SHA1-Digest: nTBpNpPqFDp3fV6ZJfqEQ2NMLLI=
+
+Name: lib/snippet_inc/readme.txt
+SHA1-Digest: Y0eUCQQzhMXXIsWMa3a7fqZWwjk=
+
+Name: html/nodes/org.knime.base.node.preproc.stringmanipulation.String
+ ManipulationNodeFactory.html
+SHA1-Digest: 19FLGjhA/DREvKQPpT80BRfEitM=
+
+Name: README.TXT
+SHA1-Digest: 3PX8BTkbE8JEr4ZDSTuda0UWYvI=
+
+Name: html/nodes/org.knime.base.node.rules.engine.RuleEngineSplitterNo
+ deFactory.html
+SHA1-Digest: 4+4lWPeeRdCq8lhGaAGGWS9bDoA=
+
+Name: tocs/manipulation_row_row-other$nodes.xml
+SHA1-Digest: MwuyFoWkU3jb2Ba92ijWEcE8raE=
+
+Name: html/nodes/org.knime.base.node.rules.engine.RuleEngineVariableNo
+ deFactory.html
+SHA1-Digest: bswQGaHJbrY1orhWCuZ8UnZ/BXc=
+
+Name: html/nodes/org.knime.base.node.jsnippet.JavaSnippetNodeFactory.h
+ tml
+SHA1-Digest: VqDTVwet0KI89ZdBLwlYbMBMvIU=
+
+Name: html/nodes/org.knime.base.node.rules.engine.pmml.PMMLRuleSetPred
+ ictorNodeFactory.html
+SHA1-Digest: dwKKj0RAYfTYVR6iaV7Tujep2Cw=
+
+Name: plugin.xml
+SHA1-Digest: /+pwCN+nDOHo1Mx6df/XTpoVfrE=
+
+Name: html/nodes/org.knime.base.node.rules.engine.pmml.PMMLRuleEditorN
+ odeFactory.html
+SHA1-Digest: utj7qgT9ooza8ZWxY8yAPq8vAM4=
+
+Name: lib/prompt.jar
+SHA1-Digest: VAEujit54bu4ZNCcHO9kOFXobN8=
+

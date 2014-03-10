@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+
+<toc label="Statistics" link_to="../org.knime.base/tocs/statistics.xml#statistics">
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.preproc.correlation.compute.CorrelationComputeNodeFactory.html" label="Linear Correlation"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.preproc.correlation.filter.CorrelationFilterNodeFactory.html" label="Correlation Filter"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.viz.statistics2.Statistics3NodeFactory.html" label="Statistics"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.viz.crosstable.CrosstabNodeFactory.html" label="Crosstab"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.preproc.valcount.ValueCounterNodeFactory.html" label="Value Counter"/>
+</toc>

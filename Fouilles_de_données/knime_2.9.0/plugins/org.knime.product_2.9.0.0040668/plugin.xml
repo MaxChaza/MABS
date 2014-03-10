@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+
+   <extension-point id="splashExtension" name="KNIME Splash Extensions" schema="schema/splashExtension.exsd"/>
+
+   <extension
+         id="KNIME_APPLICATION"
+         point="org.eclipse.core.runtime.applications">
+      <application>
+         <run
+               class="org.knime.product.rcp.KNIMEApplication">
+         </run>
+      </application>
+   </extension>
+   <extension
+         id="KNIME_PRODUCT"
+         name="KNIME Workbench - Standalone Version"
+         point="org.eclipse.core.runtime.products">
+      <product
+            name="KNIME"
+            application="org.knime.product.KNIME_APPLICATION"
+            description="An Integrated and Extensible Data Analysis Workbench">
+         <property
+               name="windowImage"
+               value="icons/gif/knime16.gif">
+         </property>
+         <property
+               name="aboutText"
+               value="%aboutText">
+         </property>
+         <property
+               name="aboutImage"
+               value="icons/gif/knime128.gif">
+         </property>
+         <property
+               name="appName"
+               value="KNIME">
+         </property>
+         <property
+               name="preferenceCustomization"
+               value="plugin_customization.ini">
+         </property>
+         <property
+               name="windowImages"
+               value="icons/gif/knime16.gif,icons/gif/knime32.gif,icons/gif/knime48.gif,icons/gif/knime64.gif,icons/gif/knime128.gif">
+         </property>
+      </product>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            name="New KNIME Project..."
+            description="Creates a new KNIME project"
+            id="open.new.project.wizard">
+      </command>
+   </extension>
+   <extension
+         id="KNIME_BATCH_APPLICATION"
+         point="org.eclipse.core.runtime.applications">
+      <application>
+         <run
+               class="org.knime.product.headless.KNIMEBatchApplication">
+         </run>
+      </application>
+   </extension>
+   <extension
+         point="org.eclipse.ui.splashHandlers">
+      <splashHandler
+            class="org.knime.product.KNIMESplashHandler"
+            id="org.knime.product.splashHandlers.extensible">
+      </splashHandler>
+      <splashHandlerProductBinding
+            splashId="org.knime.product.splashHandlers.extensible"
+            productId="org.knime.product.KNIME_PRODUCT">
+      </splashHandlerProductBinding>
+   </extension>
+   <extension
+         point="org.eclipse.ui.intro">
+      <intro
+            class="org.eclipse.ui.intro.config.CustomizableIntroPart"
+            icon="icons/gif/knime16.gif"
+            id="org.knime.product.intro"
+            label="Welcome to KNIME">
+      </intro>
+      <introProductBinding
+            introId="org.knime.product.intro"
+            productId="org.knime.product.KNIME_PRODUCT">
+      </introProductBinding>
+   </extension>
+   <extension
+         point="org.eclipse.ui.intro.config">
+      <config
+            introId="org.knime.product.intro"
+            content="intro/introContent.xml"
+            id="org.knime.product.config">
+         <presentation
+               home-page-id="org.knime.product.presentation"
+               standby-page-id="org.knime.product.presentation">
+            <implementation
+                  kind="html">
+            </implementation>
+         </presentation>
+      </config>
+   </extension>
+   <extension
+         point="org.eclipse.ui.intro.configExtension">
+      <action
+            replaces="runAction?pluginId=org.knime.product&amp;class=org.knime.product.rcp.NewProjectWizardIntroAction"
+            name="createProjectFromIntro">
+      </action>
+      <action
+            replaces="runAction?pluginId=org.knime.workbench.ui&amp;class=org.knime.workbench.ui.p2.actions.InvokeInstallSiteAction"
+            name="launchInstallWizard">
+      </action>
+   </extension>
+   <extension
+         point="org.eclipse.equinox.p2.engine.actions">
+      <action
+            class="org.knime.product.p2.actions.ShellExec"
+            name="shellexec"
+            touchpointType="org.eclipse.equinox.p2.osgi"
+            touchpointVersion="1.0.0"
+            version="1.0.0">
+      </action>
+   </extension>
+</plugin>

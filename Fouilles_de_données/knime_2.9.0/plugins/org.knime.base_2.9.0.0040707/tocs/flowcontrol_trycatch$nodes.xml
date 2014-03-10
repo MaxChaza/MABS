@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+
+<toc label="Error Handling" link_to="../org.knime.base/tocs/flowcontrol_trycatch.xml#flowcontrol_trycatch">
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.flowcontrol.trycatch.genericcatch.DBPortCatchNodeFactory.html" label="Catch Errors (DB Ports)"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.flowcontrol.trycatch.genericcatch.DataPortCatchNodeFactory.html" label="Catch Errors (Data Ports)"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.flowcontrol.trycatch.genericcatch.GenericPortCatchNodeFactory.html" label="Catch Errors (Generic Ports)"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.flowcontrol.trycatch.genericcatch.VariablePortCatchNodeFactory.html" label="Catch Errors (Var Ports)"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.flowcontrol.trycatch.generictry.DataPortTryNodeFactory.html" label="Try (Data Ports)"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.flowcontrol.trycatch.generictry.VariablePortTryNodeFactory.html" label="Try (Variable Ports)"/>
+<topic href="PLUGINS_ROOT/org.knime.base/html/nodes/org.knime.base.node.flowcontrol.trycatch.inverter.ActiveBranchInverterNodeFactory.html" label="Active Branch Inverter"/>
+</toc>
