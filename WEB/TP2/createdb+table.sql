@@ -1,0 +1,9 @@
+CREATE DATABASE `masterbio` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+CREATE TABLE `masterbio`.`users` (
+`id` MEDIUMINT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+`username` VARCHAR( 60 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL ,
+`password` VARCHAR( 60 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
+) ENGINE = MYISAM ;
+
+
+ 
