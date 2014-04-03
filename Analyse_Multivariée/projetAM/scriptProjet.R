@@ -43,28 +43,73 @@ tabmil
 altitude
 tabtraits
 
-# Table Présence espèce -> Milieu
+# Table Milieu -> Présence espèce 376 x 98
 tabsp
 
-# Table Milieu -> Altitude
+# Table Milieu -> Altitude 376 x 2
 altitude
 
-# Table Espèces -> Taille
+# Table Espèces -> Taille 98 x 5
 tabtraits[,15:19]
 tabEspSize = tabtraits[,15:19];
 tabEspSize
 
-# Table Taille -> Milieu
+# Table Milieu -> Taille 376 x 5 
 tabMilSize = matrix(0, nrow=376, ncol=5) ;
 colnames(tabMilSize) <- colnames(tabEspSize)
-rownames(tabMilSize) <- rownames(tabAlt)
+rownames(tabMilSize) <- rownames(altitude)
 tabMilSize
 
-for (i in 1:376) {
+
+for(i in 1:376) {
   for(j in 1:98){
     if(tabsp[i,j]==1){
-      
-      tabMilSize[i,]+=1;
+      k=1;
+      while(k<5 && tabEspSize[j,k]==0){
+        k=k+1;  
+      }
+      tabMilSize[i,k]=tabMilSize[i,k]+1;
     }
   }
-}
+};
+
+tabMilSize
+
+# Trouver le nombre d'altitude différents par milieu 
+altName=c()
+alt=0;
+nbAlt=0;
+for(i in 1:376) {
+  if(altitude[i,]>alt)
+  {
+    alt=altitude[i,];
+    # créer un vecteur pour nommer les lignes(altitudes)
+    altName=append(altName,alt ,after=length(altName));
+    nbAlt=nbAlt+1;
+  }
+};
+nbAlt
+altName
+# On trouve 183 Altitude différentes
+
+# Table Altitude -> Taille 183 x 5 
+tabAltSize = matrix(0, nrow=183, ncol=5) ;
+
+colnames(tabAltSize) <- colnames(tabEspSize);
+rownames(tabAltSize) <- altName;
+tabAltSize[183,5]
+
+alt=0;
+nbAlt=0;
+for(i in 1:376) {
+  for(k in 1:5){
+    if(altitude[i,]>alt)
+    {
+      alt=altitude[i,];
+      nbAlt=nbAlt+1;
+    }
+    tabAltSize[nbAlt,k]=tabAltSize[nbAlt,k]+tabMilSize[i,k];  
+  }
+};
+
+tabAltSize
