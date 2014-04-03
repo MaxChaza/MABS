@@ -1,0 +1,7 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="./css/mycss.css">
+<script language="javascript" type="text/javascript" src="./js/ajaxCode.js"></script>
+</head>
+<body>
+<h1><center>The most flexible web site in the world<center></h1>

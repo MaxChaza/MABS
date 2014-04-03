@@ -1,0 +1,60 @@
+<html>
+<head>
+<script language="javascript" type="text/javascript">
+
+function CreateAjaxObject(){//we test if AJAX supported and we create and object
+//syntax browser dependent;-)
+var ajax;
+if (window.XMLHttpRequest) // code for IE7+, Firefox, Chrome, Opera, Safari
+  {
+  ajax= new XMLHttpRequest(); 
+  }  else {
+          if (window.ActiveXObject) // code for IE6, IE5
+                {ajax = new ActiveXObject("Microsoft.XMLHTTP");
+                 } else ajax=null;
+          };
+return ajax;
+}
+
+var ajax;//global variable here
+
+function showSuggestion(str)
+{
+if (str.length==0)  //nothing has been written
+  {
+  document.getElementById("txtHint").innerHTML="";
+  }
+ajax=CreateAjaxObject();
+if (ajax==null)
+  {
+  alert ("Your browser does not support XMLHTTP!");
+  }
+var url="suggestPHP.php";
+url=url+"?q="+str;      //we concatenate the parameter
+url=url+"&sid="+Math.random();
+ajax.onreadystatechange=displayOptions; //we execute this function in case...
+ajax.open("GET",url,true); //we open the request
+ajax.send(null); //we send the request
+}
+
+function displayOptions()
+{
+if (ajax.readyState==4) //we have received the answer
+  {
+  document.getElementById("suggest").innerHTML=ajax.responseText; //we display
+  }
+}
+
+</script>
+</head>
+<body>
+<center>Un programme AJAX qui propose des pr&eacute;noms
+</center><br/><br/>
+<br/><br/><br/>
+<form>
+First Name: <input type="text" id="txt1" onkeyup="showSuggestion(this.value)" />
+</form>
+<p>Suggestions: 
+<div id="suggest"></div></p>
+</body>
+</html>
