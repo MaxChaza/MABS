@@ -113,3 +113,34 @@ for(i in 1:376) {
 };
 
 tabAltSize
+
+# Test de chi2 test si on peut dire que les variables sont independantes
+res=chisq.test(tabAltSize);
+res$expected; # Ce qu'on aurai attendu si 2 variable indépendantes
+res; # p-value = 9.692e-05 < 0.05 on ne peut pas dire que les variables sont indépendantes.
+
+# AFC 
+afc1=dudi.coa(tabAltSize);
+2
+names(afc1);
+sum(afc1$eig)*sum(tabAltSize);
+afc1$eig[1]/sum(afc1$eig)+afc1$eig[2]/sum(afc1$eig);# 70% d'info conservée
+scatter(afc1);# On voit ici la participation de chaque variable à l'effet de dépendance
+
+# ACM -> Pour trouver la position des individus qui maximise les pourcentages
+# de varible expliquée,en moyenne, pour toutes les variables quantitatives
+tabmil;
+limiteBasse = altitude[1,];
+tailleGroup = (altitude[375,]-limiteBasse)/5;
+tailleGroup # 442 Tranche altitudinale
+
+tabmilTranch = tabmil;
+nbAlt=0;
+
+for(i in 1:376) {
+  trancheAlt = round((tabmil$Alti[i]-limiteBasse)/tailleGroup);
+  tabmilTranch$Alti[i]=trancheAlt;  
+};
+tabmilTranch;
+
+acm1=dudi.acm(tabmilTranch);
