@@ -143,4 +143,16 @@ for(i in 1:376) {
 };
 tabmilTranch;
 
+# Convertir les données en factors
+tabmilTranch$phot <- factor(tabmilTranch$phot)
+tabmilTranch$roch <- factor(tabmilTranch$roch)
+tabmilTranch$ <- factor(tabmilTranch$phot)
+tabmilTranch$phot <- factor(tabmilTranch$phot)
+tabmilTranch$phot <- factor(tabmilTranch$phot)
+tabmilTranch$phot <- factor(tabmilTranch$phot)
+tabmilTranch$phot <- factor(tabmilTranch$phot)
+tabmilTranch$phot <- factor(tabmilTranch$phot)
+tabmilTranch$phot <- factor(tabmilTranch$phot)
+tabmilTranch$phot <- factor(tabmilTranch$phot)
+
 acm1=dudi.acm(tabmilTranch);
