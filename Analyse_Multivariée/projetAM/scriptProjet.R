@@ -1,4 +1,5 @@
 install.packages("ade4");
+setwd("~/MABS/Analyse_Multivariée/projetAM");
 library(ade4);
 tabsp=read.table("tabsp.txt", header=TRUE);
 tabtraits=read.table("tabtraits.txt", header=TRUE);
@@ -138,21 +139,48 @@ tabmilTranch = tabmil;
 nbAlt=0;
 
 for(i in 1:376) {
-  trancheAlt = round((tabmil$Alti[i]-limiteBasse)/tailleGroup);
-  tabmilTranch$Alti[i]=trancheAlt;  
+  trancheAlt = round((tabmil[i,14]-limiteBasse)/tailleGroup);
+  tabmilTranch[i,14]=trancheAlt;  
 };
-tabmilTranch;
+tabmilTranch$;
 
 # Convertir les données en factors
 tabmilTranch$phot <- factor(tabmilTranch$phot)
 tabmilTranch$roch <- factor(tabmilTranch$roch)
-tabmilTranch$ <- factor(tabmilTranch$phot)
-tabmilTranch$phot <- factor(tabmilTranch$phot)
-tabmilTranch$phot <- factor(tabmilTranch$phot)
-tabmilTranch$phot <- factor(tabmilTranch$phot)
-tabmilTranch$phot <- factor(tabmilTranch$phot)
-tabmilTranch$phot <- factor(tabmilTranch$phot)
-tabmilTranch$phot <- factor(tabmilTranch$phot)
-tabmilTranch$phot <- factor(tabmilTranch$phot)
+tabmilTranch$habi <- factor(tabmilTranch$habi)
+tabmilTranch$eau <- factor(tabmilTranch$eau)
+tabmilTranch$neig <- factor(tabmilTranch$neig)
+tabmilTranch$pent <- factor(tabmilTranch$pent)
+tabmilTranch$arbrp <- factor(tabmilTranch$arbrp)
+tabmilTranch$arbrf <- factor(tabmilTranch$arbrf)
+tabmilTranch$arbup <- factor(tabmilTranch$arbup)
+tabmilTranch$arbuf <- factor(tabmilTranch$arbuf)
+tabmilTranch$buip <- factor(tabmilTranch$buip)
+tabmilTranch$buif <- factor(tabmilTranch$buif)
+tabmilTranch$herb <- factor(tabmilTranch$herb)
+tabmilTranch$Alti <- factor(tabmilTranch$Alti)
 
-acm1=dudi.acm(tabmilTranch);
+acm2=dudi.acm(tabmilTranch);
+2
+
+names(acm2);
+scatter.dudi(acm2);
+scatter(acm2);
+
+# Lien entre modalités
+acm2$cr
+#phot  9.320972e-02 0.220479868
+#roch  7.390560e-01 0.008022951
+#habi  6.374103e-02 0.161106965
+#eau   3.950927e-06 0.022191088
+#neig  5.975102e-01 0.001375443
+#pent  1.049935e-01 0.232763103
+#arbrp 2.104585e-01 0.453588249
+#arbrf 3.510524e-01 0.192829078
+#arbup 1.459337e-01 0.473599554
+#arbuf 7.688010e-01 0.005026408
+#buip  3.175865e-02 0.240334229
+#buif  6.856669e-01 0.010184266
+#herb  4.226433e-02 0.299754183
+#Alti  8.546112e-01 0.288011514
+
