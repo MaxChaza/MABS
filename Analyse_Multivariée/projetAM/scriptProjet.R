@@ -12,6 +12,7 @@ tabmil2=tabmil[,2:14];
 tabmil=cbind(tabmil2, altitude);
 
 cca1 = cca(tabsp,tabmil);
+2
 names(cca1);
 s.corcircle(cca1$as);
 s.label(cca1$l1, clab = 0, cpoi = 1.5);
@@ -23,7 +24,9 @@ s.match(cca1$li, cca1$ls, clab=0.5);
 install.packages("vegan");
 library(vegan);
 cca2=cca(tabsp, tabmil); 
+2
 plot(cca2);
+
 cca3=cca(tabsp~Alti + phot + roch,tabmil );
 plot(cca3);
 anova(cca3);
@@ -44,16 +47,13 @@ tabmil
 altitude
 tabtraits
 
-# Table Milieu -> Présence espèce 376 x 98
-tabsp
-
-# Table Milieu -> Altitude 376 x 2
-altitude
-
 # Table Espèces -> Taille 98 x 5
 tabtraits[,15:19]
 tabEspSize = tabtraits[,15:19];
 tabEspSize
+
+# Table Milieu -> Présence espèce 376 x 98
+tabsp[376,]
 
 # Table Milieu -> Taille 376 x 5 
 tabMilSize = matrix(0, nrow=376, ncol=5) ;
@@ -75,6 +75,13 @@ for(i in 1:376) {
 };
 
 tabMilSize
+
+###################################################
+# Effet de l'altitude sur la taille
+###################################################
+
+# Table Milieu -> Altitude 376 x 2
+altitude
 
 # Trouver le nombre d'altitude différents par milieu 
 altName=c()
@@ -128,8 +135,10 @@ sum(afc1$eig)*sum(tabAltSize);
 afc1$eig[1]/sum(afc1$eig)+afc1$eig[2]/sum(afc1$eig);# 70% d'info conservée
 scatter(afc1);# On voit ici la participation de chaque variable à l'effet de dépendance
 
-# ACM -> Pour trouver la position des individus qui maximise les pourcentages
-# de varible expliquée,en moyenne, pour toutes les variables quantitatives
+# Meme démarche pour l'altitude avec des tranche d'altitude 
+# Choisir la meilleure solution
+
+# Table Altitude -> Taille 5 x 5 
 tabmil;
 limiteBasse = altitude[1,];
 tailleGroup = (altitude[375,]-limiteBasse)/5;
@@ -142,7 +151,150 @@ for(i in 1:376) {
   trancheAlt = round((tabmil[i,14]-limiteBasse)/tailleGroup);
   tabmilTranch[i,14]=trancheAlt;  
 };
-tabmilTranch$;
+tabmilTranch;
+
+tabAltSizeTranch = matrix(0, nrow=6, ncol=5) ;
+
+colnames(tabAltSizeTranch) <- colnames(tabEspSize);
+rownames(tabAltSizeTranch) <- c("Alt_0","Alt_1","Alt_2","Alt_3","Alt_4","Alt_5");
+tabAltSizeTranch
+
+tabmilTranch$Alti
+
+for(i in 1:376) {
+  for(k in 1:5){
+    tabAltSizeTranch[tabmilTranch$Alti[i]+1,k]=tabAltSizeTranch[tabmilTranch$Alti[i]+1,k]+tabMilSize[i,k];  
+  }
+};
+
+tabAltSizeTranch
+
+# Test de chi2 test si on peut dire que les variables sont independantes
+resTranch=chisq.test(tabAltSizeTranch);
+resTranch$expected; # Ce qu'on aurai attendu si 2 variable indépendantes
+resTranch; # p-value = 9.692e-05 < 0.05 on ne peut pas dire que les variables sont indépendantes.
+
+# AFC 
+afc1Tranch=dudi.coa(tabAltSizeTranch);
+2
+names(afc1Tranch);
+sum(afc1Tranch$eig)*sum(tabAltSizeTranch);
+afc1Tranch$eig[1]/sum(afc1Tranch$eig)+afc1Tranch$eig[2]/sum(afc1Tranch$eig);# 97,67% d'info conservée
+scatter(afc1Tranch);# On voit ici la participation de chaque variable à l'effet de dépendance
+
+###################################################
+# Effet de la présence de roche dans le milieu
+###################################################
+
+# Table Milieu -> Roch 376 x 2
+tabmil$roch[376]
+tabMilSize
+
+# Table Roch -> Taille 4 x 5 
+tabRochSize = matrix(0, nrow=4, ncol=5) ;
+colnames(tabRochSize) <- colnames(tabEspSize);
+rownames(tabRochSize) <- c("Roch_0","Roch_1","Roch_2","Roch_3");
+
+sum(tabMilSize[1])
+
+
+for(i in 1:376) {
+  for(k in 1:5){
+    tabRochSize[(tabmil$roch[i])+1,k]=tabRochSize[(tabmil$roch[i])+1,k]+tabMilSize[i,k];  
+  }
+};
+
+tabRochSize
+
+# Test de chi2 test si on peut dire que les variables sont independantes
+resRoch=chisq.test(tabRochSize);
+resRoch$expected; # Ce qu'on aurai attendu si 2 variable indépendantes
+resRoch; # p-value = 2.2e-16 < 0.05 on ne peut pas dire que les variables sont indépendantes.
+
+# AFC 
+afc1Roch=dudi.coa(tabRochSize);
+2
+names(afc1Roch);
+sum(afc1Roch$eig)*sum(tabRochSize);
+afc1Roch$eig[1]/sum(afc1Roch$eig)+afc1Roch$eig[2]/sum(afc1Roch$eig);# 99,5% d'info conservée
+scatter(afc1Roch);# On voit ici la participation de chaque variable à l'effet de dépendance
+afc1Roch
+
+#####################################################
+# Effet du recouvrement de la strate arborée 
+# (0 absent, 1, 2, 3 maximum) à feuillage persistant
+#####################################################
+
+# Table Milieu -> Arbrp 376 x 2
+tabmil$arbrp
+tabMilSize
+
+# Table Arbrp -> Taille 4 x 5 
+tabArbrpSize = matrix(0, nrow=4, ncol=5) ;
+colnames(tabArbrpSize) <- colnames(tabEspSize);
+rownames(tabArbrpSize) <- c("Arbrp_0","Arbrp_1","Arbrp_2","Arbrp_3");
+
+for(i in 1:376) {
+  for(k in 1:5){
+    tabArbrpSize[(tabmil$arbrp[i])+1,k]=tabArbrpSize[(tabmil$arbrp[i])+1,k]+tabMilSize[i,k];  
+  }
+};
+
+tabArbrpSize
+
+# Test de chi2 test si on peut dire que les variables sont independantes
+resArbrp=chisq.test(tabArbrpSize);
+resArbrp$expected; # Ce qu'on aurai attendu si 2 variable indépendantes
+resArbrp; # p-value = 2.2e-16 < 0.05 on ne peut pas dire que les variables sont indépendantes.
+
+# AFC 
+afc2Arbrp=dudi.coa(tabArbrpSize);
+2
+sum(afc2Arbrp$eig)*sum(tabArbrpSize);
+afc2Arbrp$eig[1]/sum(afc2Arbrp$eig)+afc2Arbrp$eig[2]/sum(afc2Arbrp$eig);# 99,5% d'info conservée
+scatter(afc2Arbrp);# On voit ici la participation de chaque variable à l'effet de dépendance
+
+
+#####################################################
+# Effet de L'indice photique 
+#####################################################
+
+# Table Milieu -> Phot 376 x 2
+tabmil$phot
+tabMilSize
+
+# Table Phot -> Taille 5 x 5 
+tabPhotSize = matrix(0, nrow=5, ncol=5) ;
+colnames(tabPhotSize) <- colnames(tabEspSize);
+rownames(tabPhotSize) <- c("Phot_1","Phot_2","Phot_3","Phot_4","Phot_5");
+
+for(i in 1:376) {
+  for(k in 1:5){
+    tabPhotSize[(tabmil$phot[i]),k]=tabPhotSize[(tabmil$phot[i]),k]+tabMilSize[i,k];  
+  }
+};
+
+tabPhotSize
+
+# Test de chi2 test si on peut dire que les variables sont independantes
+resPhot=chisq.test(tabPhotSize);
+resPhot$expected; # Ce qu'on aurai attendu si 2 variable indépendantes
+resPhot; # p-value = 2.2e-16 < 0.05 on ne peut pas dire que les variables sont indépendantes.
+
+# AFC 
+afc2Phot=dudi.coa(tabPhotSize);
+2
+sum(afc2Phot$eig)*sum(tabPhotSize);
+afc2Phot$eig[1]/sum(afc2Phot$eig)+afc2Phot$eig[2]/sum(afc2Phot$eig);# 98,5% d'info conservée
+scatter(afc2Phot);# On voit ici la participation de chaque variable à l'effet de dépendance
+
+#############################################################################
+# ACM -> Pour trouver la position des individus qui maximise les pourcentages
+# de varible expliquée, en moyenne, pour toutes les variables quantitatives
+#############################################################################
+
+tabmilTranch;
+
 
 # Convertir les données en factors
 tabmilTranch$phot <- factor(tabmilTranch$phot)
