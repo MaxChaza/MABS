@@ -1,0 +1,9 @@
+version 20030428 some corrections of the documentation  
+version 20030410 initial
+version 20040126 stable
+version 20061029 a few change to conform to the rigorous ANSI standard
+                 imposed by gcc4.1.1. LGLINE was also increased from 1000
+	         to 5000 in "const.h" as one may want the line of the
+	         output description file to be longer than 1000
+	         characters. Finally, a new option "-duprev" was added to
+	         the command line of bactgeneSHOW

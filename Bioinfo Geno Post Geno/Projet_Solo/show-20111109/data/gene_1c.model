@@ -1,0 +1,443 @@
+BEGIN_STATE
+state_id: intergenic{INTER}
+BEGIN_TRANSITIONS
+	type: 1
+	state: start+_1{START+_1}
+	ptrans: 0.005
+	type: 1
+	state: stop-_3*1 
+	ptrans: 0.0025
+	type: 1
+	state: stop-_3*2 
+	ptrans: 0.0025
+	type: 1
+	state: intergenic{INTER}
+	ptrans: 0.99
+END_TRANSITIONS
+BEGIN_OBSERVATIONS
+	seq: genomic_dna
+	type: 1
+	order: 2
+	pobs: random
+END_OBSERVATIONS
+END_STATE
+
+BEGIN_STATE
+state_id: start+_1{START+_1}
+BEGIN_TRANSITIONS
+	type: 0
+	state: start+_2
+	ptrans: 1
+END_TRANSITIONS
+BEGIN_OBSERVATIONS
+	seq: genomic_dna
+	label: start+_1_obs
+	type: 1
+	order: 0
+	pobs: 
+		0.3 0.3 0 0.4
+END_OBSERVATIONS
+END_STATE
+
+BEGIN_STATE
+state_id: start+_2
+BEGIN_TRANSITIONS
+	type: 0
+	state: start+_3!START+!{START+_3}
+	ptrans: 1
+END_TRANSITIONS
+BEGIN_OBSERVATIONS
+	seq: genomic_dna
+	type: 0
+	order: 0
+	pobs: 
+		0 0 0 1
+END_OBSERVATIONS
+END_STATE
+
+BEGIN_STATE
+state_id: start+_3!START+!{START+_3}
+BEGIN_TRANSITIONS
+	type: 0
+	state: coding1+_1{CDS+_1}!CDS+_1!
+	ptrans: 1
+END_TRANSITIONS
+BEGIN_OBSERVATIONS
+	seq: genomic_dna
+	type: 0
+	order: 0
+	pobs: 
+		0 1 0 0
+END_OBSERVATIONS
+END_STATE
+
+
+###########CODING 1+
+BEGIN_STATE
+state_id: coding1+_1{CDS+_1}!CDS+_1!
+BEGIN_TRANSITIONS
+	type: 0
+	state: coding1+_2{CDS+_2}!CDS+_2!
+	ptrans: 1
+END_TRANSITIONS
+BEGIN_OBSERVATIONS
+	seq: genomic_dna
+	type: 1
+	order: 2
+	pobs: 
+		random
+END_OBSERVATIONS
+END_STATE
+
+BEGIN_STATE
+state_id: coding1+_2{CDS+_2}!CDS+_2!
+BEGIN_TRANSITIONS
+	type: 0
+	state: coding1+_3{CDS+_3}!CDS+_3!
+	ptrans: 1
+END_TRANSITIONS
+BEGIN_OBSERVATIONS
+	seq: genomic_dna
+	type: 1
+	order: 2
+	pobs: 
+		random
+END_OBSERVATIONS
+END_STATE
+
+BEGIN_STATE
+state_id: coding1+_3{CDS+_3}!CDS+_3!
+BEGIN_TRANSITIONS
+	label: trans_cod+_3
+	type: 1
+	state: coding1+_1{CDS+_1}!CDS+_1!
+	ptrans: 0.99
+	type: 1
+	state: stop+_1
+	ptrans: 0.01	
+END_TRANSITIONS
+BEGIN_OBSERVATIONS
+	seq: genomic_dna
+	type: 1
+	order: 2
+	pobs: 
+		random
+	excepted: TGA TAG TAA
+END_OBSERVATIONS
+END_STATE
+############## FIN CODING 1+
+
+
+
+BEGIN_STATE
+state_id: stop+_1
+BEGIN_TRANSITIONS
+	type: 1
+	state: stop+_2*1
+	ptrans: 0.5
+
+	type: 1
+	state: stop+_2*2
+	ptrans: 0.5
+END_TRANSITIONS
+BEGIN_OBSERVATIONS
+	seq: genomic_dna
+	type: 0
+	order: 0
+	pobs: 
+		0 0 0 1
+END_OBSERVATIONS
+END_STATE
+
+BEGIN_STATE
+state_id: stop+_2*1
+BEGIN_TRANSITIONS
+	type: 1
+	state: stop+_3*1{STOP+_3}
+	ptrans: 0.5
+	type: 1
+	state: stop+_3*2{STOP+_3}
+	ptrans: 0.5
+END_TRANSITIONS
+BEGIN_OBSERVATIONS
+	seq: genomic_dna
+	type: 0
+	order: 0
+	pobs: 
+		1 0 0 0
+END_OBSERVATIONS
+END_STATE
+
+BEGIN_STATE
+state_id: stop+_2*2
+BEGIN_TRANSITIONS
+	type: 0
+	state: stop+_3*2{STOP+_3}
+	ptrans: 1
+END_TRANSITIONS
+BEGIN_OBSERVATIONS
+	seq: genomic_dna
+	type: 0
+	order: 0
+	pobs: 
+		0 1 0 0
+END_OBSERVATIONS
+END_STATE
+
+BEGIN_STATE
+state_id: stop+_3*1{STOP+_3}
+BEGIN_TRANSITIONS
+	type: 1
+	state: intergenic{INTER}
+	ptrans: 0.96
+	type: 1
+	state: start+_1{START+_1}
+	ptrans: 0.01
+	type: 1
+	state: start+_2
+	ptrans: 0.01
+	type: 1
+	state: stop-_3*1 
+	ptrans: 0.01	
+	type: 1
+	state: stop-_3*2 
+	ptrans: 0.01	
+END_TRANSITIONS
+BEGIN_OBSERVATIONS
+	seq: genomic_dna
+	type: 0
+	order: 0
+	pobs: 
+		0 1 0 0
+END_OBSERVATIONS
+END_STATE
+
+BEGIN_STATE
+state_id: stop+_3*2{STOP+_3}
+BEGIN_TRANSITIONS
+	type: 1
+	state: intergenic{INTER}
+	ptrans: 0.96
+	type: 1
+	state: start+_1{START+_1}
+	ptrans: 0.01
+	type: 1
+	state: start+_2
+	ptrans: 0.01
+	type: 1
+	state: stop-_3*1 
+	ptrans: 0.01	
+	type: 1
+	state: stop-_3*2 
+	ptrans: 0.01	
+END_TRANSITIONS
+BEGIN_OBSERVATIONS
+	seq: genomic_dna
+	type: 0
+	order: 0
+	pobs: 
+		1 0 0 0
+END_OBSERVATIONS
+END_STATE
+
+BEGIN_STATE
+state_id: stop-_3*1 
+BEGIN_TRANSITIONS
+	type: 1
+	state: stop-_2*1
+	ptrans: 0.5
+	type: 1
+	state: stop-_2*2
+	ptrans: 0.5
+END_TRANSITIONS
+BEGIN_OBSERVATIONS
+	seq: genomic_dna
+	type: 0
+	order: 0
+	pobs: 
+		0 0 0 1
+END_OBSERVATIONS
+END_STATE
+
+BEGIN_STATE
+state_id: stop-_3*2 
+BEGIN_TRANSITIONS
+	type: 0
+	state: stop-_2*2
+	ptrans: 1
+END_TRANSITIONS
+BEGIN_OBSERVATIONS
+	seq: genomic_dna
+	type: 0
+	order: 0
+	pobs: 
+		0 0 1 0
+END_OBSERVATIONS
+END_STATE
+
+BEGIN_STATE
+state_id: stop-_2*1
+BEGIN_TRANSITIONS
+	type: 0
+	state: stop-_1{STOP-_1}
+	ptrans: 1
+END_TRANSITIONS
+BEGIN_OBSERVATIONS
+	seq: genomic_dna
+	type: 0
+	order: 0
+	pobs: 
+		0 0 1 0
+END_OBSERVATIONS
+END_STATE
+
+BEGIN_STATE
+state_id: stop-_2*2
+BEGIN_TRANSITIONS
+	type: 0
+	state: stop-_1{STOP-_1}
+	ptrans: 1
+END_TRANSITIONS
+BEGIN_OBSERVATIONS
+	seq: genomic_dna
+	type: 0
+	order: 0
+	pobs: 
+		0 0 0 1
+END_OBSERVATIONS
+END_STATE
+
+BEGIN_STATE
+state_id: stop-_1{STOP-_1}
+BEGIN_TRANSITIONS
+	type: 0
+	state: coding1-_3{CDS-_3}!CDS-_3!
+	ptrans: 1
+END_TRANSITIONS
+BEGIN_OBSERVATIONS
+	seq: genomic_dna
+	type: 0
+	order: 0
+	pobs: 
+		1 0 0 0
+END_OBSERVATIONS
+END_STATE
+
+########## CODING 1-
+
+BEGIN_STATE
+state_id: coding1-_3{CDS-_3}!CDS-_3!
+BEGIN_TRANSITIONS
+	type: 0
+	state: coding1-_2{CDS-_2}!CDS-_2!
+	ptrans: 1
+END_TRANSITIONS
+BEGIN_OBSERVATIONS
+	seq: genomic_dna
+	type: 1
+	order: 2
+	pobs: 
+		random
+END_OBSERVATIONS
+END_STATE
+
+BEGIN_STATE
+state_id: coding1-_2{CDS-_2}!CDS-_2!
+BEGIN_TRANSITIONS
+	type: 0
+	state: coding1-_1{CDS-_1}!CDS-_1!
+	ptrans: 1
+END_TRANSITIONS
+BEGIN_OBSERVATIONS
+	seq: genomic_dna
+	type: 1
+	order: 2
+	pobs: 
+		random
+END_OBSERVATIONS
+END_STATE
+
+BEGIN_STATE
+state_id: coding1-_1{CDS-_1}!CDS-_1!
+BEGIN_TRANSITIONS
+	label: trans_cod-_1
+	type: 1
+	state: coding1-_3{CDS-_3}!CDS-_3!
+	ptrans: 0.99
+	type: 1
+	state: start-_3!START-!
+	ptrans: 0.01
+END_TRANSITIONS
+BEGIN_OBSERVATIONS
+	seq: genomic_dna
+	type: 1
+	order: 2
+	pobs: 
+		random
+	excepted: TCA TTA CTA
+END_OBSERVATIONS
+END_STATE
+
+####### FIN CODING 1-
+
+
+BEGIN_STATE
+state_id: start-_3!START-!
+BEGIN_TRANSITIONS
+	type: 0
+	state: start-_2
+	ptrans: 1
+END_TRANSITIONS
+BEGIN_OBSERVATIONS
+	seq: genomic_dna
+	type: 0
+	order: 0
+	pobs: 
+		0 0 1 0
+END_OBSERVATIONS
+END_STATE
+
+BEGIN_STATE
+state_id: start-_2
+BEGIN_TRANSITIONS
+	type: 1
+	state: start-_1{START-_1}
+	ptrans: 0.98
+	type: 1
+	state: stop-_3*1
+	ptrans: 0.01
+	type: 1
+	state: stop-_3*2
+	ptrans: 0.01
+END_TRANSITIONS
+BEGIN_OBSERVATIONS
+	seq: genomic_dna
+	type: 0
+	order: 0
+	pobs: 
+		1 0 0 0
+END_OBSERVATIONS
+END_STATE
+
+BEGIN_STATE
+state_id: start-_1{START-_1}
+BEGIN_TRANSITIONS
+	type: 1
+	state: intergenic{INTER}
+	ptrans: 0.98
+	type: 1
+	state: stop-_3*1 
+	ptrans: 0.01
+	type: 1
+	state: stop-_3*2 
+	ptrans: 0.01
+END_TRANSITIONS
+BEGIN_OBSERVATIONS
+	seq: genomic_dna
+	tied_to: start+_1_obs
+	type: 3
+END_OBSERVATIONS
+END_STATE
+
+
+

@@ -1,0 +1,349 @@
+#!@PERL@ -w
+
+use strict;
+
+my $prefix = "@prefix@";
+my $exec_prefix = "@exec_prefix@";
+my $bindir = "@bindir@";
+my $libexecdir = "@libexecdir@";
+my $datadir = "@datadir@";
+
+my $seqfile;
+my $outputfile;
+my $tempdir;
+my $rnafastafile;
+my $modelid;
+my $rbsmodel;
+my $p_cds_threshold;
+my $p_start_threshold;
+my $p_rbs_threshold;
+my $fittedmodel;
+my $oformat;
+my $duprev = 0;
+
+my $modelfile;
+my %emparams;
+$emparams{'niter'} = 20;
+$emparams{'epsi'} = 0.01;
+$emparams{'niter_sel'} = 50;
+$emparams{'nb_sel'} = 10;
+$emparams{'eps_sel'} = 10;
+
+if (@ARGV < 4) {
+    die "
+Usage: bactgeneSHOW -i <dnafile> -o <outputfile> [options]
+  <dnafile>     Fasta file containing the DNA sequences to be analyze
+  <outputfile>  Annotation file containing the results of the gene detection
+OPTIONS:
+1- CHOICE OF THE MODEL AND PARAMETERS ESTIMATION
+  -m      <modelid>   1c | 2c | 3c | 4c | 1c_si | 2c_si | 3c_si | 4c_si
+                      Number of coding types to use; \"si\" stands for short 
+                      intergenic (default is 4c_si)
+  -rna    <rnafile>   Optional fasta file containing DNA sequences 
+                      of structural RNA genes (used only in order 
+                      to compute nucleotides frequencies)
+  -rbs    <modelid>   m0 | m1 | double_m0 (default is m0) 
+  -em     <niter epsi niter_sel nb_sel eps_sel>
+                      Parameters for the EM algorithm
+                      (default is 20 0.01 50 10 10)
+  -duprev             This switch causes the program to use a \"symmetrized\" 
+                      version of the data on parameter estimation: a reverse
+                      copy of the data is added to the original data set.
+2- USE OF AN ALREADY ESTIMATED MODEL
+  -fm     <showmodel> A bacterial gene detection model already fitted by SHOW
+                      If used, any option of the SECTION 1- is ignored
+3- TEMP FILES AND PARAMATERS OF THE GENE PREDICTION OUTPUT
+  -d      <tmpdir>    Location of the \"temporary\" directory where SHOW I/O
+                      used by the Perl script will be located
+                      (default is /tmp/)
+  -cdst   <float>     Probability threshold for CDS prediction (default is 0.5)
+  -startt <float>     Probability threshold for multiple starts prediction 
+                      (default is 0.1)
+  -rbst   <float>     Probability threshold for RBS prediction (default is 0.1)
+  -of     <format>    GFF | GBK
+                      File format of the output annotation file
+                      GFF: 'Gene-Finding Format' or 'General Feature Format'
+                      GBK: GenBank annotation format
+                      (default is GBK)
+";
+} else {
+    my $arg;
+    while ($arg = shift @ARGV) {
+	if ($arg eq '-i') {
+	    $seqfile = shift @ARGV;
+	    print "input DNA sequence file $seqfile\n";
+	} elsif ($arg eq '-o') {
+	    $outputfile = shift @ARGV;
+	    print "output annotation file will be $outputfile\n";
+	} elsif ($arg eq '-d') {
+	    $tempdir = shift @ARGV;
+	    if ($tempdir !~ /\/$/) {
+		$tempdir .= '/';
+	    }
+	    print "temporary directory location will be $tempdir\n";
+	} elsif ($arg eq '-rna') {
+	    $rnafastafile = shift @ARGV;
+	    print "rna sample file $rnafastafile will be used\n";
+	} elsif ($arg eq '-m') {
+	    $modelid = shift @ARGV;
+	} elsif ($arg eq '-rbs') {
+	    $rbsmodel = shift @ARGV;
+	} elsif ($arg eq '-cdst') {
+	    $p_cds_threshold = shift @ARGV;
+	} elsif ($arg eq '-startt') {
+	    $p_start_threshold = shift @ARGV;
+	} elsif ($arg eq '-rbst') {
+	    $p_rbs_threshold = shift @ARGV;
+	} elsif ($arg eq '-em') {
+	    $emparams{'niter'} = shift @ARGV;
+	    $emparams{'epsi'} = shift @ARGV;
+	    $emparams{'niter_sel'} = shift @ARGV;
+	    $emparams{'nb_sel'} = shift @ARGV;
+	    $emparams{'eps_sel'} = shift @ARGV;
+	}  elsif ($arg eq '-fm') {
+	    $fittedmodel = shift @ARGV;
+	}  elsif ($arg eq '-of') {
+	    $oformat = shift @ARGV;
+	} elsif ($arg eq '-duprev') {
+	    $duprev = 1;
+	} else {
+	    die "unknown argument key $arg\n";
+	}
+    }
+    defined $seqfile || die "-i argument needed";
+    defined $outputfile || die "-o argument needed";
+    
+    if ( ! defined $tempdir ) {
+	$tempdir=$ENV{'TMP'};
+	if (!defined $tempdir) {
+	    $tempdir='/tmp';
+	} 
+	$tempdir.='/';
+	print "default temporary directory location is $tempdir\n" ;
+
+    }
+
+    if ( defined $fittedmodel && ! defined $modelid) {
+	print "already fitted model file $fittedmodel will be used\n";
+    } elsif ( ! defined $modelid) {
+	$modelfile = "gene_4c_si.model";
+	print "model file $datadir/$modelfile will be used\n";
+    } elsif ($modelid eq '1c' || $modelid eq '2c' || 
+	     $modelid eq '3c' || $modelid eq '4c' || $modelid eq '4c_si'|| 
+	     $modelid eq '3c_si'|| $modelid eq '2c_si'|| $modelid eq '1c_si') {
+	$modelfile = 'gene_'.$modelid.'.model';
+	print "model file $datadir/$modelfile will be used\n";
+    } else {
+	die "unknown showmodel $modelid\n";
+    }
+
+    if ( ! defined $p_cds_threshold || $p_cds_threshold > 1 
+	 || $p_cds_threshold < 0.0001) {
+	$p_cds_threshold = 0.5;
+    }
+
+    if ( ! defined $p_start_threshold || $p_start_threshold > 1 
+	 || $p_start_threshold < 0.01) {
+	$p_start_threshold = 0.1;
+    }
+
+    if ( ! defined $p_rbs_threshold || $p_rbs_threshold > 1 
+	 || $p_rbs_threshold < 0.01) {
+	$p_rbs_threshold = 0.1;
+    }
+
+    if ( ! defined $rbsmodel || ($rbsmodel ne 'm0' && $rbsmodel ne 'm1' 
+				 && $rbsmodel ne 'double_m0') ) {
+	$rbsmodel = 'm0';
+    }
+
+    if ( ! defined $oformat ) {
+	$oformat = 'GBK';
+    }
+
+}
+
+my $sys;
+
+my $shortfilename = $seqfile;
+if ($seqfile =~ /([^\/]+)$/) {
+    $shortfilename = $1;
+}
+
+my $id = scalar localtime();
+$id =~ s/\s+/_/g;
+$id =~ s/\:/./g;
+
+if ($tempdir !~ /\/$/) {
+    $tempdir .= '/';
+}
+
+$tempdir .= "SHOWRUN_".$shortfilename."_".$id;
+
+$sys = system("@MKDIR@ $tempdir");
+($sys == 0) || die "error while creating directory $tempdir\n";
+
+$sys = system("@CP@ $seqfile $tempdir/");
+($sys == 0) || die "error while copying $seqfile in $tempdir\n";
+
+
+
+
+ 
+if ($duprev==0) {
+open(OUT_SET, ">$tempdir/$shortfilename.set") || die "could not open $tempdir/$shortfilename.set in write mode\n";
+print OUT_SET <<EOF;
+seq_identifier: genomic_dna
+seq_type: dna
+seq_files:
+           $shortfilename
+EOF
+close(OUT_SET);
+} else {
+    &rev_comp("$tempdir/$shortfilename", "$tempdir/$shortfilename".'.rev');
+open(OUT_SET, ">$tempdir/$shortfilename.set") || die "could not open $tempdir/$shortfilename.set in write mode\n";
+print OUT_SET <<EOF;
+seq_identifier: genomic_dna
+seq_type: dna
+seq_files:
+	$shortfilename
+	$shortfilename.rev
+EOF
+close(OUT_SET);	
+}
+
+if (! defined $fittedmodel) {
+	$sys = system("@CP@  $tempdir/$shortfilename.set $tempdir/start.set");
+	($sys == 0) || die "error while copying start.set in $tempdir\n";
+}
+
+$sys = system("@CP@  $tempdir/$shortfilename.set $tempdir/final.set");
+($sys == 0) || die "error while copying final.set in $tempdir\n";
+
+if (! defined $fittedmodel) {
+    $sys = system("@CP@  $datadir/$modelfile $tempdir/");
+    ($sys == 0) || die "error while copying $datadir/$modelfile in $tempdir\n";
+} else {
+    $sys = system("@CP@  $fittedmodel $tempdir/");
+    ($sys == 0) || die "error while copying $fittedmodel in $tempdir\n";
+}
+
+if (! defined $fittedmodel && defined $rnafastafile) {
+    $sys = system("@CP@ $rnafastafile $tempdir/");
+    ($sys == 0) || die "unable to copy $rnafastafile in $tempdir\n";
+
+    if ($rnafastafile =~ /([^\/]+)$/) {
+       $rnafastafile = $1;
+    }
+
+    $sys = system("$libexecdir/invcomp.pl $tempdir/$rnafastafile $tempdir/$rnafastafile.invcomp");
+    ($sys == 0) || die "unable to reverse complement sequence of $tempdir/$rnafastafile\n";
+
+    $sys = system("$libexecdir/add_state_to_intergenic.pl $tempdir/$modelfile $tempdir/rna_$modelfile $tempdir/$rnafastafile rna+ 2");
+    ($sys == 0) || die "error while adding state corresponding to rna+\n";
+
+    $sys = system("$libexecdir/add_state_to_intergenic.pl $tempdir/rna_$modelfile $tempdir/rna_$modelfile $tempdir/$rnafastafile.invcomp rna- 2");
+    ($sys == 0) || die "error while adding state corresponding to rna-\n";    
+
+    $modelfile = "rna_".$modelfile;
+}
+
+if (! defined $fittedmodel) {
+    open(OUT_EM, ">$tempdir/em.desc") || die "could not open $tempdir/em.desc in write mode\n";
+    print OUT_EM "estep_segment: 20000\nestep_overlap: 4000\nniter: ".$emparams{'niter'}."\nepsi: ".$emparams{'epsi'}."\nniter_sel: ".$emparams{'niter_sel'}."\nnb_sel: ".$emparams{'nb_sel'}."\neps_sel: ".$emparams{'eps_sel'}."\n";
+    close(OUT_EM);
+}
+
+print "$tempdir\n";
+
+if (! defined $fittedmodel) {
+    print "first part of parameters estimation\n";
+    $sys = system("cd $tempdir && $bindir/show_emfit -model $modelfile -seq start.set -em em.desc 1> show.stdout1 2> show.stderr1");
+#($sys == 0) || die "error while running SHOW\n";
+    
+    $sys = system("cd $tempdir && $libexecdir/add_rbs_ovlp.pl start.model startbis.model $rbsmodel");
+#($sys == 0) || die "error while adding RBS to the model\n";
+    
+    print "last part of parameters estimation\n";
+    $sys = system("cd $tempdir && $bindir/show_emfit -model startbis.model -seq final.set -em em.desc 1> show.stdout2 2> show.stderr2");
+#($sys == 0) || die "error while running SHOW\n";
+}
+
+open(OUT_EMFINAL, ">$tempdir/em_final.desc") || die "could not open $tempdir/em_final.desc in write mode\n";
+print OUT_EMFINAL <<EOF;
+estep_segment: 20000
+estep_overlap: 4000
+niter: 0
+epsi: 0.01
+EOF
+close(OUT_EMFINAL);
+
+open(OUT_SEQ, ">$tempdir/seqfile.txt") || die "could not open $tempdir/seqfile.txt in write mode\n";
+print OUT_SEQ <<EOF;
+$shortfilename
+EOF
+close(OUT_SEQ);
+
+
+print "annotation file creation\n";
+if (! defined $fittedmodel) {
+    $sys = system("cd $tempdir && $libexecdir/create_annot_file.pl $bindir seqfile.txt final.model $p_cds_threshold $p_start_threshold $p_rbs_threshold $oformat");
+#($sys == 0) || die "error while creating annotation file\n";
+} else {
+    my $showmodel = $fittedmodel;
+    if ($fittedmodel =~ /([^\/]+)$/) {
+	$showmodel = $1;
+    }
+    $sys = system("cd $tempdir && $libexecdir/create_annot_file.pl $bindir seqfile.txt $showmodel $p_cds_threshold $p_start_threshold $p_rbs_threshold $oformat");
+    
+}
+
+my $annotfile = $shortfilename;
+$annotfile =~ s/[^\.]+$/annot/;
+
+$sys = system("@CP@ $tempdir/$annotfile $outputfile");
+($sys == 0) || die "error while copying annotation file\n";
+
+exit 0;
+
+
+sub rev_comp {
+    my $infile = shift @_;
+    my $outfile = shift @_;
+    
+    my $line;
+    my @sequences;
+
+    open(IN_SEQ, "<$infile") || die "cannot open \"".$infile."\" in read mode";
+    $line = <IN_SEQ>;
+    while ($line !~ /^>/) {
+	$line = <IN_SEQ>;	
+    }
+    while ($line && $line =~ /^>/) {
+	chomp($line);
+	my $comment = $line;
+	my $seq = '';
+	$line = <IN_SEQ>;	
+	while ($line && $line !~ /^>/) {
+	    $seq .= $line;
+	    $line = <IN_SEQ>;	
+	}	
+	$seq =~ s/\s+//g;
+	push @sequences, {'comment'=>$comment, 'seq'=>$seq};
+    }
+    close(IN_SEQ);
+
+    open(OUT_SEQ, ">$outfile") || die "cannot open \"".$outfile."\" in write mode";
+    foreach my $sequence (@sequences) {
+	my $comment = $sequence->{'comment'};
+	$comment =~ s/^>/>rev/;
+	print OUT_SEQ $comment, "\n";
+	my $seq = $sequence->{'seq'};
+	$seq = reverse($seq);
+	$seq =~ tr/acgtACGT/tgcaTGCA/;
+	$seq =~ s/(\w{60})/$1\n/g;
+	chomp($seq);
+	print OUT_SEQ $seq, "\n";
+    }
+    close(OUT_SEQ);
+}

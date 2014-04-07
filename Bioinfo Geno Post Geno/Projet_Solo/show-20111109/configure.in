@@ -1,0 +1,39 @@
+dnl Process this file with autoconf to produce a configure script.
+AC_INIT(src/CodingSeq.cc)
+AM_INIT_AUTOMAKE(show,20061029)
+AM_CONFIG_HEADER(src/config.h)
+
+dnl Checks for programs.
+AC_PROG_AWK
+AC_PROG_CC
+AC_PROG_INSTALL
+AC_PROG_LN_S
+AC_PROG_CXX
+AC_SUBST(PERL)
+AC_PATH_PROG(PERL,perl)
+AC_SUBST(GSLCONFIG)
+AC_PATH_PROG(GSLCONFIG,gsl-config)
+AC_SUBST(CP)
+AC_PATH_PROG(CP,cp)
+AC_SUBST(MKDIR)
+AC_PATH_PROG(MKDIR,mkdir)
+
+dnl Checks for libraries.
+
+AC_CHECK_LIB(m, main)
+
+dnl Checks for header files.
+AC_HEADER_STDC
+
+dnl Checks for typedefs, structures, and compiler characteristics.
+AC_C_CONST
+AC_C_INLINE
+
+dnl Checks for library functions.
+
+dnl Checks for other stuff.
+AC_SUBST(MODULEDIR)
+MODULEDIR=$prefix/libexec
+
+AC_OUTPUT(Makefile src/Makefile scripts/Makefile scripts/add_rbs_ovlp.pl scripts/add_state_to_intergenic.pl scripts/bactgeneSHOW scripts/create_annot_file.pl scripts/invcomp.pl scripts/rbs_model.pm scripts/overlaps_model.pm data/Makefile)
+
