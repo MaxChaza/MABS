@@ -99,7 +99,7 @@ public class Experience {
     
     @Override
     public String toString() {
-        StringBuffer s = null;
+        StringBuffer s = new StringBuffer();;
         s.append("Experience{");
         s.append("id=");
         s.append(id);

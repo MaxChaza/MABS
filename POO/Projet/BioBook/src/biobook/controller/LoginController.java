@@ -7,9 +7,11 @@
 package biobook.controller;
 
 import biobook.model.Chercheur;
+import biobook.util.BioBookException;
 import biobook.view.LoginView;
 import biobook.view.MainFrame;
 import java.util.ArrayList;
+import java.util.Collection;
 import javax.swing.JTextField;
 
 /**
@@ -21,6 +23,7 @@ public class LoginController {
     public GererChercheur gererChercheur;
     public LoginController(LoginView loginView){
         logView=loginView;
+        gererChercheur = new GererChercheur();
     }
 
     public void clickValider(String log, String pass) {
@@ -38,7 +41,13 @@ public class LoginController {
 //        }
     }  
     
-    public void clickAnnuler() {
+    public void clickAnnuler() throws BioBookException {
+        Chercheur ch = gererChercheur.getChercheur("toto");
+        if(ch!=null){
+            System.out.println(ch);
+        }else
+            System.out.println("merde");
+                
         logView.setVisible(false);
         logView.dispose(); 
     } 

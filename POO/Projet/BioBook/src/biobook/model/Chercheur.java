@@ -20,7 +20,7 @@ public class Chercheur {
     
     private ArrayList<Experience> listExperiences;
 
-    public Chercheur(String password, String name, String firstName, String mail, String login) {
+    public Chercheur(String login, String password, String name, String firstName, String mail) {
         this.password = password;
         this.name = name;
         this.firstName = firstName;
@@ -110,23 +110,22 @@ public class Chercheur {
 
     @Override
     public String toString() {
-        StringBuffer s = null;
-        s.append("Chercheur{");
-        s.append("password=");
-        s.append(password);
-        s.append(", name=");
-        s.append(name);
-        s.append(", firstName=");
-        s.append(firstName);
-        s.append(", mail=");
-        s.append(mail);
-        s.append(", login=");
+        StringBuffer s = new StringBuffer();;
+        s.append("#############\n"); 
+        s.append("login=");
         s.append(login);
-        s.append(", Expériences=");
+        s.append("\npassword=");
+        s.append(password);
+        s.append(",\nname=");
+        s.append(name);
+        s.append(",\nfirstName=");
+        s.append(firstName);
+        s.append(",\nmail=");
+        s.append(mail);
+        s.append(",\nExperiences=");
         for(Experience exp : listExperiences)
             s.append(exp);
         
-        s.append('}');
         return s.toString();
     }
 }

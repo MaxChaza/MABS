@@ -7,6 +7,7 @@
 package biobook.view;
 
 import biobook.controller.LoginController;
+import biobook.util.BioBookException;
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dimension;
@@ -17,6 +18,8 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.EventListener;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -100,6 +103,7 @@ public class LoginView extends JFrame implements ActionListener{
         // On fixe le panel sur la fenètre
         setName("Login");
         setVisible(true);
+        
     }
 
     @Override
@@ -108,6 +112,10 @@ public class LoginView extends JFrame implements ActionListener{
             ctrl.clickValider(log.getText(), pass.getText());
         
         if(e.getSource()==annuler)
+            try {
             ctrl.clickAnnuler();
+        } catch (BioBookException ex) {
+            Logger.getLogger(LoginView.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
