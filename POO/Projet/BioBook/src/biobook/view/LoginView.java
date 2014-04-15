@@ -12,8 +12,11 @@ import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Image;
+import java.awt.Insets;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -66,21 +69,43 @@ public class LoginView extends JFrame implements ActionListener{
         nord.add(jLabelImage);
 
         //Panel du formulaire
-        JPanel jPanelLogin = new JPanel(new GridLayout(2,2));
+        JPanel jPanelLogin = new JPanel(new GridBagLayout());
 
         JLabel titreLog = new JLabel("Login ");
         log = new JTextField("Toto");
         log.setPreferredSize(new Dimension(100,20));
-        jPanelLogin.add(titreLog);
-        jPanelLogin.add(log);
+        
+        GridBagConstraints gridBagConstraintsLog = new GridBagConstraints();
+        gridBagConstraintsLog.gridx = 1;
+        gridBagConstraintsLog.gridy = 0;
+        gridBagConstraintsLog.fill = GridBagConstraints.HORIZONTAL;
+        
+        GridBagConstraints gridBagConstraintsTitreLog = new GridBagConstraints();
+        gridBagConstraintsTitreLog.gridx = 0;
+        gridBagConstraintsTitreLog.gridy = 0;
+        gridBagConstraintsTitreLog.fill = GridBagConstraints.HORIZONTAL;
+        gridBagConstraintsTitreLog.insets = new Insets(0, 0, 0, 50);
+        
+        jPanelLogin.add(titreLog, gridBagConstraintsTitreLog);
+        jPanelLogin.add(log,gridBagConstraintsLog);
 
         
         JLabel titrePass = new JLabel("Password ");
         pass = new JPasswordField("");
         pass.setPreferredSize(new Dimension(100,20));
 
-        jPanelLogin.add(titrePass);
-        jPanelLogin.add(pass);
+        GridBagConstraints gridBagConstraintsPass = new GridBagConstraints();
+        gridBagConstraintsPass.gridx = 1;
+        gridBagConstraintsPass.gridy = 1;
+        gridBagConstraintsPass.fill = GridBagConstraints.HORIZONTAL;
+        
+        GridBagConstraints gridBagConstraintsTitrePass = new GridBagConstraints();
+        gridBagConstraintsTitrePass.gridx = 0;
+        gridBagConstraintsTitrePass.gridy = 1;
+        gridBagConstraintsTitrePass.fill = GridBagConstraints.HORIZONTAL;
+        
+        jPanelLogin.add(titrePass, gridBagConstraintsTitrePass);
+        jPanelLogin.add(pass, gridBagConstraintsPass);
 
         nord.add(jPanelLogin);
         // Panel des boutons
@@ -96,7 +121,6 @@ public class LoginView extends JFrame implements ActionListener{
         jPanelBouton.add(valider);
 
         // Panel général
-        
         c.add(BorderLayout.CENTER, nord);
         c.add(BorderLayout.SOUTH, jPanelBouton);
 

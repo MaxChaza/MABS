@@ -5,13 +5,14 @@
 package biobook.model;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 /**
  *
  * @author Maxime
  */
 public class Experience {
-    private Integer id;
+    private String labelExperience;
     private String problem;
     private String context;
     private String stateOfTheArt;
@@ -19,21 +20,21 @@ public class Experience {
     private String createur;
     
     private ArrayList<Materiel> listMateriels;
-    private ArrayList<Chercheur> listChercheurs;
+    private HashSet<Chercheur> listChercheurs;
 
-    public Experience(Integer id, String problem, String context, String stateOfTheArt, String assumption, String createur) {
-        this.id = id;
+    public Experience(String label, String problem, String context, String stateOfTheArt, String assumption, String createur) {
+        this.labelExperience = label;
         this.problem = problem;
         this.context = context;
         this.stateOfTheArt = stateOfTheArt;
         this.assumption = assumption;
         this.createur = createur;
         this.listMateriels = new ArrayList<Materiel>();
-        this.listChercheurs = new ArrayList<Chercheur>();
+        this.listChercheurs = new HashSet<Chercheur>();
     }
 
-    public Integer getId() {
-        return id;
+    public String getLabel() {
+        return labelExperience;
     }
 
     public String getProblem() {
@@ -60,12 +61,12 @@ public class Experience {
         return listMateriels;
     }
 
-    public ArrayList<Chercheur> getListChercheur() {
+    public HashSet<Chercheur> getListChercheur() {
         return listChercheurs;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setLabel(String label) {
+        this.labelExperience = label;
     }
 
     public void setProblem(String problem) {
@@ -92,7 +93,7 @@ public class Experience {
         this.listMateriels = listMateriels;
     }
 
-    public void setListChercheur(ArrayList<Chercheur> listChercheur) {
+    public void setListChercheur(HashSet<Chercheur> listChercheur) {
         this.listChercheurs = listChercheur;
     }
     
@@ -100,32 +101,30 @@ public class Experience {
     @Override
     public String toString() {
         StringBuffer s = new StringBuffer();;
-        s.append("Experience{");
-        s.append("id=");
-        s.append(id);
-        s.append(", problem=");
+        s.append("#############\n"); 
+        s.append("label=");
+        s.append(labelExperience);
+        s.append(", \nproblem=");
         s.append(problem);
-        s.append(", context=");
+        s.append(", \ncontext=");
         s.append(context);
-        s.append(", stateOfTheArt=");
+        s.append(", \nstateOfTheArt=");
         s.append(stateOfTheArt);
-        s.append(", assumption=");
+        s.append(", \nassumption=");
         s.append(assumption);
-        s.append(", assumption=");
+        s.append(", \nassumption=");
         s.append(createur);
-        s.append(", chercheurs=");
-        for(Chercheur chercheur : listChercheurs)
-            s.append(chercheur.toString());
+        s.append(", \nchercheurs=");
+        for(Chercheur chercheur : listChercheurs){
+            s.append(chercheur.getLogin());
+            s.append("\n");
+        }
         
-        
-        s.append(", materiels=");
-        for(Materiel mat : listMateriels)
+        s.append(", \nmateriels=");
+        for(Materiel mat : listMateriels){
             s.append(mat.toString());
-        
-        s.append('}');
+            s.append("\n");
+        }
         return s.toString();
     }
-    
-    
-
 }

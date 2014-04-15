@@ -5,6 +5,7 @@
 package biobook.model;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Objects;
 
 /**
@@ -18,7 +19,7 @@ public class Chercheur {
     private String mail;
     private String login;
     
-    private ArrayList<Experience> listExperiences;
+    private HashSet<Experience> listExperiences;
 
     public Chercheur(String login, String password, String name, String firstName, String mail) {
         this.password = password;
@@ -26,7 +27,7 @@ public class Chercheur {
         this.firstName = firstName;
         this.mail = mail;
         this.login = login;
-        this.listExperiences = new ArrayList<Experience>();
+        this.listExperiences = new HashSet<Experience>();
     }
     
     public Chercheur(String password, String name, String firstName, String mail) {
@@ -38,7 +39,7 @@ public class Chercheur {
         log.append(".");
         log.append(name);
         this.login = log.toString();
-        this.listExperiences = new ArrayList<Experience>();
+        this.listExperiences = new HashSet<Experience>();
     }
 
     public String getPassword() {
@@ -61,7 +62,7 @@ public class Chercheur {
         return login;
     }
 
-    public ArrayList<Experience> getListExperiences() {
+    public HashSet<Experience> getListExperiences() {
         return listExperiences;
     }
 
@@ -85,7 +86,7 @@ public class Chercheur {
         this.login = login;
     }
 
-    public void setListExperiences(ArrayList<Experience> listExperiences) {
+    public void setListExperiences(HashSet<Experience> listExperiences) {
         this.listExperiences = listExperiences;
     }
 
@@ -123,8 +124,10 @@ public class Chercheur {
         s.append(",\nmail=");
         s.append(mail);
         s.append(",\nExperiences=");
-        for(Experience exp : listExperiences)
-            s.append(exp);
+        for(Experience exp : listExperiences){
+            s.append(exp.getLabel());
+            s.append("\n");
+        }
         
         return s.toString();
     }

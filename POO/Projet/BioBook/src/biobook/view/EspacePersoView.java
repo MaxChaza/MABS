@@ -6,12 +6,19 @@
 
 package biobook.view;
 
+import biobook.controller.EspacePersoController;
 import javax.swing.JPanel;
 
 /**
  *
  * @author Maxime
  */
+
 public class EspacePersoView extends JPanel{
+    MainFrame main;
     
+    public EspacePersoView(MainFrame m)
+    {
+        main = m;
+    }
 }

@@ -9,18 +9,18 @@ package biobook.model;
  * @author Maxime
  */
 public class Materiel {
-    private String name;
+    private String labelMateriel;
 
     public Materiel(String name) {
-        this.name = name;
+        this.labelMateriel = name;
     }
 
     public String getName() {
-        return name;
+        return labelMateriel;
     }
 
      @Override
     public String toString() { 
-        return name;
+        return labelMateriel;
     }
 }
