@@ -6,9 +6,13 @@
 
 package biobook.view;
 
+import biobook.controller.GererChercheur;
 import biobook.controller.LoginController;
 import biobook.util.BioBookException;
+import biobook.util.SendEmail;
+import biobook.util.SendEmailTest;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -23,6 +27,7 @@ import java.awt.event.ActionListener;
 import java.util.EventListener;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -30,7 +35,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.UIManager;
 import javax.swing.WindowConstants;
+import javax.swing.border.Border;
 
 /**
  *
@@ -53,7 +60,9 @@ public class LoginView extends JFrame implements ActionListener{
     public Container c;
     public JPanel tout;
     LoginController ctrl ;
-    public LoginView(){
+    
+    public LoginView() throws BioBookException{
+        
         ctrl = new LoginController(this);
         // Caractéristiques JFrame
         setMinimumSize(new Dimension(500, 300));
@@ -65,7 +74,7 @@ public class LoginView extends JFrame implements ActionListener{
         tout = new JPanel(new BorderLayout());
         // Composants de la fenetre
         JPanel nord = new JPanel(new GridLayout());
-        //Image
+        // Image
         
         
         ImageIcon image = new ImageIcon("C:\\Users\\Maxime\\Documents\\MABS\\POO\\Projet\\BioBook\\src\\biobook\\image\\fox.jpg");
@@ -77,8 +86,8 @@ public class LoginView extends JFrame implements ActionListener{
         //Panel du formulaire
         JPanel jPanelLogin = new JPanel(new GridBagLayout());
 
-        JLabel titreLog = new JLabel("Login ");
-        log = new JTextField("Toto");
+        JLabel titreLog = new JLabel("Login");
+        log = new JTextField("");
         log.setPreferredSize(new Dimension(100,20));
         
         GridBagConstraints gridBagConstraintsLog = new GridBagConstraints();
@@ -147,9 +156,38 @@ public class LoginView extends JFrame implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource()==valider)
-            ctrl.clickValider();
-        
+        if(e.getSource()==valider){
+            boolean logIsSet = false;
+            boolean passIsSet = false;
+            if(!log.getText().equals("")){
+                logIsSet=true;
+                log.setBorder(UIManager.getBorder("TextField.border"));
+            }
+            else
+            {
+                //  create a line border with the specified color and width
+		Border border = BorderFactory.createLineBorder(Color.RED, 1);
+                log.setBorder(border);
+            }
+            if(!pass.getText().equals("")){
+                passIsSet=true;
+                pass.setBorder(UIManager.getBorder("TextField.border"));
+            }
+            else
+            {
+                //  create a line border with the specified color and width
+		Border border = BorderFactory.createLineBorder(Color.RED, 1);
+                pass.setBorder(border);
+            }
+            if(logIsSet && passIsSet)
+            {
+                try {
+                ctrl.clickValider();
+                } catch (BioBookException ex) {
+                    Logger.getLogger(LoginView.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
         if(e.getSource()==annuler)
             try {
             ctrl.clickAnnuler();

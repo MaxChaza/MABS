@@ -14,6 +14,7 @@ import biobook.view.LoginView;
 import biobook.view.MainFrame;
 import java.util.ArrayList;
 import java.util.Collection;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 /**
@@ -29,28 +30,35 @@ public class LoginController {
         gererChercheur = new GererChercheur();
     }
 
-    public void clickValider() {
+    
+    public boolean  loginExist(String log) throws BioBookException {
+        return gererChercheur.getChercheur(log)!=null;    
+    }
+    
+    public boolean motDePasseOK(String log, String pass) throws BioBookException {
+        String password = gererChercheur.getPassChercheur(log);
+        Boolean ok;
+        if(pass.equals(password))
+            ok=true;
+        else 
+            ok=false;
+        return ok;    
+    }
+        
+    public void clickValider() throws BioBookException {
         String login = logView.getLog();
         String pass = logView.getPass();
-        if(gererChercheur.loginExist(login))
+        if(loginExist(login))
         {
-            if(gererChercheur.motDePasseOK(login,pass))
-            {
-
-            }
-        }
-//        Chercheur chercheur = gererChercheur.getChercheur();
-//        if(chercheur.equals(null))
-//        {
-//            //Traitement de logView
-//        }
-//        else
-//        {
-//            if(chercheur.getPassword()==pass)
-//            {
+            if(motDePasseOK(login,pass))
                 connection();
-//            }
-//        }
+            else
+                JOptionPane.showMessageDialog(null, "Votre login et votre mot de passe ne corresponde pas!");                           
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "Login inconnu!");
+        }
     }  
     
     public void clickAnnuler() throws BioBookException {

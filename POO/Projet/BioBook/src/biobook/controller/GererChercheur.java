@@ -21,9 +21,51 @@ import java.util.Collection;
  */
 public class GererChercheur {
     
+    private static final String reqInsertIntoChercheur = "INSERT INTO Chercheur (login, password, name, firstName, mail)VALUES(?,?,?,?,?)";    
     private static final String reqFindAllChercheurs = "SELECT * FROM Chercheur";
     private static final String reqFindChercheurByLogin = "SELECT * FROM Chercheur WHERE login=?";
+    private static final String reqFindPassChercheurByLogin = "SELECT password FROM Chercheur WHERE login=?";
 	
+    /** Insert une <code>measure</code> en base de donn�es.
+	 * @throws PerfException 
+	*/
+    public static void insertChercheur(Chercheur unChercheur)throws SQLException, BioBookException
+    {
+        Connection c=null;
+        c = SimpleConnection.getInstance().getConnection();
+
+        //preparation of the request
+        PreparedStatement pst = null;
+
+        try
+        {
+                //Execution of the request
+                pst = c.prepareStatement(reqInsertIntoChercheur);
+                
+                pst.setString(1,unChercheur.getLogin());
+                pst.setString(2,unChercheur.getPassword());
+                pst.setString(3,unChercheur.getName());
+                pst.setString(4,unChercheur.getFirstName());
+                pst.setString(5,unChercheur.getMail());
+
+                pst.executeUpdate();
+                c.commit();
+        }
+        catch(SQLException e)
+        {
+                throw new BioBookException("Problem in the request reqInsertIntoChercheur "+e.getMessage());
+        }
+
+        finally
+        {
+                try {
+                if (pst!=null)    {  pst.close();}
+                   }catch (Exception e){
+                    e.printStackTrace();
+                }
+        }
+    }
+        
     /**
     * @return Liste de tous les chercheurs 
     */
@@ -69,6 +111,53 @@ public class GererChercheur {
                 }
         }
         return unChercheur;
+    }
+    
+    /**
+    * @return mot de passe du chercheur 
+    */
+    public String getPassChercheur(String login) throws BioBookException{
+        Connection c=null;
+        c = SimpleConnection.getInstance().getConnection();
+        String pass = null;
+        
+        //pr�paration de la requ�te
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+
+        try
+        {
+                //Execution of the request
+                pst = c.prepareStatement(reqFindPassChercheurByLogin);
+                pst.setString(1,login);
+                rs = pst.executeQuery();
+        }
+        catch (SQLException e)
+        {
+                throw new BioBookException("Problem when the request reqFindPassChercheurByLogin execute it:"+e.getMessage());
+        }
+        try
+        {
+                if (rs.next())
+                {
+                        pass= rs.getString("password");
+                }
+        }
+        catch (SQLException e)
+        {
+                throw new BioBookException("Problem when the password was getting:"+e.getMessage());
+        }
+
+        finally
+        {
+                try {
+                if (rs!=null)   {   rs.close();}
+                if (pst!=null)    {  pst.close();}
+                   }catch (Exception e){
+                    e.printStackTrace();
+                }
+        }
+        return pass;
     }
     
     /**
@@ -124,8 +213,8 @@ public class GererChercheur {
     /**
     * @param Un nouveau chercheur 
     */
-    public void addChercheur(Chercheur chercheur){
-                
+    void addChercheur(String login, String pass, String name, String firstName, String mail) {
+        
     }
     
     /**
@@ -142,13 +231,4 @@ public class GererChercheur {
                 
     }
 
-    boolean loginExist(String login) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    boolean motDePasseOK(String login, String pass) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
-    
 }

@@ -4,6 +4,7 @@
  */
 package biobook;
 
+import biobook.util.BioBookException;
 import biobook.view.MainFrame;
 import biobook.view.LoginView;
 
@@ -15,7 +16,7 @@ public class BioBook {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws BioBookException {
         // TODO code application logic here
         LoginView login = new LoginView();
     }

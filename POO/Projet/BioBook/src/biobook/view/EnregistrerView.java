@@ -10,6 +10,7 @@ import biobook.controller.EnregistrerController;
 import biobook.controller.LoginController;
 import biobook.util.BioBookException;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -21,17 +22,22 @@ import java.awt.Insets;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.util.EventListener;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.UIManager;
 import javax.swing.WindowConstants;
+import javax.swing.border.Border;
 
 /**
  *
@@ -43,17 +49,20 @@ public class EnregistrerView extends JPanel implements ActionListener{
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-    JTextField name;
-    JTextField firstName;
-    JTextField mail;
-    JTextField log;
-    JPasswordField pass;
-    JPasswordField passConf;
+    private JTextField name;
+    private JTextField firstName;
+    private JTextField mail;
+    private JTextField log;
+    private JPasswordField pass;
+    private JPasswordField passConf;
+    private boolean logIsSet;
+
     JButton annuler;
     JButton valider; 
     public LoginView login;
     
     EnregistrerController ctrl ;
+    
     public EnregistrerView(LoginView logV){
         login=logV;
         ctrl = new EnregistrerController(this);
@@ -217,8 +226,112 @@ public class EnregistrerView extends JPanel implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource()==valider)
-            ctrl.clickValider(log.getText(), pass.getText());
+        if(e.getSource()==valider){
+            logIsSet = false;
+            boolean passIsSet = false;
+            boolean pass2IsSet = false;
+            boolean mailIsSet = false;
+            boolean nameIsSet = false;
+            boolean firstNameIsSet = false;
+            boolean passEgal = false;
+            
+            // Teste si le nom est remplit
+            if(!name.getText().equals("")){
+                nameIsSet=true;
+                name.setBorder(UIManager.getBorder("TextField.border"));
+            }
+            else
+            {
+                //  create a line border with the specified color and width
+		Border border = BorderFactory.createLineBorder(Color.RED, 1);
+                name.setBorder(border);
+            }
+            
+            // Teste si le log est remplit
+            if(!log.getText().equals("")){
+                logIsSet=true;
+            }
+            
+            // Teste si le prenom est remplit
+            if(!firstName.getText().equals("")){
+                firstNameIsSet=true;
+                firstName.setBorder(UIManager.getBorder("TextField.border"));
+            }
+            else
+            {
+                //  create a line border with the specified color and width
+		Border border = BorderFactory.createLineBorder(Color.RED, 1);
+                firstName.setBorder(border);
+            }
+            
+            // Teste si le mail est remplit
+            if(!mail.getText().equals("")){
+                mailIsSet=true;
+                mail.setBorder(UIManager.getBorder("TextField.border"));
+            }
+            else
+            {
+                //  create a line border with the specified color and width
+		Border border = BorderFactory.createLineBorder(Color.RED, 1);
+                mail.setBorder(border);
+            }
+            
+            // Teste si le password est remplit
+            if(!pass.getText().equals("")){
+                passIsSet=true;
+                pass.setBorder(UIManager.getBorder("TextField.border"));
+            }
+            else
+            {
+                //  create a line border with the specified color and width
+		Border border = BorderFactory.createLineBorder(Color.RED, 1);
+                pass.setBorder(border);
+            }
+            
+            // Teste si la confirmation du password est remplit
+            if(!passConf.getText().equals("")){
+                pass2IsSet=true;
+                passConf.setBorder(UIManager.getBorder("TextField.border"));
+            }
+            else
+            {
+                //  create a line border with the specified color and width
+		Border border = BorderFactory.createLineBorder(Color.RED, 1);
+                passConf.setBorder(border);
+            }
+            if(passIsSet && pass2IsSet)
+            {
+                // Teste si la confirmation du password est remplit
+                if(passConf.getText().equals(pass.getText())){
+                    passEgal=true;
+                    passConf.setBorder(UIManager.getBorder("TextField.border"));
+                    pass.setBorder(UIManager.getBorder("TextField.border"));
+                }
+                else
+                {
+                    //  create a line border with the specified color and width
+                    Border border = BorderFactory.createLineBorder(Color.RED, 1);
+                    passConf.setBorder(border);
+                    pass.setBorder(border);
+                }
+            }
+            
+            if(passIsSet && pass2IsSet && nameIsSet && firstNameIsSet && mailIsSet)
+            {
+                if(passEgal)
+                {
+                    try {
+                        ctrl.clickValider();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(EnregistrerView.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (BioBookException ex) {
+                        Logger.getLogger(EnregistrerView.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
+            else
+                JOptionPane.showMessageDialog(null, "Les mots de passes ne sont pas les mêmes.");
+        }
         
         if(e.getSource()==annuler)
             try {
@@ -226,5 +339,29 @@ public class EnregistrerView extends JPanel implements ActionListener{
         } catch (BioBookException ex) {
             Logger.getLogger(LoginView.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    public String getName() {
+        return name.getText();
+    }
+
+    public String getFirstName() {
+        return firstName.getText();
+    }
+
+    public String getMail() {
+        return mail.getText();
+    }
+
+    public String getLog() {
+        return log.getText();
+    }
+
+    public JPasswordField getPass() {
+        return pass;
+    }
+
+    public boolean isLogIsSet() {
+        return logIsSet;
     }
 }
