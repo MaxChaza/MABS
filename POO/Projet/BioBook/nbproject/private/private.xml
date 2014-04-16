@@ -12,5 +12,11 @@
             <file>file:/C:/Users/Maxime/Documents/MABS/POO/Projet/BioBook/src/biobook/controller/GererChercheur.java</file>
             <file>file:/C:/Users/Maxime/Documents/MABS/POO/Projet/BioBook/src/biobook/controller/EspacePersoController.java</file>
         </group>
+        <group>
+            <file>file:/C:/Users/Maxime/Documents/MABS/POO/Projet/BioBook/src/biobook/util/SendEmail.java</file>
+            <file>file:/C:/Users/Maxime/Documents/MABS/POO/Projet/BioBook/src/biobook/view/LoginView.java</file>
+            <file>file:/C:/Users/Maxime/Documents/MABS/POO/Projet/BioBook/src/biobook/controller/LoginController.java</file>
+            <file>file:/C:/Users/Maxime/Documents/MABS/POO/Projet/BioBook/src/biobook/util/SimpleConnection.java</file>
+        </group>
     </open-files>
 </project-private>
