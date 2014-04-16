@@ -29,7 +29,16 @@ public class LoginController {
         gererChercheur = new GererChercheur();
     }
 
-    public void clickValider(String log, String pass) {
+    public void clickValider() {
+        String login = logView.getLog();
+        String pass = logView.getPass();
+        if(gererChercheur.loginExist(login))
+        {
+            if(gererChercheur.motDePasseOK(login,pass))
+            {
+
+            }
+        }
 //        Chercheur chercheur = gererChercheur.getChercheur();
 //        if(chercheur.equals(null))
 //        {
@@ -67,6 +76,6 @@ public class LoginController {
     }
 
     public void clickMDPOublie(String login) {
-        SendEmail send = new SendEmail(gererChercheur.resetMDP());
+//        SendEmail send = new SendEmail(gererChercheur.resetMDP());
     }
 }

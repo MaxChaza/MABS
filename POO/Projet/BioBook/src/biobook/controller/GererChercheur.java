@@ -141,6 +141,14 @@ public class GererChercheur {
     public void deleteChercheur(Chercheur chercheur){
                 
     }
+
+    boolean loginExist(String login) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    boolean motDePasseOK(String login, String pass) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     
 }

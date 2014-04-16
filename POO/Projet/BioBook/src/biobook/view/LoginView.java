@@ -42,8 +42,10 @@ public class LoginView extends JFrame implements ActionListener{
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-    JTextField log;
-    JTextField pass;
+    private JTextField log;
+    private JPasswordField pass;
+
+    
     JButton annuler;
     JButton valider; 
     JButton enregistrer; 
@@ -146,7 +148,7 @@ public class LoginView extends JFrame implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==valider)
-            ctrl.clickValider(log.getText(), pass.getText());
+            ctrl.clickValider();
         
         if(e.getSource()==annuler)
             try {
@@ -162,5 +164,13 @@ public class LoginView extends JFrame implements ActionListener{
         
         if(e.getSource()==mdpOublie)
             ctrl.clickMDPOublie(log.getText());
+    }
+    
+    public String getPass() {
+        return pass.getText();
+    }
+
+    public String getLog() {
+        return log.getText();
     }
 }
