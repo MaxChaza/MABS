@@ -8,7 +8,6 @@ package biobook.controller;
 
 import biobook.model.Chercheur;
 import biobook.util.BioBookException;
-import biobook.util.SendEmail;
 import biobook.view.EnregistrerView;
 import biobook.view.LoginView;
 import biobook.view.MainFrame;
@@ -20,12 +19,12 @@ import javax.swing.JTextField;
  *
  * @author Maxime
  */
-public class LoginController {
-    public LoginView logView;
+public class EnregistrerController {
+    public EnregistrerView enregistrerView;
     public GererChercheur gererChercheur;
     
-    public LoginController(LoginView loginView){
-        logView=loginView;
+    public EnregistrerController(EnregistrerView enrView){
+        enregistrerView=enrView;
         gererChercheur = new GererChercheur();
     }
 
@@ -39,34 +38,15 @@ public class LoginController {
 //        {
 //            if(chercheur.getPassword()==pass)
 //            {
-                connection();
+//                connection();
 //            }
 //        }
     }  
     
-    public void clickAnnuler() throws BioBookException {
-        Chercheur ch = gererChercheur.getChercheur("toto");
-        if(ch!=null){
-            System.out.println(ch);
-        }else
-            System.out.println("merde");
-                
-        logView.setVisible(false);
-        logView.dispose(); 
+    public void clickAnnuler() throws BioBookException {        
+        enregistrerView.setVisible(false);
+        enregistrerView.login.tout.setVisible(true);
+        
+//        enregistrerView.dispose(); 
     } 
-    
-    public void connection() {
-        logView.setVisible(false);
-        logView.dispose(); 
-        MainFrame main = new MainFrame("BioBook");
-    }
-
-    public void clickEnregistrer() {
-        EnregistrerView enregistrerView = new EnregistrerView(logView);
-        logView.add(enregistrerView);
-    }
-
-    public void clickMDPOublie(String login) {
-        SendEmail send = new SendEmail(gererChercheur.resetMDP());
-    }
 }

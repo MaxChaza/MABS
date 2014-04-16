@@ -37,7 +37,7 @@ public class MainFrame extends JFrame{
     Color inactif = new Color(240,240,240);
     Color actif = new Color(184,207,229);
     JTabbedPane tabbedPane = new JTabbedPane();
-	
+
 //    private JMenuBar jJMenuBar = new JMenuBar();
 //    private JMenu jFichier = new JMenu();
 //    private JMenu jPreference = new JMenu();
@@ -67,7 +67,9 @@ public class MainFrame extends JFrame{
 
         Container c = getContentPane();
         c.setLayout(new BorderLayout());
-         tabbedPane.setPreferredSize(new Dimension(320, 200));
+        tabbedPane.setUI(new AquaBarTabbedPaneUI());
+        
+        tabbedPane.setPreferredSize(new Dimension(320, 200));
         // Mise enplace des onglets
         espacePerso = new EspacePersoView(this);
         general = new GeneralView(this);

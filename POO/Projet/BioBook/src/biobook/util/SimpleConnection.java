@@ -36,7 +36,7 @@ public class SimpleConnection  {
 	{
 		Connection co=null;
 		
-	    String url="jdbc:mysql://localhost:3306/biobook?zeroDateTimeBehavior=convertToNull";
+	    String url="jdbc:mysql://localhost:3306/biobook";
 		String login="root";
 		String pwd="admin";
 		

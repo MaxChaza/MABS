@@ -46,7 +46,10 @@ public class LoginView extends JFrame implements ActionListener{
     JTextField pass;
     JButton annuler;
     JButton valider; 
-    
+    JButton enregistrer; 
+    JButton mdpOublie;
+    public Container c;
+    public JPanel tout;
     LoginController ctrl ;
     public LoginView(){
         ctrl = new LoginController(this);
@@ -54,9 +57,10 @@ public class LoginView extends JFrame implements ActionListener{
         setMinimumSize(new Dimension(500, 300));
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 
-        Container c = getContentPane();
+        c = getContentPane();
         c.setLayout(new BorderLayout());
 
+        tout = new JPanel(new BorderLayout());
         // Composants de la fenetre
         JPanel nord = new JPanel(new GridLayout());
         //Image
@@ -117,13 +121,22 @@ public class LoginView extends JFrame implements ActionListener{
         annuler = new JButton("Annuler");
         annuler.addActionListener(this);
         
+        enregistrer = new JButton("S'enregistrer");
+        enregistrer.addActionListener(this);
+        
+        mdpOublie = new JButton("Mot de passe oublié");
+        mdpOublie.addActionListener(this);
+        
         jPanelBouton.add(annuler);
         jPanelBouton.add(valider);
+        jPanelBouton.add(enregistrer);
+        jPanelBouton.add(mdpOublie);
 
         // Panel général
-        c.add(BorderLayout.CENTER, nord);
-        c.add(BorderLayout.SOUTH, jPanelBouton);
-
+        tout.add(BorderLayout.CENTER, nord);
+        tout.add(BorderLayout.SOUTH, jPanelBouton);
+        
+        c.add(tout);
         // On fixe le panel sur la fenètre
         setName("Login");
         setVisible(true);
@@ -141,5 +154,13 @@ public class LoginView extends JFrame implements ActionListener{
         } catch (BioBookException ex) {
             Logger.getLogger(LoginView.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        if(e.getSource()==enregistrer){
+            tout.setVisible(false);
+            ctrl.clickEnregistrer();
+        }
+        
+        if(e.getSource()==mdpOublie)
+            ctrl.clickMDPOublie(log.getText());
     }
 }
