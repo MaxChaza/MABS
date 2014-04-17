@@ -2,7 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group name="CoursWeb"/>
         <group name="ProjetJava">
             <file>file:/C:/Users/Maxime/Documents/MABS/POO/Projet/BioBook/src/biobook/view/MainFrame.java</file>
             <file>file:/C:/Users/Maxime/Documents/MABS/POO/Projet/BioBook/src/biobook/view/LoginView.java</file>
@@ -13,10 +12,18 @@
             <file>file:/C:/Users/Maxime/Documents/MABS/POO/Projet/BioBook/src/biobook/controller/EspacePersoController.java</file>
         </group>
         <group>
-            <file>file:/C:/Users/Maxime/Documents/MABS/POO/Projet/BioBook/src/biobook/util/SendEmail.java</file>
             <file>file:/C:/Users/Maxime/Documents/MABS/POO/Projet/BioBook/src/biobook/view/LoginView.java</file>
+            <file>file:/C:/Users/Maxime/Documents/MABS/POO/Projet/BioBook/src/biobook/util/SendEmail.java</file>
             <file>file:/C:/Users/Maxime/Documents/MABS/POO/Projet/BioBook/src/biobook/controller/LoginController.java</file>
-            <file>file:/C:/Users/Maxime/Documents/MABS/POO/Projet/BioBook/src/biobook/util/SimpleConnection.java</file>
+            <file>file:/C:/Users/Maxime/Documents/MABS/POO/Projet/BioBook/src/biobook/util/SendEmailTest.java</file>
+            <file>file:/C:/Users/Maxime/Documents/MABS/POO/Projet/BioBook/src/biobook/controller/EnregistrerController.java</file>
+        </group>
+        <group name="CoursWeb"/>
+        <group name="ProjetPerso">
+            <file>file:/C:/Users/Maxime/Documents/MABS/POO/Projet/BioBook/src/biobook/controller/LoginController.java</file>
+            <file>file:/C:/Users/Maxime/Documents/MABS/POO/Projet/BioBook/src/biobook/controller/EnregistrerController.java</file>
+            <file>file:/C:/Users/Maxime/Documents/MABS/POO/Projet/BioBook/src/biobook/util/RegexBioBook.java</file>
+            <file>file:/C:/Users/Maxime/Documents/MABS/POO/Projet/BioBook/src/biobook/view/EnregistrerView.java</file>
         </group>
     </open-files>
 </project-private>

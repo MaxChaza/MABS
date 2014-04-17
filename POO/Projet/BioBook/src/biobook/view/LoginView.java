@@ -10,7 +10,7 @@ import biobook.controller.GererChercheur;
 import biobook.controller.LoginController;
 import biobook.util.BioBookException;
 import biobook.util.SendEmail;
-import biobook.util.SendEmailTest;
+import biobook.util.SendEmail;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;

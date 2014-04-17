@@ -9,7 +9,7 @@ package biobook.controller;
 import biobook.model.Chercheur;
 import biobook.util.BioBookException;
 import biobook.util.SendEmail;
-import biobook.util.SendEmailTest;
+import biobook.util.SendEmail;
 import biobook.view.EnregistrerView;
 import biobook.view.LoginView;
 import biobook.view.MainFrame;
@@ -81,9 +81,8 @@ public class EnregistrerController {
             msg.append(".");
             
             
-            SendEmailTest send = new SendEmailTest(mail, sujet, msg.toString());
+            SendEmail send = new SendEmail(mail, sujet, msg.toString());
                     
-            SendEmail sendA = new SendEmail();
             enregistrerView.setVisible(false);
             enregistrerView.login.tout.setVisible(true);
         }                   

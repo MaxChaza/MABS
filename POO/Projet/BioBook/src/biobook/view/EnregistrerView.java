@@ -9,6 +9,7 @@ package biobook.view;
 import biobook.controller.EnregistrerController;
 import biobook.controller.LoginController;
 import biobook.util.BioBookException;
+import biobook.util.RegexBioBook;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
@@ -234,6 +235,7 @@ public class EnregistrerView extends JPanel implements ActionListener{
             boolean nameIsSet = false;
             boolean firstNameIsSet = false;
             boolean passEgal = false;
+            boolean mailOk = false;
             
             // Teste si le nom est remplit
             if(!name.getText().equals("")){
@@ -276,6 +278,20 @@ public class EnregistrerView extends JPanel implements ActionListener{
                 mail.setBorder(border);
             }
             
+            // Teste si le mail Bde la bonne syntaxe
+            RegexBioBook regexMail = new RegexBioBook("mail");
+            if(regexMail.test(mail.getText())){
+                mailIsSet=true;
+                mail.setBorder(UIManager.getBorder("TextField.border"));
+            }
+            else
+            {
+                //  create a line border with the specified color and width
+		Border border = BorderFactory.createLineBorder(Color.RED, 1);
+                mail.setBorder(border);
+                JOptionPane.showMessageDialog(null, "Votre mail est erroné!");
+            }
+            
             // Teste si le password est remplit
             if(!pass.getText().equals("")){
                 passIsSet=true;
@@ -316,7 +332,7 @@ public class EnregistrerView extends JPanel implements ActionListener{
                 }
             }
             
-            if(passIsSet && pass2IsSet && nameIsSet && firstNameIsSet && mailIsSet)
+            if(passIsSet && pass2IsSet && mailOk && nameIsSet && firstNameIsSet && mailIsSet)
             {
                 if(passEgal)
                 {
@@ -328,10 +344,11 @@ public class EnregistrerView extends JPanel implements ActionListener{
                         Logger.getLogger(EnregistrerView.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
-            }
-            else
+                else
                 JOptionPane.showMessageDialog(null, "Les mots de passes ne sont pas les mêmes.");
         }
+            }
+            
         
         if(e.getSource()==annuler)
             try {

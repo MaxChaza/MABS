@@ -12,40 +12,38 @@ import javax.mail.internet.MimeMessage;
 
 public class SendEmail
 {
-    public static void main(String[] args) {
+    public SendEmail(String mailTo, String sujet, String msg){
 
-          final String username = "maxime.chazalviel@gmail.com";
-          final String password = "Tu peux chercher";
+        final String username = "maxime.chazalviel@gmail.com";
+        final String password = "Tu peux chercher";
 
-          Properties props = new Properties();
-          props.put("mail.smtp.auth", "true");
-          props.put("mail.smtp.starttls.enable", "true");
-          props.put("mail.smtp.host", "smtp.gmail.com");
-          props.put("mail.smtp.port", "587");
+        Properties props = new Properties();
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.host", "smtp.gmail.com");
+        props.put("mail.smtp.port", "587");
 
-          Session session = Session.getInstance(props,
-            new javax.mail.Authenticator() {
-                  protected PasswordAuthentication getPasswordAuthentication() {
-                          return new PasswordAuthentication(username, password);
-                  }
-            });
+        Session session = Session.getInstance(props,
+          new javax.mail.Authenticator() {
+                protected PasswordAuthentication getPasswordAuthentication() {
+                        return new PasswordAuthentication(username, password);
+                }
+          });
 
-          try {
+        try {
 
-                  Message message = new MimeMessage(session);
-                  message.setFrom(new InternetAddress("maxime.chazalviel@gmail.com"));
-                  message.setRecipients(Message.RecipientType.TO,
-                          InternetAddress.parse("maxime.chazalviel@gmail.com"));
-                  message.setSubject("Testing Subject");
-                  message.setText("Dear Mail Crawler,"
-                          + "\n\n No spam to my email, please!");
+                Message message = new MimeMessage(session);
+                message.setFrom(new InternetAddress("maxime.chazalviel@gmail.com"));
+                message.setRecipients(Message.RecipientType.TO,
+                        InternetAddress.parse(mailTo));
+                message.setSubject(sujet);
+                message.setText(msg);
 
-                  Transport.send(message);
+                Transport.send(message);
+                System.out.println("ok");
 
-                  System.out.println("Done");
-
-          } catch (MessagingException e) {
-                  throw new RuntimeException(e);
-          }
-  }
+        } catch (MessagingException e) {
+                throw new RuntimeException(e);
+        }
+    }
 }
