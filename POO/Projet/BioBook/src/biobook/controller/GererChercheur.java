@@ -25,7 +25,8 @@ public class GererChercheur {
     private static final String reqFindAllChercheurs = "SELECT * FROM Chercheur";
     private static final String reqFindChercheurByLogin = "SELECT * FROM Chercheur WHERE login=?";
     private static final String reqFindPassChercheurByLogin = "SELECT password FROM Chercheur WHERE login=?";
-	
+    private static final String reqUpdateMDPByLogin = "UPDATE Chercheur SET password=? WHERE login=?";
+    
     /** Insert une <code>measure</code> en base de donn�es.
 	 * @throws PerfException 
 	*/
@@ -65,7 +66,43 @@ public class GererChercheur {
                 }
         }
     }
-        
+     
+    /** Modifie un <code>Chercheur</code> en base de donn�es.
+	 * @throws PerfException 
+	*/
+    public static void updateMDPChercheur(Chercheur unChercheur)throws SQLException, BioBookException
+    {
+        Connection c=null;
+        c = SimpleConnection.getInstance().getConnection();
+
+        //preparation of the request
+        PreparedStatement pst = null;
+        try
+        {
+                //Execution of the request
+                pst = c.prepareStatement(reqUpdateMDPByLogin);
+                
+                pst.setString(1,unChercheur.getPassword());
+                pst.setString(2,unChercheur.getLogin());
+                pst.executeUpdate();
+                c.commit();
+        }
+        catch(SQLException e)
+        {
+                throw new BioBookException("Problem in the request reqUpdateMDPByLogin "+e.getMessage());
+        }
+
+        finally
+        {
+                try {
+                if (pst!=null)    {  pst.close();}
+                   }catch (Exception e){
+                    e.printStackTrace();
+                }
+        }
+        System.out.println("ok");
+    }
+    
     /**
     * @return Liste de tous les chercheurs 
     */
@@ -216,14 +253,15 @@ public class GererChercheur {
     void addChercheur(String login, String pass, String name, String firstName, String mail) {
         
     }
-    
-    /**
-    * @param Un chercheur avec de nouveaux paramètres 
-    */
-    public void updateChercheur(Chercheur chercheur){
-                
-    }
-    
+//    
+//    /**
+//    * 
+//    * @param Un chercheur avec de nouveaux paramètres 
+//    */
+//    public void updateChercheur(Chercheur chercheur){
+//                
+//    }
+//    
     /**
     * @param Un nouveau chercheur 
     */

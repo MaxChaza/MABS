@@ -68,7 +68,7 @@ public class EnregistrerView extends JPanel implements ActionListener{
         login=logV;
         ctrl = new EnregistrerController(this);
         // Caractéristiques JFrame
-        setMinimumSize(new Dimension(500, 300));
+        setMinimumSize(new Dimension(850, 300));
         setLayout(new BorderLayout());
 
         // Composants de la fenetre
@@ -88,7 +88,7 @@ public class EnregistrerView extends JPanel implements ActionListener{
         // Creation du nom
         JLabel titreNom = new JLabel("Nom");
         name = new JTextField("");
-        name.setPreferredSize(new Dimension(100,20));
+        name.setPreferredSize(new Dimension(150,20));
         
         GridBagConstraints gridBagConstraintsName = new GridBagConstraints();
         gridBagConstraintsName.gridx = 1;
@@ -108,7 +108,7 @@ public class EnregistrerView extends JPanel implements ActionListener{
         // Creation du prenom
         JLabel titrePrenom = new JLabel("Prenom");
         firstName = new JTextField("");
-        firstName.setPreferredSize(new Dimension(100,20));
+        firstName.setPreferredSize(new Dimension(150,20));
         
         GridBagConstraints gridBagConstraintsFirstName = new GridBagConstraints();
         gridBagConstraintsFirstName.gridx = 1;
@@ -128,7 +128,7 @@ public class EnregistrerView extends JPanel implements ActionListener{
         // Creation du Mail
         JLabel titreMail = new JLabel("Mail");
         mail = new JTextField("");
-        mail.setPreferredSize(new Dimension(100,20));
+        mail.setPreferredSize(new Dimension(150,20));
         
         GridBagConstraints gridBagConstraintsMail = new GridBagConstraints();
         gridBagConstraintsMail.gridx = 1;
@@ -148,7 +148,7 @@ public class EnregistrerView extends JPanel implements ActionListener{
         // Creation du Login
         JLabel titreLog = new JLabel("Login");
         log = new JTextField("");
-        log.setPreferredSize(new Dimension(100,20));
+        log.setPreferredSize(new Dimension(150,20));
         
         GridBagConstraints gridBagConstraintsLog = new GridBagConstraints();
         gridBagConstraintsLog.gridx = 1;
@@ -168,8 +168,14 @@ public class EnregistrerView extends JPanel implements ActionListener{
         // Creation du JTextField Pass
         JLabel titrePass = new JLabel("Password ");
         pass = new JPasswordField("");
-        pass.setPreferredSize(new Dimension(100,20));
+        JLabel nbCarPass = new JLabel("Huit caractères minimum.");
+        pass.setMinimumSize(new Dimension(150,20));
 
+        GridBagConstraints gridBagConstraintsNbCarPass = new GridBagConstraints();
+        gridBagConstraintsNbCarPass.gridx = 2;
+        gridBagConstraintsNbCarPass.gridy = 4;
+        gridBagConstraintsNbCarPass.fill = GridBagConstraints.HORIZONTAL;
+        
         GridBagConstraints gridBagConstraintsPass = new GridBagConstraints();
         gridBagConstraintsPass.gridx = 1;
         gridBagConstraintsPass.gridy = 4;
@@ -181,13 +187,14 @@ public class EnregistrerView extends JPanel implements ActionListener{
         gridBagConstraintsTitrePass.fill = GridBagConstraints.HORIZONTAL;
        
         // Ajout du JTextField Pass
-        jPanelEnregistrer.add(titrePass, gridBagConstraintsTitrePass);
+        jPanelEnregistrer.add(nbCarPass, gridBagConstraintsNbCarPass);
         jPanelEnregistrer.add(pass, gridBagConstraintsPass);
+        jPanelEnregistrer.add(titrePass, gridBagConstraintsTitrePass);
 
          // Creation du JTextField Pass2
         JLabel titrePassConf = new JLabel("Confirm password ");
         passConf = new JPasswordField("");
-        passConf.setPreferredSize(new Dimension(100,20));
+        passConf.setPreferredSize(new Dimension(150,20));
 
         GridBagConstraints gridBagConstraintsPass2 = new GridBagConstraints();
         gridBagConstraintsPass2.gridx = 1;
@@ -236,7 +243,7 @@ public class EnregistrerView extends JPanel implements ActionListener{
             boolean firstNameIsSet = false;
             boolean passEgal = false;
             boolean mailOk = false;
-            
+            boolean min8car = false;
             // Teste si le nom est remplit
             if(!name.getText().equals("")){
                 nameIsSet=true;
@@ -281,7 +288,7 @@ public class EnregistrerView extends JPanel implements ActionListener{
             // Teste si le mail Bde la bonne syntaxe
             RegexBioBook regexMail = new RegexBioBook("mail");
             if(regexMail.test(mail.getText())){
-                mailIsSet=true;
+                mailOk=true;
                 mail.setBorder(UIManager.getBorder("TextField.border"));
             }
             else
@@ -296,6 +303,15 @@ public class EnregistrerView extends JPanel implements ActionListener{
             if(!pass.getText().equals("")){
                 passIsSet=true;
                 pass.setBorder(UIManager.getBorder("TextField.border"));
+                if(pass.getText().length()>8){
+                    min8car=true;
+                }
+                else
+                {
+                    //  create a line border with the specified color and width
+                    Border border = BorderFactory.createLineBorder(Color.RED, 1);
+                    pass.setBorder(border);
+                }
             }
             else
             {
@@ -303,6 +319,9 @@ public class EnregistrerView extends JPanel implements ActionListener{
 		Border border = BorderFactory.createLineBorder(Color.RED, 1);
                 pass.setBorder(border);
             }
+            
+            // Teste si le password fait au momins 8 caractèress
+           
             
             // Teste si la confirmation du password est remplit
             if(!passConf.getText().equals("")){
@@ -321,7 +340,7 @@ public class EnregistrerView extends JPanel implements ActionListener{
                 if(passConf.getText().equals(pass.getText())){
                     passEgal=true;
                     passConf.setBorder(UIManager.getBorder("TextField.border"));
-                    pass.setBorder(UIManager.getBorder("TextField.border"));
+                    
                 }
                 else
                 {
@@ -334,20 +353,27 @@ public class EnregistrerView extends JPanel implements ActionListener{
             
             if(passIsSet && pass2IsSet && mailOk && nameIsSet && firstNameIsSet && mailIsSet)
             {
-                if(passEgal)
-                {
-                    try {
-                        ctrl.clickValider();
-                    } catch (SQLException ex) {
-                        Logger.getLogger(EnregistrerView.class.getName()).log(Level.SEVERE, null, ex);
-                    } catch (BioBookException ex) {
-                        Logger.getLogger(EnregistrerView.class.getName()).log(Level.SEVERE, null, ex);
+                if(min8car){
+                    if(passEgal)
+                    {
+                        try {
+                            ctrl.clickValider();
+                        } catch (SQLException ex) {
+                            Logger.getLogger(EnregistrerView.class.getName()).log(Level.SEVERE, null, ex);
+                        } catch (BioBookException ex) {
+                            Logger.getLogger(EnregistrerView.class.getName()).log(Level.SEVERE, null, ex);
+                        }
                     }
+                    else
+                    JOptionPane.showMessageDialog(null, "Les mots de passes ne sont pas les mêmes.");
                 }
                 else
-                JOptionPane.showMessageDialog(null, "Les mots de passes ne sont pas les mêmes.");
-        }
+                    JOptionPane.showMessageDialog(null, "Veuillez saisir un mot de passe d'au moins 8 caractères.");
             }
+            else
+                if(mailOk)
+                    JOptionPane.showMessageDialog(null, "Veullez saisir tous les champs.");
+        }
             
         
         if(e.getSource()==annuler)

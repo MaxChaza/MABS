@@ -1,5 +1,6 @@
 package biobook.util;
 
+import biobook.model.Chercheur;
 import java.io.UnsupportedEncodingException;
 import java.util.*;
 import javax.mail.Message;
@@ -12,7 +13,7 @@ import javax.mail.internet.MimeMessage;
 
 public class SendEmail
 {
-    public SendEmail(String mailTo, String sujet, String msg){
+    public SendEmail(Chercheur c, String sujet, String msg){
 
         final String username = "maxime.chazalviel@gmail.com";
         final String password = "Tu peux chercher";
@@ -35,12 +36,12 @@ public class SendEmail
                 Message message = new MimeMessage(session);
                 message.setFrom(new InternetAddress("maxime.chazalviel@gmail.com"));
                 message.setRecipients(Message.RecipientType.TO,
-                        InternetAddress.parse(mailTo));
+                        InternetAddress.parse(c.getMail()));
                 message.setSubject(sujet);
                 message.setText(msg);
 
                 Transport.send(message);
-                System.out.println("ok");
+                
 
         } catch (MessagingException e) {
                 throw new RuntimeException(e);

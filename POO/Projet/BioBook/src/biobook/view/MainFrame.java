@@ -32,6 +32,8 @@ public class MainFrame extends JFrame{
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+    
+    private String login;
     private String name;
     JPanel centre = new JPanel(new BorderLayout());
     Color inactif = new Color(240,240,240);
@@ -56,9 +58,9 @@ public class MainFrame extends JFrame{
     //Onglet General
     private GeneralView general;
 
-    public MainFrame(String nom){
+    public MainFrame(String nom, String log){
         name = nom;
-        
+        login = log;
         // Caractéristiques JFrame
         Dimension tailleEcran = new Dimension(Toolkit.getDefaultToolkit().getScreenSize().width,Toolkit.getDefaultToolkit().getScreenSize().height-60);
         setSize(tailleEcran);

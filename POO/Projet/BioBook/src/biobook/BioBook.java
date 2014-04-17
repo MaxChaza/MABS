@@ -5,8 +5,12 @@
 package biobook;
 
 import biobook.util.BioBookException;
+import biobook.util.MyRandomPassword;
 import biobook.view.MainFrame;
 import biobook.view.LoginView;
+import java.math.BigInteger;
+import java.security.SecureRandom;
+import java.sql.SQLException;
 
 /**
  *
@@ -16,7 +20,7 @@ public class BioBook {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws BioBookException {
+    public static void main(String[] args) throws BioBookException, SQLException {
         // TODO code application logic here
         LoginView login = new LoginView();
     }

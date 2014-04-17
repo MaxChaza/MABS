@@ -8,10 +8,12 @@ package biobook.controller;
 
 import biobook.model.Chercheur;
 import biobook.util.BioBookException;
+import biobook.util.MyRandomPassword;
 import biobook.util.SendEmail;
 import biobook.view.EnregistrerView;
 import biobook.view.LoginView;
 import biobook.view.MainFrame;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
 import javax.swing.JOptionPane;
@@ -75,7 +77,7 @@ public class LoginController {
     public void connection() {
         logView.setVisible(false);
         logView.dispose(); 
-        MainFrame main = new MainFrame("BioBook");
+        MainFrame main = new MainFrame("BioBook", logView.getLog());
     }
 
     public void clickEnregistrer() {
@@ -83,7 +85,18 @@ public class LoginController {
         logView.add(enregistrerView);
     }
 
-    public void clickMDPOublie(String login) {
-//        SendEmail send = new SendEmail(gererChercheur.resetMDP());
+    public void clickMDPOublie() throws BioBookException, SQLException {
+        if(loginExist(logView.getLog()))
+        {
+            Chercheur unChercheur = gererChercheur.getChercheur(logView.getLog());
+            MyRandomPassword mrp = new MyRandomPassword();
+            String newMDP = mrp.generateRandomString();
+            SendEmail send = new SendEmail(unChercheur, "Ré-initialisation de votre mot de passe.", "Votre nouveau mot de passe est \""+ newMDP +"\", veuillez le changer rapidement.");
+            unChercheur.setPassword(newMDP);
+            System.out.println(unChercheur.getPassword());
+            gererChercheur.updateMDPChercheur(unChercheur);
+        }
+        else 
+            JOptionPane.showMessageDialog(null, "Identifiant inconnue!");
     }
 }

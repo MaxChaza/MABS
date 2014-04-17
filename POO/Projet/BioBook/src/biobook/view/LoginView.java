@@ -8,6 +8,7 @@ package biobook.view;
 
 import biobook.controller.GererChercheur;
 import biobook.controller.LoginController;
+import biobook.model.Chercheur;
 import biobook.util.BioBookException;
 import biobook.util.SendEmail;
 import biobook.util.SendEmail;
@@ -24,6 +25,7 @@ import java.awt.Insets;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.util.EventListener;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -32,6 +34,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -61,11 +64,11 @@ public class LoginView extends JFrame implements ActionListener{
     public JPanel tout;
     LoginController ctrl ;
     
-    public LoginView() throws BioBookException{
+    public LoginView() throws BioBookException, SQLException{
         
         ctrl = new LoginController(this);
         // Caractéristiques JFrame
-        setMinimumSize(new Dimension(500, 300));
+        setMinimumSize(new Dimension(850, 300));
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 
         c = getContentPane();
@@ -88,7 +91,7 @@ public class LoginView extends JFrame implements ActionListener{
 
         JLabel titreLog = new JLabel("Login");
         log = new JTextField("");
-        log.setPreferredSize(new Dimension(100,20));
+        log.setPreferredSize(new Dimension(200,20));
         
         GridBagConstraints gridBagConstraintsLog = new GridBagConstraints();
         gridBagConstraintsLog.gridx = 1;
@@ -107,7 +110,7 @@ public class LoginView extends JFrame implements ActionListener{
         
         JLabel titrePass = new JLabel("Password ");
         pass = new JPasswordField("");
-        pass.setPreferredSize(new Dimension(100,20));
+        pass.setPreferredSize(new Dimension(200,20));
 
         GridBagConstraints gridBagConstraintsPass = new GridBagConstraints();
         gridBagConstraintsPass.gridx = 1;
@@ -200,8 +203,30 @@ public class LoginView extends JFrame implements ActionListener{
             ctrl.clickEnregistrer();
         }
         
-        if(e.getSource()==mdpOublie)
-            ctrl.clickMDPOublie(log.getText());
+        if(e.getSource()==mdpOublie){
+            boolean logIsSet = false;
+            if(!log.getText().equals("")){
+                logIsSet=true;
+                log.setBorder(UIManager.getBorder("TextField.border"));
+                try {
+                    ctrl.clickMDPOublie();
+                } catch (BioBookException ex) {
+                    Logger.getLogger(LoginView.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
+                    Logger.getLogger(LoginView.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            else
+            {
+                //  create a line border with the specified color and width
+		Border border = BorderFactory.createLineBorder(Color.RED, 1);
+                log.setBorder(border);
+                JOptionPane.showMessageDialog(null, "Veuillez saisir votre identifiant!");
+            }
+        }
+        
+//        if(e.getSource()==mdpOublie)
+//            ctrl.clickMDPOublie(log.getText());
     }
     
     public String getPass() {
