@@ -93,7 +93,6 @@ public class LoginController {
             String newMDP = mrp.generateRandomString();
             SendEmail send = new SendEmail(unChercheur, "Ré-initialisation de votre mot de passe.", "Votre nouveau mot de passe est \""+ newMDP +"\", veuillez le changer rapidement.");
             unChercheur.setPassword(newMDP);
-            System.out.println(unChercheur.getPassword());
             gererChercheur.updateMDPChercheur(unChercheur);
         }
         else 

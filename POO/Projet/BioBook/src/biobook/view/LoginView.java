@@ -10,6 +10,7 @@ import biobook.controller.GererChercheur;
 import biobook.controller.LoginController;
 import biobook.model.Chercheur;
 import biobook.util.BioBookException;
+import biobook.util.JProgressBarMail;
 import biobook.util.SendEmail;
 import biobook.util.SendEmail;
 import java.awt.BorderLayout;
@@ -204,8 +205,13 @@ public class LoginView extends JFrame implements ActionListener{
         }
         
         if(e.getSource()==mdpOublie){
+            JProgressBarMail progress = new JProgressBarMail();
+            progress.getMaBarre().setValue(10);
+            Thread.yield();
             boolean logIsSet = false;
             if(!log.getText().equals("")){
+                
+          
                 logIsSet=true;
                 log.setBorder(UIManager.getBorder("TextField.border"));
                 try {
@@ -215,6 +221,10 @@ public class LoginView extends JFrame implements ActionListener{
                 } catch (SQLException ex) {
                     Logger.getLogger(LoginView.class.getName()).log(Level.SEVERE, null, ex);
                 }
+                  progress.getMaBarre().setValue(50);
+                  
+                  
+          
             }
             else
             {

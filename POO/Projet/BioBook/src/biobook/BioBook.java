@@ -11,6 +11,7 @@ import biobook.view.LoginView;
 import java.math.BigInteger;
 import java.security.SecureRandom;
 import java.sql.SQLException;
+import javax.swing.JProgressBar;
 
 /**
  *
@@ -23,5 +24,6 @@ public class BioBook {
     public static void main(String[] args) throws BioBookException, SQLException {
         // TODO code application logic here
         LoginView login = new LoginView();
+        
     }
 }

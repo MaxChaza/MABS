@@ -100,7 +100,6 @@ public class GererChercheur {
                     e.printStackTrace();
                 }
         }
-        System.out.println("ok");
     }
     
     /**
