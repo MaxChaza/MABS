@@ -46,7 +46,7 @@ public class Chercheur {
         return password;
     }
 
-    public String getName() {
+    public String getUserName() {
         return name;
     }
 
@@ -70,7 +70,7 @@ public class Chercheur {
         this.password = password;
     }
 
-    public void setName(String name) {
+    public void setUserName(String name) {
         this.name = name;
     }
 

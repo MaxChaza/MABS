@@ -1,0 +1,27 @@
+YGEM =>		Putative uncharacterized protein YgeN
+			
+MTFA => 	Involved in the regulation of ptsG expression by binding and inactivating Mlc. Ref.3
+			Interacts with Mlc with high affinity.
+			negative regulation of sequence-specific DNA binding transcription factor activity
+			aminopeptidase activity
+			metallopeptidase activity
+			transcription factor binding
+
+MYFD =>		Cell inner membrane
+			Cell membrane
+			Membrane
+			NADH dehydrogenase (ubiquinone) activity
+			
+LSRA =>		Part of the ABC transporter complex LsrABCD involved in autoinducer 2 import. 
+			Responsible for energy coupling to the transport system Probable. This protein is essential for aerobic growth.
+			Transport
+			Cellular component	Cell inner membrane
+			Cell membrane
+			Membrane
+			Transport ATPase
+		
+LACI =>		Repressor of the lactose operon. Binds allolactose as an inducer.
+			Transcription regulation
+			transcription, DNA-templated
+			DNA binding
+			sequence-specific DNA binding transcription factor activity

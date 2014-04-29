@@ -13,6 +13,7 @@ import biobook.util.BioBookException;
 import biobook.util.JProgressBarMail;
 import biobook.util.SendEmail;
 import biobook.util.SendEmail;
+import com.seaglasslookandfeel.ui.SeaGlassButtonUI;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
@@ -42,6 +43,7 @@ import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.WindowConstants;
 import javax.swing.border.Border;
+import javax.swing.plaf.nimbus.NimbusLookAndFeel;
 
 /**
  *
@@ -131,6 +133,7 @@ public class LoginView extends JFrame implements ActionListener{
         JPanel jPanelBouton = new JPanel(new FlowLayout());
 
         valider = new JButton("Valider");
+        valider.setUI(new SeaGlassButtonUI());
         valider.addActionListener(this);
         
         annuler = new JButton("Annuler");
@@ -165,7 +168,7 @@ public class LoginView extends JFrame implements ActionListener{
             boolean passIsSet = false;
             if(!log.getText().equals("")){
                 logIsSet=true;
-                log.setBorder(UIManager.getBorder("SeaGlassTextFieldUI.border"));
+                log.setBorder(UIManager.getBorder("TextField.border"));
             }
             else
             {
@@ -175,7 +178,7 @@ public class LoginView extends JFrame implements ActionListener{
             }
             if(!pass.getText().equals("")){
                 passIsSet=true;
-                pass.setBorder(UIManager.getBorder("TextField.border"));
+                pass.setBorder(UIManager.getBorder("PasswordField.border"));
             }
             else
             {

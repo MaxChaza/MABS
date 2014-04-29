@@ -46,7 +46,7 @@ public class EnregistrerController {
         Chercheur unChercheur = null;
         String login;
         String pass=enregistrerView.getPass().getText();
-        String name=enregistrerView.getName();
+        String name=enregistrerView.getUserName();
         String firstName=enregistrerView.getFirstName();
         String mail=enregistrerView.getMail();
         if(enregistrerView.isLogIsSet())

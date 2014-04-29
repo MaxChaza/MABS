@@ -12,8 +12,8 @@ import java.math.BigInteger;
 import java.security.SecureRandom;
 import java.sql.SQLException;
 import javax.swing.JProgressBar;
+import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
-import com.seaglasslookandfeel.SeaGlassLookAndFeel;
 import javax.swing.UnsupportedLookAndFeelException;
 /**
  *
@@ -26,17 +26,22 @@ public class BioBook {
     public static void main(String[] args) throws BioBookException, SQLException {
         // TODO code application logic here
         
-        try
-        {
-          UIManager.setLookAndFeel("com.seaglasslookandfeel.SeaGlassLookAndFeel");
-          //Another way is to use the #setLookAndFeel method of the SyntheticaLookAndFeel class
-          //SyntheticaLookAndFeel.setLookAndFeel(String className, boolean antiAlias, boolean useScreenMenuOnMac);
-        }
-        catch (Exception e)
-        {
-          e.printStackTrace();
-        }
-
+//        try
+//        {
+//          UIManager.setLookAndFeel("com.seaglasslookandfeel.SeaGlassLookAndFeel");
+//          //Another way is to use the #setLookAndFeel method of the SyntheticaLookAndFeel class
+//          //SyntheticaLookAndFeel.setLookAndFeel(String className, boolean antiAlias, boolean useScreenMenuOnMac);
+//        }
+//        catch (Exception e)
+//        {
+//          e.printStackTrace();
+//        }
+        
+        
+//        String password = "password";
+//		MessageDigest md = MessageDigest.getInstance("MD5");
+//		md.update(password.getBytes());
+//		byte[] md5 = md.digest();
         LoginView login = new LoginView();
         
     }

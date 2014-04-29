@@ -6,7 +6,6 @@
 
 package biobook.view;
 
-import com.seaglasslookandfeel.ui.SeaGlassTabbedPaneUI;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;

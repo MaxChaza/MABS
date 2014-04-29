@@ -303,7 +303,7 @@ public class EnregistrerView extends JPanel implements ActionListener{
             if(!pass.getText().equals("")){
                 passIsSet=true;
                 pass.setBorder(UIManager.getBorder("TextField.border"));
-                if(pass.getText().length()>8){
+                if(pass.getText().length()>=8){
                     min8car=true;
                 }
                 else
@@ -384,7 +384,7 @@ public class EnregistrerView extends JPanel implements ActionListener{
         }
     }
 
-    public String getUsersName() {
+    public String getUserName() {
         return name.getText();
     }
 

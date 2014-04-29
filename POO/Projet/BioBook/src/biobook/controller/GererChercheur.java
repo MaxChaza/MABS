@@ -45,7 +45,7 @@ public class GererChercheur {
                 
                 pst.setString(1,unChercheur.getLogin());
                 pst.setString(2,unChercheur.getPassword());
-                pst.setString(3,unChercheur.getName());
+                pst.setString(3,unChercheur.getUserName());
                 pst.setString(4,unChercheur.getFirstName());
                 pst.setString(5,unChercheur.getMail());
 

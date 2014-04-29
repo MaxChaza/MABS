@@ -21,8 +21,19 @@
         <group name="CoursWeb"/>
         <group name="ProjetPerso">
             <file>file:/C:/Users/Maxime/Documents/MABS/POO/Projet/BioBook/src/biobook/controller/LoginController.java</file>
+            <file>file:/C:/Users/Maxime/Documents/MABS/POO/Projet/BioBook/src/biobook/view/LoginView.java</file>
+            <file>file:/C:/Users/Maxime/Documents/MABS/POO/Projet/BioBook/src/biobook/controller/GererChercheur.java</file>
+            <file>file:/C:/Users/Maxime/Documents/MABS/POO/Projet/BioBook/src/biobook/view/EnregistrerView.java</file>
+            <file>file:/C:/Users/Maxime/Documents/MABS/POO/Projet/BioBook/src/biobook/util/SendEmail.java</file>
+            <file>file:/C:/Users/Maxime/Documents/MABS/POO/Projet/BioBook/src/biobook/BioBook.java</file>
+            <file>file:/C:/Users/Maxime/Documents/MABS/POO/Projet/BioBook/src/biobook/model/Chercheur.java</file>
+        </group>
+        <group name="CoursJava">
+            <file>file:/C:/Users/Maxime/Documents/MABS/POO/Projet/BioBook/src/biobook/view/LoginView.java</file>
+            <file>file:/C:/Users/Maxime/Documents/MABS/POO/Projet/BioBook/src/biobook/BioBook.java</file>
+            <file>file:/C:/Users/Maxime/Documents/MABS/POO/Projet/BioBook/src/biobook/model/Chercheur.java</file>
+            <file>file:/C:/Users/Maxime/Documents/MABS/POO/Projet/BioBook/src/biobook/controller/GererChercheur.java</file>
             <file>file:/C:/Users/Maxime/Documents/MABS/POO/Projet/BioBook/src/biobook/controller/EnregistrerController.java</file>
-            <file>file:/C:/Users/Maxime/Documents/MABS/POO/Projet/BioBook/src/biobook/util/RegexBioBook.java</file>
             <file>file:/C:/Users/Maxime/Documents/MABS/POO/Projet/BioBook/src/biobook/view/EnregistrerView.java</file>
         </group>
     </open-files>
