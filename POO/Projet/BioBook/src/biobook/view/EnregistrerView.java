@@ -384,7 +384,7 @@ public class EnregistrerView extends JPanel implements ActionListener{
         }
     }
 
-    public String getName() {
+    public String getUsersName() {
         return name.getText();
     }
 

@@ -14,7 +14,9 @@ import javax.mail.internet.MimeMessage;
 public class SendEmail
 {
     public SendEmail(Chercheur c, String sujet, String msg){
-
+        
+        JProgressBarMail progress = new JProgressBarMail();
+        progress.getMaBarre().setValue(10);
         final String username = "maxime.chazalviel@gmail.com";
         final String password = "Tu peux chercher";
 
@@ -23,28 +25,33 @@ public class SendEmail
         props.put("mail.smtp.starttls.enable", "true");
         props.put("mail.smtp.host", "smtp.gmail.com");
         props.put("mail.smtp.port", "587");
-
+        progress.getMaBarre().setValue(20);
         Session session = Session.getInstance(props,
           new javax.mail.Authenticator() {
                 protected PasswordAuthentication getPasswordAuthentication() {
                         return new PasswordAuthentication(username, password);
                 }
           });
-
+        progress.getMaBarre().setValue(40);
         try {
 
                 Message message = new MimeMessage(session);
                 message.setFrom(new InternetAddress("maxime.chazalviel@gmail.com"));
                 message.setRecipients(Message.RecipientType.TO,
                         InternetAddress.parse(c.getMail()));
+                progress.getMaBarre().setValue(60);
                 message.setSubject(sujet);
-                message.setText(msg);
-
-                Transport.send(message);
                 
+                progress.getMaBarre().setValue(70);
+                message.setText(msg);
+                
+                progress.getMaBarre().setValue(90);
+                Transport.send(message);
+                progress.getMaBarre().setValue(100);
 
         } catch (MessagingException e) {
                 throw new RuntimeException(e);
         }
+        progress.getMaBarre().setValue(110);
     }
 }

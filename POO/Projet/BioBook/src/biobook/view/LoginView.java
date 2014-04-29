@@ -165,7 +165,7 @@ public class LoginView extends JFrame implements ActionListener{
             boolean passIsSet = false;
             if(!log.getText().equals("")){
                 logIsSet=true;
-                log.setBorder(UIManager.getBorder("TextField.border"));
+                log.setBorder(UIManager.getBorder("SeaGlassTextFieldUI.border"));
             }
             else
             {
@@ -205,8 +205,6 @@ public class LoginView extends JFrame implements ActionListener{
         }
         
         if(e.getSource()==mdpOublie){
-            JProgressBarMail progress = new JProgressBarMail();
-            progress.getMaBarre().setValue(10);
             Thread.yield();
             boolean logIsSet = false;
             if(!log.getText().equals("")){
@@ -221,7 +219,7 @@ public class LoginView extends JFrame implements ActionListener{
                 } catch (SQLException ex) {
                     Logger.getLogger(LoginView.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                  progress.getMaBarre().setValue(50);
+                  
                   
                   
           

@@ -6,6 +6,7 @@
 
 package biobook.view;
 
+import com.seaglasslookandfeel.ui.SeaGlassTabbedPaneUI;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
@@ -69,7 +70,7 @@ public class MainFrame extends JFrame{
 
         Container c = getContentPane();
         c.setLayout(new BorderLayout());
-        tabbedPane.setUI(new AquaBarTabbedPaneUI());
+//        tabbedPane.setUI(new SeaGlassTabbedPaneUI();
         
         tabbedPane.setPreferredSize(new Dimension(320, 200));
         // Mise enplace des onglets

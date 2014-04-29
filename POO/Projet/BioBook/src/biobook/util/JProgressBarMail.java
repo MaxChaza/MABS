@@ -41,5 +41,8 @@ public class JProgressBarMail extends Frame implements ChangeListener
     public void stateChanged(ChangeEvent e)
     {
         maBarre.setString ("Progession: " + (int)(maBarre.getPercentComplete()*100) + "%");
+        if(maBarre.getValue()==110)
+            maBarre.setVisible(false);
+        
     } 
 }
