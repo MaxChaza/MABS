@@ -6,19 +6,14 @@ package biobook.util;
 
 import java.awt.BorderLayout;
 import java.awt.Frame;
-import java.awt.*;
-import javax.swing.*;
-import javax.swing.event.*;
 import javax.swing.JProgressBar;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 
 
 /**
  *
  * @author Maxime
  */
-public class JProgressBarMail extends Frame implements ChangeListener
+public class JProgressBarMail extends Frame 
 {
     private JProgressBar maBarre;
 
@@ -29,20 +24,36 @@ public class JProgressBarMail extends Frame implements ChangeListener
     public JProgressBarMail()
     {
         setLayout(new BorderLayout());
-        maBarre = new JProgressBar(0,99);
-        maBarre.setString("Progression");
+        maBarre = new JProgressBar(0,100);
+        maBarre.setString("Envoie du mail.");
         maBarre.setStringPainted(true);
-        maBarre.addChangeListener(this);
+        maBarre.setIndeterminate(true);
         add("Center", maBarre);
         setBounds(320,240,250,100);
         setVisible(true);
     }
 
-    public void stateChanged(ChangeEvent e)
-    {
-        maBarre.setString ("Progession: " + (int)(maBarre.getPercentComplete()*100) + "%");
-        if(maBarre.getValue()==110)
-            maBarre.setVisible(false);
-        
-    } 
-}
+} 
+
+//public class JProgressBarMail extends Thread
+//{
+//    private JProgressBar maBarre;
+//    private JFrame f;
+//    public JProgressBar getMaBarre() {
+//        return maBarre;
+//    }
+//
+//    public JProgressBarMail()
+//    {
+//        f = new JFrame();
+//        f.setLayout(new BorderLayout());
+//        
+//        maBarre = new JProgressBar();
+//        maBarre.setString("Progression");
+//        maBarre.setStringPainted(true);
+////        maBarre.setIndeterminate(true);
+//        f.add("Center", maBarre);
+//        f.setBounds(320,240,250,100);
+//        f.setVisible(true);   
+//    }   
+//}

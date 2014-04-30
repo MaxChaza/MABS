@@ -27,6 +27,7 @@ import java.awt.Insets;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.util.EventListener;
 import java.util.logging.Level;
@@ -91,7 +92,7 @@ public class LoginView extends JFrame implements ActionListener{
 
         //Panel du formulaire
         JPanel jPanelLogin = new JPanel(new GridBagLayout());
-
+        
         JLabel titreLog = new JLabel("Login");
         log = new JTextField("");
         log.setPreferredSize(new Dimension(200,20));
@@ -133,7 +134,8 @@ public class LoginView extends JFrame implements ActionListener{
         JPanel jPanelBouton = new JPanel(new FlowLayout());
 
         valider = new JButton("Valider");
-        valider.setUI(new SeaGlassButtonUI());
+
+//        valider.setUI(new SeaGlassButtonUI());
         valider.addActionListener(this);
         
         annuler = new JButton("Annuler");
@@ -189,7 +191,11 @@ public class LoginView extends JFrame implements ActionListener{
             if(logIsSet && passIsSet)
             {
                 try {
-                ctrl.clickValider();
+                    try {
+                        ctrl.clickValider();
+                    } catch (NoSuchAlgorithmException ex) {
+                        Logger.getLogger(LoginView.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 } catch (BioBookException ex) {
                     Logger.getLogger(LoginView.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -208,7 +214,7 @@ public class LoginView extends JFrame implements ActionListener{
         }
         
         if(e.getSource()==mdpOublie){
-            Thread.yield();
+ 
             boolean logIsSet = false;
             if(!log.getText().equals("")){
                 
@@ -216,7 +222,11 @@ public class LoginView extends JFrame implements ActionListener{
                 logIsSet=true;
                 log.setBorder(UIManager.getBorder("TextField.border"));
                 try {
-                    ctrl.clickMDPOublie();
+                    try {
+                        ctrl.clickMDPOublie();
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(LoginView.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 } catch (BioBookException ex) {
                     Logger.getLogger(LoginView.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (SQLException ex) {

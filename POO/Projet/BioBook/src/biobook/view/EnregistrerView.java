@@ -23,6 +23,7 @@ import java.awt.Insets;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.util.EventListener;
 import java.util.logging.Level;
@@ -357,7 +358,11 @@ public class EnregistrerView extends JPanel implements ActionListener{
                     if(passEgal)
                     {
                         try {
-                            ctrl.clickValider();
+                            try {
+                                ctrl.clickValider();
+                            } catch (NoSuchAlgorithmException ex) {
+                                Logger.getLogger(EnregistrerView.class.getName()).log(Level.SEVERE, null, ex);
+                            }
                         } catch (SQLException ex) {
                             Logger.getLogger(EnregistrerView.class.getName()).log(Level.SEVERE, null, ex);
                         } catch (BioBookException ex) {

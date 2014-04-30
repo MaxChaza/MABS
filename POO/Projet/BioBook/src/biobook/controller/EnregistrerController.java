@@ -12,6 +12,7 @@ import biobook.util.SendEmail;
 import biobook.view.EnregistrerView;
 import biobook.view.LoginView;
 import biobook.view.MainFrame;
+import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -40,7 +41,7 @@ public class EnregistrerController {
         return gererChercheur.getChercheur(log)!=null;    
     }
     
-    public void clickValider() throws SQLException, BioBookException {
+    public void clickValider() throws SQLException, BioBookException, NoSuchAlgorithmException {
         
 
         Chercheur unChercheur = null;
@@ -81,7 +82,7 @@ public class EnregistrerController {
             
             
             SendEmail send = new SendEmail(unChercheur, sujet, msg.toString());
-                    
+            send.execute();       
             enregistrerView.setVisible(false);
             enregistrerView.login.tout.setVisible(true);
         }                   

@@ -5,16 +5,9 @@
 package biobook;
 
 import biobook.util.BioBookException;
-import biobook.util.MyRandomPassword;
-import biobook.view.MainFrame;
 import biobook.view.LoginView;
-import java.math.BigInteger;
-import java.security.SecureRandom;
 import java.sql.SQLException;
-import javax.swing.JProgressBar;
-import javax.swing.SwingUtilities;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
+
 /**
  *
  * @author Maxime
@@ -37,12 +30,8 @@ public class BioBook {
 //          e.printStackTrace();
 //        }
         
-        
-//        String password = "password";
-//		MessageDigest md = MessageDigest.getInstance("MD5");
-//		md.update(password.getBytes());
-//		byte[] md5 = md.digest();
-        LoginView login = new LoginView();
+        LoginView login;
+        login = new LoginView();
         
     }
    

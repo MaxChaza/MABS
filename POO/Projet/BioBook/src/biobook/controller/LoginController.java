@@ -6,6 +6,7 @@
 
 package biobook.controller;
 
+import biobook.util.MD5;
 import biobook.model.Chercheur;
 import biobook.util.BioBookException;
 import biobook.util.MyRandomPassword;
@@ -13,11 +14,14 @@ import biobook.util.SendEmail;
 import biobook.view.EnregistrerView;
 import biobook.view.LoginView;
 import biobook.view.MainFrame;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -37,25 +41,35 @@ public class LoginController {
         return gererChercheur.getChercheur(log)!=null;    
     }
     
-    public boolean motDePasseOK(String log, String pass) throws BioBookException {
+    public boolean motDePasseOK(String log, String pass) throws BioBookException, NoSuchAlgorithmException {
+       
+        // Cryptage du mot de passe en MD5
+        MD5 md5 = new MD5(pass);
+        
+        // Récupération du mot de pass
         String password = gererChercheur.getPassChercheur(log);
+        System.out.println(password);
         Boolean ok;
-        if(pass.equals(password))
+        if(md5.getMD5().equals(password)) {
             ok=true;
-        else 
+        }
+        else {
             ok=false;
+        }
         return ok;    
     }
         
-    public void clickValider() throws BioBookException {
+    public void clickValider() throws BioBookException, NoSuchAlgorithmException {
         String login = logView.getLog();
         String pass = logView.getPass();
         if(loginExist(login))
         {
-            if(motDePasseOK(login,pass))
+            if(motDePasseOK(login,pass)) {
                 connection();
-            else
-                JOptionPane.showMessageDialog(null, "Votre login et votre mot de passe ne corresponde pas!");                           
+            }
+            else {
+                JOptionPane.showMessageDialog(null, "Votre login et votre mot de passe ne corresponde pas!");
+            }                           
         }
         else
         {
@@ -64,11 +78,11 @@ public class LoginController {
     }  
     
     public void clickAnnuler() throws BioBookException {
-        Chercheur ch = gererChercheur.getChercheur("toto");
-        if(ch!=null){
-            System.out.println(ch);
-        }else
-            System.out.println("merde");
+//        Chercheur ch = gererChercheur.getChercheur("toto");
+//        if(ch!=null){
+//            System.out.println(ch);
+//        }else
+//            System.out.println("merde");
                 
         logView.setVisible(false);
         logView.dispose(); 
@@ -85,13 +99,14 @@ public class LoginController {
         logView.add(enregistrerView);
     }
 
-    public void clickMDPOublie() throws BioBookException, SQLException {
+    public void clickMDPOublie() throws BioBookException, SQLException, InterruptedException {
         if(loginExist(logView.getLog()))
         {
-            Chercheur unChercheur = gererChercheur.getChercheur(logView.getLog());
+            final Chercheur unChercheur = gererChercheur.getChercheur(logView.getLog());
             MyRandomPassword mrp = new MyRandomPassword();
-            String newMDP = mrp.generateRandomString();
+            final String newMDP = mrp.generateRandomString();
             SendEmail send = new SendEmail(unChercheur, "Ré-initialisation de votre mot de passe.", "Votre nouveau mot de passe est \""+ newMDP +"\", veuillez le changer rapidement.");
+            send.execute();
             unChercheur.setPassword(newMDP);
             gererChercheur.updateMDPChercheur(unChercheur);
         }
