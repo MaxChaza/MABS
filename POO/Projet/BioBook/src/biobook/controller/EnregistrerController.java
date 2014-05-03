@@ -12,6 +12,8 @@ import biobook.util.SendEmail;
 import biobook.view.EnregistrerView;
 import biobook.view.LoginView;
 import biobook.view.MainFrame;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -37,11 +39,11 @@ public class EnregistrerController {
         enregistrerView.login.tout.setVisible(true); 
     } 
 
-    public boolean  loginExist(String log) throws BioBookException {
+    public boolean  loginExist(String log) throws BioBookException, IOException, FileNotFoundException, ClassNotFoundException {
         return gererChercheur.getChercheur(log)!=null;    
     }
     
-    public void clickValider() throws SQLException, BioBookException, NoSuchAlgorithmException {
+    public void clickValider() throws SQLException, BioBookException, NoSuchAlgorithmException, IOException, FileNotFoundException, ClassNotFoundException {
         
 
         Chercheur unChercheur = null;

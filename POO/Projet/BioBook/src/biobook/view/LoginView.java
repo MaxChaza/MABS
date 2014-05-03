@@ -27,6 +27,7 @@ import java.awt.Insets;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.util.EventListener;
@@ -195,6 +196,10 @@ public class LoginView extends JFrame implements ActionListener{
                         ctrl.clickValider();
                     } catch (NoSuchAlgorithmException ex) {
                         Logger.getLogger(LoginView.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (IOException ex) {
+                        Logger.getLogger(LoginView.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (ClassNotFoundException ex) {
+                        Logger.getLogger(LoginView.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 } catch (BioBookException ex) {
                     Logger.getLogger(LoginView.class.getName()).log(Level.SEVERE, null, ex);
@@ -225,6 +230,10 @@ public class LoginView extends JFrame implements ActionListener{
                     try {
                         ctrl.clickMDPOublie();
                     } catch (InterruptedException ex) {
+                        Logger.getLogger(LoginView.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (IOException ex) {
+                        Logger.getLogger(LoginView.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (ClassNotFoundException ex) {
                         Logger.getLogger(LoginView.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 } catch (BioBookException ex) {

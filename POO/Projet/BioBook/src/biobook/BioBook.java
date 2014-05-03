@@ -4,8 +4,15 @@
  */
 package biobook;
 
+import biobook.controller.GererChercheur;
+import biobook.model.Chercheur;
 import biobook.util.BioBookException;
+import biobook.util.SimpleConnection;
 import biobook.view.LoginView;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
+import java.sql.Connection;
 import java.sql.SQLException;
 
 /**
@@ -16,7 +23,7 @@ public class BioBook {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws BioBookException, SQLException {
+    public static void main(String[] args) throws BioBookException, SQLException, IOException, FileNotFoundException, ClassNotFoundException, NoSuchAlgorithmException {
         // TODO code application logic here
         
 //        try
@@ -30,8 +37,10 @@ public class BioBook {
 //          e.printStackTrace();
 //        }
         
-        LoginView login;
-        login = new LoginView();
+//        GererChercheur g=new GererChercheur();
+//        g.insertChercheur(new Chercheur("a", "a", "a", "a"));
+//        LoginView login;
+//        login = new LoginView();
         
     }
    

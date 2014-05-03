@@ -1,0 +1,586 @@
+FT   CDS             complement(1..1104)
+FT                   /gene="GM_CDS_1.6"
+FT   CDS             complement(1..1209)
+FT                   /gene="GM_CDS_1.5"
+FT   CDS             complement(1..1317)
+FT                   /gene="GM_CDS_1.4"
+FT   CDS             complement(1..1362)
+FT                   /gene="GM_CDS_1.3"
+FT   CDS             complement(1..1371)
+FT                   /gene="GM_CDS_1.2"
+FT   CDS             complement(1..1386)
+FT                   /gene="GM_CDS_1.1"
+FT   CDS             complement(1..1440)
+FT                   /gene="GMHMM_CDS_1"
+FT   promoter        complement(44..86)
+FT                   /note="'ttgata"
+FT                   /note="tatatagtcagccgggaattggcacaagatt"
+FT                   /note="taaaat"
+FT                   /note="'"
+FT   RBS             complement(84..96)
+FT                   /note="'ggggg"
+FT                   /note="aaata"
+FT                   /note="ttg"
+FT                   /note="'"
+FT   promoter        244..280
+FT                   /note="'ttgtat"
+FT                   /note="ttcattgtcatgtaacacgtcctga"
+FT                   /note="tataat"
+FT                   /note="'"
+FT   RBS             complement(258..271)
+FT                   /note="'ggacg"
+FT                   /note="tgttac"
+FT                   /note="atg"
+FT                   /note="'"
+FT   promoter        complement(307..341)
+FT                   /note="'ttgaaa"
+FT                   /note="acttgattgctaattgtattaaa"
+FT                   /note="cataat"
+FT                   /note="'"
+FT   promoter        517..560
+FT                   /note="'ttgaaa"
+FT                   /note="agttaagttgaaatcttcaatcagcttttcca"
+FT                   /note="tatatt"
+FT                   /note="'"
+FT   RBS             662..681
+FT                   /note="'agagg"
+FT                   /note="ggtttttaaatc"
+FT                   /note="atg"
+FT                   /note="'"
+FT   promoter        787..815
+FT                   /note="'ttgata"
+FT                   /note="ggtcttatatccagatt"
+FT                   /note="tattat"
+FT                   /note="'"
+FT   promoter        complement(844..884)
+FT                   /note="'ttgaga"
+FT                   /note="atttgtctaaagaaaaatatgaagaacct"
+FT                   /note="tatgat"
+FT                   /note="'"
+FT   promoter        870..897
+FT                   /note="'tagaca"
+FT                   /note="aattctcaatccaaga"
+FT                   /note="tacaat"
+FT                   /note="'"
+FT   promoter        936..963
+FT                   /note="'ttgcaa"
+FT                   /note="tgacaatccctgccat"
+FT                   /note="aataat"
+FT                   /note="'"
+FT   RBS             complement(939..954)
+FT                   /note="'gcagg"
+FT                   /note="gattgtca"
+FT                   /note="ttg"
+FT                   /note="'"
+FT   terminator      990..1014
+FT                   /note="'aat"
+FT                   /note="aga"
+FT                   /note="aaaaagg"
+FT                   /note="gtt"
+FT                   /note="att"
+FT                   /note="tttttc"
+FT                   /note="'"
+FT   promoter        1091..1136
+FT                   /note="'ttggca"
+FT                   /note="ggatacatgtaatctgatattaactctccaagaa"
+FT                   /note="tataat"
+FT                   /note="'"
+FT   terminator      complement(1164..1199)
+FT                   /note="'aaa"
+FT                   /note="ttttagat"
+FT                   /note="gaacaagg"
+FT                   /note="agatgagg"
+FT                   /note="ttt"
+FT                   /note="tt'"
+FT   promoter        complement(1316..1346)
+FT                   /note="'ttttca"
+FT                   /note="gcctcgtcttaggtcagaa"
+FT                   /note="taaaat"
+FT                   /note="'"
+FT   RBS             1335..1351
+FT                   /note="'cgagg"
+FT                   /note="ctgaaaaat"
+FT                   /note="atg"
+FT                   /note="'"
+FT   promoter        complement(1349..1393)
+FT                   /note="'tttact"
+FT                   /note="catgtttatttggggtgtgctcattgtgggcag"
+FT                   /note="tatcat"
+FT                   /note="'"
+FT   CDS             complement(1437..1562)
+FT                   /gene="GM_CDS_2.2"
+FT   CDS             complement(1437..1598)
+FT                   /gene="GM_CDS_2.1"
+FT   CDS             complement(1437..2159)
+FT                   /gene="GMHMM_CDS_2"
+FT   RBS             complement(1438..1452)
+FT                   /note="'tgagg"
+FT                   /note="atttatt"
+FT                   /note="ttg"
+FT                   /note="'"
+FT   promoter        1534..1562
+FT                   /note="'ttttca"
+FT                   /note="cgtaatcgtcttacatg"
+FT                   /note="taccat"
+FT                   /note="'"
+FT   RBS             complement(1560..1577)
+FT                   /note="'ggaga"
+FT                   /note="tagtactgta"
+FT                   /note="atg"
+FT                   /note="'"
+FT   RBS             complement(1580..1594)
+FT                   /note="'ggggg"
+FT                   /note="gagtttt"
+FT                   /note="atg"
+FT                   /note="'"
+FT   terminator      complement(1649..1674)
+FT                   /note="'tca"
+FT                   /note="gga"
+FT                   /note="aatgaaac"
+FT                   /note="ttc"
+FT                   /note="tga"
+FT                   /note="tttatt"
+FT                   /note="'"
+FT   RBS             1675..1693
+FT                   /note="'gcagg"
+FT                   /note="gcaatctattc"
+FT                   /note="ttg"
+FT                   /note="'"
+FT   promoter        1699..1738
+FT                   /note="'ttaaca"
+FT                   /note="acaagtcttccggtattgggatctattt"
+FT                   /note="taaaat"
+FT                   /note="'"
+FT   RBS             complement(1703..1715)
+FT                   /note="'ggaag"
+FT                   /note="acttg"
+FT                   /note="ttg"
+FT                   /note="'"
+FT   promoter        1782..1823
+FT                   /note="'ttgagt"
+FT                   /note="cgttctctttaattgggcttttacacgagc"
+FT                   /note="tacaat"
+FT                   /note="'"
+FT   promoter        complement(1848..1883)
+FT                   /note="'ttgcaa"
+FT                   /note="gggtttagttttgggggagatgac"
+FT                   /note="tatatt"
+FT                   /note="'"
+FT   promoter        2080..2111
+FT                   /note="'ttttca"
+FT                   /note="aagcaagttattaataagtt"
+FT                   /note="taagat"
+FT                   /note="'"
+FT   terminator      2121..2144
+FT                   /note="'atc"
+FT                   /note="atc"
+FT                   /note="caccat"
+FT                   /note="gag"
+FT                   /note="gat"
+FT                   /note="tttgtt"
+FT                   /note="'"
+FT   RBS             complement(2157..2171)
+FT                   /note="'ggagg"
+FT                   /note="gtaactt"
+FT                   /note="atg"
+FT                   /note="'"
+FT   promoter        complement(2290..2335)
+FT                   /note="'ttcact"
+FT                   /note="taacgacatccctggtttattttctgtatgtagt"
+FT                   /note="tatatt"
+FT                   /note="'"
+FT   RBS             2319..2333
+FT                   /note="'ggatg"
+FT                   /note="tcgttaa"
+FT                   /note="gtg"
+FT                   /note="'"
+FT   RBS             2342..2357
+FT                   /note="'ggaag"
+FT                   /note="agtttcgt"
+FT                   /note="ttg"
+FT                   /note="'"
+FT   promoter        complement(2377..2413)
+FT                   /note="'ttgatc"
+FT                   /note="attcatttgtctctcacctcacttt"
+FT                   /note="tatcat"
+FT                   /note="'"
+FT   RBS             2387..2404
+FT                   /note="'tgagg"
+FT                   /note="tgagagacaa"
+FT                   /note="atg"
+FT                   /note="'"
+FT   CDS             2402..3313
+FT                   /gene="GM_CDS_3.1"
+FT   CDS             2402..3313
+FT                   /gene="GMHMM_CDS_3"
+FT   CDS             2417..3313
+FT                   /gene="GM_CDS_3.2"
+FT   promoter        complement(2497..2537)
+FT                   /note="'ttgttt"
+FT                   /note="taccagcaccattcggtccaagaaaacca"
+FT                   /note="taaatt"
+FT                   /note="'"
+FT   CDS             2549..3313
+FT                   /gene="GM_CDS_3.3"
+FT   promoter        2630..2657
+FT                   /note="'ttgcaa"
+FT                   /note="agaatcgggtcactgg"
+FT                   /note="tagaat"
+FT                   /note="'"
+FT   RBS             complement(2646..2661)
+FT                   /note="'ggaga"
+FT                   /note="ttctacca"
+FT                   /note="gtg"
+FT                   /note="'"
+FT   RBS             2794..2807
+FT                   /note="'ggagt"
+FT                   /note="attccc"
+FT                   /note="ttg"
+FT                   /note="'"
+FT   CDS             2810..3313
+FT                   /gene="GM_CDS_3.4"
+FT   RBS             2869..2885
+FT                   /note="'ggatg"
+FT                   /note="aaccgacaa"
+FT                   /note="atg"
+FT                   /note="'"
+FT   RBS             complement(2880..2899)
+FT                   /note="'ggatg"
+FT                   /note="gatctaaaccat"
+FT                   /note="ttg"
+FT                   /note="'"
+FT   CDS             2948..3313
+FT                   /gene="GM_CDS_3.5"
+FT   promoter        complement(2957..2992)
+FT                   /note="'ttgatc"
+FT                   /note="tatttcactcaataagtggctgga"
+FT                   /note="tacaat"
+FT                   /note="'"
+FT   CDS             2993..3313
+FT                   /gene="GM_CDS_3.6"
+FT   promoter        complement(3079..3119)
+FT                   /note="'ttgttt"
+FT                   /note="ttgcttcgattacgtcactaacaccgact"
+FT                   /note="tttaat"
+FT                   /note="'"
+FT   promoter        complement(3136..3178)
+FT                   /note="'ttgaga"
+FT                   /note="cagccacaaataatttttttgtaaatcaacc"
+FT                   /note="tttaat"
+FT                   /note="'"
+FT   promoter        3246..3287
+FT                   /note="'ttgaag"
+FT                   /note="aaaagacacgatcacttgaggatatttttt"
+FT                   /note="tagaat"
+FT                   /note="'"
+FT   RBS             3298..3312
+FT                   /note="'agagg"
+FT                   /note="gaagtct"
+FT                   /note="atg"
+FT                   /note="'"
+FT   promoter        complement(3305..3336)
+FT                   /note="'ttgatc"
+FT                   /note="tgcccataataactttttca"
+FT                   /note="tagact"
+FT                   /note="'"
+FT   RBS             3313..3326
+FT                   /note="'aaaaag"
+FT                   /note="ttatt"
+FT                   /note="atg"
+FT                   /note="'"
+FT   CDS             3324..4067
+FT                   /gene="GMHMM_CDS_4"
+FT   promoter        3361..3399
+FT                   /note="'ttgatt"
+FT                   /note="gtagtcttattggtcccttactcatta"
+FT                   /note="tagcat"
+FT                   /note="'"
+FT   promoter        complement(3412..3446)
+FT                   /note="'ttgttt"
+FT                   /note="ttccacgtattcagatcgataag"
+FT                   /note="taagat"
+FT                   /note="'"
+FT   RBS             3475..3492
+FT                   /note="'ggatg"
+FT                   /note="tatttactgt"
+FT                   /note="atg"
+FT                   /note="'"
+FT   terminator      3621..3642
+FT                   /note="'att"
+FT                   /note="tat"
+FT                   /note="gtaa"
+FT                   /note="gta"
+FT                   /note="aat"
+FT                   /note="ttattt"
+FT                   /note="'"
+FT   promoter        complement(3634..3672)
+FT                   /note="'ttgacg"
+FT                   /note="aaataaataaactgactactaagcaaa"
+FT                   /note="taaatt"
+FT                   /note="'"
+FT   RBS             3711..3729
+FT                   /note="'gtagg"
+FT                   /note="attcgaaggta"
+FT                   /note="gtg"
+FT                   /note="'"
+FT   promoter        3744..3778
+FT                   /note="'ttgttt"
+FT                   /note="ggagatagttacagcatgttagt"
+FT                   /note="tacagt"
+FT                   /note="'"
+FT   RBS             3750..3767
+FT                   /note="'ggaga"
+FT                   /note="tagttacagc"
+FT                   /note="atg"
+FT                   /note="'"
+FT   promoter        3879..3923
+FT                   /note="'ttggca"
+FT                   /note="gctgctcaatcaacgagatggtttccgctggct"
+FT                   /note="tatcct"
+FT                   /note="'"
+FT   promoter        3933..3971
+FT                   /note="'tcgaca"
+FT                   /note="gtcattctgcagtatgaaggtatagga"
+FT                   /note="tataac"
+FT                   /note="'"
+FT   promoter        3992..4024
+FT                   /note="'ttgcat"
+FT                   /note="tagccttttcttagggataat"
+FT                   /note="tatatt"
+FT                   /note="'"
+FT   promoter        complement(4022..4068)
+FT                   /note="'tttaca"
+FT                   /note="aagcatcccgtttagcaaaatgaatagagcctaga"
+FT                   /note="aataat"
+FT                   /note="'"
+FT   RBS             4071..4086
+FT                   /note="'ggagg"
+FT                   /note="cgaaatac"
+FT                   /note="ttg"
+FT                   /note="'"
+FT   CDS             4084..4818
+FT                   /gene="GMHMM_CDS_5"
+FT   promoter        complement(4093..4129)
+FT                   /note="'ttgatc"
+FT                   /note="gcttaagctttaaacgttctacaaa"
+FT                   /note="taaaat"
+FT                   /note="'"
+FT   promoter        complement(4199..4229)
+FT                   /note="'ttgtct"
+FT                   /note="ccgggattcataaaaaggt"
+FT                   /note="tatagt"
+FT                   /note="'"
+FT   RBS             4239..4258
+FT                   /note="'agagg"
+FT                   /note="cttggacacaag"
+FT                   /note="ttg"
+FT                   /note="'"
+FT   promoter        4246..4292
+FT                   /note="'tggaca"
+FT                   /note="caagttgccttatttatgggcccttttgtattgcc"
+FT                   /note="tatcgt"
+FT                   /note="'"
+FT   RBS             4319..4333
+FT                   /note="'gcagg"
+FT                   /note="ggggaac"
+FT                   /note="atg"
+FT                   /note="'"
+FT   RBS             complement(4437..4450)
+FT                   /note="'agagg"
+FT                   /note="attaaa"
+FT                   /note="atg"
+FT                   /note="'"
+FT   promoter        complement(4471..4507)
+FT                   /note="'ttgtaa"
+FT                   /note="gtaaaggaagactcccgcttatgcc"
+FT                   /note="taacat"
+FT                   /note="'"
+FT   RBS             complement(4479..4496)
+FT                   /note="'ggaag"
+FT                   /note="actcccgctt"
+FT                   /note="atg"
+FT                   /note="'"
+FT   RBS             4525..4541
+FT                   /note="'agagg"
+FT                   /note="gatcttagc"
+FT                   /note="ttg"
+FT                   /note="'"
+FT   promoter        complement(4531..4576)
+FT                   /note="'ttgaaa"
+FT                   /note="caataagctgcaataaaattaatggtaaacaagc"
+FT                   /note="taagat"
+FT                   /note="'"
+FT   promoter        4592..4628
+FT                   /note="'ttggca"
+FT                   /note="taccactcgctgttagcattgtttt"
+FT                   /note="tacatt"
+FT                   /note="'"
+FT   promoter        complement(4636..4665)
+FT                   /note="'ttgacc"
+FT                   /note="taatggtgtactggcaat"
+FT                   /note="aataat"
+FT                   /note="'"
+FT   promoter        complement(4687..4729)
+FT                   /note="'ttgatt"
+FT                   /note="gaatcggtgattcatcttcgggtgacattgc"
+FT                   /note="taacat"
+FT                   /note="'"
+FT   promoter        4795..4835
+FT                   /note="'tttact"
+FT                   /note="aaacgagaccttacgtagggtatatgcgg"
+FT                   /note="tataaa"
+FT                   /note="'"
+FT   promoter        complement(4987..5019)
+FT                   /note="'tttaaa"
+FT                   /note="taaagagtcttaagatatctt"
+FT                   /note="tatatt"
+FT                   /note="'"
+FT   promoter        5014..5041
+FT                   /note="'tttaaa"
+FT                   /note="cattttttacatttaa"
+FT                   /note="taatat"
+FT                   /note="'"
+FT   RBS             complement(5029..5048)
+FT                   /note="'ggaag"
+FT                   /note="agatattattaa"
+FT                   /note="atg"
+FT                   /note="'"
+FT   promoter        5055..5083
+FT                   /note="'ttgatt"
+FT                   /note="atgagttaatataatac"
+FT                   /note="tatact"
+FT                   /note="'"
+FT   promoter        complement(5076..5111)
+FT                   /note="'ttgact"
+FT                   /note="cattgtattcacccccttattaag"
+FT                   /note="tatagt"
+FT                   /note="'"
+FT   RBS             5090..5105
+FT                   /note="'ggggg"
+FT                   /note="tgaataca"
+FT                   /note="atg"
+FT                   /note="'"
+FT   CDS             5094..5309
+FT                   /gene="GM_CDS_4.1"
+FT   CDS             5103..5309
+FT                   /gene="GM_CDS_4.2"
+FT   CDS             5103..5309
+FT                   /gene="GMHMM_CDS_6"
+FT   CDS             5208..5309
+FT                   /gene="GM_CDS_4.3"
+FT   RBS             5220..5237
+FT                   /note="'gtagg"
+FT                   /note="tgcgggagac"
+FT                   /note="atg"
+FT                   /note="'"
+FT   RBS             5265..5277
+FT                   /note="'ggtgg"
+FT                   /note="cggcg"
+FT                   /note="gtg"
+FT                   /note="'"
+FT   promoter        5311..5355
+FT                   /note="'ttgatt"
+FT                   /note="tatataggctgtttcccttcagaaggaacagcc"
+FT                   /note="tatatt"
+FT                   /note="'"
+FT   terminator      5318..5360
+FT                   /note="'atat"
+FT                   /note="aggctgtttc"
+FT                   /note="ccttcagaa"
+FT                   /note="ggaacagcct"
+FT                   /note="atat"
+FT                   /note="tttatt"
+FT                   /note="'"
+SQ   Sequence 5404 BP; 1661 A; 953 C; 975 G; 1815 T; 0 other;
+     ctaattgaca ttgttatact tagatggcgg actcggaaag gtaattttaa atcttgtgcc        60
+     aattcccggc tgactatata tatcaatatt tcccccatgt gccttgataa tttgttgagc       120
+     aatagccatt cctaatccag tccctgagtt atttgacgta gcgcttgtcc ctctgaaata       180
+     ccgatcaaat aaacattcga ccgtctcttc gtccattcct atcccatcgt cttctattat       240
+     aatttgtatt tcattgtcat gtaacacgtc ctgatataat atgaccttta ttttagtgcc       300
+     cggaggatta tgtttaatac aattagcaat caagttttca actgcacgct ttaggtacct       360
+     ttcatccata ttaaaaagta tcttattgtg actggattct aaagcgaatc tcttattttc       420
+     tgactccggt agcagcttca ttttttctaa agtgtcatga attactttca ctacgttttt       480
+     ttcttcaaga tggattggaa gcgactcatt tttcaattga aaagttaagt tgaaatcttc       540
+     aatcagcttt tccatatatt cgacacgttc ttccattatt aaggaaaaat cacgcacttg       600
+     ctgattttcc cactcatatt catttgaaga taaaagaacc gtatatccct taataaccga       660
+     aagaggggtt tttaaatcat gtgagacacc ggccatccac tcttctcgtg tcttttccaa       720
+     taattctcgc tcagccttat tcctttgaag cgttgaggta agttcagaca gagcctgcat       780
+     taattcttga taggtcttat atccagattt attatgtcta tatttgcttg aatgaaactt       840
+     ccaatcataa ggttcttcat atttttcttt agacaaattc tcaatccaag atacaataaa       900
+     cagcagggga gcacctagtt tttttccgta aaatattgca atgacaatcc ctgccataat       960
+     aatagaaaca atccacaagt tattcaccca atagaaaaaa gggttatttt tttccatcgg      1020
+     ctttcccaat acccatgtta aatcctgatt gtttttcgtt tcataccacg tagataattg      1080
+     ataacctttt ttggcaggat acatgtaatc tgatattaac tctccaagaa tataatgctt      1140
+     aggtatattt tgaggtttat taaaagaaaa aacctcatct ccttgttcat ctaaaatttg      1200
+     aatccacatc cggttctcta ataaatcttc ttttgctttc gtatttattg aaaattgttt      1260
+     atctgcaaca actgtttggt caacaatttt ttttaaggat aagtgcggcg tttccatttt      1320
+     attctgacct aagacgaggc tgaaaaatat gatactgccc acaatgagca caccccaaat      1380
+     aaacatgagt aaaaaaagtc tcgatacgaa gtaaaatgct atcctatttc tcagcttcaa      1440
+     aataaatcct catctatagg ctctgcttca aatatatagc cctgtcctcg aaccgtttta      1500
+     atccatctag gtctgctcgg gtcttcctct aatttttcac gtaatcgtct tacatgtacc      1560
+     attacagtac tatctccgcc ataaaactcc ccccacacat ctttataaat ttggtgttta      1620
+     cttaaaattt gattgggatg ttcacagaaa taaatcagaa gtttcatttc ctgagcaggg      1680
+     caatctattc ttgtcccgtt aacaacaagt cttccggtat tgggatctat tttaaaatat      1740
+     tcataatcgt atacctgttt tagagggtaa gaagaagaga gttgagtcgt tctctttaat      1800
+     tgggctttta cacgagctac aatttctagt ggattaaatg gtttagtaat atagtcatct      1860
+     cccccaaaac taaacccttg caatttatct aaatctgttg tttttgccgt taagaagagt      1920
+     atcggcacat ttgtatgcga gcgtattttg ctgcataagg tgaagccatc agtgtccgga      1980
+     agcatgacat ctaataaaat aatatttgga agttcctgat cgattttcag aagggtttcg      2040
+     ctccctgtca tagctgtgga aatattgctg aaaccttcct tttcaaagca agttattaat      2100
+     aagtttaaga tatgttcgtc atcatccacc atgaggattt tgttctcttc taacgtcata      2160
+     agttaccctc ctttttattt cttattttat atgagatcaa tgacataaag gtcagaaaag      2220
+     gaaagaattt aactttcgtt aagggttcag aatattcttt cgaattttta accttgatat      2280
+     tcaggtatca atataactac atacagaaaa taaaccaggg atgtcgttaa gtgaatgttt      2340
+     aggaagagtt tcgtttgtgt ttaaagaaca tcgcttatga taaaagtgag gtgagagaca      2400
+     aatgaatgat caaatagtgg taacacacga tctgactaaa aagtataaaa agcatacttc      2460
+     tgttgatgga ttaaacttaa ggattaggcg tggcgaaatt tatggttttc ttggaccgaa      2520
+     tggtgctggt aaaacaacaa ccatccgaat gttattaggt ttaattaaac caacaaaagg      2580
+     aaacatcgaa atctttggcc aaaacctaaa caagaatcgt ttgcagatat tgcaaagaat      2640
+     cgggtcactg gtagaatctc caacttatta tggtaattta acaggttacg aaaacttaga      2700
+     agctgttagg aggttacgag gacttccgga acaacaggtc aatgaagtat tggaaactgt      2760
+     aaggttatct aaagtagcaa atcgactgac taaggagtat tcccttggaa tgaaacaacg      2820
+     tttgggaatt gcagttgccc tgttaagcag tcctgattta ttaattctgg atgaaccgac      2880
+     aaatggttta gatccatccg gtatccaaga aataagagag ctaattaaag aattgcctaa      2940
+     atcgggaatg agtgttattg tatccagcca cttattgagt gaaatagatc aaatggctac      3000
+     tcaagtggga attatcaaca atggaaaaat gatttttcag gactcgattg caagtttaca      3060
+     tcaaaaaaga aaaccactat taaaagtcgg tgttagtgac gtaatcgaag caaaaacaat      3120
+     attaaacagg aaaggattaa aggttgattt acaaaaaaat tatttgtggc tgtctcaaac      3180
+     agaaccggaa ttcgtttcag aaatcaattc catacttctt cattcagggc tgtctgtatt      3240
+     tcgacttgaa gaaaagacac gatcacttga ggatattttt ttagaattaa ccggtacaga      3300
+     gggaagtcta tgaaaaagtt attatgggca gatcaattaa aactgaaacg ttcgtcgtta      3360
+     ttgattgtag tcttattggt cccttactca ttatagcata tgagttggta aatcttactt      3420
+     atcgatctga atacgtggaa aaacaagctg aaatgttcca tgctggatca atgtggatgt      3480
+     atttactgta tgataacagt ttgttatttg gtctgggttt tccattagcc gccacacttt      3540
+     ctgcgtcaat aatagcaaat atagagcatc aagcaaacgg atggaagcaa accctttctt      3600
+     ttcctgtatc tagaatgcga atttatgtaa gtaaatttat ttgcttagta gtcagtttat      3660
+     ttatttcgtc aacaatcttc ttgctcggca tggtactgct gggcaaactg gtaggattcg      3720
+     aaggtagtgt accttgggga cttttgtttg gagatagtta cagcatgtta gttacagtac      3780
+     tgcctataat ggcattccag atatggttat ctatggtgtt tagcaaccaa gcattctcaa      3840
+     ttcttgtagg atcagtatca tctataatgg gtttgttttt ggcagctgct caatcaacga      3900
+     gatggtttcc gctggcttat cctagtcaat cttcgacagt cattctgcag tatgaaggta      3960
+     taggatataa cccagatctt tcatcttacc tttgcattag ccttttctta gggataatta      4020
+     tattatttct aggctctatt cattttgcta aacgggatgc tttgtaaaaa ggaggcgaaa      4080
+     tacttgaaaa acattttatt tgtagaacgt ttaaagctta agcgatcaaa gttatggatc      4140
+     atctacttat tagggccttt gttaggtgta tccctggcat acactaactt tattaaaaac      4200
+     tataaccttt ttatgaatcc cggagacaat ccctgggtag aggcttggac acaagttgcc      4260
+     ttatttatgg gcccttttgt attgcctatc gtagtgggaa ttttcgccgc ccttgtttgc      4320
+     aggggggaac atgtaggagg cggttggaaa cagcttctag ccttaccagt caaacactca      4380
+     gatatctttc tgggaaagtt tctaacagtg gtccgcatga tattcattag tatgtccatt      4440
+     ttaatcctct tatttattgg attcggttat atgttaggca taagcgggag tcttccttta      4500
+     cttacaattc taggttatgg aattagaggg atcttagctt gtttaccatt aattttattg      4560
+     cagcttattg tttcaatcag gtctaaaaca tttggcatac cactcgctgt tagcattgtt      4620
+     tttacattac cggccattat tattgccagt acaccattag gtcaagtata tccatggaca      4680
+     cagcctatgt tagcaatgtc acccgaagat gaatcaccga ttcaatcaaa tttcctgttt      4740
+     tactcaatta tggtaataac gtgtctcggt ctcctggttt acggaataag aagttttact      4800
+     aaacgagacc ttacgtaggg tatatgcggt ataaacttat gagaattcga gacaaggtaa      4860
+     actaatttga ctagcgctat gtaaaacaga aatttatatg aaggtaagac taaatctttt      4920
+     tggttgtatt ctttgaaact aaacgactaa tggaaaaggt gatgtttcaa agcataagac      4980
+     ataagaaata taaagatatc ttaagactct ttatttaaac attttttaca tttaataata      5040
+     tctcttccat ttttttgatt atgagttaat ataatactat acttaataag ggggtgaata      5100
+     caatgagtca agaagctatc attcgttcat ggaaagatcc tttttcccgt gaaaattcta      5160
+     cacaaaatcc agctggtaac ccattcagtg agctgaaaga agcacaaatg gataagttag      5220
+     taggtgcggg agacatggaa gcagcatgta cttttacatt gcctggtggc ggcggtgttt      5280
+     gtactctaac ttctgaatgt atttgttaat ttgatttata taggctgttt cccttcagaa      5340
+     ggaacagcct atattttatt atataaacta ttagaaaatt cttaaaaaac aggagggtaa      5400
+     atca                                                                   5404
+//

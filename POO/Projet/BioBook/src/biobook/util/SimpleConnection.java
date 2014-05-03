@@ -9,7 +9,7 @@ public class SimpleConnection  {
 	
 	private static SimpleConnection simpleConnection=null;
 	
-	private SimpleConnection()
+	public SimpleConnection()
 	{
 		String nomDriver="com.mysql.jdbc.Driver";
 		try
@@ -31,7 +31,7 @@ public class SimpleConnection  {
 		}
 		return simpleConnection;
 	}
-	
+
 	public Connection getConnection() 
 	{
 		Connection co=null;
@@ -48,7 +48,6 @@ public class SimpleConnection  {
 		catch (SQLException sqle )
 		{
 			System.out.println("Probl�me de connexion � la base :"+sqle.getMessage());
-			sqle.printStackTrace();
 		}
 	   
 	    return co;

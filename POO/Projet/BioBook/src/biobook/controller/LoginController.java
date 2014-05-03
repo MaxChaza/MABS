@@ -14,6 +14,8 @@ import biobook.util.SendEmail;
 import biobook.view.EnregistrerView;
 import biobook.view.LoginView;
 import biobook.view.MainFrame;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
@@ -37,11 +39,11 @@ public class LoginController {
     }
 
     
-    public boolean  loginExist(String log) throws BioBookException {
+    public boolean  loginExist(String log) throws BioBookException, IOException, FileNotFoundException, ClassNotFoundException {
         return gererChercheur.getChercheur(log)!=null;    
     }
     
-    public boolean motDePasseOK(String log, String pass) throws BioBookException, NoSuchAlgorithmException {
+    public boolean motDePasseOK(String log, String pass) throws BioBookException, NoSuchAlgorithmException, IOException, ClassNotFoundException {
        
         // Cryptage du mot de passe en MD5
         MD5 md5 = new MD5(pass);
@@ -59,7 +61,7 @@ public class LoginController {
         return ok;    
     }
         
-    public void clickValider() throws BioBookException, NoSuchAlgorithmException {
+    public void clickValider() throws BioBookException, NoSuchAlgorithmException, IOException, FileNotFoundException, ClassNotFoundException {
         String login = logView.getLog();
         String pass = logView.getPass();
         if(loginExist(login))
@@ -99,7 +101,7 @@ public class LoginController {
         logView.add(enregistrerView);
     }
 
-    public void clickMDPOublie() throws BioBookException, SQLException, InterruptedException {
+    public void clickMDPOublie() throws BioBookException, SQLException, InterruptedException, IOException, FileNotFoundException, ClassNotFoundException {
         if(loginExist(logView.getLog()))
         {
             final Chercheur unChercheur = gererChercheur.getChercheur(logView.getLog());

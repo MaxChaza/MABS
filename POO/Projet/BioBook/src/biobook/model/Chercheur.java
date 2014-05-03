@@ -4,7 +4,7 @@
  */
 package biobook.model;
 
-import java.util.ArrayList;
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Objects;
 
@@ -12,7 +12,8 @@ import java.util.Objects;
  *
  * @author Maxime
  */
-public class Chercheur {
+public class Chercheur implements Serializable{
+    static private final long serialVersionUID = 6L;
     private String password;
     private String name;
     private String firstName;
@@ -100,33 +101,27 @@ public class Chercheur {
             return false;
         }
         final Chercheur other = (Chercheur) obj;
-        if (!Objects.equals(this.password, other.password)) {
-            return false;
-        }
-        if (!Objects.equals(this.login, other.login)) {
-            return false;
-        }
-        return true;
+        return Objects.equals(this.login, other.login);
     }
 
     @Override
     public String toString() {
-        StringBuffer s = new StringBuffer();;
-        s.append("#############\n"); 
-        s.append("login=");
+        StringBuilder s = new StringBuilder();
+        s.append("\t\n"); 
+        s.append("\tlogin=");
         s.append(login);
-        s.append("\npassword=");
+        s.append("\n\tpassword=");
         s.append(password);
-        s.append(",\nname=");
+        s.append(",\n\tname=");
         s.append(name);
-        s.append(",\nfirstName=");
+        s.append(",\n\tfirstName=");
         s.append(firstName);
-        s.append(",\nmail=");
+        s.append(",\n\tmail=");
         s.append(mail);
-        s.append(",\nExperiences=");
+        s.append(",\n\tExperiences=");
         for(Experience exp : listExperiences){
             s.append(exp.getLabel());
-            s.append("\n");
+            s.append("\n\t");
         }
         
         return s.toString();
