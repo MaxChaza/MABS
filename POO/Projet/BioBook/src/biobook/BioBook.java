@@ -5,7 +5,9 @@
 package biobook;
 
 import biobook.controller.GererChercheur;
+import biobook.controller.GererExperience;
 import biobook.model.Chercheur;
+import biobook.model.Experience;
 import biobook.util.BioBookException;
 import biobook.util.SimpleConnection;
 import biobook.view.LoginView;
@@ -37,8 +39,10 @@ public class BioBook {
 //          e.printStackTrace();
 //        }
         
-//        GererChercheur g=new GererChercheur();
-//        g.insertChercheur(new Chercheur("a", "a", "a", "a"));
+        GererExperience g=new GererExperience();
+        g.serializerExperience(new Experience("e", "e", "e", "e", "e", null));
+        System.out.println(g.deserializerUnExperience("e"));
+
 //        LoginView login;
 //        login = new LoginView();
         

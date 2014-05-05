@@ -192,7 +192,7 @@ public class GererChercheur {
      * @return Liste de tous les chercheurs 
      * @throws biobook.util.BioBookException 
     */
-    public Chercheur getChercheur(String login) throws BioBookException, IOException, FileNotFoundException, ClassNotFoundException{
+    public static Chercheur getChercheur(String login) throws BioBookException, IOException, FileNotFoundException, ClassNotFoundException{
         Chercheur unChercheur = null;
         
         if(c==null)

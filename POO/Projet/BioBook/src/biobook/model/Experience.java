@@ -4,6 +4,7 @@
  */
 package biobook.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
 
@@ -11,18 +12,19 @@ import java.util.HashSet;
  *
  * @author Maxime
  */
-public class Experience {
+public class Experience implements Serializable{
+    static private final long serialVersionUID = 6L;
     private String labelExperience;
     private String problem;
     private String context;
     private String stateOfTheArt;
     private String assumption;
-    private String createur;
+    private Chercheur createur;
     
     private ArrayList<Materiel> listMateriels;
     private HashSet<Chercheur> listChercheurs;
 
-    public Experience(String label, String problem, String context, String stateOfTheArt, String assumption, String createur) {
+    public Experience(String label, String problem, String context, String stateOfTheArt, String assumption, Chercheur createur) {
         this.labelExperience = label;
         this.problem = problem;
         this.context = context;
@@ -53,7 +55,7 @@ public class Experience {
         return assumption;
     }
 
-    public String getCreateur() {
+    public Chercheur getCreateur() {
         return createur;
     }
 
@@ -85,7 +87,7 @@ public class Experience {
         this.assumption = assumption;
     }
 
-    public void setCreateur(String createur) {
+    public void setCreateur(Chercheur createur) {
         this.createur = createur;
     }
 
@@ -112,7 +114,7 @@ public class Experience {
         s.append(stateOfTheArt);
         s.append(", \nassumption=");
         s.append(assumption);
-        s.append(", \nassumption=");
+        s.append(", \ncreateur=");
         s.append(createur);
         s.append(", \nchercheurs=");
         for(Chercheur chercheur : listChercheurs){
