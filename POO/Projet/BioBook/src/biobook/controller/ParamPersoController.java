@@ -44,7 +44,13 @@ public class ParamPersoController {
     }
 
     public void clickModifierPass() {
+        paramPersoView.getTitrePass().setVisible(false);
         paramPersoView.getPass().setVisible(false);
+        
+        paramPersoView.getTitreOldPass().setVisible(true);
+        paramPersoView.getTitreNewPass().setVisible(true);
+        paramPersoView.getTitreNewPassConf().setVisible(true);
+        
         paramPersoView.getjTextOldPass().setVisible(true);
         paramPersoView.getjTextNewPass().setVisible(true);
         paramPersoView.getjTextNewPassConf().setVisible(true);

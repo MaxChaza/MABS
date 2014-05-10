@@ -56,14 +56,18 @@ private JPasswordField jTextOldPass;
     private final JButton modifierPass;
     private JPanel panelDroite;
     private JPanel panelGauche;
+    private  JLabel titrePass;
+    private  JLabel titreOldPass;
+    private  JLabel titreNewPass;
+    private  JLabel titreNewPassConf;
     
     public ParamPersoView(EspacePersoView m){
         espacePersoView=m;
         ctrl = new ParamPersoController(this);
         setLayout(new BorderLayout());
-        JPanel panelGauche = new JPanel(new GridBagLayout());
         
-        Chercheur chercheurConnecte = espacePersoView.main.getChercheurConnecte();
+        panelGauche = new JPanel(new GridBagLayout());
+        Chercheur chercheurConnecte = espacePersoView.getMain().getChercheurConnecte();
         
         // Creation du nom
         JLabel titreNom = new JLabel("Nom  : ");
@@ -222,10 +226,13 @@ private JPasswordField jTextOldPass;
         
         panelDroite = new JPanel(new GridBagLayout());
        // Creation du Login
-        JLabel titrePass = new JLabel("Mot de passe  :");
+        titrePass = new JLabel("Mot de passe  :");
         pass = new JLabel("**************");
+        titreOldPass = new JLabel("Ancien mot de passe  : ");
         jTextOldPass = new JPasswordField();
+        titreNewPass = new JLabel("Nouveau mot de passe  : ");
         jTextNewPass = new JPasswordField();
+        titreNewPassConf = new JLabel("Confirmation  : ");
         jTextNewPassConf = new JPasswordField();
         
         modifierPass = new JButtonModifier();
@@ -236,52 +243,85 @@ private JPasswordField jTextOldPass;
         gridBagConstraintsPass.gridx = 1;
         gridBagConstraintsPass.gridy = 0;
         gridBagConstraintsPass.fill = GridBagConstraints.HORIZONTAL;
-        gridBagConstraintsPass.insets = new Insets(0, 0, 10, 50);
+        gridBagConstraintsPass.insets = new Insets(0, 0, 20, 50);
         
         GridBagConstraints gridBagConstraintsTitrePass = new GridBagConstraints();
         gridBagConstraintsTitrePass.gridx = 0;
         gridBagConstraintsTitrePass.gridy = 0;
         gridBagConstraintsTitrePass.fill = GridBagConstraints.HORIZONTAL;
-        gridBagConstraintsTitrePass.insets = new Insets(0, 0, 10, 10);
+        gridBagConstraintsTitrePass.insets = new Insets(0, 0, 20, 10);
         
         GridBagConstraints gridBagConstraintsOldPass = new GridBagConstraints();
         gridBagConstraintsOldPass.gridx = 1;
         gridBagConstraintsOldPass.gridy = 0;
         gridBagConstraintsOldPass.fill = GridBagConstraints.HORIZONTAL;
-        gridBagConstraintsOldPass.insets = new Insets(0, 0, 10, 10);
+        gridBagConstraintsOldPass.insets = new Insets(0, 0, 20, 10);
         
         GridBagConstraints gridBagConstraintsNewPass = new GridBagConstraints();
         gridBagConstraintsNewPass.gridx = 1;
         gridBagConstraintsNewPass.gridy = 1;
         gridBagConstraintsNewPass.fill = GridBagConstraints.HORIZONTAL;
-        gridBagConstraintsNewPass.insets = new Insets(0, 0, 10, 10);
+        gridBagConstraintsNewPass.insets = new Insets(0, 0, 20, 10);
         
         GridBagConstraints gridBagConstraintsNewPassConf = new GridBagConstraints();
         gridBagConstraintsNewPassConf.gridx = 1;
         gridBagConstraintsNewPassConf.gridy = 2;
         gridBagConstraintsNewPassConf.fill = GridBagConstraints.HORIZONTAL;
-        gridBagConstraintsNewPassConf.insets = new Insets(0, 0, 10, 10);
+        gridBagConstraintsNewPassConf.insets = new Insets(0, 0, 20, 10);
+        
+        GridBagConstraints gridBagConstraintsTitreOldPass = new GridBagConstraints();
+        gridBagConstraintsTitreOldPass.gridx = 0;
+        gridBagConstraintsTitreOldPass.gridy = 0;
+        gridBagConstraintsTitreOldPass.fill = GridBagConstraints.HORIZONTAL;
+        gridBagConstraintsTitreOldPass.insets = new Insets(0, 0, 20, 10);
+        
+        GridBagConstraints gridBagConstraintsTitreNewPass = new GridBagConstraints();
+        gridBagConstraintsTitreNewPass.gridx = 0;
+        gridBagConstraintsTitreNewPass.gridy = 1;
+        gridBagConstraintsTitreNewPass.fill = GridBagConstraints.HORIZONTAL;
+        gridBagConstraintsTitreNewPass.insets = new Insets(0, 0, 20, 10);
+        
+        GridBagConstraints gridBagConstraintsTitreNewPassConf = new GridBagConstraints();
+        gridBagConstraintsTitreNewPassConf.gridx = 0;
+        gridBagConstraintsTitreNewPassConf.gridy = 2;
+        gridBagConstraintsTitreNewPassConf.fill = GridBagConstraints.HORIZONTAL;
+        gridBagConstraintsTitreNewPassConf.insets = new Insets(0, 0, 20, 10);
         
         GridBagConstraints gridBagConstraintsModifPass = new GridBagConstraints();
         gridBagConstraintsModifPass.gridx = 2;
         gridBagConstraintsModifPass.gridy = 0;
         gridBagConstraintsModifPass.fill = GridBagConstraints.HORIZONTAL;
-        gridBagConstraintsModifPass.insets = new Insets(0, 0, 10, 50);
+        gridBagConstraintsModifPass.insets = new Insets(0, 0, 20, 10);
         
         // Ajout du JTextField Log
         panelDroite.add(titrePass, gridBagConstraintsTitrePass);
         panelDroite.add(pass,gridBagConstraintsPass);
         panelDroite.add(jTextOldPass,gridBagConstraintsOldPass);
+        
+        panelDroite.add(titreOldPass, gridBagConstraintsTitreOldPass);
+        titreOldPass.setVisible(false);
+        jTextOldPass.setPreferredSize(new Dimension(140,20));
         jTextOldPass.setVisible(false);
+        
+        panelDroite.add(titreNewPass, gridBagConstraintsTitreNewPass);
+        titreNewPass.setVisible(false);
         panelDroite.add(jTextNewPass,gridBagConstraintsNewPass);
         jTextNewPass.setVisible(false);
+        
+        panelDroite.add(titreNewPassConf,gridBagConstraintsTitreNewPassConf);
+        titreNewPassConf.setVisible(false);
         panelDroite.add(jTextNewPassConf,gridBagConstraintsNewPassConf);
         jTextNewPassConf.setVisible(false);
+       
         panelDroite.add(modifierPass,gridBagConstraintsModifPass);
+        
         
         add(panelGauche,BorderLayout.WEST);
         add(new JSeparator(SwingConstants.VERTICAL), BorderLayout.CENTER);
         add(panelDroite, BorderLayout.EAST);
+        Dimension dimPanel = new Dimension((int)((espacePersoView.getMain().getTailleFenetre().getWidth()-17)/2-10),(int)((espacePersoView.getMain().getTailleFenetre().getHeight()-75)));
+        panelGauche.setPreferredSize(dimPanel);
+        panelDroite.setPreferredSize(dimPanel);
         setVisible(true);
     }
 
@@ -416,6 +456,39 @@ private JPasswordField jTextOldPass;
         this.jTextNewPassConf = jTextNewPassConf;
     }
     
+    public JLabel getTitrePass() {
+        return titrePass;
+    }
+
+    public void setTitrePass(JLabel titrePass) {
+        this.titrePass = titrePass;
+    }
+
+    public JLabel getTitreOldPass() {
+        return titreOldPass;
+    }
+
+    public void setTitreOldPass(JLabel titreOldPass) {
+        this.titreOldPass = titreOldPass;
+    }
+
+    public JLabel getTitreNewPass() {
+        return titreNewPass;
+    }
+
+    public void setTitreNewPass(JLabel titreNewPass) {
+        this.titreNewPass = titreNewPass;
+    }
+
+    public JLabel getTitreNewPassConf() {
+        return titreNewPassConf;
+    }
+
+    public void setTitreNewPassConf(JLabel titreNewPassConf) {
+        this.titreNewPassConf = titreNewPassConf;
+    }
+    
+        
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()== modifierNom){

@@ -37,7 +37,7 @@ public class MainFrame extends JFrame{
  */
     
     private Chercheur chercheurConnecte;
-    
+    Dimension tailleFenetre;
     JPanel centre = new JPanel(new BorderLayout());
     Color inactif = new Color(240,240,240);
     Color actif = new Color(184,207,229);
@@ -76,12 +76,11 @@ public class MainFrame extends JFrame{
     public MainFrame(String log) throws BioBookException, IOException, FileNotFoundException, ClassNotFoundException{
         GererChercheur gererChercheur = new GererChercheur();
         chercheurConnecte = gererChercheur.getChercheur("Max.Chaza");
-        System.out.println(chercheurConnecte);
-        // Caractéristiques JFrame
-        Dimension tailleFenetre = new Dimension((int)((Toolkit.getDefaultToolkit().getScreenSize().width)*2/3),(int)((Toolkit.getDefaultToolkit().getScreenSize().height-41)* 2/3));
+       // Caractéristiques JFrame
+        tailleFenetre = new Dimension((int)((Toolkit.getDefaultToolkit().getScreenSize().width)*2/3),(int)((Toolkit.getDefaultToolkit().getScreenSize().height-41)* 2/3));
         Dimension tailleEcran = new Dimension(Toolkit.getDefaultToolkit().getScreenSize().width,Toolkit.getDefaultToolkit().getScreenSize().height-41);
         setSize(tailleFenetre);
-        isResizable();
+        setResizable(false);
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 
         Container c = getContentPane();
@@ -141,6 +140,14 @@ public class MainFrame extends JFrame{
     
      public void setChercheurConnecte(String login) {
         this.chercheurConnecte = chercheurConnecte;
+    }
+
+    public Dimension getTailleFenetre() {
+        return tailleFenetre;
+    }
+
+    public void setTailleFenetre(Dimension tailleFenetre) {
+        this.tailleFenetre = tailleFenetre;
     }
 
     public void setEspacePerso(EspacePersoView espacePerso) {

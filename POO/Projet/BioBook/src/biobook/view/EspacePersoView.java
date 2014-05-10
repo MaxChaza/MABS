@@ -20,7 +20,7 @@ import javax.swing.JTabbedPane;
  */
 
 public class EspacePersoView extends JPanel{
-    MainFrame main;
+    private MainFrame main;
     ExpPersoView panelExpPerso;
     ParamPersoView panelParamPerso;
     public EspacePersoView(MainFrame m)
@@ -42,4 +42,13 @@ public class EspacePersoView extends JPanel{
         tabbedPane.setBackgroundAt(1, Color.BLUE);
         add(tabbedPane, BorderLayout.CENTER);
     }
+
+    public MainFrame getMain() {
+        return main;
+    }
+
+    public void setMain(MainFrame main) {
+        this.main = main;
+    }
+    
 }
