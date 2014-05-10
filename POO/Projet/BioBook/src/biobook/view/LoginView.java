@@ -27,6 +27,8 @@ import java.awt.Insets;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
@@ -42,6 +44,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.UIDefaults;
 import javax.swing.UIManager;
 import javax.swing.WindowConstants;
 import javax.swing.border.Border;
@@ -51,7 +54,7 @@ import javax.swing.plaf.nimbus.NimbusLookAndFeel;
  *
  * @author Maxime
  */
-public class LoginView extends JFrame implements ActionListener{
+public class LoginView extends JFrame implements ActionListener, KeyListener{
     /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -73,7 +76,6 @@ public class LoginView extends JFrame implements ActionListener{
         
         ctrl = new LoginController(this);
         // Caractéristiques JFrame
-        setMinimumSize(new Dimension(850, 300));
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 
         c = getContentPane();
@@ -81,12 +83,12 @@ public class LoginView extends JFrame implements ActionListener{
 
         tout = new JPanel(new BorderLayout());
         // Composants de la fenetre
-        JPanel nord = new JPanel(new GridLayout());
+        JPanel nord = new JPanel(new FlowLayout());
         // Image
         
         
-        ImageIcon image = new ImageIcon("C:\\Users\\Maxime\\Documents\\MABS\\POO\\Projet\\BioBook\\src\\biobook\\image\\fox.jpg");
-        Image i = image.getImage().getScaledInstance(230, 200, Image.SCALE_SMOOTH);
+        ImageIcon image = new ImageIcon("C:\\Users\\Maxime\\Documents\\MABS\\POO\\Projet\\BioBook\\src\\biobook\\image\\logoFrame2.gif");
+        Image i = image.getImage().getScaledInstance(230, 230, Image.SCALE_SMOOTH);
         JLabel jLabelImage = new JLabel(new ImageIcon(i));
         
         nord.add(jLabelImage);
@@ -97,17 +99,19 @@ public class LoginView extends JFrame implements ActionListener{
         JLabel titreLog = new JLabel("Login");
         log = new JTextField("");
         log.setPreferredSize(new Dimension(200,20));
+        log.addKeyListener(this);
         
         GridBagConstraints gridBagConstraintsLog = new GridBagConstraints();
         gridBagConstraintsLog.gridx = 1;
         gridBagConstraintsLog.gridy = 0;
         gridBagConstraintsLog.fill = GridBagConstraints.HORIZONTAL;
+        gridBagConstraintsLog.insets = new Insets(0, 0, 10, 50);
         
         GridBagConstraints gridBagConstraintsTitreLog = new GridBagConstraints();
         gridBagConstraintsTitreLog.gridx = 0;
         gridBagConstraintsTitreLog.gridy = 0;
         gridBagConstraintsTitreLog.fill = GridBagConstraints.HORIZONTAL;
-        gridBagConstraintsTitreLog.insets = new Insets(0, 0, 0, 50);
+        gridBagConstraintsTitreLog.insets = new Insets(0, 0, 10, 50);
         
         jPanelLogin.add(titreLog, gridBagConstraintsTitreLog);
         jPanelLogin.add(log,gridBagConstraintsLog);
@@ -116,11 +120,13 @@ public class LoginView extends JFrame implements ActionListener{
         JLabel titrePass = new JLabel("Password ");
         pass = new JPasswordField("");
         pass.setPreferredSize(new Dimension(200,20));
-
+        pass.addKeyListener(this);
+        
         GridBagConstraints gridBagConstraintsPass = new GridBagConstraints();
         gridBagConstraintsPass.gridx = 1;
         gridBagConstraintsPass.gridy = 1;
         gridBagConstraintsPass.fill = GridBagConstraints.HORIZONTAL;
+        gridBagConstraintsPass.insets = new Insets(0, 0, 0, 50);
         
         GridBagConstraints gridBagConstraintsTitrePass = new GridBagConstraints();
         gridBagConstraintsTitrePass.gridx = 0;
@@ -135,7 +141,7 @@ public class LoginView extends JFrame implements ActionListener{
         JPanel jPanelBouton = new JPanel(new FlowLayout());
 
         valider = new JButton("Valider");
-
+        
 //        valider.setUI(new SeaGlassButtonUI());
         valider.addActionListener(this);
         
@@ -158,10 +164,22 @@ public class LoginView extends JFrame implements ActionListener{
         tout.add(BorderLayout.SOUTH, jPanelBouton);
         
         c.add(tout);
+//        // Suppression de l'entete de la fenetre
+//        setUndecorated(true);
+//        // Modifier le bord de la frame
+//        getRootPane().setBorder(new NimbusFrameBorder());
+//        
+        
+        // Nouvel icone de l'application
+        setIconImage(getToolkit().getImage("C:\\Users\\Maxime\\Documents\\MABS\\POO\\Projet\\BioBook\\src\\biobook\\image\\logoFrame.gif"));
         // On fixe le panel sur la fenètre
         setName("Login");
         setVisible(true);
+        pack();
+        setMinimumSize(getSize());
         
+        Dimension tailleEcran = new Dimension(Toolkit.getDefaultToolkit().getScreenSize().width,Toolkit.getDefaultToolkit().getScreenSize().height);
+        setLocation((int)((tailleEcran.getWidth()/2)-(getSize().getWidth()/2)), (int)((tailleEcran.getHeight()/2)-(getSize().getHeight()/2)));
     }
 
     @Override
@@ -177,6 +195,8 @@ public class LoginView extends JFrame implements ActionListener{
             {
                 //  create a line border with the specified color and width
 		Border border = BorderFactory.createLineBorder(Color.RED, 1);
+//                 pass.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder(e));
+               
                 log.setBorder(border);
             }
             if(!pass.getText().equals("")){
@@ -259,6 +279,25 @@ public class LoginView extends JFrame implements ActionListener{
 //            ctrl.clickMDPOublie(log.getText());
     }
     
+    // Ecouteur de clavier
+    @Override
+    public void keyTyped(KeyEvent e) {
+         System.out.println("ok");
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {   
+        if(e.getKeyCode()==KeyEvent.VK_ENTER)
+        {
+            valider.doClick();
+        }
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+         System.out.println("ok");
+    }
+    
     public String getPass() {
         return pass.getText();
     }
@@ -266,4 +305,6 @@ public class LoginView extends JFrame implements ActionListener{
     public String getLog() {
         return log.getText();
     }
+
+    
 }

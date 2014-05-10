@@ -6,7 +6,9 @@
 
 package biobook.controller;
 
+import biobook.model.Chercheur;
 import biobook.model.Experience;
+import biobook.model.Materiel;
 import biobook.util.BioBookException;
 import biobook.util.MD5;
 import biobook.util.SimpleConnection;
@@ -35,6 +37,7 @@ public class GererExperience {
     // Pour plus de claireté dans le code on initilise nos requètes
     private static final String reqInsertIntoExperience = "INSERT INTO Experience(assumption, context, createur, labelExperience, problem, stateOfArt)VALUES(?,?,?,?,?,?)";    
     private static final String reqFindAllExperiences = "SELECT * FROM Experience";
+    private static final String reqFindCreateur = "SELECT createur FROM Experience WHERE labelExperience=?";
     private static final String reqFindExperienceByLabel = "SELECT * FROM Experience WHERE labelExperience=?";
     private static final String reqUpdateExperienceByLabel= "UPDATE Experience SET assumption=?, context=?, createur=?, labelExperience=?, problem=?, stateOfArt=? WHERE labelExperience=?";
     private static final String reqDeleteExperienceByLabel= "DELETE FROM Experience WHERE labelExperience=?"; 
@@ -146,16 +149,80 @@ public class GererExperience {
     }
     
     /**
-     * @param Createur
+     * @param label
      * @return Liste de tous les Experiences 
      * @throws biobook.util.BioBookException 
     */
-    public Experience getExperience(String label) throws BioBookException, IOException, FileNotFoundException, ClassNotFoundException{
+    public static Experience getExperience(String label) throws BioBookException, IOException, FileNotFoundException, ClassNotFoundException{
         Experience unExperience = null;
         
         if(c==null)
         {
             unExperience = deserializerUnExperience(label);
+        }
+        else
+        {
+            //préparation de la requète
+            PreparedStatement pst = null;
+            ResultSet rs = null;
+
+            try
+            {
+                pst = c.prepareStatement(reqFindExperienceByLabel);
+
+                // On assigne une valeur à chaque "?" présent dans la requète 
+                // pst.set<Type>(<Indice Du "?">,   <Valeur passé>       );
+                pst.setString(1,label);
+
+                
+                // Execution of the request
+                // Nécessaire pour tous les SELECT
+                rs = pst.executeQuery();
+            }
+            catch (SQLException e)
+            {
+                    throw new BioBookException("Problem when the request reqFindExperienceByLabel execute it:"+e.getMessage());
+            }
+            try
+            {
+                    if (rs.next())
+                    {
+                            unExperience= new Experience(rs.getString("labelExperience"), rs.getString("problem"), rs.getString("context"), rs.getString("stateOfArt"), rs.getString("assumption"), GererChercheur.getChercheur(rs.getString("createur")));
+                            // Récupération de la liste d'experiences d'un chercheur
+                            HashSet<Materiel> listMateriels = GererMaterielExperience.getMaterielByExperience(unExperience.getLabel());
+                            
+                            unExperience.setListMateriels(listMateriels);
+                    }
+            }
+            catch (SQLException e)
+            {
+                    throw new BioBookException("Problem when the Experience was create:"+e.getMessage());
+            }
+
+            finally
+            {
+                    try {
+                    if (rs!=null)   {   rs.close();}
+                    if (pst!=null)    {  pst.close();}
+                       }catch (SQLException e){
+                    }
+            }
+        }
+        return unExperience;
+    }
+    
+    /**
+     * @param label
+     * @return le createur de l'experience
+     * @throws biobook.util.BioBookException 
+    */
+    public static Chercheur getCreateur(String label) throws BioBookException, IOException, FileNotFoundException, ClassNotFoundException{
+        Experience unExperience = null;
+        Chercheur leCreateur = null;
+        if(c==null)
+        {
+            unExperience = deserializerUnExperience(label);
+            leCreateur = unExperience.getCreateur();
         }
         else
         {
@@ -183,7 +250,7 @@ public class GererExperience {
             {
                     if (rs.next())
                     {
-                            unExperience= new Experience(rs.getString("labelExperience"), rs.getString("problem"), rs.getString("context"), rs.getString("stateOfArt"), rs.getString("assumption"), GererChercheur.getChercheur(rs.getString("createur")));
+                            unExperience= new Experience(rs.getString("labelExperience"), rs.getString("problem"), rs.getString("context"), rs.getString("stateOfArt"), rs.getString("assumption"), GererChercheur.getChercheur(rs.getString("createur")));      
                     }
             }
             catch (SQLException e)
@@ -200,7 +267,8 @@ public class GererExperience {
                     }
             }
         }
-        return unExperience;
+        leCreateur = unExperience.getCreateur();
+        return leCreateur;
     }
     
     /**

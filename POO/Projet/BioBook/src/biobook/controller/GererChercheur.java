@@ -7,10 +7,10 @@
 package biobook.controller;
 
 import biobook.model.Chercheur;
+import biobook.model.Experience;
 import biobook.util.BioBookException;
 import biobook.util.MD5;
 import biobook.util.SimpleConnection;
-import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -23,7 +23,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 /**
@@ -65,7 +64,6 @@ public class GererChercheur {
         // On teste si la connexion a été mise en place
         if(c!=null)
         {
-            System.out.println("ok");
             //preparation of the request
             PreparedStatement pst = null;
             try
@@ -242,6 +240,18 @@ public class GererChercheur {
                     }
             }
         }
+//        unChercheur.getLogin();
+//        // Récupération de la liste d'experiences d'un chercheur
+//        GererChercheurExperience g = new GererChercheurExperience();
+//        HashSet<String> listLabelExperiences = new HashSet<>();
+//        listLabelExperiences = g.getExperienceByChercheur(unChercheur.getLogin());
+//        HashSet<Experience> listExperiences = new HashSet<>();
+//        GererExperience gExp = new GererExperience();
+//        for(String label : listLabelExperiences) {
+//            listExperiences.add(gExp.getExperience(label));
+//        }
+//        unChercheur.setListExperiences(listExperiences);
+        
         return unChercheur;
     }
     
@@ -345,8 +355,17 @@ public class GererChercheur {
                             // Récupération des données revoyées par la base de données
                             //dans la liste listChercheurs 
                             Chercheur unChercheur= new Chercheur(rs.getString("login"),rs.getString("password"),rs.getString("name"),rs.getString("firstName"),rs.getString("mail"));
+                            
+                            // Récupération de la liste d'experiences d'un chercheur
+                            HashSet<String> listLabelExperiences = GererChercheurExperience.getExperienceByChercheur(unChercheur.getLogin());
+                            HashSet<Experience> listExperiences = new HashSet<>();
+                             
+                            for(String label : listLabelExperiences) {
+                                listExperiences.add(GererExperience.getExperience(label));
+                            }
+                            unChercheur.setListExperiences(listExperiences);
+                            
                             listChercheurs.add(unChercheur);
-
                     }
             }
             catch (SQLException e)

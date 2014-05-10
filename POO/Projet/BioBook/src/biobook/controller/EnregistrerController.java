@@ -37,6 +37,7 @@ public class EnregistrerController {
     public void clickAnnuler() throws BioBookException {        
         enregistrerView.setVisible(false);
         enregistrerView.login.tout.setVisible(true); 
+        enregistrerView.login.pack();
     } 
 
     public boolean  loginExist(String log) throws BioBookException, IOException, FileNotFoundException, ClassNotFoundException {
@@ -87,6 +88,7 @@ public class EnregistrerController {
             send.execute();       
             enregistrerView.setVisible(false);
             enregistrerView.login.tout.setVisible(true);
+            enregistrerView.login.pack();
         }                   
     }
     

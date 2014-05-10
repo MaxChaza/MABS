@@ -21,7 +21,7 @@ public class Experience implements Serializable{
     private String assumption;
     private Chercheur createur;
     
-    private ArrayList<Materiel> listMateriels;
+    private HashSet<Materiel> listMateriels;
     private HashSet<Chercheur> listChercheurs;
 
     public Experience(String label, String problem, String context, String stateOfTheArt, String assumption, Chercheur createur) {
@@ -31,7 +31,7 @@ public class Experience implements Serializable{
         this.stateOfTheArt = stateOfTheArt;
         this.assumption = assumption;
         this.createur = createur;
-        this.listMateriels = new ArrayList<Materiel>();
+        this.listMateriels = new HashSet<Materiel>();
         this.listChercheurs = new HashSet<Chercheur>();
     }
 
@@ -59,7 +59,7 @@ public class Experience implements Serializable{
         return createur;
     }
 
-    public ArrayList<Materiel> getListMateriels() {
+    public HashSet<Materiel> getListMateriels() {
         return listMateriels;
     }
 
@@ -91,7 +91,7 @@ public class Experience implements Serializable{
         this.createur = createur;
     }
 
-    public void setListMateriels(ArrayList<Materiel> listMateriels) {
+    public void setListMateriels(HashSet<Materiel> listMateriels) {
         this.listMateriels = listMateriels;
     }
 

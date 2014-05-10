@@ -23,6 +23,8 @@ import java.awt.Insets;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.util.EventListener;
@@ -73,12 +75,12 @@ public class EnregistrerView extends JPanel implements ActionListener{
         setLayout(new BorderLayout());
 
         // Composants de la fenetre
-        JPanel nord = new JPanel(new GridLayout());
+        JPanel nord = new JPanel(new FlowLayout());
         //Image
         
         
-        ImageIcon image = new ImageIcon("C:\\Users\\Maxime\\Documents\\MABS\\POO\\Projet\\BioBook\\src\\biobook\\image\\fox.jpg");
-        Image i = image.getImage().getScaledInstance(230, 200, Image.SCALE_SMOOTH);
+        ImageIcon image = new ImageIcon("C:\\Users\\Maxime\\Documents\\MABS\\POO\\Projet\\BioBook\\src\\biobook\\image\\logoFrame2.gif");
+        Image i = image.getImage().getScaledInstance(230, 230, Image.SCALE_SMOOTH);
         JLabel jLabelImage = new JLabel(new ImageIcon(i));
         
         nord.add(jLabelImage);
@@ -95,12 +97,13 @@ public class EnregistrerView extends JPanel implements ActionListener{
         gridBagConstraintsName.gridx = 1;
         gridBagConstraintsName.gridy = 0;
         gridBagConstraintsName.fill = GridBagConstraints.HORIZONTAL;
+        gridBagConstraintsName.insets = new Insets(0, 0, 10, 50);
         
         GridBagConstraints gridBagConstraintsTitreName = new GridBagConstraints();
         gridBagConstraintsTitreName.gridx = 0;
         gridBagConstraintsTitreName.gridy = 0;
         gridBagConstraintsTitreName.fill = GridBagConstraints.HORIZONTAL;
-        gridBagConstraintsTitreName.insets = new Insets(0, 0, 0, 50);
+        gridBagConstraintsTitreName.insets = new Insets(0, 0, 10, 50);
         
         // Ajout du JTextField Nom
         jPanelEnregistrer.add(titreNom, gridBagConstraintsTitreName);
@@ -115,12 +118,13 @@ public class EnregistrerView extends JPanel implements ActionListener{
         gridBagConstraintsFirstName.gridx = 1;
         gridBagConstraintsFirstName.gridy = 1;
         gridBagConstraintsFirstName.fill = GridBagConstraints.HORIZONTAL;
+        gridBagConstraintsFirstName.insets = new Insets(0, 0, 10, 50);
         
         GridBagConstraints gridBagConstraintsTitreFirstName = new GridBagConstraints();
         gridBagConstraintsTitreFirstName.gridx = 0;
         gridBagConstraintsTitreFirstName.gridy = 1;
         gridBagConstraintsTitreFirstName.fill = GridBagConstraints.HORIZONTAL;
-        gridBagConstraintsTitreFirstName.insets = new Insets(0, 0, 0, 50);
+        gridBagConstraintsTitreFirstName.insets = new Insets(0, 0, 10, 10);
         
         // Ajout du JTextField Nom
         jPanelEnregistrer.add(titrePrenom, gridBagConstraintsTitreFirstName);
@@ -135,12 +139,13 @@ public class EnregistrerView extends JPanel implements ActionListener{
         gridBagConstraintsMail.gridx = 1;
         gridBagConstraintsMail.gridy = 2;
         gridBagConstraintsMail.fill = GridBagConstraints.HORIZONTAL;
+        gridBagConstraintsMail.insets = new Insets(0, 0, 10, 50);
         
         GridBagConstraints gridBagConstraintsTitreMail = new GridBagConstraints();
         gridBagConstraintsTitreMail.gridx = 0;
         gridBagConstraintsTitreMail.gridy = 2;
         gridBagConstraintsTitreMail.fill = GridBagConstraints.HORIZONTAL;
-        gridBagConstraintsTitreMail.insets = new Insets(0, 0, 0, 50);
+        gridBagConstraintsTitreMail.insets = new Insets(0, 0, 10, 10);
         
         // Ajout du JTextField Mail
         jPanelEnregistrer.add(titreMail, gridBagConstraintsTitreMail);
@@ -155,12 +160,13 @@ public class EnregistrerView extends JPanel implements ActionListener{
         gridBagConstraintsLog.gridx = 1;
         gridBagConstraintsLog.gridy = 3;
         gridBagConstraintsLog.fill = GridBagConstraints.HORIZONTAL;
+        gridBagConstraintsLog.insets = new Insets(0, 0, 10, 50);
         
         GridBagConstraints gridBagConstraintsTitreLog = new GridBagConstraints();
         gridBagConstraintsTitreLog.gridx = 0;
         gridBagConstraintsTitreLog.gridy = 3;
         gridBagConstraintsTitreLog.fill = GridBagConstraints.HORIZONTAL;
-        gridBagConstraintsTitreLog.insets = new Insets(0, 0, 0, 50);
+        gridBagConstraintsTitreLog.insets = new Insets(0, 0, 10, 10);
         
         // Ajout du JTextField Log
         jPanelEnregistrer.add(titreLog, gridBagConstraintsTitreLog);
@@ -169,30 +175,33 @@ public class EnregistrerView extends JPanel implements ActionListener{
         // Creation du JTextField Pass
         JLabel titrePass = new JLabel("Password ");
         pass = new JPasswordField("");
-        JLabel nbCarPass = new JLabel("Huit caractères minimum.");
+        JLabel nbCarPass = new JLabel("> 8 car.");
         pass.setMinimumSize(new Dimension(150,20));
 
         GridBagConstraints gridBagConstraintsNbCarPass = new GridBagConstraints();
         gridBagConstraintsNbCarPass.gridx = 2;
         gridBagConstraintsNbCarPass.gridy = 4;
         gridBagConstraintsNbCarPass.fill = GridBagConstraints.HORIZONTAL;
+        gridBagConstraintsNbCarPass.insets = new Insets(0, -40, 10, 40);
         
         GridBagConstraints gridBagConstraintsPass = new GridBagConstraints();
         gridBagConstraintsPass.gridx = 1;
         gridBagConstraintsPass.gridy = 4;
         gridBagConstraintsPass.fill = GridBagConstraints.HORIZONTAL;
+        gridBagConstraintsPass.insets = new Insets(0, 0, 10, 50);
         
         GridBagConstraints gridBagConstraintsTitrePass = new GridBagConstraints();
         gridBagConstraintsTitrePass.gridx = 0;
         gridBagConstraintsTitrePass.gridy = 4;
         gridBagConstraintsTitrePass.fill = GridBagConstraints.HORIZONTAL;
+        gridBagConstraintsTitrePass.insets = new Insets(0, 0, 10, 10);
        
         // Ajout du JTextField Pass
         jPanelEnregistrer.add(nbCarPass, gridBagConstraintsNbCarPass);
         jPanelEnregistrer.add(pass, gridBagConstraintsPass);
         jPanelEnregistrer.add(titrePass, gridBagConstraintsTitrePass);
 
-         // Creation du JTextField Pass2
+        // Creation du JTextField Pass2
         JLabel titrePassConf = new JLabel("Confirm password ");
         passConf = new JPasswordField("");
         passConf.setPreferredSize(new Dimension(150,20));
@@ -201,12 +210,14 @@ public class EnregistrerView extends JPanel implements ActionListener{
         gridBagConstraintsPass2.gridx = 1;
         gridBagConstraintsPass2.gridy = 5;
         gridBagConstraintsPass2.fill = GridBagConstraints.HORIZONTAL;
+        gridBagConstraintsPass2.insets = new Insets(0, 0, 0, 50);
         
         GridBagConstraints gridBagConstraintsTitrePass2 = new GridBagConstraints();
         gridBagConstraintsTitrePass2.gridx = 0;
         gridBagConstraintsTitrePass2.gridy = 5;
         gridBagConstraintsTitrePass2.fill = GridBagConstraints.HORIZONTAL;
-       
+        gridBagConstraintsTitrePass2.insets = new Insets(0, 0, 0, 10);
+        
         // Ajout du JTextField Pass2
         jPanelEnregistrer.add(titrePassConf, gridBagConstraintsTitrePass2);
         jPanelEnregistrer.add(passConf, gridBagConstraintsPass2);
@@ -359,7 +370,13 @@ public class EnregistrerView extends JPanel implements ActionListener{
                     {
                         try {
                             try {
-                                ctrl.clickValider();
+                                try {
+                                    ctrl.clickValider();
+                                } catch (IOException ex) {
+                                    Logger.getLogger(EnregistrerView.class.getName()).log(Level.SEVERE, null, ex);
+                                } catch (ClassNotFoundException ex) {
+                                    Logger.getLogger(EnregistrerView.class.getName()).log(Level.SEVERE, null, ex);
+                                }
                             } catch (NoSuchAlgorithmException ex) {
                                 Logger.getLogger(EnregistrerView.class.getName()).log(Level.SEVERE, null, ex);
                             }

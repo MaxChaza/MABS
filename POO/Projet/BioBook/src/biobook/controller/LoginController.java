@@ -50,7 +50,7 @@ public class LoginController {
         
         // Récupération du mot de pass
         String password = gererChercheur.getPassChercheur(log);
-        System.out.println(password);
+        
         Boolean ok;
         if(md5.getMD5().equals(password)) {
             ok=true;
@@ -80,25 +80,21 @@ public class LoginController {
     }  
     
     public void clickAnnuler() throws BioBookException {
-//        Chercheur ch = gererChercheur.getChercheur("toto");
-//        if(ch!=null){
-//            System.out.println(ch);
-//        }else
-//            System.out.println("merde");
-                
+
         logView.setVisible(false);
         logView.dispose(); 
     } 
     
-    public void connection() {
+    public void connection() throws BioBookException, IOException, FileNotFoundException, ClassNotFoundException {
         logView.setVisible(false);
         logView.dispose(); 
-        MainFrame main = new MainFrame("BioBook", logView.getLog());
+        MainFrame main = new MainFrame(logView.getLog());
     }
 
     public void clickEnregistrer() {
         EnregistrerView enregistrerView = new EnregistrerView(logView);
         logView.add(enregistrerView);
+        logView.pack();
     }
 
     public void clickMDPOublie() throws BioBookException, SQLException, InterruptedException, IOException, FileNotFoundException, ClassNotFoundException {
