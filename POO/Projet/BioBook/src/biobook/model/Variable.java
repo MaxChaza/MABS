@@ -8,13 +8,22 @@ import java.util.Objects;
  */
 public class Variable extends DocumentJoint implements Serializable, Comparable {
     static private final long serialVersionUID = 6L;
-    private String nom;
-    private String valeur;
-    
-    public Variable(String nom, String valeur) {
-        super(nom, valeur);
-    }
 
+    public Variable(String nom, String valeur, Experience experience) {
+        super(nom, valeur, experience);
+    }
+    
+
+    @Override
+    public String toString() {
+        StringBuffer s = new StringBuffer();;
+        s.append(nom);
+        s.append(" = ");
+        s.append(valeur);
+        
+        return s.toString();
+    }
+    
     @Override
     public boolean equals(Object obj) {
         if (obj == null) {

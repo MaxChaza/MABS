@@ -5,22 +5,24 @@
 package biobook.controller;
 
 import biobook.model.Chercheur;
+import biobook.model.Doc;
+import biobook.model.DocumentJoint;
 import biobook.model.Experience;
 import biobook.model.Materiel;
+import biobook.model.Variable;
 import biobook.util.BioBookException;
-import biobook.view.DualListBox;
+import biobook.util.GererFile;
 import biobook.view.ExpPersoView;
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.HashSet;
-import java.util.Vector;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.JLabel;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.text.Document;
 
 /**
  *
@@ -32,11 +34,17 @@ public class ExpPersoController {
     private GererMateriel gererMateriel;
     private GererChercheur gererChercheur;
     private boolean isCreateur;
+    private Experience expChoisie;
+    private GererVariable gererVariable;
+    private GererDocument gererDocument;
+    
     public ExpPersoController(ExpPersoView aThis) {
         expPersoView = aThis;
         gererExperience = new GererExperience();
         gererMateriel = new GererMateriel();
         gererChercheur = new GererChercheur();
+        gererVariable = new GererVariable();
+        gererDocument = new GererDocument();
         
     }
 
@@ -47,16 +55,21 @@ public class ExpPersoController {
         clickAnnulerStateOfTheArt();
         clickAnnulerParticipants();
         clickAnnulerMateriels();
+        clickAnnulerVariables();
+        clickAnnulerMethode();
+        expPersoView.getSupprimerExperience().setVisible(false);
+        
         isCreateur = isC;
         expPersoView.getLabelSansExp().setVisible(false);
         
         expPersoView.getModifierLibelle().setVisible(false);
-        Experience expChoisie = null;
+        expChoisie = null;
         if(isCreateur){
             expChoisie = gererExperience.getExperience((String) expPersoView.getJlistCree().getSelectedValue());        
             expPersoView.getModifierLibelle().setVisible(true);
             expPersoView.getModifierParticipants().setVisible(true);
             expPersoView.getDualBoxParticipants().getSourceList().setEnabled(true);
+            expPersoView.getSupprimerExperience().setVisible(true);
         }
         else
         {
@@ -69,7 +82,7 @@ public class ExpPersoController {
         expPersoView.getTabbedExperiencesPersoDroite().setVisible(true);
         expPersoView.getModifierProblem().setVisible(true);
         expPersoView.getModifierAssumption().setVisible(true);
-        expPersoView.getModifierContext().setVisible(true);
+        expPersoView.getModifierMethode().setVisible(true);
         expPersoView.getModifierStateOfTheArt().setVisible(true);
         
         expPersoView.getjLabelTitreLibelle().setVisible(true);
@@ -80,9 +93,9 @@ public class ExpPersoController {
         expPersoView.getjLabelAssumption().setVisible(true);
         expPersoView.getjLabelAssumption().setText(expChoisie.getAssumption());
         
-        expPersoView.getjLabelTitreContext().setVisible(true);
-        expPersoView.getjLabelContext().setVisible(true);
-        expPersoView.getjLabelContext().setText(expChoisie.getContext());
+        expPersoView.getjLabelTitreMethode().setVisible(true);
+        expPersoView.getjLabelMethode().setVisible(true);
+        expPersoView.getjLabelMethode().setText(expChoisie.getMethode());
         
         expPersoView.getjLabelTitreStateOfTheArt().setVisible(true);
         expPersoView.getjLabelStateOfTheArt().setVisible(true);
@@ -160,6 +173,67 @@ public class ExpPersoController {
         
         expPersoView.getDualBoxMateriels().setVisible(true);
         
+        tous.add(new Chercheur(expPersoView.getEspacePersoView().getMain().getChercheurConnecte()));
+       
+        // Récupération des Variables
+        Variable v = new Variable("d", "10", expChoisie);
+        expChoisie.getListVariables().add(v);
+        Object[] listVariables = expChoisie.getListVariables().toArray();
+        expPersoView.getDualBoxVariables().addFirstSourceElements(listVariables);
+                
+        
+        HashSet tousVar = new HashSet();
+        boolean variableDeLExperience= false;
+        // Récupération des Variable qui ne sont pas dans cette exp
+        HashSet<Variable> listVarExp = gererVariable.getAllByExp(expChoisie.getLabel());
+        for (Variable variableBuff : listVarExp) {
+            for (Variable variable : expChoisie.getListVariables()){
+                if(variable.equals(variableBuff))
+                {
+                    variableDeLExperience=true;
+                }
+            }
+            if(!variableDeLExperience){
+                // Nom du materiel
+                tousMat.add(variableBuff);
+            }
+        }
+        
+        tousMat.add(new Variable("tata","",expChoisie));
+        tousMat.add(new Variable("titi","",expChoisie));
+        tousMat.add(new Variable("tonton","",expChoisie));
+        Object[] listToutLesVariables = tousMat.toArray();
+        
+        // Récupération des Documents
+        Doc d = new Doc("d", "10", expChoisie);
+       
+        expChoisie.getListDocuments().add(d);
+        Object[] listDocs = expChoisie.getListDocuments().toArray();
+        expPersoView.getDualBoxDocuments().addFirstSourceElements(listDocs);
+                
+        
+        HashSet tousDoc = new HashSet();
+        boolean documentDeLExperience= false;
+        // Récupération des Doc qui ne sont pas dans cette exp
+        HashSet<Doc> listDocExp = gererDocument.getAllByExp(expChoisie.getLabel());
+        for (Doc documentBuff : listDocExp) {
+            for (Doc document : expChoisie.getListDocuments()){
+                if(document.equals(documentBuff))
+                {
+                    documentDeLExperience=true;
+                }
+            }
+            if(!documentDeLExperience){
+                // Nom du materiel
+                tousMat.add(documentBuff);
+            }
+        }
+        
+        tousMat.add(new Doc("tata","",expChoisie));
+        tousMat.add(new Doc("titi","",expChoisie));
+        tousMat.add(new Doc("tonton","",expChoisie));
+        Object[] listToutLesDocs = tousMat.toArray();
+        
     }
 
     public void clickModifierLibelle() {
@@ -171,7 +245,7 @@ public class ExpPersoController {
         expPersoView.getModifierLibelle().setVisible(false);
         
         clickAnnulerAssumption();
-        clickAnnulerContext();
+        clickAnnulerMethode();
         clickAnnulerStateOfTheArt();
         clickAnnulerProblem();
     }
@@ -186,7 +260,7 @@ public class ExpPersoController {
         
         
         clickAnnulerAssumption();
-        clickAnnulerContext();
+        clickAnnulerMethode();
         clickAnnulerStateOfTheArt();
         clickAnnulerLibelle();
     }
@@ -200,7 +274,7 @@ public class ExpPersoController {
         expPersoView.getModifierAssumption().setVisible(false);
         
         clickAnnulerLibelle();
-        clickAnnulerContext();
+        clickAnnulerMethode();
         clickAnnulerStateOfTheArt();
         clickAnnulerProblem();
     }
@@ -214,18 +288,18 @@ public class ExpPersoController {
         expPersoView.getModifierStateOfTheArt().setVisible(false);    
         
         clickAnnulerAssumption();
-        clickAnnulerContext();
+        clickAnnulerMethode();
         clickAnnulerLibelle();
         clickAnnulerProblem();
     }
 
-    public void clickModifierContext() {
-        expPersoView.getjTextContext().setVisible(true);
-        expPersoView.getValiderContext().setVisible(true);
-        expPersoView.getAnnulerContext().setVisible(true);
+    public void clickModifierMethode() {
+        expPersoView.getjTextMethode().setVisible(true);
+        expPersoView.getValiderMethode().setVisible(true);
+        expPersoView.getAnnulerMethode().setVisible(true);
         
-        expPersoView.getjLabelContext().setVisible(false);
-        expPersoView.getModifierContext().setVisible(false);
+        expPersoView.getjLabelMethode().setVisible(false);
+        expPersoView.getModifierMethode().setVisible(false);
         
         clickAnnulerAssumption();
         clickAnnulerLibelle();
@@ -269,13 +343,13 @@ public class ExpPersoController {
         expPersoView.getModifierStateOfTheArt().setVisible(true);    
     }
 
-    public void clickAnnulerContext() {
-        expPersoView.getjTextContext().setVisible(false);
-        expPersoView.getValiderContext().setVisible(false);
-        expPersoView.getAnnulerContext().setVisible(false);
+    public void clickAnnulerMethode() {
+        expPersoView.getjTextMethode().setVisible(false);
+        expPersoView.getValiderMethode().setVisible(false);
+        expPersoView.getAnnulerMethode().setVisible(false);
         
-        expPersoView.getjLabelContext().setVisible(true);
-        expPersoView.getModifierContext().setVisible(true);    
+        expPersoView.getjLabelMethode().setVisible(true);
+        expPersoView.getModifierMethode().setVisible(true);    
     }
 
     public void clickModifierParticipants() {
@@ -295,8 +369,7 @@ public class ExpPersoController {
     public void clickAnnulerMateriels() {
         expPersoView.getModifierMateriels().setVisible(true);
         
-        expPersoView.getAddMateriels().setVisible(false);
-        expPersoView.getSuppMateriels().setVisible(false);
+        expPersoView.getPanelBouttonMateriel().setVisible(false);
         expPersoView.getjComboBoxMateriels().setVisible(false);
         expPersoView.getValiderMateriels().setVisible(false);
         expPersoView.getAnnulerMateriels().setVisible(false);
@@ -307,8 +380,7 @@ public class ExpPersoController {
     public void clickModifierMateriels() {
         expPersoView.getModifierMateriels().setVisible(false);
                 
-        expPersoView.getAddMateriels().setVisible(true);
-        expPersoView.getSuppMateriels().setVisible(true);
+        expPersoView.getPanelBouttonMateriel().setVisible(true);
         expPersoView.getjComboBoxMateriels().setVisible(true);
         expPersoView.getValiderMateriels().setVisible(true);
         expPersoView.getAnnulerMateriels().setVisible(true);
@@ -338,5 +410,65 @@ public class ExpPersoController {
         expPersoView.getjComboBoxMateriels().addItem(expPersoView.getDualBoxMateriels().getSourceList().getSelectedValue());
         expPersoView.getDualBoxMateriels().clearSourceSelected();
         
+    }
+
+    public void clickModifierVariables() {
+        expPersoView.getModifierVariables().setVisible(false);
+                
+        expPersoView.getPanelJtextVar().setVisible(true);
+        expPersoView.getPanelBouttonVariable().setVisible(true);
+        expPersoView.getValiderVariables().setVisible(true);
+        expPersoView.getAnnulerVariables().setVisible(true);
+    }
+    
+    public void clickAnnulerVariables() {
+        expPersoView.getModifierVariables().setVisible(true);
+                
+        expPersoView.getPanelJtextVar().setVisible(false);
+        expPersoView.getPanelBouttonVariable().setVisible(false);
+        expPersoView.getValiderVariables().setVisible(false);
+        expPersoView.getAnnulerVariables().setVisible(false);
+    }
+
+    public void clickModifierDocuments() {
+        expPersoView.getModifierDocuments().setVisible(false);
+                
+        expPersoView.getPanelBouttonDocument().setVisible(true);
+        expPersoView.getValiderDocuments().setVisible(true);
+        expPersoView.getAnnulerDocuments().setVisible(true);
+    }
+    
+    public void clickAnnulerDocument() {
+        expPersoView.getModifierDocuments().setVisible(true);
+                
+        expPersoView.getPanelBouttonDocument().setVisible(false);
+        expPersoView.getValiderDocuments().setVisible(false);
+        expPersoView.getAnnulerDocuments().setVisible(false);
+    }
+
+    public void clickAddDocument() throws FileNotFoundException, IOException {
+        
+        String pathToFile = "./src/biobook/file/";
+        JFileChooser choose = new JFileChooser();
+        choose.showDialog(choose, "Importer");  
+        
+        File fileSource = choose.getSelectedFile();
+        File fileDest = new File(pathToFile+fileSource.getName());
+        
+        GererFile.copyFile(fileSource, fileDest);
+        Doc document = new Doc(fileSource.getName(), fileDest.getPath(), expChoisie) {};
+        
+        Object o[] = new Object[1];
+        o[0] = document;
+        
+        expPersoView.getDualBoxDocuments().addSourceElements(o);
+    }
+
+    public void clickSuppDocument() {
+        expPersoView.getDualBoxDocuments().clearSourceSelected();
+    }
+
+    public void clickSuppExperience() {
+        JOptionPane.showConfirmDialog(expPersoView, "Voulez vous vraiment supprimer cette expérience?","Supprimer experience", JOptionPane.WARNING_MESSAGE,JOptionPane.WARNING_MESSAGE);
     }
 }

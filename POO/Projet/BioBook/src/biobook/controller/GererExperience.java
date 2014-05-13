@@ -7,8 +7,10 @@
 package biobook.controller;
 
 import biobook.model.Chercheur;
+import biobook.model.Doc;
 import biobook.model.Experience;
 import biobook.model.Materiel;
+import biobook.model.Variable;
 import biobook.util.BioBookException;
 import biobook.util.MD5;
 import biobook.util.SimpleConnection;
@@ -76,10 +78,10 @@ public class GererExperience {
                     // pst.setString(       1       , unExperience.getCreateur() );
                     // pst.set<Type>(<Indice Du "?">,   <Valeur passé>       );
                     pst.setString(1,unExperience.getAssumption());
-                    pst.setString(2,unExperience.getContext());
+                    pst.setString(2,unExperience.getMethode());
                     pst.setString(3,unExperience.getCreateur().getLogin());
                     pst.setString(4,unExperience.getLabel());
-                    pst.setString(5,unExperience.getContext());
+                    pst.setString(5,unExperience.getMethode());
                     pst.setString(6,unExperience.getStateOfTheArt());
                     
                     // Execution of the request
@@ -120,7 +122,7 @@ public class GererExperience {
                 // On assigne une valeur à chaque "?" présent dans la requète 
                 // pst.set<Type>(<Indice Du "?">,   <Valeur passé>       );
                 pst.setString(1,unExperience.getAssumption());
-                pst.setString(2,unExperience.getContext());
+                pst.setString(2,unExperience.getMethode());
                 pst.setString(3,unExperience.getCreateur().getLogin());
                 pst.setString(4,unExperience.getLabel());
                 pst.setString(5,unExperience.getProblem());
@@ -189,12 +191,25 @@ public class GererExperience {
                     {       
                             GererChercheur gererChercheur = new GererChercheur();
                             unExperience= new Experience(rs.getString("labelExperience"), rs.getString("problem"), rs.getString("context"), rs.getString("stateOfArt"), rs.getString("assumption"), gererChercheur.getChercheur(rs.getString("createur")));
+                            
                             // Récupération de la liste d'experiences d'un chercheur
                             HashSet<Materiel> listMateriels = new HashSet<>();
                             GererMaterielExperience g = new GererMaterielExperience();
                             listMateriels = g.getMaterielByExperience(unExperience.getLabel());
                             
                             unExperience.setListMateriels(listMateriels);
+                            
+                            HashSet<Variable> listVariables = new HashSet<>();
+                            GererVariable gVar = new GererVariable();
+                            listVariables = gVar.getAllByExp(unExperience.getLabel());
+                            
+                            unExperience.setListVariables(listVariables);
+                            
+                            HashSet<Doc> listDocs = new HashSet<>();
+                            GererDocument gDoc = new GererDocument();
+                            listDocs = gDoc.getAllByExp(unExperience.getLabel());
+                            
+                            unExperience.setListDocuments(listDocs);
                     }
             }
             catch (SQLException e)

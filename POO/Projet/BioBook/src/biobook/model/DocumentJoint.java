@@ -13,12 +13,14 @@ import java.util.Objects;
  */
 public class DocumentJoint implements Serializable, Comparable {
     static private final long serialVersionUID = 6L;
-    private String nom;
-    private String valeur;
+    protected String nom;
+    protected String valeur;
+    protected Experience experience;
     
-    public DocumentJoint(String nom, String valeur) {
+    public DocumentJoint(String nom, String valeur, Experience experience) {
         this.nom = nom;
         this.valeur = valeur;
+        this.experience = experience;
     }
 
     public String getNom() {
@@ -62,6 +64,14 @@ public class DocumentJoint implements Serializable, Comparable {
     @Override
     public int compareTo(Object o) {
         return this.nom.compareTo(((DocumentJoint) o).nom);
+    }
+
+    public Experience getExperience() {
+        return experience;
+    }
+
+    public void setExperience(Experience experience) {
+        this.experience = experience;
     }
 }
 

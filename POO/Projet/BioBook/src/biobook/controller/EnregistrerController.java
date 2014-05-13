@@ -61,10 +61,10 @@ public class EnregistrerController {
         else
         {
             login= name+"."+firstName;
-            unChercheur = new Chercheur(pass, name, firstName, mail);
+            unChercheur = new Chercheur(login, pass, name, firstName, mail);
         }
         
-        if(loginExist(login))
+        if(loginExist(unChercheur.getLogin()))
         {
             JOptionPane.showMessageDialog(null, "Ce login est déjà utilisé.");                           
         }

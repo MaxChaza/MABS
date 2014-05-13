@@ -12,14 +12,18 @@ import java.util.Objects;
  *
  * @author Said
  */
-public class Document extends DocumentJoint implements Serializable, Comparable {
+public class Doc extends DocumentJoint implements Serializable, Comparable {
     static private final long serialVersionUID = 6L;
-    private String nom;
-    private String valeur;
-    
-    public Document(String nom, String valeur) {
-        super(nom, valeur);
+
+    public Doc(String nom, String valeur, Experience exp) {
+        super(nom, valeur, exp);
     }
+
+    @Override
+    public String toString() {
+        return nom;
+    }
+    
    
     @Override
     public boolean equals(Object obj) {
@@ -29,13 +33,13 @@ public class Document extends DocumentJoint implements Serializable, Comparable 
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Document other = (Document) obj;
+        final Doc other = (Doc) obj;
         return Objects.equals(this.nom, other.nom);
     }
    
     @Override
     public int compareTo(Object o) {
-        return this.nom.compareTo(((Document) o).nom);
+        return this.nom.compareTo(((Doc) o).nom);
     }
 
 }

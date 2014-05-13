@@ -68,12 +68,12 @@ public class ExpPersoView extends JPanel implements ActionListener, ListSelectio
     private JTextField jTextProblem;
     private JButtonValider validerProblem;
     private JButtonAnnuler annulerProblem;
-    private JLabel jLabelTitreContext;
-    private JLabel jLabelContext;
-    private JButtonModifier modifierContext;
-    private JTextField jTextContext;
-    private JButtonValider validerContext;
-    private JButtonAnnuler annulerContext;
+    private JLabel jLabelTitreMethode;
+    private JLabel jLabelMethode;
+    private JButtonModifier modifierMethode;
+    private JTextField jTextMethode;
+    private JButtonValider validerMethode;
+    private JButtonAnnuler annulerMethode;
     private JLabel jLabelTitreStateOfTheArt;
     private JLabel jLabelStateOfTheArt;
     private JButtonModifier modifierStateOfTheArt;
@@ -103,6 +103,25 @@ public class ExpPersoView extends JPanel implements ActionListener, ListSelectio
     private JButton addMateriels;
     private  JPanel panelSuivi;
     private JButton suppMateriels;
+    private DualListBox dualBoxVariables;
+    private JButtonModifier modifierVariables;
+    private JButtonValider validerVariables;
+    private JButtonAnnuler annulerVariables;
+    private JButton addVariables;
+    private JButton suppVariables;
+    private DualListBox dualBoxDocuments;
+    private JButtonModifier modifierDocuments;
+    private JButtonValider validerDocuments;
+    private JButtonAnnuler annulerDocuments;
+    private JButton addDocuments;
+    private JButton suppDocuments;
+    private JTextField jTextLabelVariable;
+    private JTextField jTextValeurVariable;
+    private JPanel panelBouttonMateriel;
+    private JPanel panelBouttonVariable;
+    private JPanel panelJtextVar;
+    private JPanel panelBouttonDocument;
+    private JButton supprimerExperience;
 
     public ExpPersoView(EspacePersoView m) {
         espacePersoView = m;
@@ -348,74 +367,74 @@ public class ExpPersoView extends JPanel implements ActionListener, ListSelectio
         annulerProblem.setVisible(false);
         annulerProblem.addActionListener(this);
 
-        // Context
+        // Methode
         // Ajout de Composants après choix de l'expérience
-        jLabelTitreContext = new JLabel("Contexte  :");
-        jLabelContext = new JLabel();
-        modifierContext = new JButtonModifier();
-        modifierContext.addActionListener(this);
+        jLabelTitreMethode = new JLabel("Methode  :");
+        jLabelMethode = new JLabel();
+        modifierMethode = new JButtonModifier();
+        modifierMethode.addActionListener(this);
 
         // Ajout de Composants après click modif
-        jTextContext = new JTextField();
-        validerContext = new JButtonValider();
-        annulerContext = new JButtonAnnuler();
-        validerContext.addActionListener(this);
-        annulerContext.addActionListener(this);
+        jTextMethode = new JTextField();
+        validerMethode = new JButtonValider();
+        annulerMethode = new JButtonAnnuler();
+        validerMethode.addActionListener(this);
+        annulerMethode.addActionListener(this);
 
         // Contraintes des composants après choix de l'expérience
-        GridBagConstraints gridBagConstraintsTitreContext = new GridBagConstraints();
-        gridBagConstraintsTitreContext.gridx = 0;
-        gridBagConstraintsTitreContext.gridy = 2;
-        gridBagConstraintsTitreContext.fill = GridBagConstraints.HORIZONTAL;
-        gridBagConstraintsTitreContext.insets = new Insets(0, 0, 10, 30);
+        GridBagConstraints gridBagConstraintsTitreMethode = new GridBagConstraints();
+        gridBagConstraintsTitreMethode.gridx = 0;
+        gridBagConstraintsTitreMethode.gridy = 2;
+        gridBagConstraintsTitreMethode.fill = GridBagConstraints.HORIZONTAL;
+        gridBagConstraintsTitreMethode.insets = new Insets(0, 0, 10, 30);
 
-        GridBagConstraints gridBagConstraintsContext = new GridBagConstraints();
-        gridBagConstraintsContext.gridx = 1;
-        gridBagConstraintsContext.gridy = 2;
-        gridBagConstraintsContext.fill = GridBagConstraints.HORIZONTAL;
-        gridBagConstraintsContext.insets = new Insets(0, 0, 10, 30);
+        GridBagConstraints gridBagConstraintsMethode = new GridBagConstraints();
+        gridBagConstraintsMethode.gridx = 1;
+        gridBagConstraintsMethode.gridy = 2;
+        gridBagConstraintsMethode.fill = GridBagConstraints.HORIZONTAL;
+        gridBagConstraintsMethode.insets = new Insets(0, 0, 10, 30);
 
-        GridBagConstraints gridBagConstraintsModifContext = new GridBagConstraints();
-        gridBagConstraintsModifContext.gridx = 2;
-        gridBagConstraintsModifContext.gridy = 2;
-        gridBagConstraintsModifContext.fill = GridBagConstraints.HORIZONTAL;
-        gridBagConstraintsModifContext.insets = new Insets(0, 0, 10, 0);
+        GridBagConstraints gridBagConstraintsModifMethode = new GridBagConstraints();
+        gridBagConstraintsModifMethode.gridx = 2;
+        gridBagConstraintsModifMethode.gridy = 2;
+        gridBagConstraintsModifMethode.fill = GridBagConstraints.HORIZONTAL;
+        gridBagConstraintsModifMethode.insets = new Insets(0, 0, 10, 0);
 
         // Contraintes des composants apres click modif
-        GridBagConstraints gridBagConstraintsJTextContext = new GridBagConstraints();
-        gridBagConstraintsJTextContext.gridx = 1;
-        gridBagConstraintsJTextContext.gridy = 2;
-        gridBagConstraintsJTextContext.fill = GridBagConstraints.HORIZONTAL;
-        gridBagConstraintsJTextContext.insets = new Insets(0, 0, 10, 30);
+        GridBagConstraints gridBagConstraintsJTextMethode = new GridBagConstraints();
+        gridBagConstraintsJTextMethode.gridx = 1;
+        gridBagConstraintsJTextMethode.gridy = 2;
+        gridBagConstraintsJTextMethode.fill = GridBagConstraints.HORIZONTAL;
+        gridBagConstraintsJTextMethode.insets = new Insets(0, 0, 10, 30);
 
-        GridBagConstraints gridBagConstraintsJButonValiderContext = new GridBagConstraints();
-        gridBagConstraintsJButonValiderContext.gridx = 2;
-        gridBagConstraintsJButonValiderContext.gridy = 2;
-        gridBagConstraintsJButonValiderContext.fill = GridBagConstraints.HORIZONTAL;
-        gridBagConstraintsJButonValiderContext.insets = new Insets(0, 0, 10, 0);
+        GridBagConstraints gridBagConstraintsJButonValiderMethode = new GridBagConstraints();
+        gridBagConstraintsJButonValiderMethode.gridx = 2;
+        gridBagConstraintsJButonValiderMethode.gridy = 2;
+        gridBagConstraintsJButonValiderMethode.fill = GridBagConstraints.HORIZONTAL;
+        gridBagConstraintsJButonValiderMethode.insets = new Insets(0, 0, 10, 0);
 
-        GridBagConstraints gridBagConstraintsJButonAnnulerContext = new GridBagConstraints();
-        gridBagConstraintsJButonAnnulerContext.gridx = 3;
-        gridBagConstraintsJButonAnnulerContext.gridy = 2;
-        gridBagConstraintsJButonAnnulerContext.fill = GridBagConstraints.HORIZONTAL;
-        gridBagConstraintsJButonAnnulerContext.insets = new Insets(0, 0, 10, 0);
+        GridBagConstraints gridBagConstraintsJButonAnnulerMethode = new GridBagConstraints();
+        gridBagConstraintsJButonAnnulerMethode.gridx = 3;
+        gridBagConstraintsJButonAnnulerMethode.gridy = 2;
+        gridBagConstraintsJButonAnnulerMethode.fill = GridBagConstraints.HORIZONTAL;
+        gridBagConstraintsJButonAnnulerMethode.insets = new Insets(0, 0, 10, 0);
 
 
         // Ajout de Composants après choix de l'expérience
-        panelNordSuivi.add(jLabelTitreContext, gridBagConstraintsTitreContext);
-        panelNordSuivi.add(jLabelContext, gridBagConstraintsContext);
-        panelNordSuivi.add(modifierContext, gridBagConstraintsModifContext);
+        panelNordSuivi.add(jLabelTitreMethode, gridBagConstraintsTitreMethode);
+        panelNordSuivi.add(jLabelMethode, gridBagConstraintsMethode);
+        panelNordSuivi.add(modifierMethode, gridBagConstraintsModifMethode);
         
         // Ajout des composants apres click modif
-        panelNordSuivi.add(jTextContext, gridBagConstraintsJTextContext);
-        jTextContext.setPreferredSize(new Dimension(140, 20));
-        jTextContext.setVisible(false);
-        panelNordSuivi.add(validerContext, gridBagConstraintsJButonValiderContext);
-        validerContext.setVisible(false);
-        validerContext.addActionListener(this);
-        panelNordSuivi.add(annulerContext, gridBagConstraintsJButonAnnulerContext);
-        annulerContext.setVisible(false);
-        annulerContext.addActionListener(this);
+        panelNordSuivi.add(jTextMethode, gridBagConstraintsJTextMethode);
+        jTextMethode.setPreferredSize(new Dimension(140, 20));
+        jTextMethode.setVisible(false);
+        panelNordSuivi.add(validerMethode, gridBagConstraintsJButonValiderMethode);
+        validerMethode.setVisible(false);
+        validerMethode.addActionListener(this);
+        panelNordSuivi.add(annulerMethode, gridBagConstraintsJButonAnnulerMethode);
+        annulerMethode.setVisible(false);
+        annulerMethode.addActionListener(this);
 
         // Etat de l'art
         // Ajout de Composants après choix de l'expérience
@@ -613,12 +632,11 @@ public class ExpPersoView extends JPanel implements ActionListener, ListSelectio
         panelMateriel.add(dualBoxMateriels);
         panelMateriel.add(modifierMateriels);
         modifierMateriels.addActionListener(this);
-        JPanel panelBouttonMateriel = new JPanel(new GridLayout(2,1));
+        panelBouttonMateriel = new JPanel(new GridLayout(2,1));
         
         panelBouttonMateriel.add(addMateriels);
         panelBouttonMateriel.add(suppMateriels);
-        addMateriels.setVisible(false);
-        suppMateriels.setVisible(false);
+        panelBouttonMateriel.setVisible(false);
         panelMateriel.add(panelBouttonMateriel);
         
         // Ajout des composants apres click modif
@@ -627,10 +645,8 @@ public class ExpPersoView extends JPanel implements ActionListener, ListSelectio
         
         panelMateriel.add(validerMateriels);
         validerMateriels.setVisible(false);
-        validerMateriels.addActionListener(this);
         panelMateriel.add(annulerMateriels);
         annulerMateriels.setVisible(false);
-        annulerMateriels.addActionListener(this);
         panelSuivi.add(panelMateriel);
         JScrollPane scrollPaneSuivi = new JScrollPane(panelSuivi);
         
@@ -694,8 +710,90 @@ public class ExpPersoView extends JPanel implements ActionListener, ListSelectio
 
         JScrollPane scrollPaneChercheur = new JScrollPane(panelChercheur);
         
-        // Onglet avec les variables à retenir
-        panelParam = new JPanel(new GridBagLayout());
+        // Onglet avec les variables à retenir et des documents
+        panelParam = new JPanel(new GridLayout(2,1));
+        
+        // Variables
+        // Ajout de Composants après choix de l'expérience
+        JPanel panelVariable = new JPanel(new FlowLayout());
+        dualBoxVariables = new DualListBox("Variables utilisés", "");
+        modifierVariables = new JButtonModifier();
+        modifierVariables.addActionListener(this);
+
+        // Ajout de Composants après click modif
+        validerVariables = new JButtonValider();
+        annulerVariables = new JButtonAnnuler();
+        validerVariables.addActionListener(this);
+        annulerVariables.addActionListener(this);
+        
+        addVariables = new JButton("Ajouter");
+        addVariables.addActionListener(this);
+        suppVariables = new JButton("Supprimer");
+        suppVariables.addActionListener(this);
+        
+        panelJtextVar = new JPanel(new GridLayout(2, 1));
+        jTextLabelVariable = new JTextField("Nom de la variable",20);
+        jTextValeurVariable = new JTextField("Valeur de la variable",20);
+        
+        // Ajout de Composants après choix de l'expérience
+        panelVariable.add(dualBoxVariables);
+        panelVariable.add(modifierVariables);
+        modifierVariables.addActionListener(this);
+        panelBouttonVariable = new JPanel(new GridLayout(2,1));
+        
+        panelBouttonVariable.add(addVariables);
+        panelBouttonVariable.add(suppVariables);
+        panelBouttonVariable.setVisible(false);
+        panelVariable.add(panelBouttonVariable);
+        
+        // Ajout des composants apres click modif
+        panelJtextVar.add(jTextLabelVariable);
+        panelJtextVar.add(jTextValeurVariable);
+        panelJtextVar.setVisible(false);
+        
+        panelVariable.add(panelJtextVar);
+        
+        panelVariable.add(validerVariables);
+        validerVariables.setVisible(false);
+        panelVariable.add(annulerVariables);
+        annulerVariables.setVisible(false);
+        panelParam.add(panelVariable);
+        
+        // Documents
+        // Ajout de Composants après choix de l'expérience
+        JPanel panelDocument = new JPanel(new FlowLayout());
+        dualBoxDocuments = new DualListBox("Documents utilisés", "");
+        modifierDocuments = new JButtonModifier();
+        modifierDocuments.addActionListener(this);
+
+        // Ajout de Composants après click modif
+        validerDocuments = new JButtonValider();
+        annulerDocuments = new JButtonAnnuler();
+        validerDocuments.addActionListener(this);
+        annulerDocuments.addActionListener(this);
+        
+        addDocuments = new JButton("Importer un fichier");
+        addDocuments.addActionListener(this);
+        suppDocuments = new JButton("Supprimer");
+        suppDocuments.addActionListener(this);
+        
+        // Ajout de Composants après choix de l'expérience
+        panelDocument.add(dualBoxDocuments);
+        panelDocument.add(modifierDocuments);
+        modifierDocuments.addActionListener(this);
+        panelBouttonDocument = new JPanel(new GridLayout(2,1));
+        
+        panelBouttonDocument.add(addDocuments);
+        panelBouttonDocument.add(suppDocuments);
+        panelBouttonDocument.setVisible(false);
+        panelDocument.add(panelBouttonDocument);
+        
+        // Ajout des composants apres click modif
+        panelDocument.add(validerDocuments);
+        validerDocuments.setVisible(false);
+        panelDocument.add(annulerDocuments);
+        annulerDocuments.setVisible(false);
+        panelParam.add(panelDocument);
         
         
         JScrollPane scrollPaneParam = new JScrollPane(panelParam);
@@ -706,9 +804,16 @@ public class ExpPersoView extends JPanel implements ActionListener, ListSelectio
         // Mise enplace des onglets
         tabbedExperiencesPersoDroite.addTab("Suivi", scrollPaneSuivi);
         tabbedExperiencesPersoDroite.addTab("Participants", panelChercheur);
-        tabbedExperiencesPersoDroite.addTab("Paramètres", panelParam);
+        tabbedExperiencesPersoDroite.addTab("Paramètres", scrollPaneParam);
         
         panelDroite.add(tabbedExperiencesPersoDroite,BorderLayout.CENTER);
+        
+        // Boutton pour supprimer l'exp
+        supprimerExperience = new JButton("Supprimer l'experience");
+        supprimerExperience.addActionListener(this);
+        supprimerExperience.setVisible(false);
+        panelDroite.add(supprimerExperience, BorderLayout.SOUTH);
+        
         tabbedExperiencesPersoDroite.setVisible(false);
         add(scroll, BorderLayout.WEST);
         add(panelDroite, BorderLayout.CENTER);
@@ -718,6 +823,196 @@ public class ExpPersoView extends JPanel implements ActionListener, ListSelectio
         setVisible(true);
     }
 
+    @Override
+    public void valueChanged(ListSelectionEvent e) {
+        if (e.getSource() == jlistCree) {
+            try {
+                try {
+                    expPersoController.chooseExp(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(ExpPersoView.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
+                    Logger.getLogger(ExpPersoView.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } catch (BioBookException ex) {
+                Logger.getLogger(ExpPersoView.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(ExpPersoView.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        if (e.getSource() == jlistParticipe) {
+            try {
+                try {
+                    expPersoController.chooseExp(false);
+                } catch (IOException ex) {
+                    Logger.getLogger(ExpPersoView.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
+                    Logger.getLogger(ExpPersoView.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } catch (BioBookException ex) {
+                Logger.getLogger(ExpPersoView.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(ExpPersoView.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+
+    
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        // Click sur un des boutton de modification
+        if (e.getSource() == modifierLibelle) {
+            expPersoController.clickModifierLibelle();
+        }
+        if (e.getSource() == modifierProblem) {
+            expPersoController.clickModifierProblem();
+        }
+        if (e.getSource() == modifierAssumption) {
+            expPersoController.clickModifierAssumption();
+        }
+        if (e.getSource() == modifierStateOfTheArt) {
+            expPersoController.clickModifierStateOfTheArt();
+        }
+        if (e.getSource() == modifierMethode) {
+            expPersoController.clickModifierMethode();
+        }
+        if (e.getSource() == modifierParticipants) {
+            expPersoController.clickModifierParticipants();
+        }
+        if (e.getSource() == modifierMateriels) {
+            expPersoController.clickModifierMateriels();
+        }
+        
+        if (e.getSource() == modifierVariables) {
+            expPersoController.clickModifierVariables();
+        }
+        if (e.getSource() == modifierDocuments) {
+            expPersoController.clickModifierDocuments();
+        }
+//        
+//        // Click sur un des boutton de validation pour modifier un parametre
+//        if(e.getSource()== validerNom || e.getSource()==validerfirstName || e.getSource()==validerMail || e.getSource()==validerLog){
+//            try {
+//                ctrl.clickValiderParam();
+//            } catch (SQLException ex) {
+//                Logger.getLogger(ParamPersoView.class.getName()).log(Level.SEVERE, null, ex);
+//            } catch (BioBookException ex) {
+//                Logger.getLogger(ParamPersoView.class.getName()).log(Level.SEVERE, null, ex);
+//            } catch (IOException ex) {
+//                Logger.getLogger(ParamPersoView.class.getName()).log(Level.SEVERE, null, ex);
+//            } catch (ClassNotFoundException ex) {
+//                Logger.getLogger(ParamPersoView.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//        }
+//        if(e.getSource()== validerPass){
+//            try {
+//                ctrl.clickValiderPass();
+//            } catch (BioBookException ex) {
+//                Logger.getLogger(ParamPersoView.class.getName()).log(Level.SEVERE, null, ex);
+//            } catch (NoSuchAlgorithmException ex) {
+//                Logger.getLogger(ParamPersoView.class.getName()).log(Level.SEVERE, null, ex);
+//            } catch (IOException ex) {
+//                Logger.getLogger(ParamPersoView.class.getName()).log(Level.SEVERE, null, ex);
+//            } catch (ClassNotFoundException ex) {
+//                Logger.getLogger(ParamPersoView.class.getName()).log(Level.SEVERE, null, ex);
+//            } catch (SQLException ex) {
+//                Logger.getLogger(ParamPersoView.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//        }
+//        
+//         Click sur un boutton d'annulation pour ne plus modifier la valeur
+        if (e.getSource() == annulerLibelle) {
+            expPersoController.clickAnnulerLibelle();
+        }
+        if (e.getSource() == annulerProblem) {
+            expPersoController.clickAnnulerProblem();
+        }
+        if (e.getSource() == annulerMethode) {
+            expPersoController.clickAnnulerMethode();
+        }
+        if (e.getSource() == annulerAssumption) {
+            expPersoController.clickAnnulerAssumption();
+        }
+        if (e.getSource() == annulerStateOfTheArt) {
+            expPersoController.clickAnnulerStateOfTheArt();
+        }
+        if (e.getSource() == annulerParticipants) {
+            expPersoController.clickAnnulerParticipants();
+        }
+        if (e.getSource() == annulerMateriels) {
+            expPersoController.clickAnnulerMateriels();
+        }
+        if (e.getSource() == annulerDocuments) {
+            expPersoController.clickAnnulerDocument();
+        }
+        if (e.getSource() == annulerVariables) {
+            expPersoController.clickAnnulerVariables();
+        }
+        
+        if (e.getSource() == addMateriels) {
+            expPersoController.clickAddMateriel();
+        }
+        if (e.getSource() == suppMateriels) {
+            expPersoController.clickSuppMateriel();
+        }
+        if (e.getSource() == supprimerExperience) {
+            expPersoController.clickSuppExperience();
+        }
+        
+        if (e.getSource() == addDocuments) {
+            try {
+                expPersoController.clickAddDocument();
+            } catch (IOException ex) {
+                Logger.getLogger(ExpPersoView.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        if (e.getSource() == suppDocuments) {
+            expPersoController.clickSuppDocument();
+        }
+    }
+
+    public JButton getSupprimerExperience() {
+        return supprimerExperience;
+    }
+
+    public void setSupprimerExperience(JButton supprimerExperience) {
+        this.supprimerExperience = supprimerExperience;
+    }
+    
+    public JPanel getPanelBouttonDocument() {
+        return panelBouttonDocument;
+    }
+
+    public void setPanelBouttonDocument(JPanel panelBouttonDocument) {
+        this.panelBouttonDocument = panelBouttonDocument;
+    }
+
+    public JPanel getPanelJtextVar() {
+        return panelJtextVar;
+    }
+
+    public void setPanelJtextVar(JPanel panelJtextVar) {
+        this.panelJtextVar = panelJtextVar;
+    }
+
+    public JPanel getPanelBouttonMateriel() {
+        return panelBouttonMateriel;
+    }
+
+    public void setPanelBouttonMateriel(JPanel panelBouttonMateriel) {
+        this.panelBouttonMateriel = panelBouttonMateriel;
+    }
+
+    public JPanel getPanelBouttonVariable() {
+        return panelBouttonVariable;
+    }
+
+    public void setPanelBouttonVariable(JPanel panelBouttonVariable) {
+        this.panelBouttonVariable = panelBouttonVariable;
+    }
+
+    
+    
     public JButton getSuppMateriels() {
         return suppMateriels;
     }
@@ -961,52 +1256,52 @@ public class ExpPersoView extends JPanel implements ActionListener, ListSelectio
         this.annulerProblem = annulerProblem;
     }
 
-    public JLabel getjLabelTitreContext() {
-        return jLabelTitreContext;
+    public JLabel getjLabelTitreMethode() {
+        return jLabelTitreMethode;
     }
 
-    public void setjLabelTitreContext(JLabel jLabelTitreContext) {
-        this.jLabelTitreContext = jLabelTitreContext;
+    public void setjLabelTitreMethode(JLabel jLabelTitreMethode) {
+        this.jLabelTitreMethode = jLabelTitreMethode;
     }
 
-    public JLabel getjLabelContext() {
-        return jLabelContext;
+    public JLabel getjLabelMethode() {
+        return jLabelMethode;
     }
 
-    public void setjLabelContext(JLabel jLabelContext) {
-        this.jLabelContext = jLabelContext;
+    public void setjLabelMethode(JLabel jLabelMethode) {
+        this.jLabelMethode = jLabelMethode;
     }
 
-    public JButtonModifier getModifierContext() {
-        return modifierContext;
+    public JButtonModifier getModifierMethode() {
+        return modifierMethode;
     }
 
-    public void setModifierContext(JButtonModifier modifierContext) {
-        this.modifierContext = modifierContext;
+    public void setModifierMethode(JButtonModifier modifierMethode) {
+        this.modifierMethode = modifierMethode;
     }
 
-    public JTextField getjTextContext() {
-        return jTextContext;
+    public JTextField getjTextMethode() {
+        return jTextMethode;
     }
 
-    public void setjTextContext(JTextField jTextContext) {
-        this.jTextContext = jTextContext;
+    public void setjTextMethode(JTextField jTextMethode) {
+        this.jTextMethode = jTextMethode;
     }
 
-    public JButtonValider getValiderContext() {
-        return validerContext;
+    public JButtonValider getValiderMethode() {
+        return validerMethode;
     }
 
-    public void setValiderContext(JButtonValider validerContext) {
-        this.validerContext = validerContext;
+    public void setValiderMethode(JButtonValider validerMethode) {
+        this.validerMethode = validerMethode;
     }
 
-    public JButtonAnnuler getAnnulerContext() {
-        return annulerContext;
+    public JButtonAnnuler getAnnulerMethode() {
+        return annulerMethode;
     }
 
-    public void setAnnulerContext(JButtonAnnuler annulerContext) {
-        this.annulerContext = annulerContext;
+    public void setAnnulerMethode(JButtonAnnuler annulerMethode) {
+        this.annulerMethode = annulerMethode;
     }
 
     public JLabel getjLabelTitreStateOfTheArt() {
@@ -1162,122 +1457,156 @@ public class ExpPersoView extends JPanel implements ActionListener, ListSelectio
         this.annulerMateriels = annulerMateriels;
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        // Click sur un des boutton de modification
-        if (e.getSource() == modifierLibelle) {
-            expPersoController.clickModifierLibelle();
-        }
-        if (e.getSource() == modifierProblem) {
-            expPersoController.clickModifierProblem();
-        }
-        if (e.getSource() == modifierAssumption) {
-            expPersoController.clickModifierAssumption();
-        }
-        if (e.getSource() == modifierStateOfTheArt) {
-            expPersoController.clickModifierStateOfTheArt();
-        }
-        if (e.getSource() == modifierContext) {
-            expPersoController.clickModifierContext();
-        }
-        if (e.getSource() == modifierParticipants) {
-            expPersoController.clickModifierParticipants();
-        }
-        if (e.getSource() == modifierMateriels) {
-            expPersoController.clickModifierMateriels();
-        }
-//        
-//        // Click sur un des boutton de validation pour modifier un parametre
-//        if(e.getSource()== validerNom || e.getSource()==validerfirstName || e.getSource()==validerMail || e.getSource()==validerLog){
-//            try {
-//                ctrl.clickValiderParam();
-//            } catch (SQLException ex) {
-//                Logger.getLogger(ParamPersoView.class.getName()).log(Level.SEVERE, null, ex);
-//            } catch (BioBookException ex) {
-//                Logger.getLogger(ParamPersoView.class.getName()).log(Level.SEVERE, null, ex);
-//            } catch (IOException ex) {
-//                Logger.getLogger(ParamPersoView.class.getName()).log(Level.SEVERE, null, ex);
-//            } catch (ClassNotFoundException ex) {
-//                Logger.getLogger(ParamPersoView.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-//        }
-//        if(e.getSource()== validerPass){
-//            try {
-//                ctrl.clickValiderPass();
-//            } catch (BioBookException ex) {
-//                Logger.getLogger(ParamPersoView.class.getName()).log(Level.SEVERE, null, ex);
-//            } catch (NoSuchAlgorithmException ex) {
-//                Logger.getLogger(ParamPersoView.class.getName()).log(Level.SEVERE, null, ex);
-//            } catch (IOException ex) {
-//                Logger.getLogger(ParamPersoView.class.getName()).log(Level.SEVERE, null, ex);
-//            } catch (ClassNotFoundException ex) {
-//                Logger.getLogger(ParamPersoView.class.getName()).log(Level.SEVERE, null, ex);
-//            } catch (SQLException ex) {
-//                Logger.getLogger(ParamPersoView.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-//        }
-//        
-//         Click sur un boutton d'annulation pour ne plus modifier la valeur
-        if (e.getSource() == annulerLibelle) {
-            expPersoController.clickAnnulerLibelle();
-        }
-        if (e.getSource() == annulerProblem) {
-            expPersoController.clickAnnulerProblem();
-        }
-        if (e.getSource() == annulerContext) {
-            expPersoController.clickAnnulerContext();
-        }
-        if (e.getSource() == annulerAssumption) {
-            expPersoController.clickAnnulerAssumption();
-        }
-        if (e.getSource() == annulerStateOfTheArt) {
-            expPersoController.clickAnnulerStateOfTheArt();
-        }
-        if (e.getSource() == annulerParticipants) {
-            expPersoController.clickAnnulerParticipants();
-        }
-        if (e.getSource() == annulerMateriels) {
-            expPersoController.clickAnnulerMateriels();
-        }
-        if (e.getSource() == addMateriels) {
-            expPersoController.clickAddMateriel();
-        }
-        if (e.getSource() == suppMateriels) {
-            expPersoController.clickSuppMateriel();
-        }
+    
+    public ExpPersoController getExpPersoController() {
+        return expPersoController;
     }
 
-    @Override
-    public void valueChanged(ListSelectionEvent e) {
-        if (e.getSource() == jlistCree) {
-            try {
-                try {
-                    expPersoController.chooseExp(true);
-                } catch (IOException ex) {
-                    Logger.getLogger(ExpPersoView.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (SQLException ex) {
-                    Logger.getLogger(ExpPersoView.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            } catch (BioBookException ex) {
-                Logger.getLogger(ExpPersoView.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(ExpPersoView.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        if (e.getSource() == jlistParticipe) {
-            try {
-                try {
-                    expPersoController.chooseExp(false);
-                } catch (IOException ex) {
-                    Logger.getLogger(ExpPersoView.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (SQLException ex) {
-                    Logger.getLogger(ExpPersoView.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            } catch (BioBookException ex) {
-                Logger.getLogger(ExpPersoView.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(ExpPersoView.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
+    public void setExpPersoController(ExpPersoController expPersoController) {
+        this.expPersoController = expPersoController;
+    }
+
+    public JPanel getPanelNordSuivi() {
+        return panelNordSuivi;
+    }
+
+    public void setPanelNordSuivi(JPanel panelNordSuivi) {
+        this.panelNordSuivi = panelNordSuivi;
+    }
+
+    public JPanel getPanelChercheur() {
+        return panelChercheur;
+    }
+
+    public void setPanelChercheur(JPanel panelChercheur) {
+        this.panelChercheur = panelChercheur;
+    }
+
+    public JPanel getPanelParam() {
+        return panelParam;
+    }
+
+    public void setPanelParam(JPanel panelParam) {
+        this.panelParam = panelParam;
+    }
+
+    public JPanel getPanelSuivi() {
+        return panelSuivi;
+    }
+
+    public void setPanelSuivi(JPanel panelSuivi) {
+        this.panelSuivi = panelSuivi;
+    }
+
+    public DualListBox getDualBoxVariables() {
+        return dualBoxVariables;
+    }
+
+    public void setDualBoxVariables(DualListBox dualBoxVariables) {
+        this.dualBoxVariables = dualBoxVariables;
+    }
+
+    public JButtonModifier getModifierVariables() {
+        return modifierVariables;
+    }
+
+    public void setModifierVariables(JButtonModifier modifierVariables) {
+        this.modifierVariables = modifierVariables;
+    }
+
+    public JButtonValider getValiderVariables() {
+        return validerVariables;
+    }
+
+    public void setValiderVariables(JButtonValider validerVariables) {
+        this.validerVariables = validerVariables;
+    }
+
+    public JButtonAnnuler getAnnulerVariables() {
+        return annulerVariables;
+    }
+
+    public void setAnnulerVariables(JButtonAnnuler annulerVariables) {
+        this.annulerVariables = annulerVariables;
+    }
+
+    public JButton getAddVariables() {
+        return addVariables;
+    }
+
+    public void setAddVariables(JButton addVariables) {
+        this.addVariables = addVariables;
+    }
+
+    public JButton getSuppVariables() {
+        return suppVariables;
+    }
+
+    public void setSuppVariables(JButton suppVariables) {
+        this.suppVariables = suppVariables;
+    }
+
+    public DualListBox getDualBoxDocuments() {
+        return dualBoxDocuments;
+    }
+
+    public void setDualBoxDocuments(DualListBox dualBoxDocuments) {
+        this.dualBoxDocuments = dualBoxDocuments;
+    }
+
+    public JButtonModifier getModifierDocuments() {
+        return modifierDocuments;
+    }
+
+    public void setModifierDocuments(JButtonModifier modifierDocuments) {
+        this.modifierDocuments = modifierDocuments;
+    }
+
+    public JButtonValider getValiderDocuments() {
+        return validerDocuments;
+    }
+
+    public void setValiderDocuments(JButtonValider validerDocuments) {
+        this.validerDocuments = validerDocuments;
+    }
+
+    public JButtonAnnuler getAnnulerDocuments() {
+        return annulerDocuments;
+    }
+
+    public void setAnnulerDocuments(JButtonAnnuler annulerDocuments) {
+        this.annulerDocuments = annulerDocuments;
+    }
+
+    public JButton getAddDocuments() {
+        return addDocuments;
+    }
+
+    public void setAddDocuments(JButton addDocuments) {
+        this.addDocuments = addDocuments;
+    }
+
+    public JButton getSuppDocuments() {
+        return suppDocuments;
+    }
+
+    public void setSuppDocuments(JButton suppDocuments) {
+        this.suppDocuments = suppDocuments;
+    }
+
+    public JTextField getjTextLabelVariable() {
+        return jTextLabelVariable;
+    }
+
+    public void setjTextLabelVariable(JTextField jTextLabelVariable) {
+        this.jTextLabelVariable = jTextLabelVariable;
+    }
+
+    public JTextField getjTextValeurVariable() {
+        return jTextValeurVariable;
+    }
+
+    public void setjTextValeurVariable(JTextField jTextValeurVariable) {
+        this.jTextValeurVariable = jTextValeurVariable;
     }
 }

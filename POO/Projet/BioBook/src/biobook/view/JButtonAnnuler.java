@@ -16,9 +16,9 @@ import javax.swing.JButton;
  * @author Maxime
  */
 public class JButtonAnnuler extends JButton implements MouseListener{
-
+    private String pathToImage = ".\\src\\biobook\\image\\";
     public JButtonAnnuler() {
-        ImageIcon bouttonAnnuler = new ImageIcon("C:\\Users\\Maxime\\Documents\\MABS\\POO\\Projet\\BioBook\\src\\biobook\\image\\boutonannuler\\bouton-annuler-exited.png");
+        ImageIcon bouttonAnnuler = new ImageIcon(pathToImage + "boutonannuler\\bouton-annuler-exited.png");
         setIcon(bouttonAnnuler);
         setOpaque(false);
         setBorderPainted(false);
@@ -30,31 +30,31 @@ public class JButtonAnnuler extends JButton implements MouseListener{
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        ImageIcon bouttonAnnuler = new ImageIcon("C:\\Users\\Maxime\\Documents\\MABS\\POO\\Projet\\BioBook\\src\\biobook\\image\\boutonannuler\\bouton-annuler-entered.png");
+        ImageIcon bouttonAnnuler = new ImageIcon(pathToImage + "boutonannuler\\bouton-annuler-entered.png");
         setIcon(bouttonAnnuler);
     }
 
     @Override
     public void mousePressed(MouseEvent e) {
-        ImageIcon bouttonAnnuler = new ImageIcon("C:\\Users\\Maxime\\Documents\\MABS\\POO\\Projet\\BioBook\\src\\biobook\\image\\boutonannuler\\bouton-annuler.png");
+        ImageIcon bouttonAnnuler = new ImageIcon(pathToImage + "boutonannuler\\bouton-annuler.png");
         setIcon(bouttonAnnuler);
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        ImageIcon bouttonAnnuler = new ImageIcon("C:\\Users\\Maxime\\Documents\\MABS\\POO\\Projet\\BioBook\\src\\biobook\\image\\boutonannuler\\bouton-annuler.png");
+        ImageIcon bouttonAnnuler = new ImageIcon(pathToImage + "boutonannuler\\bouton-annuler.png");
         setIcon(bouttonAnnuler);
     }
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        ImageIcon bouttonAnnuler = new ImageIcon("C:\\Users\\Maxime\\Documents\\MABS\\POO\\Projet\\BioBook\\src\\biobook\\image\\boutonannuler\\bouton-annuler-entered.png");
+        ImageIcon bouttonAnnuler = new ImageIcon(pathToImage + "boutonannuler\\bouton-annuler-entered.png");
         setIcon(bouttonAnnuler);
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
-        ImageIcon bouttonAnnuler = new ImageIcon("C:\\Users\\Maxime\\Documents\\MABS\\POO\\Projet\\BioBook\\src\\biobook\\image\\boutonannuler\\bouton-annuler-exited.png");
+        ImageIcon bouttonAnnuler = new ImageIcon(pathToImage + "boutonannuler\\bouton-annuler-exited.png");
         setIcon(bouttonAnnuler);
     }
     

@@ -16,9 +16,9 @@ import javax.swing.JButton;
  * @author Maxime
  */
 public class JButtonValider extends JButton implements MouseListener{
-
+    private String pathToImage = ".\\src\\biobook\\image\\";
     public JButtonValider() {
-        ImageIcon bouttonValider = new ImageIcon("C:\\Users\\Maxime\\Documents\\MABS\\POO\\Projet\\BioBook\\src\\biobook\\image\\boutonvalider\\bouton-valider-exited.png");
+        ImageIcon bouttonValider = new ImageIcon(pathToImage+"boutonvalider\\bouton-valider-exited.png");
         setIcon(bouttonValider);
         setOpaque(false);
         setBorderPainted(false);
@@ -30,32 +30,31 @@ public class JButtonValider extends JButton implements MouseListener{
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        ImageIcon bouttonValider = new ImageIcon("C:\\Users\\Maxime\\Documents\\MABS\\POO\\Projet\\BioBook\\src\\biobook\\image\\boutonvalider\\bouton-valider-entered.png");
+        ImageIcon bouttonValider = new ImageIcon(pathToImage+"boutonvalider\\bouton-valider-entered.png");
         setIcon(bouttonValider);
     }
 
     @Override
     public void mousePressed(MouseEvent e) {
-        ImageIcon bouttonValider = new ImageIcon("C:\\Users\\Maxime\\Documents\\MABS\\POO\\Projet\\BioBook\\src\\biobook\\image\\boutonvalider\\bouton-valider.png");
+        ImageIcon bouttonValider = new ImageIcon(pathToImage+"boutonvalider\\bouton-valider.png");
         setIcon(bouttonValider);
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        ImageIcon bouttonValider = new ImageIcon("C:\\Users\\Maxime\\Documents\\MABS\\POO\\Projet\\BioBook\\src\\biobook\\image\\boutonvalider\\bouton-valider.png");
+        ImageIcon bouttonValider = new ImageIcon(pathToImage+"boutonvalider\\bouton-valider.png");
         setIcon(bouttonValider);
     }
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        ImageIcon bouttonValider = new ImageIcon("C:\\Users\\Maxime\\Documents\\MABS\\POO\\Projet\\BioBook\\src\\biobook\\image\\boutonvalider\\bouton-valider-entered.png");
+        ImageIcon bouttonValider = new ImageIcon(pathToImage+"boutonvalider\\bouton-valider-entered.png");
         setIcon(bouttonValider);
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
-        ImageIcon bouttonValider = new ImageIcon("C:\\Users\\Maxime\\Documents\\MABS\\POO\\Projet\\BioBook\\src\\biobook\\image\\boutonvalider\\bouton-valider-exited.png");
+        ImageIcon bouttonValider = new ImageIcon(pathToImage+"boutonvalider\\bouton-valider-exited.png");
         setIcon(bouttonValider);
     }    
 }
-

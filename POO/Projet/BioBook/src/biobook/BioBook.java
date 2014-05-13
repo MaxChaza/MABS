@@ -49,9 +49,10 @@ public class BioBook {
         UIManager.put("MenuItem.font",new Font("Arial",Font.PLAIN,12));
         UIManager.put("Menu.font",new Font("Arial",Font.PLAIN,12));
         UIManager.put("TabbedPane.font",new Font("Arial",Font.PLAIN,12));
-//        LoginView login;
-//        login = new LoginView();
-    
-        MainFrame m = new MainFrame("a");
+        LoginView login;
+        login = new LoginView();
+   
+        
+//        MainFrame m = new MainFrame("a");
     }
 }

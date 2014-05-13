@@ -137,6 +137,10 @@ public class ParamPersoController {
             paramPersoView.setLog(chercheur.getLogin());
             paramPersoView.setjTextLog(chercheur.getLogin());
         }
+        else
+        {
+             JOptionPane.showMessageDialog(null, "Vous n'avez rien modifier.", "Information", JOptionPane.INFORMATION_MESSAGE);
+        }
     }
 
     public void clickValiderPass() throws BioBookException, NoSuchAlgorithmException, IOException, ClassNotFoundException, SQLException {
