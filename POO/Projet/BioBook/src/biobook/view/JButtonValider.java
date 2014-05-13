@@ -15,7 +15,7 @@ import javax.swing.JButton;
  *
  * @author Maxime
  */
-class JButtonValider extends JButton implements MouseListener{
+public class JButtonValider extends JButton implements MouseListener{
 
     public JButtonValider() {
         ImageIcon bouttonValider = new ImageIcon("C:\\Users\\Maxime\\Documents\\MABS\\POO\\Projet\\BioBook\\src\\biobook\\image\\boutonvalider\\bouton-valider-exited.png");
@@ -30,7 +30,7 @@ class JButtonValider extends JButton implements MouseListener{
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        ImageIcon bouttonValider = new ImageIcon("C:\\Users\\Maxime\\Documents\\MABS\\POO\\Projet\\BioBook\\src\\biobook\\image\\boutonvalider\\bouton-valider.png");
+        ImageIcon bouttonValider = new ImageIcon("C:\\Users\\Maxime\\Documents\\MABS\\POO\\Projet\\BioBook\\src\\biobook\\image\\boutonvalider\\bouton-valider-entered.png");
         setIcon(bouttonValider);
     }
 
@@ -56,6 +56,6 @@ class JButtonValider extends JButton implements MouseListener{
     public void mouseExited(MouseEvent e) {
         ImageIcon bouttonValider = new ImageIcon("C:\\Users\\Maxime\\Documents\\MABS\\POO\\Projet\\BioBook\\src\\biobook\\image\\boutonvalider\\bouton-valider-exited.png");
         setIcon(bouttonValider);
-    }
-    
+    }    
 }
+

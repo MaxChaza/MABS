@@ -57,9 +57,8 @@ public class GererChercheur {
      * @throws java.io.FileNotFoundException 
      * @throws java.lang.ClassNotFoundException 
 	*/
-    public static void insertChercheur(Chercheur unChercheur)throws SQLException, BioBookException, NoSuchAlgorithmException, IOException, FileNotFoundException, ClassNotFoundException
+    public void insertChercheur(Chercheur unChercheur)throws SQLException, BioBookException, NoSuchAlgorithmException, IOException, FileNotFoundException, ClassNotFoundException
     {
-        
         serializerChercheur(unChercheur);
         // On teste si la connexion a été mise en place
         if(c!=null)
@@ -103,12 +102,39 @@ public class GererChercheur {
             }
         }
     }
+    
+    /** Controle du mot de passe d'un <code>Chercheur</code> en base de donn�es.
+     * @throws java.sql.SQLException
+     * @throws biobook.util.BioBookException
+     * @throws java.security.NoSuchAlgorithmException 
+     * @throws java.io.IOException 
+     * @throws java.io.FileNotFoundException 
+     * @throws java.lang.ClassNotFoundException 
+	*/
+    public boolean motDePasseOK(String log, String pass) throws BioBookException, NoSuchAlgorithmException, IOException, ClassNotFoundException {
+       
+        // Cryptage du mot de passe en MD5
+        MD5 md5 = new MD5(pass);
+        
+        // Récupération du mot de pass
+        String password = getPassChercheur(log);
+        
+        Boolean ok;
+        if(md5.getMD5().equals(password)) {
+            ok=true;
+        }
+        else {
+            ok=false;
+        }
+        return ok;    
+    }
+    
     /** Modifie un <code>Chercheur</code> en base de données.
      * @param unChercheur
      * @throws java.sql.SQLException
      * @throws biobook.util.BioBookException
 	*/
-    public static void updateChercheur(Chercheur unChercheur)throws SQLException, BioBookException
+    public void updateChercheur(Chercheur unChercheur, String ancienLogin)throws SQLException, BioBookException
     {
         //preparation of the request
         PreparedStatement pst = null;
@@ -124,7 +150,7 @@ public class GererChercheur {
                 pst.setString(3,unChercheur.getUserName());
                 pst.setString(4,unChercheur.getFirstName());
                 pst.setString(5,unChercheur.getMail());
-                pst.setString(6,unChercheur.getLogin());
+                pst.setString(6,ancienLogin);
                 
                 // Execution of the request
                 // Ceci est necessaire pour toutes les requètes qui modifient la base de données
@@ -134,7 +160,7 @@ public class GererChercheur {
         }
         catch(SQLException e)
         {
-                throw new BioBookException("Problem in the request reqUpdateMDPByLogin "+e.getMessage());
+                throw new BioBookException("Problem in the request reqUpdateChercheurByLogin "+e.getMessage());
         }
 
         finally
@@ -151,7 +177,7 @@ public class GererChercheur {
      * @throws java.sql.SQLException
      * @throws biobook.util.BioBookException 
     */
-    public static void updateMDPChercheur(Chercheur unChercheur)throws SQLException, BioBookException
+    public void updateMDPChercheur(Chercheur unChercheur)throws SQLException, BioBookException
     {
         //preparation of the request
         PreparedStatement pst = null;
@@ -162,7 +188,9 @@ public class GererChercheur {
                 
                 // On assigne une valeur à chaque "?" présent dans la requète 
                 // pst.set<Type>(<Indice Du "?">,   <Valeur passé>       );
-                pst.setString(1,unChercheur.getPassword());
+                MD5 md5 = new MD5(unChercheur.getPassword());
+                pst.setString(1,md5.getMD5());
+                
                 pst.setString(2,unChercheur.getLogin());
                 
                 // Execution of the request
@@ -190,7 +218,7 @@ public class GererChercheur {
      * @return Liste de tous les chercheurs 
      * @throws biobook.util.BioBookException 
     */
-    public static Chercheur getChercheur(String login) throws BioBookException, IOException, FileNotFoundException, ClassNotFoundException{
+    public Chercheur getChercheur(String login) throws BioBookException, IOException, FileNotFoundException, ClassNotFoundException{
         Chercheur unChercheur = null;
         
         if(c==null)
@@ -320,9 +348,9 @@ public class GererChercheur {
      * @throws java.io.FileNotFoundException 
      * @throws java.lang.ClassNotFoundException 
     */
-    public Collection<Chercheur> getChercheurs() throws BioBookException, IOException, FileNotFoundException, ClassNotFoundException{
+    public HashSet<Chercheur> getChercheurs() throws BioBookException, IOException, FileNotFoundException, ClassNotFoundException{
         // Initialisation de la liste retournée par la fonction 
-        Collection <Chercheur> listChercheurs = new HashSet<Chercheur>();
+        HashSet <Chercheur> listChercheurs = new HashSet<Chercheur>();
         if(c==null)
         {
             listChercheurs = deserializerChercheurs();
@@ -357,11 +385,12 @@ public class GererChercheur {
                             Chercheur unChercheur= new Chercheur(rs.getString("login"),rs.getString("password"),rs.getString("name"),rs.getString("firstName"),rs.getString("mail"));
                             
                             // Récupération de la liste d'experiences d'un chercheur
-                            HashSet<String> listLabelExperiences = GererChercheurExperience.getExperienceByChercheur(unChercheur.getLogin());
+                            GererChercheurExperience gererChercheurExperience = new GererChercheurExperience();
+                            HashSet<String> listLabelExperiences = gererChercheurExperience.getExperienceByChercheur(unChercheur.getLogin());
                             HashSet<Experience> listExperiences = new HashSet<>();
-                             
+                            GererExperience gererExperience = new GererExperience();
                             for(String label : listLabelExperiences) {
-                                listExperiences.add(GererExperience.getExperience(label));
+                                listExperiences.add(gererExperience.getExperience(label));
                             }
                             unChercheur.setListExperiences(listExperiences);
                             
@@ -424,7 +453,7 @@ public class GererChercheur {
     /** Delete all <code>Chercheur</code>
      * @throws biobook.util.BioBookException 
     */
-    public static void deleteAllChercheurs() throws BioBookException
+    public void deleteAllChercheurs() throws BioBookException
     {
         //preparation of the request		
         PreparedStatement pst = null;
@@ -468,10 +497,13 @@ public class GererChercheur {
      * @throws java.io.FileNotFoundException
      * @throws java.lang.ClassNotFoundException
      */
-    public static void serializerChercheur(Chercheur chercheur) throws FileNotFoundException, IOException, ClassNotFoundException {
+    public void serializerChercheur(Chercheur chercheur) throws FileNotFoundException, IOException, ClassNotFoundException {
         // Recherche si ce chercheur existe
         if(deserializerUnChercheur(chercheur.getLogin()) == null)
         {
+            MD5 md5 = new MD5(chercheur.getPassword());
+            chercheur.setPassword(md5.getMD5());
+            
             // Si il existe on insert le chercheur dans le fichier
             // Ouverture du ficher de serialisation des chercheur
             FileOutputStream fichier = new FileOutputStream("./src/biobook/serialisation/chercheur.ser", true);
@@ -503,7 +535,7 @@ public class GererChercheur {
      * @throws java.io.FileNotFoundException
      * @throws java.lang.ClassNotFoundException
      */
-    public static HashSet<Chercheur> deserializerChercheurs() throws FileNotFoundException, IOException, ClassNotFoundException {
+    public HashSet<Chercheur> deserializerChercheurs() throws FileNotFoundException, IOException, ClassNotFoundException {
         HashSet<Chercheur> listChercheurs = new HashSet<>();
         try {
         // Ouverture du ficher de serialisation des chercheur   
@@ -522,6 +554,18 @@ public class GererChercheur {
     }
     
     /**
+     * Vérifie si ce login existe.
+     *
+     * @param log
+     * @return 
+     * @throws java.io.FileNotFoundException
+     * @throws java.lang.ClassNotFoundException
+     */
+    public boolean  loginExist(String log) throws BioBookException, IOException, FileNotFoundException, ClassNotFoundException {
+        return getChercheur(log)!=null;    
+    }
+    
+    /**
      * récupere un <code>Chercheur</code> dans un fichier.
      *
      * @param login
@@ -529,7 +573,7 @@ public class GererChercheur {
      * @throws java.io.FileNotFoundException
      * @throws java.lang.ClassNotFoundException
      */
-    public static Chercheur deserializerUnChercheur(String login) throws FileNotFoundException, IOException, ClassNotFoundException {
+    public Chercheur deserializerUnChercheur(String login) throws FileNotFoundException, IOException, ClassNotFoundException {
         Chercheur aChercheur = null;
         try {
             // Ouverture du ficher de serialisation des chercheur   

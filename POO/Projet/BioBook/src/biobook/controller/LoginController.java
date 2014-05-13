@@ -37,36 +37,13 @@ public class LoginController {
         logView=loginView;
         gererChercheur = new GererChercheur();
     }
-
-    
-    public boolean  loginExist(String log) throws BioBookException, IOException, FileNotFoundException, ClassNotFoundException {
-        return gererChercheur.getChercheur(log)!=null;    
-    }
-    
-    public boolean motDePasseOK(String log, String pass) throws BioBookException, NoSuchAlgorithmException, IOException, ClassNotFoundException {
-       
-        // Cryptage du mot de passe en MD5
-        MD5 md5 = new MD5(pass);
-        
-        // Récupération du mot de pass
-        String password = gererChercheur.getPassChercheur(log);
-        
-        Boolean ok;
-        if(md5.getMD5().equals(password)) {
-            ok=true;
-        }
-        else {
-            ok=false;
-        }
-        return ok;    
-    }
         
     public void clickValider() throws BioBookException, NoSuchAlgorithmException, IOException, FileNotFoundException, ClassNotFoundException {
         String login = logView.getLog();
         String pass = logView.getPass();
-        if(loginExist(login))
+        if(gererChercheur.loginExist(login))
         {
-            if(motDePasseOK(login,pass)) {
+            if(gererChercheur.motDePasseOK(login,pass)) {
                 connection();
             }
             else {
@@ -98,7 +75,7 @@ public class LoginController {
     }
 
     public void clickMDPOublie() throws BioBookException, SQLException, InterruptedException, IOException, FileNotFoundException, ClassNotFoundException {
-        if(loginExist(logView.getLog()))
+        if(gererChercheur.loginExist(logView.getLog()))
         {
             final Chercheur unChercheur = gererChercheur.getChercheur(logView.getLog());
             MyRandomPassword mrp = new MyRandomPassword();

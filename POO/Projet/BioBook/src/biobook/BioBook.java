@@ -52,6 +52,6 @@ public class BioBook {
 //        LoginView login;
 //        login = new LoginView();
     
-        MainFrame m = new MainFrame("Max.Chaza");
+        MainFrame m = new MainFrame("a");
     }
 }

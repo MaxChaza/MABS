@@ -14,8 +14,13 @@ import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -29,7 +34,7 @@ import javax.swing.WindowConstants;
  *
  * @author Maxime
  */
-public class MainFrame extends JFrame{
+public class MainFrame extends JFrame implements ActionListener{
     /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -50,9 +55,6 @@ public class MainFrame extends JFrame{
     private JMenuItem jExpPerso;
     private JMenuItem jDonneesPerso;
     
-    private JMenu jGeneral;
-    private JMenuItem jExps;
-    
     private JMenu jEditer;
     
     private JMenu jCreation;
@@ -72,12 +74,13 @@ public class MainFrame extends JFrame{
 
     //Onglet General
     private GeneralView general;
+    private GererChercheur gererChercheur;
     
     public MainFrame(String log) throws BioBookException, IOException, FileNotFoundException, ClassNotFoundException{
-        GererChercheur gererChercheur = new GererChercheur();
-        chercheurConnecte = gererChercheur.getChercheur("Max.Chaza");
+        gererChercheur = new GererChercheur();
+        chercheurConnecte = gererChercheur.getChercheur(log);
        // Caractéristiques JFrame
-        tailleFenetre = new Dimension((int)((Toolkit.getDefaultToolkit().getScreenSize().width)*2/3),(int)((Toolkit.getDefaultToolkit().getScreenSize().height-41)* 2/3));
+        tailleFenetre = new Dimension((int)((Toolkit.getDefaultToolkit().getScreenSize().width)*4/5),(int)((Toolkit.getDefaultToolkit().getScreenSize().height-41)* 4/5));
         Dimension tailleEcran = new Dimension(Toolkit.getDefaultToolkit().getScreenSize().width,Toolkit.getDefaultToolkit().getScreenSize().height-41);
         setSize(tailleFenetre);
         setResizable(false);
@@ -98,8 +101,6 @@ public class MainFrame extends JFrame{
         jDonneesPerso = new JMenuItem("Données personnelles");
         jExpPerso = new JMenuItem("Expériences personnelles");
         
-        jGeneral = new JMenu("Général");
-        jExps = new JMenuItem("Expériences");
         jQuitter = new JMenuItem("Quitter");
         
         jEspace.add(jPerso);
@@ -109,9 +110,6 @@ public class MainFrame extends JFrame{
         jPerso.add(jExpPerso);
         jPerso.add(jDonneesPerso);
         
-        jEspace.add(jGeneral);
-        jGeneral.add(jExps);
-        
         jEspace.add(new JSeparator());
         jEspace.add(jQuitter);
         jJMenuBar.add(jEspace);
@@ -120,7 +118,9 @@ public class MainFrame extends JFrame{
         jEditer = new JMenu("Edition");
         jCreation = new JMenu("Création");
         jCreeExp = new JMenuItem("Créer expérience");
+        jCreeExp.addActionListener(this);
         jCreerMateriel = new JMenuItem("Créer materiel");
+        jCreerMateriel.addActionListener(this);
         
         jCreation.add(jCreeExp);
         jCreation.add(jCreerMateriel);
@@ -168,6 +168,33 @@ public class MainFrame extends JFrame{
 
     public GeneralView getGeneral() {
         return general;
+    }
+
+    public GererChercheur getGererChercheur() {
+        return gererChercheur;
+    }
+
+    public void setGererChercheur(GererChercheur gererChercheur) {
+        this.gererChercheur = gererChercheur;
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if(e.getSource()==jCreeExp)
+        {
+            try {
+                CreerExperienceView c = new CreerExperienceView(this);
+            } catch (BioBookException ex) {
+                Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        if(e.getSource()==jCreerMateriel)
+        {
+                CreerMaterielView c = new CreerMaterielView(this);
+            
+        }
     }
 }
 

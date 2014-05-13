@@ -42,7 +42,7 @@ public class GererChercheurExperience {
      * @throws java.sql.SQLException
      * @throws biobook.util.BioBookException 
     */
-    public static void updateExperienceChercheur(String login,String labelExp)throws SQLException, BioBookException
+    public void updateExperienceChercheur(String login,String labelExp)throws SQLException, BioBookException
     {
         
         //preparation of the request
@@ -81,7 +81,7 @@ public class GererChercheurExperience {
 	 * @throws PerfException 
 	*/
     
-    public static void insertChercheurExperience(String labelExp, String login)throws SQLException, BioBookException, NoSuchAlgorithmException
+    public void insertChercheurExperience(String labelExp, String login)throws SQLException, BioBookException, NoSuchAlgorithmException
     {
         
         //preparation of the request
@@ -165,7 +165,7 @@ public class GererChercheurExperience {
         return unChercheur;
     }
     
-    public static HashSet<String> getExperienceByChercheur(String login) throws BioBookException, IOException, FileNotFoundException, ClassNotFoundException{
+    public HashSet<String> getExperienceByChercheur(String login) throws BioBookException, IOException, FileNotFoundException, ClassNotFoundException{
 
         HashSet<String> listeExperiences = new HashSet<>();
         //prÃ©paration de la requÃ¨te

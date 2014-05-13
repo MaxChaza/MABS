@@ -12,7 +12,7 @@ import java.util.Objects;
  *
  * @author Maxime
  */
-public class Chercheur implements Serializable{
+public class Chercheur implements Serializable, Comparable{
     static private final long serialVersionUID = 6L;
     private String password;
     private String name;
@@ -29,6 +29,15 @@ public class Chercheur implements Serializable{
         this.mail = mail;
         this.login = login;
         this.listExperiences = new HashSet<Experience>();
+    }
+    
+    public Chercheur(Chercheur c) {
+        this.password = c.password;
+        this.name = c.name;
+        this.firstName = c.firstName;
+        this.mail = c.mail;
+        this.login = c.login;
+        this.listExperiences = c.listExperiences;
     }
     
     public Chercheur(String password, String name, String firstName, String mail) {
@@ -108,22 +117,15 @@ public class Chercheur implements Serializable{
     public String toString() {
         StringBuilder s = new StringBuilder();
         s.append("\t\n"); 
-        s.append("\tlogin=");
-        s.append(login);
-        s.append("\n\tpassword=");
-        s.append(password);
-        s.append(",\n\tname=");
         s.append(name);
-        s.append(",\n\tfirstName=");
+        s.append(" ");
         s.append(firstName);
-        s.append(",\n\tmail=");
-        s.append(mail);
-        s.append(",\n\tExperiences=");
-        for(Experience exp : listExperiences){
-            s.append(exp.getLabel());
-            s.append("\n\t");
-        }
         
         return s.toString();
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        return this.login.compareTo(((Chercheur) o).login);
     }
 }

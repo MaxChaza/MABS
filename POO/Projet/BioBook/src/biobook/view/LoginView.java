@@ -282,7 +282,6 @@ public class LoginView extends JFrame implements ActionListener, KeyListener{
     // Ecouteur de clavier
     @Override
     public void keyTyped(KeyEvent e) {
-         System.out.println("ok");
     }
 
     @Override
@@ -295,7 +294,6 @@ public class LoginView extends JFrame implements ActionListener, KeyListener{
 
     @Override
     public void keyReleased(KeyEvent e) {
-         System.out.println("ok");
     }
     
     public String getPass() {
@@ -305,6 +303,4 @@ public class LoginView extends JFrame implements ActionListener, KeyListener{
     public String getLog() {
         return log.getText();
     }
-
-    
 }

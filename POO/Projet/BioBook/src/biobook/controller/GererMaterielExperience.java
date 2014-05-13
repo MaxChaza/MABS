@@ -85,11 +85,11 @@ public class GererMaterielExperience {
 
         try
         {
-                pst = c.prepareStatement(reqFindAllMaterielByExperience);
-                pst.setString(1,unExperience);
-                 
-                //Execution of the request
-                rs = pst.executeQuery();
+            pst = c.prepareStatement(reqFindAllMaterielByExperience);
+            pst.setString(1,unExperience);
+
+            //Execution of the request
+            rs = pst.executeQuery();
         }
         catch (SQLException e)
         {

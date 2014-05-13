@@ -59,7 +59,7 @@ public class GererExperience {
      * @throws java.io.FileNotFoundException 
      * @throws java.lang.ClassNotFoundException 
 	*/
-    public static void insertExperience(Experience unExperience)throws SQLException, BioBookException, NoSuchAlgorithmException, IOException, FileNotFoundException, ClassNotFoundException
+    public void insertExperience(Experience unExperience)throws SQLException, BioBookException, NoSuchAlgorithmException, IOException, FileNotFoundException, ClassNotFoundException
     {
         
         serializerExperience(unExperience);
@@ -108,7 +108,7 @@ public class GererExperience {
      * @throws java.sql.SQLException
      * @throws biobook.util.BioBookException
 	*/
-    public static void updateExperience(Experience unExperience)throws SQLException, BioBookException
+    public void updateExperience(Experience unExperience)throws SQLException, BioBookException
     {
         //preparation of the request
         PreparedStatement pst = null;
@@ -153,7 +153,7 @@ public class GererExperience {
      * @return Liste de tous les Experiences 
      * @throws biobook.util.BioBookException 
     */
-    public static Experience getExperience(String label) throws BioBookException, IOException, FileNotFoundException, ClassNotFoundException{
+    public Experience getExperience(String label) throws BioBookException, IOException, FileNotFoundException, ClassNotFoundException{
         Experience unExperience = null;
         
         if(c==null)
@@ -186,10 +186,13 @@ public class GererExperience {
             try
             {
                     if (rs.next())
-                    {
-                            unExperience= new Experience(rs.getString("labelExperience"), rs.getString("problem"), rs.getString("context"), rs.getString("stateOfArt"), rs.getString("assumption"), GererChercheur.getChercheur(rs.getString("createur")));
+                    {       
+                            GererChercheur gererChercheur = new GererChercheur();
+                            unExperience= new Experience(rs.getString("labelExperience"), rs.getString("problem"), rs.getString("context"), rs.getString("stateOfArt"), rs.getString("assumption"), gererChercheur.getChercheur(rs.getString("createur")));
                             // Récupération de la liste d'experiences d'un chercheur
-                            HashSet<Materiel> listMateriels = GererMaterielExperience.getMaterielByExperience(unExperience.getLabel());
+                            HashSet<Materiel> listMateriels = new HashSet<>();
+                            GererMaterielExperience g = new GererMaterielExperience();
+                            listMateriels = g.getMaterielByExperience(unExperience.getLabel());
                             
                             unExperience.setListMateriels(listMateriels);
                     }
@@ -216,7 +219,7 @@ public class GererExperience {
      * @return le createur de l'experience
      * @throws biobook.util.BioBookException 
     */
-    public static Chercheur getCreateur(String label) throws BioBookException, IOException, FileNotFoundException, ClassNotFoundException{
+    public Chercheur getCreateur(String label) throws BioBookException, IOException, FileNotFoundException, ClassNotFoundException{
         Experience unExperience = null;
         Chercheur leCreateur = null;
         if(c==null)
@@ -250,7 +253,8 @@ public class GererExperience {
             {
                     if (rs.next())
                     {
-                            unExperience= new Experience(rs.getString("labelExperience"), rs.getString("problem"), rs.getString("context"), rs.getString("stateOfArt"), rs.getString("assumption"), GererChercheur.getChercheur(rs.getString("createur")));      
+                            GererChercheur gererChercheur = new GererChercheur();
+                            unExperience= new Experience(rs.getString("labelExperience"), rs.getString("problem"), rs.getString("context"), rs.getString("stateOfArt"), rs.getString("assumption"), gererChercheur.getChercheur(rs.getString("createur")));      
                     }
             }
             catch (SQLException e)
@@ -311,7 +315,8 @@ public class GererExperience {
                     {
                             // Récupération des données revoyées par la base de données
                             //dans la liste listExperiences 
-                         Experience unExperience= new Experience(rs.getString("labelExperience"), rs.getString("problem"), rs.getString("context"), rs.getString("stateOfArt"), rs.getString("assumption"), GererChercheur.getChercheur(rs.getString("createur")));
+                         GererChercheur gererChercheur = new GererChercheur();
+                         Experience unExperience= new Experience(rs.getString("labelExperience"), rs.getString("problem"), rs.getString("context"), rs.getString("stateOfArt"), rs.getString("assumption"), gererChercheur.getChercheur(rs.getString("createur")));
                          listExperiences.add(unExperience);
 
                     }
@@ -372,7 +377,7 @@ public class GererExperience {
     /** Delete all <code>Experience</code>
      * @throws biobook.util.BioBookException 
     */
-    public static void deleteAllExperiences() throws BioBookException
+    public void deleteAllExperiences() throws BioBookException
     {
         //preparation of the request		
         PreparedStatement pst = null;
@@ -416,7 +421,7 @@ public class GererExperience {
      * @throws java.io.FileNotFoundException
      * @throws java.lang.ClassNotFoundException
      */
-    public static void serializerExperience(Experience unExperience) throws FileNotFoundException, IOException, ClassNotFoundException {
+    public void serializerExperience(Experience unExperience) throws FileNotFoundException, IOException, ClassNotFoundException {
         // Recherche si ce Experience existe
         if(deserializerUnExperience(unExperience.getLabel()) == null)
         {
@@ -451,7 +456,7 @@ public class GererExperience {
      * @throws java.io.FileNotFoundException
      * @throws java.lang.ClassNotFoundException
      */
-    public static HashSet<Experience> deserializerExperiences() throws FileNotFoundException, IOException, ClassNotFoundException {
+    public HashSet<Experience> deserializerExperiences() throws FileNotFoundException, IOException, ClassNotFoundException {
         HashSet<Experience> listExperiences = new HashSet<>();
         try {
         // Ouverture du ficher de serialisation des Experience   
@@ -477,7 +482,7 @@ public class GererExperience {
      * @throws java.io.FileNotFoundException
      * @throws java.lang.ClassNotFoundException
      */
-    public static Experience deserializerUnExperience(String label) throws FileNotFoundException, IOException, ClassNotFoundException {
+    public Experience deserializerUnExperience(String label) throws FileNotFoundException, IOException, ClassNotFoundException {
         Experience aExperience = null;
         try {
             // Ouverture du ficher de serialisation des Experience   
@@ -495,4 +500,17 @@ public class GererExperience {
         }
         return aExperience;
     }
+    
+    /**
+     * Vérifie si ce nom d'experience existe.
+     *
+     * @param nom
+     * @return 
+     * @throws java.io.FileNotFoundException
+     * @throws java.lang.ClassNotFoundException
+     */
+    public  boolean  libelleExist(String nom) throws BioBookException, IOException, FileNotFoundException, ClassNotFoundException {
+        return getExperience(nom)!=null;    
+    }
+    
 }

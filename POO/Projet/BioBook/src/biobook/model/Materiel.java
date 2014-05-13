@@ -18,7 +18,7 @@ import java.util.Objects;
  *
  * @author Maxime
  */
-public class Materiel implements Serializable{
+public class Materiel implements Serializable, Comparable {
     private String labelMateriel;
 
     public Materiel(String name) {
@@ -130,5 +130,10 @@ public class Materiel implements Serializable{
         } catch (java.io.IOException | ClassNotFoundException e) {
         }
         return aMateriel;
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        return this.labelMateriel.compareTo(((Materiel) o).labelMateriel);
     }
 }

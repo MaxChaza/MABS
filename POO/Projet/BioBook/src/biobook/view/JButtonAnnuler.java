@@ -15,7 +15,7 @@ import javax.swing.JButton;
  *
  * @author Maxime
  */
-class JButtonAnnuler extends JButton implements MouseListener{
+public class JButtonAnnuler extends JButton implements MouseListener{
 
     public JButtonAnnuler() {
         ImageIcon bouttonAnnuler = new ImageIcon("C:\\Users\\Maxime\\Documents\\MABS\\POO\\Projet\\BioBook\\src\\biobook\\image\\boutonannuler\\bouton-annuler-exited.png");
@@ -30,7 +30,7 @@ class JButtonAnnuler extends JButton implements MouseListener{
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        ImageIcon bouttonAnnuler = new ImageIcon("C:\\Users\\Maxime\\Documents\\MABS\\POO\\Projet\\BioBook\\src\\biobook\\image\\boutonannuler\\bouton-annuler.png");
+        ImageIcon bouttonAnnuler = new ImageIcon("C:\\Users\\Maxime\\Documents\\MABS\\POO\\Projet\\BioBook\\src\\biobook\\image\\boutonannuler\\bouton-annuler-entered.png");
         setIcon(bouttonAnnuler);
     }
 
