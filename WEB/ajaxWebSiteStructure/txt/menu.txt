@@ -1,9 +1,0 @@
-<div id="menu">
-<ul>
-<li><a href="#" onclick="showContent('about')">about us</a></li>
-<li><a href="#" onclick="showContent('products')">our products</a></li>
-<li><a href="#" onclick="showContent('contact')">contact us</a></li>
-<li><a href="#" onclick="showContent('singapore')">singapore agency</a></li>
-<li><a href="#" onclick="showContent('uploadFiles')">upload a file</a></li>
-</ul>
-</div>

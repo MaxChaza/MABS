@@ -1,4 +1,0 @@
-AuthUserFile "data\localweb\.htpasswd"
-AuthName "enter your login/passwd"
-AuthType Basic
-require valid-user
